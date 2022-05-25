@@ -1,7 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const HomePage: React.FC = () => {
+// import { Container } from './styles';
+
+export const Page3: React.FC = () => {
   const navigate = useNavigate()
 
   const goto = (path: string) => {
@@ -12,10 +14,11 @@ export const HomePage: React.FC = () => {
 
   return (
     <div>
-      <h1>HOME PAGE</h1>
+      <h1>Page 3</h1>
+      <button onClick={goto('/')}>Page Home</button>
       <button onClick={goto('/page1')}>Page 1</button>
       <button onClick={goto('/page2')}>Page 2</button>
-      <button onClick={goto('/page3')}>Page 3</button>
+      <button onClick={goto('/pageapp')}>Page App</button>
     </div>
   )
 }
