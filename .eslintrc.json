@@ -21,7 +21,8 @@
         "import-helpers", "jsx-a11y", "import", "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        // "prettier/prettier": "error",
+        "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}],
         "space-before-function-paren": "off",
         "no-else-return": "warn",
         "no-console": ["warn", { "allow": ["warn", "error"] }],
