@@ -92,6 +92,7 @@ export const ContainerPageFlexEnd = styled.div`
   align-content: center;
   background-color: transparent;
 `
+
 export const ContainerPanelText = styled.div`
   border: 2px #8284f1 solid;
   padding: 1px 5px 1px 5px;
