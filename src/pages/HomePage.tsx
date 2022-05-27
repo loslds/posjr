@@ -14,8 +14,8 @@ export const HomePage: React.FC = () => {
     <div>
       <h1>HOME PAGE</h1>
       <button onClick={goto('/page1')}>Page 1</button>
-      <button onClick={goto('/page2')}>Page 2</button>
-      <button onClick={goto('/page3')}>Page 3</button>
+      <button onClick={goto('/pagetitledouble')}>PageTitleDouble</button>
+      <button onClick={goto('/pagetitlecenter')}>PageTitleCenter</button>
     </div>
   )
 }

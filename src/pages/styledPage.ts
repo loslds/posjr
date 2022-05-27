@@ -29,19 +29,6 @@ export const ContainerPageFlex = styled.div`
     align-items: center;
   }
 `
-export const ContainerPageTitleFlex = styled.div`
-  border: 2px yellow solid;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  color: white;
-  background-color: transparent;
-`
 export const DivisionPanel = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
@@ -51,18 +38,58 @@ export const DivisionPanel = styled.div`
   display: flex;
   background-color: #7f7fbb;
 `
-export const ContainerPanelFlex = styled.div`
-  border: 2px greenyellow solid;
-  width: 98%;
+// painel para titulo centralizado unico
+export const ContainerPageTitleFlex = styled.div`
+  border: 0px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
+  width: 100%;
+  min-height: 55px;
   display: flex;
-  flex-flow: wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: white;
+  background-color: transparent;
+  h1,h2,h3 {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px ;
+    text-decoration: 3px underline;
+    text-decoration-color: cyan;
+  }
+`
+// painel para testo duplo
+export const ContainerPageDoubleFlex = styled.div`
+  border: 2px greenyellow solid;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  min-height: 55px;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  min-height: 40px;
-  font-size: 14px;
+  color: white;
+  background-color: transparent;
+  h1,h2,h3 {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px ;
+    text-decoration: 3px underline;
+    text-decoration-color: cyan;
+  }
+`
+export const ContainerPageFlexEnd = styled.div`
+  border: 1px yellowgreen dashed;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  max-width: Calc(40%/2)-10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
   background-color: transparent;
 `
 export const ContainerPanelText = styled.div`
