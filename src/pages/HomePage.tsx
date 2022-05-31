@@ -1,12 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ContainerPage, ContainerPageFlex, ContainerPageTitleFlex, ContainerPanelText, ContainerPanelItem, ContainerPanelAvatar } from './styledPage'
+import { ContainerPage, ContainerPageFlexBetween, ContainerPageDoubleFlex, ContainerPageFlexLeft, ContainerPanelLogo, ContainerPageFlexWidth, ContainerPageTitleFlex, ContainerPanelImgMaim, ContainerPanelMainSnh } from './styledPage'
 import { DivisionPanel } from './styledPage'
-import { ButtonsImg150 } from '../components/buttons/stylesButtons'
+import { ButtonsImgBg } from '../components/buttons/stylesButtons'
 import avatar1 from '../assets/images/avatar1.png'
+import logosys from '../assets/images/logosys.png'
+import semimg from '../../assets/images/semimg.png'
+import logomain from '../assets/images/logomain.png'
 
 export const HomePage: React.FC = () => {
-
 
   const navigate = useNavigate()
 
@@ -19,36 +21,31 @@ export const HomePage: React.FC = () => {
   return (
     <div>
       <ContainerPage>
-        <ContainerPageFlex>
-          <ContainerPageTitleFlex>
-            <h1>Bem Vindo ao P.O.S. JR.Bordados</h1>
-          </ContainerPageTitleFlex>
+        <ContainerPageFlexBetween>
+          <ContainerPageDoubleFlex>
+            <ContainerPageFlexLeft>
+              <ContainerPanelLogo img={logosys}/>
+              <h2>JR Bordados.</h2>
+            </ContainerPageFlexLeft>
+            <ContainerPageFlexWidth>
+              <a>Logar</a>
+              <button onClick={goto('/page1')}>Page 1</button>
+              <button onClick={goto('/pagetitledouble')}>PageTitleDouble</button>
+              <button onClick={goto('/pagetitlecenter')}>PageTitleCenter</button>
+            </ContainerPageFlexWidth>
+          </ContainerPageDoubleFlex>
           <DivisionPanel />
-          <ContainerPanelText>
-            <ContainerPageTitleFlex>
-              <h1>Usuário.</h1>
-            </ContainerPageTitleFlex>
-            <ContainerPageTitleFlex>
-              <ContainerPanelItem>
-                <ContainerPanelAvatar>
-                  <ButtonsImg150 img={avatar1}/>
-                  <label>Item1</label>
-                  <label>Item11</label>
-                </ContainerPanelAvatar>
-              </ContainerPanelItem>
-              <label>Item1</label>
-            </ContainerPageTitleFlex>
-            <ContainerPanelItem>item 2</ContainerPanelItem>
-            <ContainerPanelItem>item 3</ContainerPanelItem>
-            <ContainerPanelItem>item 4</ContainerPanelItem>
-            <ContainerPanelItem>item 5</ContainerPanelItem>
-          </ContainerPanelText>
-        </ContainerPageFlex>
+          <ContainerPageTitleFlex>
+            <ContainerPanelImgMaim img={logomain}>
+
+              <ContainerPanelMainSnh>Ola</ContainerPanelMainSnh>
+
+            </ContainerPanelImgMaim>
+          </ContainerPageTitleFlex>
+        </ContainerPageFlexBetween>
       </ContainerPage>
 
-      <button onClick={goto('/page1')}>Page 1</button>
-      <button onClick={goto('/pagetitledouble')}>PageTitleDouble</button>
-      <button onClick={goto('/pagetitlecenter')}>PageTitleCenter</button>
+
       </div>
   )
 }

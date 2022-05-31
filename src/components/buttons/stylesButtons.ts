@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import semimg from '../../assets/images/semimg.svg'
+import semimg from '../../assets/images/semimg.png'
 
 
 
@@ -61,13 +61,13 @@ export const ContentButtonCtrlPage = styled.div`
   align-items: center;
   background-color: transparent;
  `
- export const ButtonsImg150 = styled.button<{ img?: string}>`
+ export const ButtonsImgBg = styled.button<{ img?: string}>`
   border: 1px red solid;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   display: block;
-  width: 145px;
-  height: 145px;
+  width: 100%;
+  height: 100%;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
