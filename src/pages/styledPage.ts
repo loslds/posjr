@@ -119,10 +119,13 @@ export const ContainerPageFlexWidth = styled.div`
   align-content: center;
   background-color: transparent;
   a {
+    padding: 0px 5px 0px 5px;
+    margin: 0px 10px 0px 10px;
     font-size: 12pt;
     font-style: normal;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
   }
 `
 export const ContainerPageFlexLeft = styled.div`
@@ -185,7 +188,6 @@ export const ContainerPanelImgMaim = styled.div<{ img?: string}>`
   background-position: center;
 `
 
-
 export const ContainerPageFlexEnd = styled.div`
   border: 1px yellowgreen dashed;
   padding: 0px 0px 0px 0px;
@@ -198,8 +200,26 @@ export const ContainerPageFlexEnd = styled.div`
   align-content: center;
   background-color: transparent;
 `
+export const ButtomBarAccess = styled.button<{ open?: boolean }>`
+  border: 1px red solid;
+  padding: 1px 1px 1px 1px;
+  margin: 1px 10px 1px 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: grey;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center ;
+`
 
-export const ContainerPanelMainSnh = styled.div`
+export const ContainerPanelMainSnh = styled.div<{ open?: boolean}>`
   border: 2px #8284f1 solid;
   border-radius: 10px;
   padding: 1px 5px 1px 5px;
@@ -212,7 +232,7 @@ export const ContainerPanelMainSnh = styled.div`
   color: black;
   background-color: white;
   position: relative;
-  display: flex;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
 
   /* width: Calc(80%/2)-10px;
   position: relative;
