@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ContainerButton, ButtonModal } from './styledModal'
 
 // import send from '../../../assets/images/enviar.svg'
-import close from '../../assets/images/close.svg'
+import close from '../../assets/images/close.png'
 
 export default function Buttons({ onClick }) {
   return (

@@ -1,16 +1,26 @@
-import React, { Component, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { MainModal, MainContainer, ContainerCard, FlexCard } from './stayledModal'
 import Title from './Title'
 import Buttons from './Buttons'
 
-export default function Modal({ title, onCloseModal, component, isOpen }) {
+interface ModalProps {
+  onCloseModal: () => void,
+  title: string,
+  isOpen: bool,
+  component: object
+  children: any
+}
+
+export const Modal: React.FC<ModalProps> = ({ title, onCloseModal, component, isOpen, children} ) => {
+
   // ...
   const handleClose = useCallback(
     e => {
       e.stopPropagation()
       onCloseModal()
     },
+
     [onCloseModal]
   )
 
@@ -30,18 +40,4 @@ export default function Modal({ title, onCloseModal, component, isOpen }) {
       </MainContainer>
     </MainModal>
   )
-}
-
-Modal.propTypes = {
-  title: PropTypes.string,
-  onCloseModal: PropTypes.func,
-  component: PropTypes.object,
-  isOpen: PropTypes.bool
-}
-
-Modal.defaultProps = {
-  title: '--',
-  onCloseModal: () => {},
-  component: any,
-  isOpen: false
 }
