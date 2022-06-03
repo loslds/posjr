@@ -1,14 +1,20 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ContainerPage, ContainerPageFlexBetween, ContainerPageDoubleFlex, ContainerPageFlexLeft, ContainerPanelLogo, ContainerPageFlexWidth, ContainerPageTitleFlex, ContainerPanelImgMaim, ContainerPanelMainSnh, ButtomBarAccess } from './styledPage'
+import { ContainerPage,
+  ContainerPageFlexBetween,
+  ContainerPageDoubleFlex,
+  ContainerPageFlexLeft,
+  ContainerPanelLogo,
+  ContainerPageFlexWidth,
+  ContainerPageMainFlex,
+  ContainerPanelImgMaim,
+  ButtonLogin } from './styledPage'
 import { DivisionPanel } from './styledPage'
-import { ButtonsImgBg } from '../components/buttons/stylesButtons'
-
-//import avatar1 from '../assets/images/avatar1.png'
 import logosys from '../assets/images/logosys.png'
-//import semimg from '../../assets/images/semimg.png'
 import logomain from '../assets/images/logomain.png'
+import loginbrc from '../assets/images/loginbrc.png'
 
+import Modal  from '../components/Modal'
 
 
 export const HomePage: React.FC = () => {
@@ -29,8 +35,6 @@ export const HomePage: React.FC = () => {
     }
   }
 
-   console.log('isVisibleModal : ', isVisibleModal)
-
   return (
     <div>
       <ContainerPage>
@@ -40,28 +44,17 @@ export const HomePage: React.FC = () => {
               <ContainerPanelLogo img={logosys}/>
               <h2>JR Bordados.</h2>
             </ContainerPageFlexLeft>
-            <ContainerPageFlexWidth >
-              <ButtomBarAccess onClick={handleSendClickModal} />
-              {isVisibleModal ? (<h1>acessou</h1> ) : null}
-              {/* <button onClick={goto('/page1')}>Page 1</button>
-              <button onClick={goto('/pagetitledouble')}>PageTitleDouble</button>
-              <button onClick={goto('/pagetitlecenter')}>PageTitleCenter</button>*/}
+            <ContainerPageFlexWidth>
+              <ButtonLogin img={loginbrc} onClick={handleSendClickModal}/>
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
           <DivisionPanel />
-          <ContainerPageTitleFlex>
-            <ContainerPanelImgMaim img={logomain} />
-          </ContainerPageTitleFlex>
-         {/*      <h2>Entrei</h2>
-
-            </ContainerPanelMainSnh>
-
-            </ContainerPanelImgMaim>
-          */}
-        </ContainerPageFlexBetween>
+          <ContainerPageMainFlex>
+            <ContainerPanelImgMaim img={logomain} title={'Logar...'} />
+          </ContainerPageMainFlex>
+          </ContainerPageFlexBetween>
       </ContainerPage>
-
-
+      { isVisibleModal ? < Modal onCloseModal = {handleSendClickModal} /> : null }
       </div>
   )
 }

@@ -1,13 +1,14 @@
-import { App } from './../App';
+// import { ContainerButton, FlexCard } from './../components/Modal/styledModal';
+// import { App } from './../App';
 
 import styled from 'styled-components'
 
 import ImgSrc from '../assets/images/logosgb.png'
 import semimg from '../assets/images/semimg.png'
-import LogoSys from '../assets/images/logosys.png'
+// import LogoSys from '../assets/images/logosys.png'
 
 export const ContainerPanelPageBg = styled.div`
-  border: 2px #8284f1 solid;
+  border: 0px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   min-width: 100%;
@@ -37,7 +38,7 @@ export const ContainerPage = styled.div`
   font-size: 12px;
 `
 export const ContainerPageFlexBetween = styled.div`
-  border: 2px #f80606 dotted;
+  border: 0px;
   width: 900px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
@@ -54,7 +55,6 @@ export const ContainerPageFlexBetween = styled.div`
     align-items: center;
   }
 `
-
 export const DivisionPanel = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
@@ -65,8 +65,8 @@ export const DivisionPanel = styled.div`
   background-color: #7f7fbb;
 `
 // painel para titulo centralizado unico
-export const ContainerPageTitleFlex = styled.div`
-  border: 1px gray dashed;
+export const ContainerPageMainFlex = styled.div`
+  border: 0px;/*1px red dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
@@ -85,10 +85,9 @@ export const ContainerPageTitleFlex = styled.div`
     text-decoration-color: cyan;
   }
 `
-
 // painel para testo duplo
 export const ContainerPageDoubleFlex = styled.div`
-  border: 2px greenyellow solid;
+  border: 0px; /*  2px greenyellow solid; */
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
@@ -118,18 +117,17 @@ export const ContainerPageFlexWidth = styled.div`
   align-items: center;
   align-content: center;
   background-color: transparent;
-  a {
+  label {
     padding: 0px 5px 0px 5px;
     margin: 0px 10px 0px 10px;
     font-size: 12pt;
     font-style: normal;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
   }
 `
 export const ContainerPageFlexLeft = styled.div`
-  border: 1px yellowgreen dashed;
+  border: 0px; /*1px yellowgreen dashed;*/
   padding: 0px 5px 0px 5px;
   margin: 0px 10px 0px 10px;
   max-width: Calc(40%/2)-10px;
@@ -140,29 +138,8 @@ export const ContainerPageFlexLeft = styled.div`
   align-content: center;
   background-color: transparent;
 `
-export const ContainerPageMainFlex = styled.div`
-  border: 1px gray dashed;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  min-height: 55px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  color: white;
-  background-color: transparent;
-  h1,h2,h3 {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px ;
-    text-decoration: 3px underline;
-    text-decoration-color: cyan;
-  }
-`
-
 export const ContainerPanelLogo = styled.div<{ img?: string}>`
-  border: 1px yellow dashed;
+  border: 0px; /*1px yellow dashed;*/
   padding: 0px 0px 0px 0px;
   margin:  0px 10px 0px 10px;
   min-height: 50px;
@@ -175,7 +152,7 @@ export const ContainerPanelLogo = styled.div<{ img?: string}>`
   background-position: center;
 `
 export const ContainerPanelImgMaim = styled.div<{ img?: string}>`
-  border: 1px yellow dashed;
+  border: 0px;/*1px yellow dashed;*/
   padding: 0px 0px 0px 0px;
   margin:  0px 0px 0px 0px;
   min-height: 570px;
@@ -189,7 +166,7 @@ export const ContainerPanelImgMaim = styled.div<{ img?: string}>`
 `
 
 export const ContainerPageFlexEnd = styled.div`
-  border: 1px yellowgreen dashed;
+  border: 1px red dashed;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   max-width: Calc(40%/2)-10px;
@@ -218,6 +195,28 @@ export const ButtomBarAccess = styled.button<{ open?: boolean }>`
   justify-content: center;
   align-items: center ;
 `
+export const ButtonLogin = styled.button<{ img?: string}>`
+  border: 0;
+  padding: 1px 1px 1px 1px;
+  margin: 10px 10px 10px 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-image: url(${({ img }) => img || semimg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  outline: none;
+  min-height: 35px;
+  width: 35px;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center ;
+`
 
 export const ContainerPanelMainSnh = styled.div<{ open?: boolean}>`
   border: 2px #8284f1 solid;
@@ -228,31 +227,10 @@ export const ContainerPanelMainSnh = styled.div<{ open?: boolean}>`
   left: 440px;
   height: 350px;
   width: 45%;
-
   color: black;
   background-color: white;
   position: relative;
   display: ${({ open }) => (open ? 'flex' : 'none')};
-
-  /* width: Calc(80%/2)-10px;
-  position: relative;
-  display: flex;
-  flex-wrap: row wrap;
-  flex-flow: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  background-color: white;
-
-  h1,h2,h3 {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px ;
-    color: black;
-    text-decoration: 3px underline;
-    text-decoration-color: rgb(96,96,96);
-  } */
-
 `
 export const ContainerPanelTextFlex = styled.div`
   border: 0px;

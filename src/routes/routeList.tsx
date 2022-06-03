@@ -4,6 +4,7 @@ import { Page1 } from '~/pages/Page1'
 import { PageTitleDouble } from '~/pages/PageTitleDouble'
 import { PageTitleCenter } from '~/pages/PageTitleCenter'
 import { PageApp } from '~/pages/PageApp'
+import { ModalPage } from '~/pages/ModalPage'
 
 export interface IRoute {
   path: string,
@@ -14,6 +15,7 @@ export const routeList: IRoute[] = [
   { path: '/page1', element: Page1 },
   { path: '/pagetitledouble', element: PageTitleDouble },
   { path: '/pagetitlecenter', element: PageTitleCenter },
-  { path: '/pageapp', element: PageApp }
+  { path: '/pageapp', element: PageApp },
+  { path: '/modalpage', element: ModalPage }
   //
 ]

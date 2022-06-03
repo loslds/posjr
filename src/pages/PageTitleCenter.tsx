@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ContainerPage, ContainerPageFlexBetween, ContainerPageTitleFlex, DivisionPanel } from './styledPage'
+import { ContainerPage, ContainerPageFlexBetween, ContainerPageMainFlex, DivisionPanel } from './styledPage'
 
 import { ContentButtonPageBg } from '../components/buttons/stylesButtons'
 
@@ -17,9 +17,9 @@ export const PageTitleCenter: React.FC = () => {
   return (
     <ContainerPage>
       <ContainerPageFlexBetween>
-        <ContainerPageTitleFlex>
+        <ContainerPageMainFlex>
           <h1>Page Title Center</h1>
-        </ContainerPageTitleFlex>
+        </ContainerPageMainFlex>
         <DivisionPanel />
         <ContentButtonPageBg>
           <button onClick={goto('/')}>Page Home</button>
