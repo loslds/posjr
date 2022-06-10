@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import ReactDom from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { ContainerPage,
   ContainerPageFlexBetween,
@@ -14,10 +15,10 @@ import logosys from '../assets/images/logosys.png'
 import logomain from '../assets/images/logomain.png'
 import loginbrc from '../assets/images/loginbrc.png'
 
-import Modal  from '../components/Modal'
+import Modal from '../components/Modal'
 
 
-export const HomePage: React.FC = () => {
+export const HomePage: React.FC<PropertyDescriptorMap> = () => {
 
   const [isVisibleModal, setIsVisibleModal] = useState(false)
 
@@ -35,7 +36,9 @@ export const HomePage: React.FC = () => {
     }
   }
 
+
   return (
+
     <div>
       <ContainerPage>
         <ContainerPageFlexBetween>
@@ -53,8 +56,8 @@ export const HomePage: React.FC = () => {
             <ContainerPanelImgMaim img={logomain} title={'Logar...'} />
           </ContainerPageMainFlex>
           </ContainerPageFlexBetween>
-      </ContainerPage>
-      { isVisibleModal ? < Modal onCloseModal = {handleSendClickModal} /> : null }
+        </ContainerPage>
+        { isVisibleModal ? <Modal  onClose={handleSendClickModal } /> : null }
       </div>
   )
 }

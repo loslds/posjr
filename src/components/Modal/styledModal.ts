@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 import semimg from '../../assets/images/semimg.png'
 /**  */
+
+
 export const MainModal = styled.div`
   position: absolute;
   border: 0px;
@@ -11,14 +13,15 @@ export const MainModal = styled.div`
   height: 100vh;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0, 0.8);
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 `
-export const MainContainer = styled.div`
+
+export const ContainerModal = styled.div`
   border: 2px #727272 solid;
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
@@ -32,51 +35,99 @@ export const MainContainer = styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
-
 `
+
 export const ContainerCard = styled.div`
   border-bottom: 2px #727272 solid;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
-  height: 50px;
+  min-height: 40px;
   display: flex ;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   align-items: center;
   background-color: #d6d6d6;
 `
-export const ContainerModalCenter = styled.div`
-  border: 1px black dashed;
+export const ContainerCardFlex = styled.div`
+  border: none;
+  height: 100%;
+  width: 100%;
   padding: 0px 0px 0px 0px;
-  margin: 0px 10px 0px 10px;
-  max-width: Calc(40%/2)-10px;
-  height: 50px;
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  background-color: transparent;
+`
+
+export const ContainerModalTitle = styled.div`
+  border: 0px; /*1px green dashed;*/
+  padding: 0px auto;
+  margin: 0px auto;
+  min-width: 80%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   align-content: center;
-  background-color: transparent;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  h1,h2,h3 {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px ;
+    text-decoration-color: #727272;
+  }
+  h1 {
+    text-decoration: 3px underline;
+  }
+  h2 {
+    text-decoration: 2px underline;
+  }
+  h3 {
+    text-decoration: 1.5px underline;
+  }
 `
+
 export const ContainerModalButton = styled.div`
-  border: 1px white dashed;
+  border: 0px;/*1px red dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
-  max-width: Calc(40%/2)-10px;
-  height: 50px;
+  min-width: 15%;/*max-width: Calc(40%/2)-10px;*/
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
   align-content: center;
   background-color: transparent;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  h1,h2,h3 {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px ;
+    text-decoration-color: #727272;
+  }
+  h1 {
+    text-decoration: 3px underline;
+  }
+  h2 {
+    text-decoration: 2px underline;
+  }
+  h3 {
+    text-decoration: 1.5px underline;
+  }
 `
-export const ButtonClose = styled.button<{ img?: string}>`
-  border: 0;
-  padding: 1px 1px 1px 1px;
-  margin: 10px 10px 10px 10px;
+export const ButtonModalClose = styled.button<{ img?: string}>`
+  border: 0;/*1px black dashed;*/
+  padding: 0px 0px 0px 0px;
+  margin: 2px 5px 2px 5px;
   color: white;
   font-size: 12px;
   font-weight: bold;
@@ -87,6 +138,7 @@ export const ButtonClose = styled.button<{ img?: string}>`
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  content:  none;
   outline: none;
   min-height: 35px;
   width: 35px;
