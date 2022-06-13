@@ -3,39 +3,10 @@ import styled from 'styled-components'
 import semimg from '../../assets/images/semimg.png'
 /**  */
 
+// type ContMod ={
+//   openDiv: boolean;
+// }
 
-export const MainModal = styled.div`
-  position: absolute;
-  border: 0px;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100vh;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-`
-
-export const ContainerModal = styled.div`
-  border: 2px #727272 solid;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 10px 0px 10px;
-  background-color: white;
-  color: black;
-  top: 62px;
-  position: fixed;
-  width: 66.3%;
-  height: 90%;
-  display: flex row;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  align-items: center;
-`
 
 export const ContainerCard = styled.div`
   border-bottom: 2px #727272 solid;
@@ -124,7 +95,7 @@ export const ContainerModalButton = styled.div`
     text-decoration: 1.5px underline;
   }
 `
-export const ButtonModalClose = styled.button<{ img?: string}>`
+export const ButtonModalImg = styled.button<{ img?: string}>`
   border: 0;/*1px black dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 2px 5px 2px 5px;
@@ -138,7 +109,6 @@ export const ButtonModalClose = styled.button<{ img?: string}>`
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  content:  none;
   outline: none;
   min-height: 35px;
   width: 35px;

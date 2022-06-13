@@ -11,14 +11,15 @@ import { ContainerPage,
   ContainerPanelImgMaim,
   ButtonLogin } from './styledPage'
 import { DivisionPanel } from './styledPage'
+import Modal from '~/components/Modal'
+
 import logosys from '../assets/images/logosys.png'
 import logomain from '../assets/images/logomain.png'
 import loginbrc from '../assets/images/loginbrc.png'
 
-import Modal from '../components/Modal'
 
 
-export const HomePage: React.FC<PropertyDescriptorMap> = () => {
+export const HomePage: React.FC = () => {
 
   const [isVisibleModal, setIsVisibleModal] = useState(false)
 
@@ -36,10 +37,10 @@ export const HomePage: React.FC<PropertyDescriptorMap> = () => {
     }
   }
 
-
   return (
 
     <div>
+
       <ContainerPage>
         <ContainerPageFlexBetween>
           <ContainerPageDoubleFlex>
@@ -57,7 +58,7 @@ export const HomePage: React.FC<PropertyDescriptorMap> = () => {
           </ContainerPageMainFlex>
           </ContainerPageFlexBetween>
         </ContainerPage>
-        { isVisibleModal ? <Modal  onClose={handleSendClickModal } /> : null }
+        { isVisibleModal ? <Modal { isOpen = {isVisibleModal} close={handleSendClickModal} root={'/modalpage'} titulo={'Acesso.Sistema'} } } /> : null }
       </div>
   )
 }
