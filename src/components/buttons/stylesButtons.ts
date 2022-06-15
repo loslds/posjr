@@ -1,8 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import semimg from '../../assets/images/semimg.png'
-
-
+import semimg from '../../assets/images/semimg.png';
 
 export const ContentButtonPageBg = styled.div`
   border: 1px red solid;
@@ -17,7 +15,7 @@ export const ContentButtonPageBg = styled.div`
   align-items: center;
   color: white;
   font-size: 14px;
-`
+`;
 export const ContentButtonPageCenterBg = styled.div`
   border: 1px rebeccapurple solid;
   padding: 1px 1px 1px 1px;
@@ -31,7 +29,7 @@ export const ContentButtonPageCenterBg = styled.div`
   align-items: center;
   color: white;
   font-size: 14px;
-`
+`;
 export const ContentButtonPageEndBg = styled.div`
   border: 1px green solid;
   padding: 1px 1px 1px 1px;
@@ -46,7 +44,7 @@ export const ContentButtonPageEndBg = styled.div`
   background-color: transparent;
   color: white;
   font-size: 14px;
-`
+`;
 export const ContentButtonCtrlPage = styled.div`
   border: 2px #f80606 dotted;
   margin: 0px 0px 0px 0px;
@@ -60,8 +58,8 @@ export const ContentButtonCtrlPage = styled.div`
   align-content: center;
   align-items: center;
   background-color: transparent;
- `
- export const ButtonsImgBg = styled.button<{ img?: string}>`
+`;
+export const ButtonsImgBg = styled.button<{ img?: string }>`
   border: 1px red solid;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -76,10 +74,7 @@ export const ContentButtonCtrlPage = styled.div`
   cursor: pointer;
   outline: none;
   font-size: 14px;
- `
-
-
-
+`;
 
 // export const CtrlPageCol = styled.div`
 //   border: 0px;

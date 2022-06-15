@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
-import semimg from '../../assets/images/semimg.png'
+import semimg from '../../assets/images/semimg.png';
 
-const ButtonModalImg = styled.button<{ img?: string}>`
-  border: 0;/*1px black dashed;*/
+const ButtonModalImg = styled.button<{ img?: string }>`
+  border: 0; /*1px black dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 2px 5px 2px 5px;
   color: white;
@@ -23,15 +23,14 @@ const ButtonModalImg = styled.button<{ img?: string}>`
   display: flex;
   flex-flow: nowrap;
   justify-content: center;
-  align-items: center ;
-`
+  align-items: center;
+`;
 
-const ButtonModal: React.FC = ( ) => {
-  return (
-    <div>
-      <ButtonModalImg />
-    </div>
-  )
-}
-
-export default ButtonModal;
+type Props = {
+  img?: string;
+  tituloBt?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+export const ButtonModal: React.FC<Props> = ({ img, onClick, tituloBt }) => {
+  return <ButtonModalImg img={img} onClick={onClick} title={tituloBt} />;
+};

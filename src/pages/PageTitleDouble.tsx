@@ -1,18 +1,17 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { ContainerPage, ContainerPageFlexBetween, ContainerPageDoubleFlex, DivisionPanel, ContainerPageFlexEnd } from './styledPage'
-
-import { ContentButtonPageBg, ContentButtonPageEndBg, ContentButtonPageCenterBg, ContentButtonCtrlPage } from '../components/buttons/stylesButtons'
+import { ContentButtonPageBg, ContentButtonPageEndBg, ContentButtonPageCenterBg, ContentButtonCtrlPage } from '../components/buttons/stylesButtons';
+import { ContainerPage, ContainerPageFlexBetween, ContainerPageDoubleFlex, DivisionPanel, ContainerPageFlexEnd } from './styledPage';
 
 export const PageTitleDouble: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const goto = (path: string) => {
     return () => {
-      navigate(path)
-    }
-  }
+      navigate(path);
+    };
+  };
 
   return (
     <ContainerPage>
@@ -22,15 +21,15 @@ export const PageTitleDouble: React.FC = () => {
           <ContainerPageFlexEnd>
             <h1>Page Title End</h1>
             <ContentButtonPageCenterBg>
-              <button onClick={()=>{}}>Menu</button>
+              <button onClick={() => {}}>Menu</button>
             </ContentButtonPageCenterBg>
             <ContentButtonPageEndBg>
               <ContentButtonCtrlPage>
                 <div>
-                <button onClick={goto('/page1')}>Page 1</button>
+                  <button onClick={goto('/page1')}>Page 1</button>
                 </div>
                 <div>
-                <button onClick={goto('/pageapp')}>Page App</button>
+                  <button onClick={goto('/pageapp')}>Page App</button>
                 </div>
               </ContentButtonCtrlPage>
             </ContentButtonPageEndBg>
@@ -51,5 +50,5 @@ export const PageTitleDouble: React.FC = () => {
         </ContentButtonPageBg>
       </ContainerPageFlexBetween>
     </ContainerPage>
-  )
-}
+  );
+};

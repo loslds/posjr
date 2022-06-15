@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
-import styled from 'styled-components'
-
-type PropsLayout ={
-  isOpen: boolean;
-}
-const ContentModal = styled.div<PropsLayout>`
+const ContentModal = styled.div<{ isOpen?: boolean }>`
   position: fixed;
   border: 0px;
   top: 0px;
@@ -20,7 +16,7 @@ const ContentModal = styled.div<PropsLayout>`
   justify-content: center;
   align-items: center;
   color: white;
-`
+`;
 
 const ContainerModal = styled.div`
   border: 2px #727272 solid;
@@ -36,23 +32,18 @@ const ContainerModal = styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 type Props = {
+  isOpen?: boolean;
   id?: string;
-  children?: any;
-}
+  children?: JSX.Element;
+};
 
-const MainModal: React.FC<Props> = ( id, children) => {
+export const MainModal: React.FC<Props> = ({ id, isOpen, children }) => {
   return (
-    <div>
-      <ContentModal isOpen={false}>
-        <ContainerModal>
-          {children}
-        </ContainerModal>
-      </ContentModal>
-    </div>
-  )
-}
-
-export default MainModal;
+    <ContentModal id={id} isOpen={isOpen}>
+      <ContainerModal>{children}</ContainerModal>
+    </ContentModal>
+  );
+};

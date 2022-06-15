@@ -1,18 +1,17 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { ContainerPage, ContainerPageFlexBetween, ContainerPageMainFlex, DivisionPanel } from './styledPage'
-
-import { ContentButtonPageBg } from '../components/buttons/stylesButtons'
+import { ContentButtonPageBg } from '../components/buttons/stylesButtons';
+import { ContainerPage, ContainerPageFlexBetween, ContainerPageMainFlex, DivisionPanel } from './styledPage';
 
 export const PageTitleCenter: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const goto = (path: string) => {
     return () => {
-      navigate(path)
-    }
-  }
+      navigate(path);
+    };
+  };
 
   return (
     <ContainerPage>
@@ -35,5 +34,5 @@ export const PageTitleCenter: React.FC = () => {
         </ContentButtonPageBg>
       </ContainerPageFlexBetween>
     </ContainerPage>
-  )
-}
+  );
+};

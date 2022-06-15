@@ -1,23 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
-import cx from 'classnames'
-import styled from 'styled-components'
+import cx from 'classnames';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Button = styled.button<{ loading?: boolean }>`
   background-color: ${({ loading }) => (loading ? '#000' : '#f00')};
-`
+`;
 
 // import useIsMountedRoot from '../hooks'
 // import Loading from '../Loading'
 
 export const PageApp: React.FC = () => {
-  const [isButton] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   // const isMountedRoot = useIsMountedRoot()
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // const fetchRoots = useCallback(() => {
   //   setIsLoading(true)
@@ -33,14 +32,14 @@ export const PageApp: React.FC = () => {
   // const btn = document.getElementById('send')
 
   const handleClick = () => {
-    setIsLoading(true)
-    setIsSuccess(false)
+    setIsLoading(true);
+    setIsSuccess(false);
     setTimeout(() => {
-      setIsLoading(false)
-      setIsSuccess(true)
-    }, 4000)
+      setIsLoading(false);
+      setIsSuccess(true);
+    }, 4000);
     //
-  }
+  };
   // btn.addEventListener('click', () => {
   //   btn.classList.add('is-loading')
   //   // fake API call
@@ -51,7 +50,7 @@ export const PageApp: React.FC = () => {
   //   setIsButton(true)
   // })
 
-  const classes = cx({ loading: !!isLoading, success: !!isSuccess })
+  const classes = cx({ loading: !!isLoading, success: !!isSuccess });
 
   return (
     <div className="App">
@@ -67,5 +66,5 @@ export const PageApp: React.FC = () => {
       {/* {isLoading ? <Loading /> : null} */}
       {/* {isButton ? push('/') : null} */}
     </div>
-  )
-}
+  );
+};
