@@ -20,6 +20,7 @@ export const ContainerCard = styled.div`
   align-items: center;
   background-color: #d6d6d6;
 `;
+
 export const ContainerCardFlex = styled.div`
   border: none;
   height: 100%;
@@ -98,6 +99,7 @@ export const ContainerModalButton = styled.div`
     text-decoration: 1.5px underline;
   }
 `;
+
 export const ButtonModalImg = styled.button<{ img?: string }>`
   border: 0; /*1px black dashed;*/
   padding: 0px 0px 0px 0px;

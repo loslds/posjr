@@ -14,6 +14,7 @@ const ContainerCard = styled.div`
   align-items: center;
   background-color: #d6d6d6;
 `;
+
 const ContainerCardFlex = styled.div`
   border: none;
   height: 100%;

@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContentModal = styled.div<{ isOpen?: boolean }>`
+const ContentModal = styled.div`
   position: fixed;
   border: 0px;
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   z-index: 100;
+  color: white;
   background-color: rgba(0, 0, 0, 0, 0.8);
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+  display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
 `;
 
 const ContainerModal = styled.div`
@@ -27,22 +27,22 @@ const ContainerModal = styled.div`
   top: 62px;
   position: fixed;
   width: 66.3%;
-  height: 90%;
+  height: 87%;
   display: flex row;
   flex-wrap: nowrap;
-  flex-direction: column;
+  flex-direction: center;
+  justify-content: center;
   align-items: center;
 `;
 
 type Props = {
-  isOpen?: boolean;
   id?: string;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 };
 
-export const MainModal: React.FC<Props> = ({ id, isOpen, children }) => {
+export const MainModal: React.FC<Props> = ({ id, children }) => {
   return (
-    <ContentModal id={id} isOpen={isOpen}>
+    <ContentModal id={id}>
       <ContainerModal>{children}</ContainerModal>
     </ContentModal>
   );

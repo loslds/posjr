@@ -21,6 +21,7 @@ export const ContainerPanelPageBg = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
 `;
+
 export const ContainerPage = styled.div`
   border: 0px;
   padding: 0px 0px 0px 0px;
@@ -33,6 +34,7 @@ export const ContainerPage = styled.div`
   color: white;
   font-size: 12px;
 `;
+
 export const ContainerPageFlexBetween = styled.div`
   border: 0px;
   width: 900px;
@@ -50,6 +52,7 @@ export const ContainerPageFlexBetween = styled.div`
     align-items: center;
   }
 `;
+
 export const DivisionPanel = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
@@ -106,7 +109,7 @@ export const ContainerPageDoubleFlex = styled.div`
   }
 `;
 export const ContainerPageFlexWidth = styled.div`
-  border: 1px yellowgreen dashed;
+  border: 0px; /*1px yellowgreen dashed;*/
   padding: 0px 5px 0px 5px;
   margin: 0px 10px 0px 10px;
   max-width: Calc(40% / 2)-10px;
@@ -176,28 +179,11 @@ export const ContainerPageFlexEnd = styled.div`
   align-content: center;
   background-color: transparent;
 `;
-export const ButtomBarAccess = styled.button<{ open?: boolean }>`
-  border: 1px red solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 10px 1px 10px;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
-  background-color: grey;
-  cursor: pointer;
-  outline: none;
-  height: 40px;
-  width: 40px;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
-  flex-flow: nowrap;
-  justify-content: center;
-  align-items: center;
-`;
+
 export const ButtonLogin = styled.button<{ img?: string }>`
-  border: 0;
+  border: 0px; /*1px white solid;*/
   padding: 1px 1px 1px 1px;
-  margin: 10px 10px 10px 10px;
+  margin: 0px 10px 0px 10px;
   color: white;
   font-size: 12px;
   font-weight: bold;
@@ -209,28 +195,14 @@ export const ButtonLogin = styled.button<{ img?: string }>`
   background-position: center;
   cursor: pointer;
   outline: none;
-  min-height: 35px;
-  width: 35px;
+  min-height: 45px;
+  width: 45px;
   display: flex;
   flex-flow: nowrap;
   justify-content: center;
   align-items: center;
 `;
 
-export const ContainerPanelMainSnh = styled.div<{ open?: boolean }>`
-  border: 2px #8284f1 solid;
-  border-radius: 10px;
-  padding: 1px 5px 1px 5px;
-  margin: 5px 5px 5px 5px;
-  top: 100px;
-  left: 440px;
-  height: 350px;
-  width: 45%;
-  color: black;
-  background-color: white;
-  position: relative;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
-`;
 export const ContainerPanelTextFlex = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
@@ -258,6 +230,7 @@ export const ContainerPanelItemMain = styled.div`
   align-items: center;
   color: black;
 `;
+
 export const ContainerPanelAvatar = styled.div`
   border: 2px green solid;
   padding: 1px 1px 1px 1px;

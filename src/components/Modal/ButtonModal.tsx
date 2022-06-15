@@ -28,9 +28,9 @@ const ButtonModalImg = styled.button<{ img?: string }>`
 
 type Props = {
   img?: string;
-  tituloBt?: string;
+  title?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
-export const ButtonModal: React.FC<Props> = ({ img, onClick, tituloBt }) => {
-  return <ButtonModalImg img={img} onClick={onClick} title={tituloBt} />;
+export const ButtonModal: React.FC<Props> = ({ img, onClick, title }) => {
+  return <ButtonModalImg img={img} onClick={onClick} title={title} />;
 };
