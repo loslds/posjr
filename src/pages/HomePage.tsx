@@ -1,12 +1,12 @@
-import { FormAcces } from '~/components/modal/form/acces/FormAcces';
 import React, { useCallback, useState } from 'react';
 
-import loginbrc1 from '../assets/images/loginbrc1.png';
-import logomain from '../assets/images/logomain.png';
-import logosys from '../assets/images/logosys.png';
-import { Modal } from '../components/modal/Modal';
+import loginbrc1 from '~/assets/images/loginbrc1.png';
+import logomain from '~/assets/images/logomain.png';
+import logosys from '~/assets/images/logosys.png';
+import { FormAcces } from '~/components/modal/form/acces/FormAcces';
+import { Modal } from '~/components/modal/Modal';
+
 import {
-  ContainerPage,
   ContainerPageFlexBetween,
   ContainerPageDoubleFlex,
   ContainerPageFlexLeft,
@@ -15,7 +15,8 @@ import {
   ContainerPageMainFlex,
   ContainerPanelImgMaim,
   ButtonLogin,
-  DivisionPanel
+  DivisionPanel,
+  ContainerPage
 } from './styledPage';
 export const HomePage: React.FC = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
@@ -40,7 +41,7 @@ export const HomePage: React.FC = () => {
         </ContainerPageDoubleFlex>
         <DivisionPanel />
         <ContainerPageMainFlex>
-          <ContainerPanelImgMaim img={logomain} title={'Logar...'} onClick={close} />
+          <ContainerPanelImgMaim img={logomain} title={'Logon...'} onClick={close} />
         </ContainerPageMainFlex>
         <Modal isOpen={isVisibleModal} onClose={handleOpen(false)} titulo={'Acesso Sistema'} form={<FormAcces />} />
       </ContainerPageFlexBetween>

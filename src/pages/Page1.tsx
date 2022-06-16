@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// import { Container } from './styles';
-
 export const Page1: React.FC = () => {
   const navigate = useNavigate();
 

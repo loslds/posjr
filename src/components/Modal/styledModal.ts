@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-import semimg from '../../assets/images/semimg.png';
-/**  */
-
-// type ContMod ={
-//   openDiv: boolean;
-// }
+import semimg from '~/assets/images/semimg.png';
 
 export const ContainerCard = styled.div`
   border-bottom: 2px #727272 solid;

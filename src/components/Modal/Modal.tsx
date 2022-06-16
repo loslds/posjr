@@ -1,6 +1,7 @@
 import React from 'react';
 
-import ImgClose from '../../assets/images/close.png';
+import ImgClose from '~/assets/images/close.png';
+
 import { ButtonModal } from './ButtonModal';
 import { CardButtonsModal } from './CardButtonsModal';
 import { CardModal } from './CardModal';

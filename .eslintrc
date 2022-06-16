@@ -35,7 +35,7 @@
           {
             "newlinesBetween": "always",
             "alphabetize": { "order": "asc", "ignoreCase": true },
-            "groups": ["module", "/^@src/", "/^@//", ["parent", "sibling", "index"]]
+            "groups": ["/^react/", "module", "/^@src/", "/^~//", ["parent", "sibling", "index"]]
           }
         ]
   },

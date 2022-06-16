@@ -1,10 +1,11 @@
+import React from 'react';
+
 import { HomePage } from '~/pages/HomePage';
 import { ModalPage } from '~/pages/ModalPage';
 import { Page1 } from '~/pages/Page1';
 import { PageApp } from '~/pages/PageApp';
 import { PageTitleCenter } from '~/pages/PageTitleCenter';
 import { PageTitleDouble } from '~/pages/PageTitleDouble';
-import React from 'react';
 export interface IRoute {
   path: string;
   element: React.FC | React.ReactNode;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import ImgSrc from '../assets/images/logosgb.png';
-import semimg from '../assets/images/semimg.png';
+import ImgSrc from '~/assets/images/logosgb.png';
+import semimg from '~/assets/images/semimg.png';
 
 export const ContainerPanelPageBg = styled.div`
   border: 0px;
@@ -62,7 +62,7 @@ export const DivisionPanel = styled.div`
   display: flex;
   background-color: #7f7fbb;
 `;
-// painel para titulo centralizado unico
+// panel para titulo centralizado único
 export const ContainerPageMainFlex = styled.div`
   border: 0px; /*1px red dashed;*/
   padding: 0px 0px 0px 0px;
@@ -85,7 +85,7 @@ export const ContainerPageMainFlex = styled.div`
     text-decoration-color: cyan;
   }
 `;
-// painel para testo duplo
+// panel para testo duplo
 export const ContainerPageDoubleFlex = styled.div`
   border: 0px; /*  2px greenyellow solid; */
   padding: 0px 0px 0px 0px;

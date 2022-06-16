@@ -4,4 +4,24 @@
   "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
   },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "cSpell.words": [
+    "Acces",
+    "centralizado",
+    "duplo",
+    "greenyellow",
+    "loginbrc",
+    "logomain",
+    "logosgb",
+    "monospace",
+    "pageapp",
+    "semimg",
+    "testo",
+    "titulo",
+    "único",
+    "useCallback",
+    "whitesmoke",
+    "yellowgreen"
+  ]
 }

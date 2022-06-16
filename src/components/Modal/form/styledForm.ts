@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import semimg from '../../../assets/images/semimg.png';
+import semimg from '~/assets/images/semimg.png';
 
 /** Styled MainForm */
 export const ContainerForm = styled.div`

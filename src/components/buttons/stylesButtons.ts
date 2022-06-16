@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import semimg from '../../assets/images/semimg.png';
+import semimg from '~/assets/images/semimg.png';
 
 export const ContentButtonPageBg = styled.div`
   border: 1px red solid;

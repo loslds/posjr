@@ -1,7 +1,8 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
-import semimg from '../../assets/images/semimg.png';
+import semimg from '~/assets/images/semimg.png';
 
 const ButtonModalImg = styled.button<{ img?: string }>`
   border: 0; /*1px black dashed;*/

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
-import avatar1 from '../../../../assets/images/avatar1.png';
+import avatar1 from '~/assets/images/avatar1.png';
+
 import { ContainerFormAvatar } from '../styledForm';
 import { CardFormAcces } from './CardFormAcces';
 import { MainFormAcces } from './MainFormAcces';
