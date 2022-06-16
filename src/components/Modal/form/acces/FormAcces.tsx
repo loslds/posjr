@@ -1,13 +1,88 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import avatar1 from '../../../../assets/images/avatar1.png';
+import { ContainerFormAvatar } from '../styledForm';
 import { CardFormAcces } from './CardFormAcces';
 import { MainFormAcces } from './MainFormAcces';
 import { TitleFormAcces } from './TitleFormAcces';
+
+const ContainerFormCenter = styled.div`
+  border: 1px red solid;
+  padding: 0px 0px 0px 0px;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  min-height: 350px;
+  background-color: transparent;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+`;
+
+const ContainerFormCenterFlex = styled.div`
+  border: 1px black solid;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 80%;
+  min-height: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  justify-content: center;
+  align-content: center;
+`;
+
+const ContainerFormOption = styled.div`
+  border: 2px green solid;
+  height: 130px;
+  width: 200px;
+  padding: 0px 0px 0px 0px;
+  margin: 10px 5px 10px 5px;
+  background-color: transparent;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  p {
+    padding: 0px 0px 0px 0px;
+    margin: 3px 0px 3px 0px;
+    font-size: 14px;
+    line-height: 1.5em;
+  }
+`;
+
+const ContainerFormForm = styled.div`
+  border: 2px violet solid;
+  height: 130px;
+  width: 230px;
+  padding: 0px 0px 0px 0px;
+  margin: 10px 5px 10px 5px;
+  display: flex;
+  background-color: transparent;
+`;
+
 export const FormAcces: React.FC = () => {
   return (
     <MainFormAcces id={'login'}>
       <CardFormAcces>
         <TitleFormAcces titulo="Login-off" />
+        <ContainerFormCenter>
+          <ContainerFormCenterFlex>
+            <ContainerFormAvatar img={avatar1} />
+            <ContainerFormOption>
+              <p>Criar Acesso Sistema.</p>
+              <p>Esqueceu sua Senha ?</p>
+              <p>Esqueceu seu Email ?</p>
+              <p>Entrar de forma Diferênte...</p>
+            </ContainerFormOption>
+            <ContainerFormForm>
+              <h1>formulario</h1>
+            </ContainerFormForm>
+          </ContainerFormCenterFlex>
+        </ContainerFormCenter>
       </CardFormAcces>
     </MainFormAcces>
   );
