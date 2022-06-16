@@ -41,7 +41,7 @@ type Props = {
 export const TitleModal: React.FC<Props> = ({ titulo, children }) => {
   return (
     <ContainerModalTitle>
-      <h2>{children || titulo}</h2>
+      <h1>{children || titulo}</h1>
     </ContainerModalTitle>
   );
 };
