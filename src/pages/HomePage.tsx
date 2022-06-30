@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import loginbrc1 from '~/assets/images/loginbrc1.png';
 import logomain from '~/assets/images/logomain.png';
 import logosys from '~/assets/images/logosys.png';
-import { FormAcces } from '~/components/modal/form/acces/FormAcces';
-import { Modal } from '~/components/modal/Modal';
 
 import {
   ContainerPageFlexBetween,
@@ -18,14 +17,15 @@ import {
   DivisionPanel,
   ContainerPage
 } from './styledPage';
-export const HomePage: React.FC = () => {
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
 
-  const handleOpen = useCallback((open: boolean) => {
+export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const goto = (path: string) => {
     return () => {
-      setIsVisibleModal(!!open);
+      navigate(path);
     };
-  }, []);
+  };
 
   return (
     <ContainerPage>
@@ -36,14 +36,13 @@ export const HomePage: React.FC = () => {
             <h2>JR Bordados.</h2>
           </ContainerPageFlexLeft>
           <ContainerPageFlexWidth>
-            <ButtonLogin img={loginbrc1} onClick={handleOpen(true)} />
+            <ButtonLogin img={loginbrc1} title={'Acesso...'} onClick={goto('/accespage')} />
           </ContainerPageFlexWidth>
         </ContainerPageDoubleFlex>
         <DivisionPanel />
         <ContainerPageMainFlex>
-          <ContainerPanelImgMaim img={logomain} title={'Logon...'} onClick={close} />
+          <ContainerPanelImgMaim img={logomain} />
         </ContainerPageMainFlex>
-        <Modal isOpen={isVisibleModal} onClose={handleOpen(false)} titulo={'Acesso Sistema'} form={<FormAcces />} />
       </ContainerPageFlexBetween>
     </ContainerPage>
   );
