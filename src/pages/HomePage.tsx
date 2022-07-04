@@ -18,7 +18,7 @@ import {
   DivisionPanel
 } from './styledPage';
 
-export const HomePage: React.FC<{}> = () => {
+export const HomePage = () => {
   const navigate = useNavigate();
 
   const goto = (path: string) => {
