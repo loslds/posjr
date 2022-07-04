@@ -1,10 +1,7 @@
 import React from 'react';
 
-// type Props = {
-//   isOpen?: boolean;
-//   children?: JSX.Element;
-// };
+import * as C from '../pages/styles';
 
 export const AccesPage: React.FC = () => {
-  return <h1>Acesso Sistema</h1>;
+  return <C.Container>passo 1</C.Container>;
 };
