@@ -1,11 +1,10 @@
 import React, { ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FormProvider } from '~/contexts/FormContext';
+import { FormActions, UseForm } from '~/contexts/FormContext';
 
 import { Theme } from '../components/Theme';
-import { Useform, FormActions } from '../contexts/FormContext';
-import * as C from '../pages/styles';
+import * as C from './styles';
 
 export const AccesPage1 = () => {
   const navigate = useNavigate();
@@ -16,31 +15,29 @@ export const AccesPage1 = () => {
     };
   };
 
-  const { state, dispatch } = Useform();
+  const { state, dispatch } = UseForm();
 
-  const handlerIdNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handlerPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: FormActions.setIdname,
+      type: FormActions.setPassword,
       payload: e.target.value
     });
   };
   return (
     <div>
       <Theme>
-        <FormProvider>
-          <C.Container>
-            <p>Passo: 2/3 </p>
-            <h1>Vamos começar com sua ID Name.</h1>
-            <p>Preencha o Campo abaixo com sua ID.</p>
-            <hr />
-            <label>
-              Descrição ID de Reconhecimento.
-              <input type="text" autoFocus onChange={handlerIdNameChange}></input>
-              <button onClick={goto('/homepage')}>Voltar</button>
-              <button onClick={goto('/accespage1')}>Próximo.</button>
-            </label>
-          </C.Container>
-        </FormProvider>
+        <C.Container>
+          <p>Passo: 2/3 </p>
+          <h1>Ola {state.idname}... Agora determine sua Password.</h1>
+          <p>Preencha o Campo abaixo com seu Acesso.</p>
+          <hr />
+          <label>
+            Desclaração de sya PassWord de Acesso.
+            <input type="text" autoFocus onChange={handlerPasswordChange} value={state.password} placeholder={'Senha de Acesso...'} />
+            <button onClick={goto('/accespage')}>Voltar</button>
+            <button onClick={goto('/accespage2')}>Próximo.</button>
+          </label>
+        </C.Container>
       </Theme>
     </div>
   );

@@ -27,7 +27,7 @@ type FormProviderProps = {
 const initialData: State = {
   currentStep: 0,
   name: '',
-  idname: 'sua ID',
+  idname: '',
   level: 0,
   email: '',
   fone: '',
@@ -77,10 +77,10 @@ export const FormProvider = ({ children }: FormProviderProps) => {
 };
 
 // Context Hook
-export const Useform = () => {
+export const UseForm = () => {
   const context = useContext(FormContext);
   if (context === undefined) {
-    throw new Error('"useform" precisa ser usado dentro do Provider!');
+    throw new Error('"Useform" precisa ser usado dentro do Provider!');
   }
   return context;
 };
