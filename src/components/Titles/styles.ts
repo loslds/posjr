@@ -3,9 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background-color: transparent;
   color: #fff;
-  padding: 10px 5px 5px 5px;
+  padding: 10px 5px 5px 0px;
   margin: 10px 5px 5px 5px;
-  border-bottom: 1px #16195c solid;
   h1 {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;

@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { AccesPage } from '~/pages/AccesPage';
-import { AccesPage1 } from '~/pages/AccesPage1';
-import { AccesPage2 } from '~/pages/AccesPage2';
+import { AccesPg0 } from '~/pages/AccesPg0';
+import { AccesPg1 } from '~/pages/AccesPg1';
+import { AccesPg2 } from '~/pages/AccesPg2';
+import { AccesPg3 } from '~/pages/AccesPg3';
 import { HomePage } from '~/pages/HomePage';
 
-import { IRoute, RouteList } from './routeList';
+import { IRoute, RouteList } from './RouteList';
 
 export const AppRoutes: React.FC = () => {
   const renderRoutes = (routes: IRoute[]) => {
@@ -19,10 +20,10 @@ export const AppRoutes: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route index element={<AccesPage />} />
-        <Route index element={<AccesPage1 />} />
-        <Route index element={<AccesPage2 />} />
-
+        <Route index element={<AccesPg0 />} />
+        <Route index element={<AccesPg1 />} />
+        <Route index element={<AccesPg2 />} />
+        <Route index element={<AccesPg3 />} />
         {renderRoutes(RouteList)}
       </Routes>
     </BrowserRouter>

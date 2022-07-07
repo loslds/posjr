@@ -4,7 +4,7 @@ import { Header } from '../Header';
 import * as C from './styles';
 
 type Props = {
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const Theme = ({ children }: Props) => {
@@ -14,7 +14,7 @@ export const Theme = ({ children }: Props) => {
         <C.Area>
           <Header />
           <C.Step>
-            <C.Sidebar>===</C.Sidebar>
+            <C.Sidebar>opções</C.Sidebar>
             <C.Page>{children}</C.Page>
           </C.Step>
         </C.Area>

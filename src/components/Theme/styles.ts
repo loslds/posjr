@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Area = styled.div`
   margin: auto;
-  min-width: 980px;
+  min-width: 900px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@ export const Sidebar = styled.div`
 
 export const Page = styled.div`
   flex: 1;
-  padding-left: 40px;
-  padding-top: 40px;
+  flex-wrap: wrap;
+  min-width: 200px;
+  padding: 10px 3px 0px 5px;
 `;

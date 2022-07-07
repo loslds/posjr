@@ -37,7 +37,7 @@ export const HomePage = () => {
               <h2>JR- Bordados.</h2>
             </ContainerPageFlexLeft>
             <ContainerPageFlexWidth>
-              <ButtonLogin img={loginbrc1} title={'Acesso...'} onClick={goto('/accespage')} />
+              <ButtonLogin img={loginbrc1} title={'Acesso...'} onClick={goto('/accespg0')} />
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
           <DivisionPanel />

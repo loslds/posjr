@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { AccesPage } from '~/pages/AccesPage';
-import { AccesPage1 } from '~/pages/AccesPage1';
-import { AccesPage2 } from '~/pages/AccesPage2';
+import { AccesPg0 } from '~/pages/AccesPg0';
+import { AccesPg1 } from '~/pages/AccesPg1';
+import { AccesPg2 } from '~/pages/AccesPg2';
+import { AccesPg3 } from '~/pages/AccesPg3';
 import { HomePage } from '~/pages/HomePage';
 
 export interface IRoute {
@@ -12,8 +13,9 @@ export interface IRoute {
 }
 
 export const RouteList: IRoute[] = [
-  { path: '/accespage', exact: true, element: <AccesPage /> },
-  { path: '/accespage1', exact: true, element: <AccesPage1 /> },
-  { path: '/accespage2', exact: true, element: <AccesPage2 /> },
+  { path: '/accespg0', exact: true, element: <AccesPg0 /> },
+  { path: '/accespg1', exact: true, element: <AccesPg1 /> },
+  { path: '/accespg2', exact: true, element: <AccesPg2 /> },
+  { path: '/accespg3', exact: true, element: <AccesPg3 /> },
   { path: '/homepage', exact: true, element: <HomePage /> }
 ];

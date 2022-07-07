@@ -6,7 +6,7 @@ import { FormActions, UseForm } from '~/contexts/FormContext';
 import { Theme } from '../components/Theme';
 import * as C from './styles';
 
-export const AccesPage1 = () => {
+export const AccesPg2 = () => {
   const navigate = useNavigate();
 
   const goto = (path: string) => {
