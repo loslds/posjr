@@ -5,6 +5,8 @@ export const Container = styled.div`
   color: #fff;
   min-height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Area = styled.div`
@@ -13,13 +15,13 @@ export const Area = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
 `;
 
 export const Step = styled.div`
   flex: 1;
   display: flex;
+  align-content: center;
+  justify-content: center;
 `;
 
 export const Sidebar = styled.div`

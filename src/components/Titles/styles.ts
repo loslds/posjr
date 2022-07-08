@@ -3,8 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background-color: transparent;
   color: #fff;
-  padding: 10px 5px 5px 0px;
-  margin: 10px 5px 5px 5px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  align-items: center;
   h1 {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
@@ -14,7 +16,7 @@ export const Container = styled.div`
   }
   p {
     padding: 0px 0px 0px 0px;
-    margin: 0px 4px 0px 2px;
+    margin: 0px 4px 0px 0px;
     font-size: 14px;
     font-style: normal;
     line-height: 16px;

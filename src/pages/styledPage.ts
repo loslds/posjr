@@ -206,7 +206,7 @@ export const ButtonLogin = styled.button<{ img?: string }>`
 export const ContainerPanelTextFlex = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
-  margin: 5px;
+  margin: 5px 5px 5px 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

@@ -5,6 +5,7 @@ type State = {
   name: string;
   idname: string;
   level: 0 | 1;
+  descrlevel: 'Usuário Cliênte' | 'Usuário Funcionário.';
   email: string;
   fone: string;
   password: string;
@@ -29,6 +30,7 @@ const initialData: State = {
   name: '',
   idname: '',
   level: 0,
+  descrlevel: 'Usuário Cliênte',
   email: '',
   fone: '',
   password: ''
@@ -43,6 +45,7 @@ export enum FormActions {
   setName,
   setIdname,
   setLevel,
+  setDescrlevel,
   setEmail,
   setFone,
   setPassword
@@ -58,6 +61,8 @@ const formReducer = (state: State, action: Action) => {
       return { ...state, idname: action.payload };
     case FormActions.setLevel:
       return { ...state, level: action.payload };
+    case FormActions.setDescrlevel:
+      return { ...state, descrlevel: action.payload };
     case FormActions.setEmail:
       return { ...state, email: action.payload };
     case FormActions.setFone:

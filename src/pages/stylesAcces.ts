@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   p {
+    margin: 0px 5px 0px 5px;
+    padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #b8b8d4;
   }
@@ -14,9 +16,11 @@ export const Container = styled.div`
     height: 1px;
     border: 0;
     background-color: #16195c;
-    margin: 30px 0;
+    margin: 10 0 10 0;
   }
   label {
+    margin: 0;
+    padding: 0;
     font-size: 13px;
 
     input {
@@ -37,11 +41,12 @@ export const Container = styled.div`
     background-color: #25cd89;
     color: #fff;
     font-size: 14px;
+    line-height: 18px;
     font-weight: bold;
-    padding: 20px 40px;
+    padding: 10px 20px;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
-    margin: 30px 10px;
+    margin: 5px 3px;
   }
 `;

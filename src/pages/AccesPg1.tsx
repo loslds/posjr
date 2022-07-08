@@ -1,15 +1,16 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
+
 import { Theme } from '../components/Theme';
-import { UseForm, FormActions } from '../contexts/FormContext';
-import * as C from './styles';
+import * as C from './stylesAcces';
 
 export const AccesPg1 = () => {
-  const [emptyEnum, setEmptyEnum] = useState(false);
+  const [emptyEnum, setEmptyEnum] = React.useState(false);
 
   const navigate = useNavigate();
-  const { state, dispatch } = UseForm();
+  const { state, dispatch } = AccesUseForm();
 
   const goto = (path: string) => {
     return () => {
@@ -17,10 +18,10 @@ export const AccesPg1 = () => {
     };
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch({
-      type: FormActions.setCurrentStep,
-      payload: 2
+      type: AccesActions.setCurrentStep,
+      payload: 1
     });
   }, [dispatch]);
 
@@ -32,38 +33,30 @@ export const AccesPg1 = () => {
     }
   }
 
-  const handlerIdNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: FormActions.setIdname,
+      type: AccesActions.setIdname,
       payload: e.target.value
     });
     UpdateStates();
   };
 
-  const callOnBluer = (e: ChangeEvent<HTMLInputElement>) => {
+  const callOnBluer = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (!emptyEnum && value !== '') {
       dispatch({
-        type: FormActions.setIdname,
+        type: AccesActions.setIdname,
         payload: ''
       });
     }
   };
-
-  // const handlerCallPage = () => {
-  //   if (state.idname !== '') {
-  //     goto('/accespage1');
-  //   } else {
-  //     alert('Precisa concluir requisitos solicitados...');
-  //   }
-  // };
 
   return (
     <div>
       <Theme>
         <C.Container>
           <p>Passo: 1/3</p>
-          <h1>Vamos começar com sua ID Name.</h1>
+          <h1>Agora determine sua ID Name.</h1>
           <p>Preencha o Campo abaixo com sua ID.</p>
           <hr />
           <label>
@@ -76,8 +69,8 @@ export const AccesPg1 = () => {
               placeholder={'ID de reconhecimento...'}
               onBlur={callOnBluer}
             />
-            <button onClick={goto('/homePage')}>Voltar</button>
-            <button onClick={goto('/accespage1')}>Próximo.</button>
+            <button onClick={goto('/accespg0')}>Voltar</button>
+            <button onClick={goto('/accespg2')}>Próximo.</button>
           </label>
         </C.Container>
       </Theme>

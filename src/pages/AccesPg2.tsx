@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FormActions, UseForm } from '~/contexts/FormContext';
+import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import { Theme } from '../components/Theme';
-import * as C from './styles';
+import * as C from './stylesAcces';
 
 export const AccesPg2 = () => {
   const navigate = useNavigate();
@@ -15,14 +15,22 @@ export const AccesPg2 = () => {
     };
   };
 
-  const { state, dispatch } = UseForm();
+  const { state, dispatch } = AccesUseForm();
 
-  const handlerPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+  React.useEffect(() => {
     dispatch({
-      type: FormActions.setPassword,
+      type: AccesActions.setCurrentStep,
+      payload: 2
+    });
+  }, [dispatch]);
+
+  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: AccesActions.setPassword,
       payload: e.target.value
     });
   };
+
   return (
     <div>
       <Theme>
@@ -34,8 +42,8 @@ export const AccesPg2 = () => {
           <label>
             Desclaração de sya PassWord de Acesso.
             <input type="text" autoFocus onChange={handlerPasswordChange} value={state.password} placeholder={'Senha de Acesso...'} />
-            <button onClick={goto('/accespage')}>Voltar</button>
-            <button onClick={goto('/accespage2')}>Próximo.</button>
+            <button onClick={goto('/accespg1')}>Voltar</button>
+            <button onClick={goto('/accespg3')}>Próximo.</button>
           </label>
         </C.Container>
       </Theme>

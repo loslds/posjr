@@ -1,38 +1,58 @@
 import styled from 'styled-components';
 
-import closeverm from '~/assets/images/closeverm.png';
+// import xverm from '~/assets/images/xverm.png';
 
 export const Container = styled.div<{ selected: boolean }>`
   background-color: transparent;
   border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
   border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   display: flex;
   align-items: center;
   color: #fff;
-  //padding: 10px 5px 5px 5px;
-  //margin: 10px 5px 5px 5px;
-  //border-bottom: 1px #16195c solid;
   cursor: pointer;
   &:hover {
-    border: 2px #495459 solid;
+    // border: 2px #495459 solid;
+    border: 2px solid #ddffaa;
+  }
+  h1 {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    color: #fff;
+    font-size: 23px;
+    font-style: normal;
+    line-height: 25px;
+  }
+  p {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 4px 0px 0px;
+    color: red;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 16px;
   }
 `;
 
 export const Icon = styled.div<{ img?: string }>`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background-color: #191459;
   display: flex;
   justify-content: center;
   align-items: center;
-  div {
-    font-size: 30px;
-    display: block;
-    background-image: url(${({ img }) => img || closeverm});
-  }
+  background-color: #191459;
+  font-size: 30px;
+`;
+export const Img = styled.img`
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  width: 30px;
+  height: 30px;
+  display: block;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
 `;
 
 export const Info = styled.div`

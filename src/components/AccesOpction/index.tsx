@@ -1,18 +1,19 @@
 import React from 'react';
 
 import * as C from './styles';
-type Props = {
-  title: string;
-  description: string;
+
+type PropsAccesOpction = {
+  title?: string;
+  description?: string;
   img?: string;
   selected: boolean;
+  onClick: () => void;
 };
-export const AccesOpction = ({ title, description, img, selected }: Props) => {
+
+export const AccesOpction = ({ title, description, img, selected, onClick }: PropsAccesOpction) => {
   return (
-    <C.Container selected={selected}>
-      <C.Icon>
-        <div>{img}</div>
-      </C.Icon>
+    <C.Container onClick={onClick} selected={selected}>
+      <C.Icon>{img}</C.Icon>
       <C.Info>
         <C.Title>{title}</C.Title>
         <C.Description>{description}</C.Description>
