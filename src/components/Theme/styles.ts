@@ -35,3 +35,14 @@ export const Page = styled.div`
   min-width: 200px;
   padding: 10px 3px 0px 5px;
 `;
+
+export const Img = styled.img<{ open: boolean }>`
+  padding: 0 0 0 0;
+  margin: 0 10 0 0;
+  width: 25px;
+  height: 25px;
+  display: block;
+  justify-content: end;
+  align-content: center;
+  align-items: stretch;
+`;

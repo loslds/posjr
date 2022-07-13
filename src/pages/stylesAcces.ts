@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// import img from '../assets/images/olhoa.png';
+
 export const Container = styled.div`
   p {
     margin: 0px 5px 0px 5px;
@@ -35,6 +37,17 @@ export const Container = styled.div`
       outline: 0;
       font-size: 15px;
       background-color: #02044a;
+      div {
+        display: flex;
+        width: 25px;
+        height: 25px;
+        //  background-image: url($ /*{img}*//*);*/
+        /* background-repeat: no-repeat;
+        background-attachment: fixed;
+        justify-content: center;
+        align-content: center;
+        align-items: center; */
+      }
     }
   }
   button {
@@ -49,4 +62,14 @@ export const Container = styled.div`
     cursor: pointer;
     margin: 5px 3px;
   }
+`;
+export const DivImg = styled.div<{ open: boolean }>`
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  width: 25px;
+  height: 25px;
+  display: block;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
 `;

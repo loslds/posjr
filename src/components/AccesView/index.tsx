@@ -2,21 +2,21 @@ import React from 'react';
 
 import * as C from './styles';
 
-type PropsAccesOpction = {
+type PropsAccesView = {
   title?: string;
   description?: string;
-  ico?: string;
+  img?: string;
   selected: boolean;
   onClick: () => void;
 };
 
-export const AccesOpction = ({ title, description, ico, selected, onClick }: PropsAccesOpction) => {
+export const AccesView = ({ title, description, img, selected, onClick }: PropsAccesView) => {
   return (
     <C.Container onClick={onClick} selected={selected}>
-      <C.Icon>{ico}</C.Icon>
+      <C.Img>{img}</C.Img>
       <C.Info>
-        <C.Title>{title}</C.Title>
         <C.Description>{description}</C.Description>
+        <C.Title>{title}</C.Title>
       </C.Info>
     </C.Container>
   );

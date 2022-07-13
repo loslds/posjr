@@ -20,7 +20,7 @@ export const AccesPg2 = () => {
   React.useEffect(() => {
     dispatch({
       type: AccesActions.setCurrentStep,
-      payload: 2
+      payload: 3
     });
   }, [dispatch]);
 
@@ -35,16 +35,16 @@ export const AccesPg2 = () => {
     <div>
       <Theme>
         <C.Container>
-          <p>Passo: 2/3 </p>
+          <p>Passo: {state.currentStep}/4 </p>
           <h1>Ola {state.idname}... Agora determine sua Password.</h1>
           <p>Preencha o Campo abaixo com seu Acesso.</p>
           <hr />
           <label>
-            Desclaração de sya PassWord de Acesso.
+            Desclaração de sua PassWord de Acesso.
             <input type="text" autoFocus onChange={handlerPasswordChange} value={state.password} placeholder={'Senha de Acesso...'} />
-            <button onClick={goto('/accespg1')}>Voltar</button>
-            <button onClick={goto('/accespg3')}>Próximo.</button>
           </label>
+          <button onClick={goto('/accespg1')}>Voltar</button>
+          <button onClick={goto('/accespg3')}>Próximo.</button>
         </C.Container>
       </Theme>
     </div>

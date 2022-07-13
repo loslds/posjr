@@ -1,22 +1,22 @@
 import React from 'react';
-const AccesContext = React.createContext<AccesContextType | undefined>(undefined);
-type StateAcces = {
-  currentStep: number;
+
+export type StateAcces = {
+  currentStep: 0 | 1 | 2 | 3 | 4;
   name: string;
   idname: string;
-  level: 0 | 1;
-  descrlevel: string;
+  level: 0 | 1 | 2;
+  descrlevel: 'Usuário Cliênte' | 'Usuário Local.';
   email: string;
   fone: string;
   password: string;
 };
 
 const initialData: StateAcces = {
-  currentStep: 0,
+  currentStep: 1,
   name: '',
   idname: '',
   level: 0,
-  descrlevel: '',
+  descrlevel: 'Usuário Cliênte',
   email: '',
   fone: '',
   password: ''
@@ -69,6 +69,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
   }
 };
 
+const AccesContext = React.createContext<AccesContextType | undefined>(undefined);
+
 export const AccesProvider = ({ children }: AccesProviderProps) => {
   const [state, dispatch] = React.useReducer(AccesReducer, initialData);
   const value = { state, dispatch };
@@ -82,3 +84,5 @@ export const AccesUseForm = () => {
   }
   return context;
 };
+
+export default AccesContext;
