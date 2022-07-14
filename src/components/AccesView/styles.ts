@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import olhof from '~/assets/images/olhof.png';
+// import olhof from '~/assets/images/olhof.png';
 
 export const Container = styled.div<{ selected: boolean }>`
   background-color: transparent;
@@ -13,8 +13,8 @@ export const Container = styled.div<{ selected: boolean }>`
   color: #fff;
   cursor: pointer;
   &:hover {
-    // border: 2px #495459 solid;
-    border: 2px solid #ddffaa;
+    // border: 2px #495459 solid; #b8b8d4
+    border: 2px solid #c5fa75;
   }
   h1 {
     margin: 0px 0px 0px 0px;
@@ -27,7 +27,7 @@ export const Container = styled.div<{ selected: boolean }>`
   p {
     padding: 0px 0px 0px 0px;
     margin: 0px 4px 0px 0px;
-    color: red;
+    color: #b8b8d4;
     font-size: 14px;
     font-style: normal;
     line-height: 16px;
@@ -54,13 +54,10 @@ export const Img = styled.div<{ img?: string }>`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 1px solid #c5fa75;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
-  background-image: url(${({ img }) => img || olhof});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: 30px;
+  background-color: #191459;
+  font-size: 30px;
 `;
