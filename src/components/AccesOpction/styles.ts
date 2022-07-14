@@ -7,7 +7,7 @@ export const Container = styled.div<{ selected: boolean }>`
   border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
   border-radius: 10px;
   padding: 5px 5px 5px 5px;
-  margin: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 15px;
   display: flex;
   align-items: center;
   color: #fff;

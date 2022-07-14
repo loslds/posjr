@@ -5,7 +5,7 @@ type StateAcces = {
   name: string;
   idname: string;
   level: 0 | 1 | 2;
-  descrlevel: 'Usuário Cliênte' | 'Usuário Local.';
+  descrlevel: '';
   email: string;
   fone: string;
   password: string;
@@ -17,7 +17,7 @@ export const initialData: StateAcces = {
   name: '',
   idname: '',
   level: 0,
-  descrlevel: 'Usuário Cliênte',
+  descrlevel: '',
   email: '',
   fone: '',
   password: '',

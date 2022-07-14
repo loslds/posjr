@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { AccesUseForm } from '~/contexts/AccesContext';
-
+import { Title } from '../AccesView/styles';
 import { Header } from '../Header';
+import { Sidebar } from '../Sidebar';
 import * as C from './styles';
 
 type Props = {
@@ -10,7 +11,12 @@ type Props = {
 };
 
 export const Theme = ({ children }: Props) => {
-  const { state, dispatch } = AccesUseForm();
+  const navigate = useNavigate();
+  const goto = (path: string) => {
+    return () => {
+      navigate(path);
+    };
+  };
   return (
     <div>
       <C.Container>
@@ -18,21 +24,28 @@ export const Theme = ({ children }: Props) => {
           <Header />
           <C.Step>
             <C.Sidebar>
-              <label>
-                <h2>Opções :</h2>
-              </label>
-              <label>
-                <h3>Acesso :</h3>
-                <p>{state.descrlevel}</p>
-              </label>
-              <label>
-                <h3>ID Acesso :</h3>
-                <p>{state.idname}</p>
-              </label>
-              <label>
-                <h3>Password do Acesso :</h3>
-                <p>{state.password}</p>
-              </label>
+              <Sidebar>
+                <p>Em que posso te ajudar?</p>
+                <Title>
+                  <h1>Opções :</h1>
+                </Title>
+                <hr />
+                <p>Selecione uma opção para o acesso.</p>
+                <label>
+                  <span>
+                    <div>
+                      <C.Button onClick={goto('/homepage')}>Voltar.</C.Button>
+                    </div>
+                  </span>
+                </label>
+                <label>
+                  <span>
+                    <div>
+                      <C.Button onClick={goto('/accesnew')}>Criar uma Conta para Acesso.</C.Button>
+                    </div>
+                  </span>
+                </label>
+              </Sidebar>
             </C.Sidebar>
             <C.Page>{children}</C.Page>
           </C.Step>

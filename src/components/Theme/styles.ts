@@ -27,6 +27,9 @@ export const Step = styled.div`
 export const Sidebar = styled.div`
   width: 250px;
   border-right: 1px #16195c solid;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 3px 0px 5px;
 `;
 
 export const Page = styled.div`
@@ -45,4 +48,23 @@ export const Img = styled.img<{ open: boolean }>`
   justify-content: end;
   align-content: center;
   align-items: stretch;
+`;
+
+export const Button = styled.button`
+  background-color: #25cd89;
+  color: #000;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  margin: 5px 3px 5px 3px;
+  border: 0;
+  border-radius: 5px;
+  width: 96%;
+  cursor: pointer;
+  &:hover {
+    // border: 2px #495459 solid;
+    background-color: #7df0c1;
+    border: 1px solid #ddffaa;
+  }
 `;

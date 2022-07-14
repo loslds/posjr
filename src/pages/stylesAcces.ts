@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   p {
-    margin: 0px 5px 0px 5px;
+    margin: 0px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #b8b8d4;
   }
   h1 {
-    margin: 0;
-    padding: 0;
+    margin: 0px 5px 0px 10px;
+    padding: 0px 0px 0px 5px;
     font-size: 26px;
   }
   hr {
@@ -21,8 +21,8 @@ export const Container = styled.div`
     margin: 10 0 10 0;
   }
   label {
-    margin: 0;
-    padding: 0;
+    margin: 0px 5px 0px 10px;
+    padding: 0px 0px 0px 5px;
     font-size: 13px;
 
     input {
@@ -52,17 +52,22 @@ export const Container = styled.div`
   }
   button {
     background-color: #25cd89;
-    color: #fff;
+    color: #000;
     font-size: 14px;
     line-height: 18px;
     font-weight: bold;
-    padding: 10px 20px;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
-    margin: 5px 3px;
+    margin: 5px 3px 0px 15px;
+    padding: 10px 20px;
+    &:hover {
+      background-color: #7df0c1;
+      border: 1px solid #ddffaa;
+    }
   }
 `;
+
 export const DivImg = styled.div<{ open: boolean }>`
   padding: 0 0 0 0;
   margin: 0 0 0 0;
