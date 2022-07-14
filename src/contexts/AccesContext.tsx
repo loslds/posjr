@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type StateAcces = {
+type StateAcces = {
   currentStep: 0 | 1 | 2 | 3 | 4;
   name: string;
   idname: string;
@@ -9,18 +9,21 @@ export type StateAcces = {
   email: string;
   fone: string;
   password: string;
+  logado: boolean;
 };
 
-const initialData: StateAcces = {
-  currentStep: 1,
+export const initialData: StateAcces = {
+  currentStep: 0,
   name: '',
   idname: '',
   level: 0,
   descrlevel: 'Usuário Cliênte',
   email: '',
   fone: '',
-  password: ''
+  password: '',
+  logado: false
 };
+
 type AccesAction = {
   type: AccesActions;
   payload: any;
@@ -43,7 +46,8 @@ export enum AccesActions {
   setDescrlevel,
   setEmail,
   setFone,
-  setPassword
+  setPassword,
+  setLogado
 }
 
 const AccesReducer = (state: StateAcces, action: AccesAction) => {
@@ -64,6 +68,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, fone: action.payload };
     case AccesActions.setPassword:
       return { ...state, password: action.payload };
+    case AccesActions.setLogado:
+      return { ...state, logado: action.payload };
     default:
       return state;
   }

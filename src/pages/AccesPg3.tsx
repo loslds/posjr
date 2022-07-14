@@ -5,9 +5,10 @@ import { AccesView } from '~/components/AccesView';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
+import olhoa from '../assets/images/svgs/olhoa.svg';
+//import olhoa from '../assets/images/olhoa.png';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
-// import olhoa from '../assets/images/olhoa.png';
 
 export const AccesPg3 = () => {
   const navigate = useNavigate();
@@ -44,10 +45,23 @@ export const AccesPg3 = () => {
         </label>
         <label>
           Seu Acesso ao Sistema:
-          <AccesView onClick={() => {}} selected={state.level > 0} title={state.password} />
+          <AccesView
+            img={olhoa}
+            onClick={() => {
+              alert('visualisa a senha...');
+            }}
+            selected={true}
+            title={state.password}
+          />
         </label>
         <button onClick={goto('/homepage')}>Voltar.</button>
-        <button onClick={goto('/accespg1')}>Próximo.</button>
+        <button
+          onClick={() => {
+            alert('verefica em banco de dados se existe acesso.');
+          }}
+        >
+          Próximo.
+        </button>
       </C.Container>
     </Theme>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import loginbrc1 from '~/assets/images/loginbrc1.png';
 import logomain from '~/assets/images/logomain.png';
 import logosys from '~/assets/images/logosys.png';
+import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import {
   ButtonLogin,
@@ -13,6 +14,7 @@ import {
   ContainerPageFlexLeft,
   ContainerPageFlexWidth,
   ContainerPageMainFlex,
+  ContainerPanelTextFlex,
   ContainerPanelImgMaim,
   ContainerPanelLogo,
   DivisionPanel
@@ -27,6 +29,15 @@ export const HomePage = () => {
     };
   };
 
+  const { state, dispatch } = AccesUseForm();
+
+  React.useEffect(() => {
+    dispatch({
+      type: AccesActions.setCurrentStep,
+      payload: 0
+    });
+  }, [dispatch]);
+
   return (
     <div>
       <ContainerPage>
@@ -37,6 +48,7 @@ export const HomePage = () => {
               <h2>JR- Bordados.</h2>
             </ContainerPageFlexLeft>
             <ContainerPageFlexWidth>
+              <ContainerPanelTextFlex>{state.logado ? <h3>{state.idname}</h3> : <p>Click para Logar...</p>}</ContainerPanelTextFlex>
               <ButtonLogin img={loginbrc1} title={'Acesso...'} onClick={goto('/accespg0')} />
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
