@@ -2,71 +2,31 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
-export const ContentButtonPageBg = styled.div`
-  border: 1px red solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonPageCenterBg = styled.div`
-  border: 1px rebeccapurple solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonPageEndBg = styled.div`
-  border: 1px green solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: transparent;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonCtrlPage = styled.div`
-  border: 2px #f80606 dotted;
+export const ContainerButtonImgBg = styled.div`
+  border: 1px solid red;
+  /* padding: 1px 1px 1px 1px;
+  margin: 1px 4px 1px 4px; */
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  min-height: 50px;
-  width: 100%;
-  max-height: 100%;
+  height: 45px;
+  min-width: 45px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   align-items: center;
-  background-color: transparent;
+  color: black;
+  // min-height: 45px;
+  // font-size: 14px;
 `;
+
 export const ButtonsImgBg = styled.button<{ img?: string }>`
-  border: 1px red solid;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  //background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -75,6 +35,63 @@ export const ButtonsImgBg = styled.button<{ img?: string }>`
   outline: none;
   font-size: 14px;
 `;
+
+// export const ContentButtonPageBg = styled.div`
+//   border: 1px red solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 100px;
+//   width: 100px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonPageCenterBg = styled.div`
+//   border: 1px rebeccapurple solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 50px;
+//   width: 50px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonPageEndBg = styled.div`
+//   border: 1px green solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 50px;
+//   width: 50px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   background-color: transparent;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonCtrlPage = styled.div`
+//   border: 2px #f80606 dotted;
+//   margin: 0px 0px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   width: 100%;
+//   max-height: 100%;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: space-between;
+//   align-content: center;
+//   align-items: center;
+//   background-color: transparent;
+// `;
 
 // export const CtrlPageCol = styled.div`
 //   border: 0px;

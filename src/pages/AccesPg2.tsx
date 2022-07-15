@@ -44,7 +44,13 @@ export const AccesPg2 = () => {
           <hr />
           <label>
             Desclare sua PassWord de Acesso.
-            <input type="text" autoFocus onChange={handlerPasswordChange} value={state.password} placeholder={'Senha de Acesso...'} />
+            <input
+              type="text"
+              autoFocus
+              onChange={handlerPasswordChange}
+              value={state.password}
+              placeholder={'Digite a sua Senha...'}
+            />
           </label>
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
             Voltar

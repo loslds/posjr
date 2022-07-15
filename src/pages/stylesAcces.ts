@@ -10,11 +10,30 @@ export const Container = styled.div`
     font-size: 13px;
     color: #b8b8d4;
   }
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     margin: 0px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
+  }
+  h1 {
     font-size: 26px;
   }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+
   hr {
     height: 1px;
     border: 0;
@@ -70,13 +89,44 @@ export const Container = styled.div`
   }
 `;
 
-export const DivImg = styled.div<{ open: boolean }>`
+export const DivImg = styled.div`
   padding: 0 0 0 0;
   margin: 0 0 0 0;
-  width: 25px;
-  height: 25px;
+  border: 1px solid #ff0000;
+  width: 35px;
+  min-height: 30px;
   display: block;
-  justify-content: center;
+  justify-content: end;
   align-content: center;
   align-items: stretch;
+`;
+
+export const ButtonImg = styled.div`
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  border: 1px solid #ff0000;
+  width: 35px;
+  min-height: 30px;
+  display: block;
+  justify-content: end;
+  align-content: center;
+  align-items: stretch;
+`;
+
+export const BoxLigth = styled.div<{ selected: boolean }>`
+  border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+  border-radius: 10px;
+  padding: 0 0 0 0;
+  margin: 5px 0px 0 10px;
+  width: 98%;
+  min-height: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+  align-content: center;
+  align-items: center;
+
+  &:hover {
+    border: 2px solid #ddffaa;
+  }
 `;

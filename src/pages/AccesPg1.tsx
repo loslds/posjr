@@ -47,7 +47,7 @@ export const AccesPg1 = () => {
               autoFocus={true}
               onChange={handlerIdNameChange}
               value={state.idname}
-              placeholder={'ID de reconhecimento...'}
+              placeholder={'Digite a sua ID...'}
             />
             <button
               onClick={goto('/accespg0')}

@@ -10,7 +10,13 @@ type PropsAccesView = {
   onClick: () => void;
 };
 
-export const AccesView = ({ title, description, img, selected, onClick }: PropsAccesView) => {
+export const AccesView = ({
+  title,
+  description,
+  img,
+  selected,
+  onClick
+}: PropsAccesView) => {
   return (
     <C.Container onClick={onClick} selected={selected}>
       <C.Img>{img}</C.Img>

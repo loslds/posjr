@@ -48,8 +48,18 @@ export const HomePage = () => {
               <h2>JR- Bordados.</h2>
             </ContainerPageFlexLeft>
             <ContainerPageFlexWidth>
-              <ContainerPanelTextFlex>{state.logado ? <h3>{state.idname}</h3> : <p>Click para Logar...</p>}</ContainerPanelTextFlex>
-              <ButtonLogin img={loginbrc1} title={'Acesso...'} onClick={goto('/accespg0')} />
+              <ContainerPanelTextFlex>
+                {state.logado ? (
+                  <h3>{state.idname}</h3>
+                ) : (
+                  <p>Click para Logar...</p>
+                )}
+              </ContainerPanelTextFlex>
+              <ButtonLogin
+                img={loginbrc1}
+                title={'Acesso...'}
+                onClick={goto('/accespg0')}
+              />
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
           <DivisionPanel />

@@ -17,6 +17,7 @@ export const Theme = ({ children }: Props) => {
       navigate(path);
     };
   };
+
   return (
     <div>
       <C.Container>
@@ -41,14 +42,18 @@ export const Theme = ({ children }: Props) => {
                 <label>
                   <span>
                     <div>
-                      <C.Button onClick={goto('/accesnew')}>Criar uma Conta para Acesso.</C.Button>
+                      <C.Button onClick={goto('/accesnew')}>
+                        Criar uma Conta para Acesso.
+                      </C.Button>
                     </div>
                   </span>
                 </label>
                 <label>
                   <span>
                     <div>
-                      <C.Button onClick={goto('/accesnew')}>Esqueci o meu Acesso.</C.Button>
+                      <C.Button onClick={goto('/accesfgt')}>
+                        Esqueci o meu Acesso.
+                      </C.Button>
                     </div>
                   </span>
                 </label>
