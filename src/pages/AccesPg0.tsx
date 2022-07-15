@@ -47,10 +47,23 @@ export const AccesPg0 = () => {
         <p>Selecione uma opção para o acesso.</p>
         <hr />
         <label>Determine uma Opção :</label>
-        <AccesOpction title=" Acesso Internet." description={'Usuário Cliênte.'} selected={state.level === 1} onClick={() => setLevel(1)} />
-        <AccesOpction title="Acesso Local." description={'Usuário Funcionário.'} selected={state.level === 2} onClick={() => setLevel(2)} />
-        <button onClick={goto('/homepage')}>Voltar.</button>
-        <button onClick={goto('/accespg1')}>Próximo.</button>
+        <AccesOpction
+          title=" Acesso Internet."
+          description={'Usuário Cliênte.'}
+          selected={state.level === 1}
+          onClick={() => setLevel(1)}
+        />
+        <AccesOpction
+          title="Acesso Local."
+          description={'Usuário Funcionário.'}
+          selected={state.level === 2}
+          onClick={() => setLevel(2)}
+        />
+        {state.level >= 1 ? (
+          <button onClick={goto('/accespg1')} title={'Passo : " 2 ".'}>
+            Próximo.
+          </button>
+        ) : null}
       </C.Container>
     </Theme>
   );

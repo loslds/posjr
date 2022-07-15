@@ -3,8 +3,9 @@ import styled from 'styled-components';
 // import img from '../assets/images/olhoa.png';
 
 export const Container = styled.div`
+  // 01
   p {
-    margin: 0px 5px 0px 10px;
+    margin: 0px 0px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #b8b8d4;
@@ -18,18 +19,19 @@ export const Container = styled.div`
     height: 1px;
     border: 0;
     background-color: #16195c;
-    margin: 10 0 10 0;
+    margin: 1px 0px 6px -3px;
+    padding: 0px 0px 8px 0px;
   }
   label {
     margin: 0px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
-
     input {
       display: block;
       margin-top: 7px;
+      margin-left: 15px;
       box-sizing: border-box;
-      width: 100%;
+      width: 98%;
       padding: 20px 10px;
       border: 4px #25cd89 solid;
       border-radius: 10px;
@@ -59,7 +61,7 @@ export const Container = styled.div`
     border: 0;
     border-radius: 30px;
     cursor: pointer;
-    margin: 5px 3px 0px 15px;
+    margin: 10px 0px 10px 15px;
     padding: 10px 20px;
     &:hover {
       background-color: #7df0c1;

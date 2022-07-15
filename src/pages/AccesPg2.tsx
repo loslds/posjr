@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import { Theme } from '../components/Theme';
@@ -36,15 +37,21 @@ export const AccesPg2 = () => {
       <Theme>
         <C.Container>
           <p>Passo: {state.currentStep}/4 </p>
-          <h1>Ola {state.idname}... Agora determine sua Password.</h1>
+          <Titles>
+            <h1>Ola {state.idname}, determine sua Password.</h1>
+          </Titles>
           <p>Preencha o Campo abaixo com seu Acesso.</p>
           <hr />
           <label>
-            Desclaração de sua PassWord de Acesso.
+            Desclare sua PassWord de Acesso.
             <input type="text" autoFocus onChange={handlerPasswordChange} value={state.password} placeholder={'Senha de Acesso...'} />
           </label>
-          <button onClick={goto('/accespg1')}>Voltar</button>
-          <button onClick={goto('/accespg3')}>Próximo.</button>
+          <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
+            Voltar
+          </button>
+          <button onClick={goto('/accespg3')} title={'Passo : " 4 ".'}>
+            Próximo.
+          </button>
         </C.Container>
       </Theme>
     </div>

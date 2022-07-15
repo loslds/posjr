@@ -5,7 +5,7 @@ type StateAcces = {
   name: string;
   idname: string;
   level: 0 | 1 | 2;
-  descrlevel: '';
+  descrlevel: string;
   email: string;
   fone: string;
   password: string;
@@ -75,12 +75,16 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
   }
 };
 
-const AccesContext = React.createContext<AccesContextType | undefined>(undefined);
+const AccesContext = React.createContext<AccesContextType | undefined>(
+  undefined
+);
 
 export const AccesProvider = ({ children }: AccesProviderProps) => {
   const [state, dispatch] = React.useReducer(AccesReducer, initialData);
   const value = { state, dispatch };
-  return <AccesContext.Provider value={value}>{children}</AccesContext.Provider>;
+  return (
+    <AccesContext.Provider value={value}>{children}</AccesContext.Provider>
+  );
 };
 
 export const AccesUseForm = () => {

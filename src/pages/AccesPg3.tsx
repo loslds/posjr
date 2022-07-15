@@ -31,9 +31,9 @@ export const AccesPg3 = () => {
       <C.Container>
         <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Ok... Verifique com atenção sua Informações de Acesso.</h1>
+          <h1>Ok... Verificação do seu Acesso.</h1>
         </Titles>
-        <p>Leia atentamente e confirme caso estejam certas sua Identificação abaixo.</p>
+        <p>Leia atentamente e confirme suas informações abaixo.</p>
         <hr />
         <label>
           Sua Opção para o Acesso do Sistema:
@@ -54,13 +54,11 @@ export const AccesPg3 = () => {
             title={state.password}
           />
         </label>
-        <button onClick={goto('/homepage')}>Voltar.</button>
-        <button
-          onClick={() => {
-            alert('verefica em banco de dados se existe acesso.');
-          }}
-        >
-          Próximo.
+        <button onClick={goto('/accespg2')} title={'Retorna Passo : " 3 ".'}>
+          Voltar.
+        </button>
+        <button onClick={() => {}} title={'Acesso ao Sistema.'}>
+          Acessar.
         </button>
       </C.Container>
     </Theme>

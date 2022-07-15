@@ -45,6 +45,13 @@ export const Theme = ({ children }: Props) => {
                     </div>
                   </span>
                 </label>
+                <label>
+                  <span>
+                    <div>
+                      <C.Button onClick={goto('/accesnew')}>Esqueci o meu Acesso.</C.Button>
+                    </div>
+                  </span>
+                </label>
               </Sidebar>
             </C.Sidebar>
             <C.Page>{children}</C.Page>

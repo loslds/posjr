@@ -10,7 +10,13 @@ type PropsAccesOpction = {
   onClick: () => void;
 };
 
-export const AccesOpction = ({ title, description, ico, selected, onClick }: PropsAccesOpction) => {
+export const AccesOpction = ({
+  title,
+  description,
+  ico,
+  selected,
+  onClick
+}: PropsAccesOpction) => {
   return (
     <C.Container onClick={onClick} selected={selected}>
       <C.Icon>{ico}</C.Icon>
