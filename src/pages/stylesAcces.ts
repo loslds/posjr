@@ -96,7 +96,7 @@ export const DivImg = styled.div`
   width: 35px;
   min-height: 30px;
   display: block;
-  justify-content: end;
+  justify-content: center;
   align-content: center;
   align-items: stretch;
 `;
@@ -110,10 +110,10 @@ export const ButtonImg = styled.div`
   display: block;
   justify-content: end;
   align-content: center;
-  align-items: stretch;
+  align-items: center;
 `;
 
-export const BoxLigth = styled.div<{ selected: boolean }>`
+export const BoxButton = styled.div<{ selected: boolean }>`
   border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
   border-radius: 10px;
   padding: 0 0 0 0;
@@ -123,10 +123,36 @@ export const BoxLigth = styled.div<{ selected: boolean }>`
   display: flex;
   flex-wrap: wrap;
   flex-flow: row;
+  justify-content: left;
   align-content: center;
   align-items: center;
 
   &:hover {
     border: 2px solid #ddffaa;
+    margin: 5px 0px 0px 10px;
   }
 `;
+
+export const DivPosImg = styled.div<{ open?: boolean }>`
+  margin: 0px 10px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  max-width: 100%;
+  background-color: transparent;
+  font-size: 16px;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
+
+// export const DivtoSpan = styled.div<{ open?: boolean }>`
+//   margin: 0px 10px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   max-width: 100px;
+//   background-color: transparent;
+//   font-size: 16px;
+//   display: ${({ open }) => (open ? 'flex' : 'none')};
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+// `;

@@ -41,20 +41,16 @@ export const Theme = ({ children }: Props) => {
                 </label>
                 <label>
                   <span>
-                    <div>
-                      <C.Button onClick={goto('/accesnew')}>
-                        Criar uma Conta para Acesso.
-                      </C.Button>
-                    </div>
+                    <C.Button onClick={goto('/accesnew')}>
+                      Criar uma Conta para Acesso.
+                    </C.Button>
                   </span>
                 </label>
                 <label>
                   <span>
-                    <div>
-                      <C.Button onClick={goto('/accesfgt')}>
-                        Esqueci o meu Acesso.
-                      </C.Button>
-                    </div>
+                    <C.Button onClick={goto('/accesfgt')}>
+                      Esqueci o meu Acesso.
+                    </C.Button>
                   </span>
                 </label>
               </Sidebar>

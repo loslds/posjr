@@ -37,11 +37,21 @@ export const AccesPg3 = () => {
         <hr />
         <label>
           Sua Opção para o Acesso do Sistema:
-          <input type="text" autoFocus={true} readOnly={true} value={state.descrlevel} />
+          <input
+            type="text"
+            autoFocus={true}
+            readOnly={true}
+            value={state.descrlevel}
+          />
         </label>
         <label>
           Sua ID de Reconhecimento:
-          <input type="text" autoFocus={true} readOnly={true} value={state.idname} />
+          <input
+            type="text"
+            autoFocus={true}
+            readOnly={true}
+            value={state.idname}
+          />
         </label>
         <label>
           Seu Acesso ao Sistema:
