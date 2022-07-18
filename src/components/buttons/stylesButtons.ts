@@ -3,28 +3,24 @@ import styled from 'styled-components';
 import semimg from '~/assets/images/semimg.png';
 
 export const ContainerButtonImgBg = styled.div`
-  border: 1px solid red;
-  /* padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px; */
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  height: 45px;
-  min-width: 45px;
+  min-height: 45px;
+  width: 68px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
   align-items: center;
   color: black;
-  // min-height: 45px;
-  // font-size: 14px;
 `;
 
 export const ButtonsImgBg = styled.button<{ img?: string }>`
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   display: flex;
-  width: 40px;
+  width: 45px;
   height: 40px;
   //background-color: transparent;
   background-repeat: no-repeat;
@@ -33,7 +29,7 @@ export const ButtonsImgBg = styled.button<{ img?: string }>`
   background-image: url(${({ img }) => img || semimg});
   cursor: pointer;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 // export const ContentButtonPageBg = styled.div`
