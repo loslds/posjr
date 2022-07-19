@@ -52,6 +52,7 @@ export const AccesPg2 = () => {
               placeholder={'Digite a sua Senha...'}
             />
           </label>
+
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
             Voltar
           </button>

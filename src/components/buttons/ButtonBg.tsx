@@ -3,16 +3,16 @@ import React from 'react';
 import { ContainerButtonImgBg, ButtonsImgBg } from './stylesButtons';
 
 type PropsButtonBg = {
+  id: string;
   onClick: () => void;
   img?: string;
   title?: string;
-  open?: boolean;
 };
 
-export default function ButtonBg({ img, title, onClick, open }: PropsButtonBg) {
+export default function ButtonBg({ id, img, title, onClick }: PropsButtonBg) {
   return (
-    <ContainerButtonImgBg open={open}>
-      <ButtonsImgBg img={img} title={title} onClick={onClick} />
+    <ContainerButtonImgBg>
+      <ButtonsImgBg id={id} img={img} title={title} onClick={onClick} />
     </ContainerButtonImgBg>
   );
 }

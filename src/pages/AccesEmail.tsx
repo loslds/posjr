@@ -5,7 +5,7 @@ import { Titles } from '~/components/Titles';
 
 import * as C from './stylesAcces';
 
-export const AccesEml = () => {
+export const AccesEmail = () => {
   return (
     <Theme>
       <C.Container>

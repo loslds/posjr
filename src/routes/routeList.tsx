@@ -1,7 +1,10 @@
 import React from 'react';
 
-import { AccesFgt } from '~/pages/AccesFgt';
+import { AccesEmail } from '~/pages/AccesEmail';
+import { AccesFone } from '~/pages/AccesFone';
+import { AccesForgot } from '~/pages/AccesForgot';
 import { AccesNew } from '~/pages/AccesNew';
+import { AccesNew1 } from '~/pages/AccesNew1';
 import { AccesPg0 } from '~/pages/AccesPg0';
 import { AccesPg1 } from '~/pages/AccesPg1';
 import { AccesPg2 } from '~/pages/AccesPg2';
@@ -15,8 +18,11 @@ export interface IRoute {
 }
 
 export const RouteList: IRoute[] = [
+  { path: '/accesforgot', exact: true, element: <AccesForgot /> },
+  { path: '/accesfone', exact: true, element: <AccesFone /> },
+  { path: '/accesemail', exact: true, element: <AccesEmail /> },
+  { path: '/accesnew1', exact: true, element: <AccesNew1 /> },
   { path: '/accesnew', exact: true, element: <AccesNew /> },
-  { path: '/accesfgt', exact: true, element: <AccesFgt /> },
   { path: '/accespg0', exact: true, element: <AccesPg0 /> },
   { path: '/accespg1', exact: true, element: <AccesPg1 /> },
   { path: '/accespg2', exact: true, element: <AccesPg2 /> },

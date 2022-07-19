@@ -58,17 +58,17 @@ export const Container = styled.div`
       outline: 0;
       font-size: 15px;
       background-color: #02044a;
-      div {
+      /* div {
         display: flex;
         width: 25px;
         height: 25px;
-        //  background-image: url($ /*{img}*//*);*/
-        /* background-repeat: no-repeat;
+        //background-image: url($ /*{img}*/ /*);
+        background-repeat: no-repeat;
         background-attachment: fixed;
         justify-content: center;
         align-content: center;
-        align-items: center; */
-      }
+        align-items: center;
+      }*/
     }
   }
   button {
@@ -126,20 +126,19 @@ export const BoxButton = styled.div<{ selected: boolean }>`
   justify-content: left;
   align-content: center;
   align-items: center;
-
   &:hover {
     border: 2px solid #ddffaa;
     margin: 5px 0px 0px 10px;
   }
 `;
 
-export const DivPosImg = styled.div<{ open?: boolean }>`
+export const DivPosImg = styled.div<{ ondisplay?: boolean }>`
   margin: 0px 10px 0px 0px;
   padding: 0px 0px 0px 0px;
   max-width: 100%;
   background-color: transparent;
   font-size: 16px;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
+  display: ${({ ondisplay }) => (ondisplay ? 'flex' : 'none')};
   justify-content: center;
   align-content: center;
   align-items: center;

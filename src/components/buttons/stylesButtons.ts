@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
-export const ContainerButtonImgBg = styled.div<{ open?: boolean }>`
+export const ContainerButtonImgBg = styled.div<{ ondisplay?: boolean }>`
   border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;

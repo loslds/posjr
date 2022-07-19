@@ -16,7 +16,13 @@ type Props = {
   children?: JSX.Element;
 };
 
-export const Modal: React.FC<Props> = ({ isOpen, titulo = 'Titulo', onClose, form, children }) => {
+export const Modal: React.FC<Props> = ({
+  isOpen,
+  titulo = 'Titulo',
+  onClose,
+  form,
+  children
+}) => {
   if (!isOpen) return null;
 
   return (

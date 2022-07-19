@@ -1,7 +1,7 @@
 import React from 'react';
 
 type StateAcces = {
-  currentStep: 0 | 1 | 2 | 3 | 4;
+  currentStep: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
   name: string;
   idname: string;
   level: 0 | 1 | 2;
@@ -10,6 +10,13 @@ type StateAcces = {
   fone: string;
   password: string;
   logado: boolean;
+  currentStepNew: 0 | 1 | 2 | 3;
+  levelNew: 0 | 1 | 2;
+  descrlevelNew: string;
+  nameNew: string;
+  idnameNew: string;
+  emailNew: string;
+  foneNew: string;
 };
 
 export const initialData: StateAcces = {
@@ -21,7 +28,14 @@ export const initialData: StateAcces = {
   email: '',
   fone: '',
   password: '',
-  logado: false
+  logado: false,
+  currentStepNew: 0,
+  levelNew: 0,
+  descrlevelNew: '',
+  nameNew: '',
+  idnameNew: '',
+  emailNew: '',
+  foneNew: ''
 };
 
 type AccesAction = {
@@ -47,7 +61,16 @@ export enum AccesActions {
   setEmail,
   setFone,
   setPassword,
-  setLogado
+  setLogado,
+
+  setCurrentStepNew,
+  setLevelNew,
+  setDescrNew,
+  setNameNew,
+  setIdnameNew,
+  setPasswordNew,
+  setEmailNew,
+  setFoneNew
 }
 
 const AccesReducer = (state: StateAcces, action: AccesAction) => {
@@ -70,6 +93,24 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, password: action.payload };
     case AccesActions.setLogado:
       return { ...state, logado: action.payload };
+    case AccesActions.setCurrentStepNew:
+      return { ...state, currentStepNew: action.payload };
+    case AccesActions.setLevelNew:
+      return { ...state, levelNew: action.payload };
+    case AccesActions.setDescrlevel:
+      return { ...state, descrLevelNew: action.payload };
+    case AccesActions.setCurrentStepNew:
+      return { ...state, currentStepNew: action.payload };
+    case AccesActions.setNameNew:
+      return { ...state, nameNew: action.payload };
+    case AccesActions.setPasswordNew:
+      return { ...state, passwordNew: action.payload };
+    case AccesActions.setIdnameNew:
+      return { ...state, idnameNew: action.payload };
+    case AccesActions.setEmailNew:
+      return { ...state, emailNew: action.payload };
+    case AccesActions.setFoneNew:
+      return { ...state, foneNew: action.payload };
     default:
       return state;
   }
