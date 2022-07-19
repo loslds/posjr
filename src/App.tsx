@@ -4,6 +4,7 @@ import React from 'react';
 import './assets/css/app.css';
 import { AppRoutes } from './routes';
 
+//novo
 export const App: React.FC = () => {
   return (
     <>
