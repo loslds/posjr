@@ -23,16 +23,22 @@ export const AccesNew1 = () => {
     });
   }, [dispatch]);
 
-  const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerNameNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setIdnameNew,
+      type: AccesActions.setNameNew,
       payload: e.target.value
     });
   };
 
-  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerEmailNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: AccesActions.setPasswordNew,
+      payload: e.target.value
+    });
+  };
+  const handlerFoneNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: AccesActions.setFoneNew,
       payload: e.target.value
     });
   };
@@ -40,38 +46,48 @@ export const AccesNew1 = () => {
   return (
     <Theme>
       <C.Container>
-        <p>Você se encontra pronto para criar a sua conta.</p>
+        <p>Passo: {state.currentStepNew}/4</p>
         <Titles>
-          <h1>Criação de uma Nova Conta ?</h1>
+          <h1>Ola {state.idnameNew}, determine seus Contatos.</h1>
         </Titles>
         <p>Complete os Dados requeridos :</p>
         <hr />
-        <label>Nova Conta :</label>
-        <hr />
+        <p>Preencha os Campo abaixo:</p>
         <label>
-          Descrição ID de Reconhecimento.
+          Declaração do seu Nome.
           <input
             type="text"
             autoFocus={true}
-            onChange={handlerIdNameChange}
-            value={state.idname}
-            placeholder={'Digite a sua ID...'}
+            onChange={handlerNameNewChange}
+            value={state.nameNew}
+            placeholder={'Digite seu Nome...'}
           />
         </label>
         <label>
-          Desclare sua PassWord de Acesso.
+          Desclaração do seu Email.
           <input
             type="text"
             autoFocus
-            onChange={handlerPasswordChange}
-            value={state.password}
-            placeholder={'Digite a sua Senha...'}
+            onChange={handlerEmailNewChange}
+            value={state.emailNew}
+            placeholder={'Digite seu Email...'}
           />
         </label>
-        <button onClick={goto('/acceshome')} title={'Retorna Passo : " 0 ".'}>
+        <label>
+          Desclaração do seu n° do Cellular.
+          <input
+            type="text"
+            autoFocus
+            onChange={handlerFoneNewChange}
+            value={state.foneNew}
+            placeholder={'Digite o n° do Celular...'}
+          />
+        </label>
+        <button onClick={goto('/accesnew')} title={'Retorna Passo : " 1 ".'}>
           Voltar
         </button>
-        <button onClick={goto('/accesnew1')} title={'Passo : " 6 ".'}>
+        <button onClick={() => {}} title={'Passo : " 3 ".'}>
+          {/* goto('/accesnew2') */}
           Próximo.
         </button>
       </C.Container>
