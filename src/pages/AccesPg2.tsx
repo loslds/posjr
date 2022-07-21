@@ -56,9 +56,11 @@ export const AccesPg2 = () => {
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
             Voltar
           </button>
-          <button onClick={goto('/accespg3')} title={'Passo : " 4 ".'}>
-            Próximo.
-          </button>
+          {state.password !== '' ? (
+            <button onClick={goto('/accespg3')} title={'Passo : " 4 ".'}>
+              Próximo.
+            </button>
+          ) : null}
         </C.Container>
       </Theme>
     </div>

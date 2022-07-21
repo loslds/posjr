@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AccesView } from '~/components/AccesView';
+// import { AccesView } from '~/components/AccesView';
+// import ButtonBg from '~/components/buttons/ButtonBg';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import olhoa from '../assets/images/svgs/olhoa.svg';
-//import olhoa from '../assets/images/olhoa.png';
+// import olhoa from '../assets/images/olhoa.png';
+// import olhoa from '../assets/images/svgs/olhoa.svg';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
 
@@ -25,6 +26,16 @@ export const AccesPg3 = () => {
       payload: 4
     });
   }, [dispatch]);
+
+  const [isButtonImg, setIsButtonImg] = React.useState(false);
+
+  const handleBtnTmg = React.useCallback(() => {
+    setIsButtonImg(oldState => !oldState);
+  }, []);
+
+  const setLevel = (level: number) => {
+    handleBtnTmg();
+  };
 
   return (
     <Theme>
@@ -55,15 +66,12 @@ export const AccesPg3 = () => {
         </label>
         <label>
           Seu Acesso ao Sistema:
-          <AccesView
-            img={olhoa}
-            onClick={() => {
-              alert('visualisa a senha...');
-            }}
-            selected={true}
-            title={state.password}
-          />
+          <C.ContainerPW selected={false}>
+            <h5>{state.password}</h5>
+            <C.DivPosImg />
+          </C.ContainerPW>
         </label>
+
         <button onClick={goto('/accespg2')} title={'Retorna Passo : " 3 ".'}>
           Voltar.
         </button>

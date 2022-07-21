@@ -18,21 +18,21 @@ export const AccesNew = () => {
 
   React.useEffect(() => {
     dispatch({
-      type: AccesActions.setcurrentStepContact,
+      type: AccesActions.setCurrentStepNew,
       payload: 1
     });
   }, [dispatch]);
 
-  const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerIdNameNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setIdname,
+      type: AccesActions.setIdnameNew,
       payload: e.target.value
     });
   };
 
-  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerPasswordNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setPassword,
+      type: AccesActions.setPasswordNew,
       payload: e.target.value
     });
   };
@@ -40,7 +40,7 @@ export const AccesNew = () => {
   return (
     <Theme>
       <C.Container>
-        <p>Passo: {state.currentStepContact}/4</p>
+        <p>Passo: {state.currentStepNew}/4</p>
         <Titles>
           <h1>Criação de uma Nova Conta ?</h1>
         </Titles>
@@ -53,7 +53,7 @@ export const AccesNew = () => {
           <input
             type="text"
             autoFocus={true}
-            onChange={handlerIdNameChange}
+            onChange={handlerIdNameNewChange}
             value={state.idname}
             placeholder={'Digite a sua ID...'}
           />
@@ -63,12 +63,12 @@ export const AccesNew = () => {
           <input
             type="text"
             autoFocus
-            onChange={handlerPasswordChange}
+            onChange={handlerPasswordNewChange}
             value={state.password}
             placeholder={'Digite a sua Senha...'}
           />
         </label>
-        <button onClick={goto('/acceshome')} title={'Retorna Passo : " 0 ".'}>
+        <button onClick={goto('/accespg0')} title={'Retorna Passo : " 0 ".'}>
           Voltar
         </button>
         <button onClick={goto('/accesnew1')} title={'Passo : " 2 ".'}>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// import img from '../assets/images/olhoa.png';
+// import olhof from '../assets/images/olhof.png';
 
 export const Container = styled.div`
   // 01
@@ -58,17 +58,6 @@ export const Container = styled.div`
       outline: 0;
       font-size: 15px;
       background-color: #02044a;
-      /* div {
-        display: flex;
-        width: 25px;
-        height: 25px;
-        //background-image: url($ /*{img}*/ /*);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-      }*/
     }
   }
   button {
@@ -95,13 +84,13 @@ export const DivImg = styled.div`
   border: 1px solid #ff0000;
   width: 35px;
   min-height: 30px;
-  display: block;
+  display: flex;
   justify-content: center;
   align-content: center;
-  align-items: stretch;
+  align-items: center;
 `;
 
-export const ButtonImg = styled.div`
+export const ButtonImg = styled.button`
   padding: 0 0 0 0;
   margin: 0 0 0 0;
   border: 1px solid #ff0000;
@@ -113,8 +102,40 @@ export const ButtonImg = styled.div`
   align-items: center;
 `;
 
-export const BoxButton = styled.div<{ selected: boolean }>`
-  border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+export const ContainerPW = styled.div<{ selected: boolean }>`
+  background-color: transparent;
+  border: 4px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+  border-radius: 10px;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    // border: 2px #495459 solid; #b8b8d4
+    border: 4px solid #c5fa75;
+  }
+  h5 {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 5px;
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 25px;
+  }
+  p {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 4px 0px 0px;
+    color: #b8b8d4;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 16px;
+  }
+`;
+
+export const BoxButton = styled.div<{ open: boolean }>`
+  border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
   border-radius: 10px;
   padding: 0 0 0 0;
   margin: 5px 0px 0 10px;
@@ -132,17 +153,25 @@ export const BoxButton = styled.div<{ selected: boolean }>`
   }
 `;
 
-export const DivPosImg = styled.div<{ ondisplay?: boolean }>`
+export const DivPosImg = styled.div`
+  border: 1px solid #ff0000;
   margin: 0px 10px 0px 0px;
   padding: 0px 0px 0px 0px;
-  max-width: 100%;
+  width: 40px;
+  min-height: 40px;
+  display: flex;
+  justify-content: end;
+  align-content: center;
+  align-items: center;
   background-color: transparent;
   font-size: 16px;
-  display: ${({ ondisplay }) => (ondisplay ? 'flex' : 'none')};
+  display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
 `;
+
+// display: ${({ondisplay }) => (ondisplay ? 'flex' : 'none')};
 
 // export const DivtoSpan = styled.div<{ open?: boolean }>`
 //   margin: 0px 10px 0px 0px;

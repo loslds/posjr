@@ -55,9 +55,11 @@ export const AccesPg1 = () => {
             >
               Voltar
             </button>
-            <button onClick={goto('/accespg2')} title={'Passo : " 3 ".'}>
-              Próximo.
-            </button>
+            {state.idname !== '' ? (
+              <button onClick={goto('/accespg2')} title={'Passo : " 3 ".'}>
+                Próximo.
+              </button>
+            ) : null}
           </label>
         </C.Container>
       </Theme>

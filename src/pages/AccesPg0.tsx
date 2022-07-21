@@ -42,7 +42,7 @@ export const AccesPg0 = () => {
       <C.Container>
         <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Vamos começar... Qual acesso você deseja ?</h1>
+          <h1>Vamos começar... Para qual acesso deseja ?</h1>
         </Titles>
         <p>Selecione uma opção para o acesso.</p>
         <hr />
