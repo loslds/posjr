@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { AccesBox } from '~/components/AccesBox';
+
 // import { AccesView } from '~/components/AccesView';
 // import ButtonBg from '~/components/buttons/ButtonBg';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-// import olhoa from '../assets/images/olhoa.png';
+//import olhoa from '../assets/images/olhoa.png';
 // import olhoa from '../assets/images/svgs/olhoa.svg';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
@@ -48,30 +50,20 @@ export const AccesPg3 = () => {
         <hr />
         <label>
           Sua Opção para o Acesso do Sistema:
-          <input
-            type="text"
-            autoFocus={true}
-            readOnly={true}
-            value={state.descrlevel}
-          />
+          <input type="text" readOnly={true} value={state.descrlevel} />
         </label>
         <label>
           Sua ID de Reconhecimento:
-          <input
-            type="text"
-            autoFocus={true}
-            readOnly={true}
-            value={state.idname}
-          />
+          <input type="text" readOnly={true} value={state.idname} />
         </label>
         <label>
-          Seu Acesso ao Sistema:
-          <C.ContainerPW selected={false}>
-            <h5>{state.password}</h5>
-            <C.DivPosImg />
-          </C.ContainerPW>
+          Sua Password de Acesso:
+          <AccesBox
+            title={state.password}
+            selected={state.level === 1}
+            onClick={() => setLevel(1)}
+          />
         </label>
-
         <button onClick={goto('/accespg2')} title={'Retorna Passo : " 3 ".'}>
           Voltar.
         </button>

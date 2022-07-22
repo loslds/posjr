@@ -9,6 +9,7 @@ export const Container = styled.div`
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #b8b8d4;
+    display: flex;
   }
   h1,
   h2,
@@ -52,10 +53,10 @@ export const Container = styled.div`
       box-sizing: border-box;
       width: 98%;
       padding: 20px 10px;
-      border: 4px #25cd89 solid;
+      border: 2px solid #25cd89;
       border-radius: 10px;
-      color: #fff;
       outline: 0;
+      color: #fff;
       font-size: 15px;
       background-color: #02044a;
     }
@@ -63,7 +64,7 @@ export const Container = styled.div`
   button {
     background-color: #25cd89;
     color: #000;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 18px;
     font-weight: bold;
     border: 0;
@@ -74,6 +75,9 @@ export const Container = styled.div`
     &:hover {
       background-color: #7df0c1;
       border: 1px solid #ddffaa;
+    }
+    span {
+      margin-left: 10px;
     }
   }
 `;
@@ -90,39 +94,30 @@ export const DivImg = styled.div`
   align-items: center;
 `;
 
-export const ButtonImg = styled.button`
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-  border: 1px solid #ff0000;
-  width: 35px;
-  min-height: 30px;
-  display: block;
-  justify-content: end;
-  align-content: center;
-  align-items: center;
-`;
-
 export const ContainerPW = styled.div<{ selected: boolean }>`
   background-color: transparent;
-  border: 4px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+  border: 2px solid ${props => (props.selected ? '#c5fa75' : '#16195c')};
   border-radius: 10px;
   padding: 5px 5px 5px 5px;
-  margin: 5px 0px 5px 15px;
+  margin: 3px 0px 3px 15px;
   display: flex;
   align-items: center;
   color: #fff;
+  font-size: 15px;
+  line-height: 18px;
   cursor: pointer;
   &:hover {
     // border: 2px #495459 solid; #b8b8d4
-    border: 4px solid #c5fa75;
+    border: 2px solid #c5fa75;
   }
   h5 {
+    border: 0px;
     margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 5px;
-    color: #fff;
-    font-size: 18px;
+    padding: 0px 10px 0px 5px;
+    color: #ffffff;
+    font-size: 14px;
     font-style: normal;
-    line-height: 25px;
+    line-height: 18px;
   }
   p {
     padding: 0px 0px 0px 0px;
@@ -138,7 +133,7 @@ export const BoxButton = styled.div<{ open: boolean }>`
   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
   border-radius: 10px;
   padding: 0 0 0 0;
-  margin: 5px 0px 0 10px;
+  margin: 5px 0px 0px 10px;
   width: 98%;
   min-height: 25px;
   display: flex;
@@ -155,16 +150,29 @@ export const BoxButton = styled.div<{ open: boolean }>`
 
 export const DivPosImg = styled.div`
   border: 1px solid #ff0000;
-  margin: 0px 10px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  width: 40px;
-  min-height: 40px;
+  //margin: 0px 0px 0px 20px;
+  //padding: 0px 0px 0px 0px;
+  min-width: 35px;
+  min-height: 35px;
   display: flex;
-  justify-content: end;
+  position: relative;
+  justify-content: center;
   align-content: center;
   align-items: center;
   background-color: transparent;
-  font-size: 16px;
+  // font-size: 16px;
+`;
+
+type PropsButtonImg = {
+  img?: string;
+  onClick: () => void;
+};
+export const ButtonImg = styled.button<PropsButtonImg>`
+  border: 0px solid #fff;
+  padding: 0px 0px 0px 0px;
+  margin: 0px -15px 0px 0px;
+  min-width: 35px;
+  min-height: 35px;
   display: flex;
   justify-content: center;
   align-content: center;

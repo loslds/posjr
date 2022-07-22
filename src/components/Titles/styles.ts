@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   h1 {
     margin: 0px 0px 0px 10px;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
     font-size: 23px;
     font-style: normal;
     line-height: 25px;
