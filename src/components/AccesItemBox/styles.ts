@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 
-// import olhof from '../assets/images/olhof.png';
-
-export const Container = styled.div<{ selected: boolean }>`
+export const Container = styled.div`
   background-color: transparent;
-  border: 4px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+  border: 2px solid #25cd89;
   border-radius: 10px;
   padding: 5px 5px 5px 5px;
   margin: 5px 0px 5px 15px;
   display: flex;
   align-items: center;
   color: #fff;
-  cursor: pointer;
-  &:hover {
-    // border: 2px #495459 solid; #b8b8d4
-    border: 4px solid #c5fa75;
-  }
   h1 {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
@@ -32,6 +25,17 @@ export const Container = styled.div<{ selected: boolean }>`
     font-style: normal;
     line-height: 16px;
   }
+  span {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 10px 0px 10px;
+  }
+`;
+export const ContainerFlex = styled.div`
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Info = styled.div`
@@ -50,14 +54,13 @@ export const Description = styled.div`
   color: #b8b8d4;
 `;
 
-export const Img = styled.div<{ img?: string }>`
+export const Img = styled.div`
+  border: 1px solid #fff;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid #c5fa75;
+  background-color: #191459;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #191459;
-  font-size: 30px;
 `;

@@ -93,58 +93,92 @@ export const DivImg = styled.div`
   align-content: center;
   align-items: center;
 `;
+// ///////////////////////////////////////////
 
-export const ContainerPW = styled.div<{ selected: boolean }>`
+export const ContainerPW = styled.div`
   background-color: transparent;
-  border: 2px solid ${props => (props.selected ? '#c5fa75' : '#16195c')};
+  border: 2px solid #25cd89;
   border-radius: 10px;
   padding: 5px 5px 5px 5px;
   margin: 3px 0px 3px 15px;
+  min-height: 50px;
   display: flex;
   align-items: center;
-  color: #fff;
-  font-size: 15px;
-  line-height: 18px;
-  cursor: pointer;
-  &:hover {
-    // border: 2px #495459 solid; #b8b8d4
-    border: 2px solid #c5fa75;
-  }
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 16px;
   h5 {
     border: 0px;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 10px 0px 5px;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 10px 0px 10px;
+    background-color: transparent;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 18px;
+    line-height: 20px;
     font-style: normal;
-    line-height: 18px;
+    // font-weight: bold;
   }
   p {
     padding: 0px 0px 0px 0px;
     margin: 0px 4px 0px 0px;
+    background-color: transparent;
     color: #b8b8d4;
-    font-size: 14px;
-    font-style: normal;
-    line-height: 16px;
   }
 `;
+export const ContainerPWFlex = styled.div`
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+`;
 
-export const BoxButton = styled.div<{ open: boolean }>`
+export const ContainerPWCard = styled.div`
+  border: 0px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 5px 0px 5px;
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
+`;
+
+export const ContainerPWEnd = styled.div`
+  border: 0px;
+  padding: 4px 4px 4px 4px;
+  margin: 4px 4px 4px 4px;
+  max-width: 40%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
+`;
+
+export const BoxButtonPW = styled.div<{ open: boolean }>`
   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
-  border-radius: 10px;
-  padding: 0 0 0 0;
-  margin: 5px 0px 0px 10px;
-  width: 98%;
-  min-height: 25px;
+  border-radius: 50%;
+  padding: 0px 0px 0px 0px;
+  margin: 1px 0px 1px 0px;
+  width: 50px;
+  height: 50px;
   display: flex;
   flex-wrap: wrap;
   flex-flow: row;
-  justify-content: left;
+  justify-content: center;
   align-content: center;
   align-items: center;
   &:hover {
     border: 2px solid #ddffaa;
-    margin: 5px 0px 0px 10px;
   }
 `;
 

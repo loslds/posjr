@@ -22,16 +22,51 @@ export const ButtonsImgBg = styled.button<{ img?: string }>`
   display: flex;
   width: 45px;
   height: 40px;
-  //background-color: transparent;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-attachment: fixed;
   background-image: url(${({ img }) => img || semimg});
   cursor: pointer;
   outline: none;
   font-size: 16px;
 `;
 
+export const ContainerButtonItemBoxImgBg = styled.div`
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #191459;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
+
+export const ButtonsItBoxImgBg = styled.button<{ img?: string }>`
+  border: 1px solid #ff0000;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url(${({ img }) => img || semimg});
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+`;
 // export const ContentButtonPageBg = styled.div`
 //   border: 1px red solid;
 //   padding: 1px 1px 1px 1px;
