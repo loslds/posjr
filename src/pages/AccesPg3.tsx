@@ -44,13 +44,18 @@ export const AccesPg3 = ({ statepsw }: Props) => {
         type: AccesActions.setPassword,
         payload: valor
       });
-      statepsw = state.password;
+      statepsw = valor;
     } else {
       if (isButtonImg) return (statepsw = state.password);
-      return statepsw.replace(statepsw, '#');
+      const nr = valor.length;
+      const newvl = valor;
+      for (var i = 0; i <= nr; i++) {
+        valor.replace(newvl[i], '#');
+      }
+      statepsw = valor;
     }
-
-    console.log('testo: ', valor);
+    console.log('valor : ', valor);
+    return statepsw.replace(statepsw, '#');
   }
 
   const handlerClickButton = () => {
