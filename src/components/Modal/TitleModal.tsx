@@ -35,13 +35,14 @@ const ContainerModalTitle = styled.div`
 `;
 
 type Props = {
+  id?: string;
   titulo?: string;
   children?: React.ReactNode;
 };
 
-export const TitleModal: React.FC<Props> = ({ titulo, children }) => {
+export const TitleModal: React.FC<Props> = ({ id, titulo, children }) => {
   return (
-    <ContainerModalTitle>
+    <ContainerModalTitle id={id}>
       <h1>{children || titulo}</h1>
     </ContainerModalTitle>
   );

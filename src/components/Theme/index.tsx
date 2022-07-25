@@ -48,7 +48,7 @@ export const Theme = ({ children }: Props) => {
                 </label>
                 <label>
                   <span>
-                    <C.Button onClick={goto('/accesfgt')}>
+                    <C.Button onClick={goto('/accesforgot')}>
                       Esqueci o meu Acesso.
                     </C.Button>
                   </span>

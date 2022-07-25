@@ -1,20 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import ButtonItemBoxBg from '~/components/buttons/ButtonItemBoxBg';
+// import { ButtonsCirclesBg } from '~/components/buttons/stylesButtons';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-// import olhoa from '../assets/images/olhoa.png';
-import profile from '../assets/images/svgs/profile.svg';
-// import olhoa from '../assets/images/svgs/olhoa.svg';
+import olhoa from '../assets/images/svgs/olhoa.svg';
+import olhof from '../assets/images/svgs/olhof.svg';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
-type PropsBoxBtn = {
-  open?: string;
-};
 
-export const AccesPg3 = ({ open }: PropsBoxBtn) => {
+type Props = {
+  statepsw?: string;
+};
+export const AccesPg3 = ({ statepsw }: Props) => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -28,21 +27,38 @@ export const AccesPg3 = ({ open }: PropsBoxBtn) => {
       type: AccesActions.setCurrentStep,
       payload: 4
     });
+    statepsw = state.password;
   }, [dispatch]);
 
-  const [isButtonImg, setIsButtonImg] = React.useState(false);
-
+  const [isButtonImg, setIsButtonImg] = React.useState(true);
+  const data = [olhof, olhoa];
   const handleBtnTmg = React.useCallback(() => {
     setIsButtonImg(oldState => !oldState);
   }, []);
 
-  //  const handlerClickButton = () => {
-  //    handleBtnTmg();
-  //  };
-  //  const setLevel = () => {
-  //    handleBtnTmg();
-  //  };
-  // console.log('cliquei: ', isButtonImg);
+  function handlerMudaPW() {
+    const valor = state.password;
+    if (valor === '') {
+      if (isButtonImg) return handleBtnTmg;
+      dispatch({
+        type: AccesActions.setPassword,
+        payload: valor
+      });
+      statepsw = state.password;
+    } else {
+      if (isButtonImg) return (statepsw = state.password);
+      return statepsw.replace(statepsw, '#');
+    }
+
+    console.log('testo: ', valor);
+  }
+
+  const handlerClickButton = () => {
+    handleBtnTmg();
+    handlerMudaPW();
+    console.log(isButtonImg);
+  };
+
   return (
     <Theme>
       <C.Container>
@@ -64,16 +80,34 @@ export const AccesPg3 = ({ open }: PropsBoxBtn) => {
         <C.ContainerPW>
           <C.ContainerPWFlex>
             <C.ContainerPWCard>
-              <Titles>{state.password}</Titles>
+              {isButtonImg ? (
+                <Titles>{statepsw}</Titles>
+              ) : (
+                <Titles>{statepsw}</Titles>
+              )}
               <C.ContainerPWEnd>
-                <C.BoxButtonPW open={isButtonImg}>
-                  <ButtonItemBoxBg id={'olho'} onClick={() => {}} />
-                </C.BoxButtonPW>
+                {isButtonImg ? (
+                  <C.BoxButtonPW
+                    img={data[0]}
+                    onClick={handlerClickButton}
+                    open={isButtonImg}
+                  >
+                    {''}
+                  </C.BoxButtonPW>
+                ) : (
+                  <C.BoxButtonPW
+                    img={data[1]}
+                    onClick={handlerClickButton}
+                    open={isButtonImg}
+                  >
+                    {''}
+                  </C.BoxButtonPW>
+                )}
               </C.ContainerPWEnd>
             </C.ContainerPWCard>
           </C.ContainerPWFlex>
         </C.ContainerPW>
-        {isButtonImg}
+
         <button onClick={goto('/accespg2')} title={'Retorna Passo : " 3 ".'}>
           Voltar.
         </button>

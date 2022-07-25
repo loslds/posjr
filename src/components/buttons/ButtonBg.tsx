@@ -3,7 +3,7 @@ import React from 'react';
 import { ContainerButtonImgBg, ButtonsImgBg } from './stylesButtons';
 
 type PropsButtonBg = {
-  id: string;
+  id?: string;
   onClick: () => void;
   img?: string;
   title?: string;

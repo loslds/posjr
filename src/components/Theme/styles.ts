@@ -42,8 +42,8 @@ export const Page = styled.div`
 export const Img = styled.img<{ open: boolean }>`
   padding: 0 0 0 0;
   margin: 0 10 0 0;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: block;
   justify-content: end;
   align-content: center;
@@ -57,7 +57,7 @@ export const Button = styled.button`
   line-height: 16px;
   font-weight: bold;
   padding: 5px 10px 5px 10px;
-  margin: 5px 3px 5px 3px;
+  margin: 3px 3px 3px 3px;
   border: 0;
   border-radius: 5px;
   width: 96%;

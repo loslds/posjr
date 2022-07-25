@@ -10,7 +10,7 @@ type PropsAccesForget = {
   onClick: () => void;
 };
 
-export const AccesForget = ({
+export const AccesForgot = ({
   title,
   description,
   img,

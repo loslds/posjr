@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-// import olhof from '../assets/images/olhof.png';
-
+import semimg from '../assets/images/semimg.png';
 export const Container = styled.div`
   // 01
   p {
@@ -76,9 +75,6 @@ export const Container = styled.div`
       background-color: #7df0c1;
       border: 1px solid #ddffaa;
     }
-    span {
-      margin-left: 10px;
-    }
   }
 `;
 
@@ -142,7 +138,7 @@ export const ContainerPWCard = styled.div`
   padding: 0px 0px 0px 0px;
   margin: 0px 5px 0px 5px;
   width: 100%;
-  min-height: 40px;
+  min-height: 45px;
   display: flex;
   flex-flow: wrap;
   justify-content: flex-start;
@@ -153,30 +149,43 @@ export const ContainerPWCard = styled.div`
 
 export const ContainerPWEnd = styled.div`
   border: 0px;
-  padding: 4px 4px 4px 4px;
-  margin: 4px 4px 4px 4px;
-  max-width: 40%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 10px;
+  min-height: 35px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   align-content: center;
   background-color: transparent;
 `;
 
-export const BoxButtonPW = styled.div<{ open: boolean }>`
+type PropsBtnPw = {
+  img?: string;
+  onClick: () => void;
+  open?: boolean;
+};
+export const BoxButtonPW = styled.div<PropsBtnPw>`
   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
   border-radius: 50%;
   padding: 0px 0px 0px 0px;
-  margin: 1px 0px 1px 0px;
-  width: 50px;
-  height: 50px;
+  margin: 0px 0px 0px 0px;
+  width: 40px;
+  height: 40px;
   display: flex;
-  flex-wrap: wrap;
-  flex-flow: row;
+  flex-flow: wrap;
+  background-color: #7df0c1;
+  background-image: url(${({ img }) => img || semimg});
+  background-repeat: no-repeat;
+  background-size: 35px;
+  background-position: center;
+  cursor: pointer;
+  outline: none;
+
+  /* display: flex;
   justify-content: center;
   align-content: center;
-  align-items: center;
+  align-items: center; */
   &:hover {
     border: 2px solid #ddffaa;
   }
@@ -184,8 +193,8 @@ export const BoxButtonPW = styled.div<{ open: boolean }>`
 
 export const DivPosImg = styled.div`
   border: 1px solid #ff0000;
-  //margin: 0px 0px 0px 20px;
-  //padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 0px;
   min-width: 35px;
   min-height: 35px;
   display: flex;
@@ -204,7 +213,7 @@ type PropsButtonImg = {
 export const ButtonImg = styled.button<PropsButtonImg>`
   border: 0px solid #fff;
   padding: 0px 0px 0px 0px;
-  margin: 0px -15px 0px 0px;
+  margin: 0px 0px 0px 0px;
   min-width: 35px;
   min-height: 35px;
   display: flex;

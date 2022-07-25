@@ -17,11 +17,12 @@ export const ContainerButtonImgBg = styled.div<{ ondisplay?: boolean }>`
 `;
 
 export const ButtonsImgBg = styled.button<{ img?: string }>`
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  display: flex;
   width: 45px;
-  height: 40px;
+  height: 45px;
+  display: flex;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
@@ -33,30 +34,26 @@ export const ButtonsImgBg = styled.button<{ img?: string }>`
   font-size: 16px;
 `;
 
-export const ContainerButtonItemBoxImgBg = styled.div`
-  border: 1px solid #fff;
-  border-radius: 50%;
+export const ContainerButtonCircleImgBg = styled.div`
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  min-width: 50px;
-  min-height: 50px;
+  height: 35px;
+  width: 35px;
   display: flex;
   flex-flow: row wrap;
-  background-color: #191459;
-  display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
+  color: black;
 `;
-
-export const ButtonsItBoxImgBg = styled.button<{ img?: string }>`
-  border: 1px solid #ff0000;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  display: flex;
+export const ButtonsCirclesBg = styled.button<{ img?: string }>`
+  border: 50%;
+  margin: 0px 0px 0px -10px;
+  padding: 0px 0px 0px -10px;
+  width: 35px;
+  height: 35px;
+  display: block;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
@@ -67,6 +64,35 @@ export const ButtonsItBoxImgBg = styled.button<{ img?: string }>`
   outline: none;
   font-size: 16px;
 `;
+
+// type Props = {
+//   open?: boolean;
+//   img?: string;
+//   title?: string;
+//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+// };
+// export const ContainerButtonsImg = styled.div<Props>`
+//   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
+//   width: 35px;
+//   height: 35px;
+//   border-radius: 50%;
+//   margin: 0px 0px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   display: flex;
+//   background-color: transparent;
+//   background-image: url(${({ img }) => img || semimg});
+//   background-repeat: no-repeat;
+//   background-size: 35px;
+//   background-position: center;
+//   background-attachment: fixed;
+//   cursor: pointer;
+//   outline: none;
+//   font-size: 16px;
+//   &:hover {
+//     border: 2px solid #ddffaa;
+//   }
+// `;
+
 // export const ContentButtonPageBg = styled.div`
 //   border: 1px red solid;
 //   padding: 1px 1px 1px 1px;

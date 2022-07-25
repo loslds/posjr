@@ -6,8 +6,9 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
+type PropsAccesPg2 = { testsnh?: string };
 
-export const AccesPg2 = () => {
+export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
   const navigate = useNavigate();
 
   const goto = (path: string) => {
@@ -26,10 +27,22 @@ export const AccesPg2 = () => {
   }, [dispatch]);
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valor = e.target.value;
     dispatch({
       type: AccesActions.setPassword,
-      payload: e.target.value
+      payload: valor
     });
+  };
+
+  const handlerValidarSenha = () => {
+    // useEffect(() => {
+    //   const valor = document.getElementById('snh')?.nodeValue;
+    //   console.log('valor', valor);
+    //   return () => {
+    //     valor;
+    //   };
+    // }, []);
+    testsnh = 'AAAAAAA';
   };
 
   return (
@@ -45,12 +58,15 @@ export const AccesPg2 = () => {
           <label>
             Desclare sua PassWord de Acesso.
             <input
+              id="psw"
               type="text"
               autoFocus
               onChange={handlerPasswordChange}
               value={state.password}
               placeholder={'Digite a sua Senha...'}
+              onKeyUp={handlerValidarSenha}
             />
+            <p>Força Senha: {testsnh}</p>
           </label>
 
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
