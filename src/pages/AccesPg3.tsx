@@ -10,10 +10,7 @@ import olhof from '../assets/images/svgs/olhof.svg';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
 
-type Props = {
-  statepsw?: string;
-};
-export const AccesPg3 = ({ statepsw }: Props) => {
+export const AccesPg3 = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -27,41 +24,27 @@ export const AccesPg3 = ({ statepsw }: Props) => {
       type: AccesActions.setCurrentStep,
       payload: 4
     });
-    statepsw = state.password;
   }, [dispatch]);
 
-  const [isButtonImg, setIsButtonImg] = React.useState(true);
-  const data = [olhof, olhoa];
+  React.useEffect(() => {
+    dispatch({
+      type: AccesActions.setPasswordNew,
+      payload: '########'
+    });
+  }, [dispatch]);
+
+  const [isButtonImg, setIsButtonImg] = React.useState(false);
+  const data = [olhoa, olhof];
+
   const handleBtnTmg = React.useCallback(() => {
     setIsButtonImg(oldState => !oldState);
   }, []);
 
-  function handlerMudaPW() {
-    const valor = state.password;
-    if (valor === '') {
-      if (isButtonImg) return handleBtnTmg;
-      dispatch({
-        type: AccesActions.setPassword,
-        payload: valor
-      });
-      statepsw = valor;
-    } else {
-      if (isButtonImg) return (statepsw = state.password);
-      const nr = valor.length;
-      const newvl = valor;
-      for (var i = 0; i <= nr; i++) {
-        valor.replace(newvl[i], '#');
-      }
-      statepsw = valor;
-    }
-    console.log('valor : ', valor);
-    return statepsw.replace(statepsw, '#');
-  }
-
   const handlerClickButton = () => {
+    if (state.password === '' || state.password === null) {
+      setIsButtonImg(false);
+    }
     handleBtnTmg();
-    handlerMudaPW();
-    console.log(isButtonImg);
   };
 
   return (
@@ -86,10 +69,11 @@ export const AccesPg3 = ({ statepsw }: Props) => {
           <C.ContainerPWFlex>
             <C.ContainerPWCard>
               {isButtonImg ? (
-                <Titles>{statepsw}</Titles>
+                <h5>{state.password}</h5>
               ) : (
-                <Titles>{statepsw}</Titles>
+                <h5>{state.passwordNew}</h5>
               )}
+
               <C.ContainerPWEnd>
                 {isButtonImg ? (
                   <C.BoxButtonPW
@@ -123,3 +107,26 @@ export const AccesPg3 = ({ statepsw }: Props) => {
     </Theme>
   );
 };
+
+// function handlerMudaPW() {
+
+//   const valor = state.password;
+//   if (valor === '')
+//     handleBtnTmg();
+//   else if (isButtonImg) return handleBtnTmg;
+//     //      statepsw = valor;
+//   } else {
+//     if (isButtonImg) return (statepsw = state.password);
+//     const nr = valor.length;
+//     const newvl = valor;
+//     for (var i = 0; i <= nr; i++) {
+//       valor.replace(valor[i], '#');
+//       console.log('newvl[i]', newvl[i]);
+//       console.log('newvl ', newvl);
+//     }
+//     // statepsw = valor;
+//   }
+//   console.log('valor : ', valor);
+//   return false;
+//   // statepsw.replace(statepsw, '#');
+// }

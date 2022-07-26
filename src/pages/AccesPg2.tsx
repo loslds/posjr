@@ -34,15 +34,18 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
     });
   };
 
+  function ValidarForcaSenha() {
+    var strforca = state.password;
+    var nrlength = strforca.length;
+    var substr = strforca[nrlength - 1];
+    console.log('strforca : ', strforca);
+    console.log('nrlength : ', nrlength);
+    console.log('substr   : ', substr);
+    return 'false';
+  }
+
   const handlerValidarSenha = () => {
-    // useEffect(() => {
-    //   const valor = document.getElementById('snh')?.nodeValue;
-    //   console.log('valor', valor);
-    //   return () => {
-    //     valor;
-    //   };
-    // }, []);
-    testsnh = 'AAAAAAA';
+    testsnh = ValidarForcaSenha();
   };
 
   return (
@@ -57,16 +60,22 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
           <hr />
           <label>
             Desclare sua PassWord de Acesso.
+            <p>
+              * Use até 8 caracteres ( maiúscula, minuscula, números e simbolos
+              ).
+            </p>
             <input
               id="psw"
               type="text"
               autoFocus
+              maxLength={8}
               onChange={handlerPasswordChange}
               value={state.password}
               placeholder={'Digite a sua Senha...'}
               onKeyUp={handlerValidarSenha}
             />
-            <p>Força Senha: {testsnh}</p>
+            <p>Força Senha:</p>
+            <h5>{testsnh}</h5>
           </label>
 
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>

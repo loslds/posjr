@@ -105,12 +105,12 @@ export const ContainerPW = styled.div`
   line-height: 16px;
   h5 {
     border: 0px;
-    margin: 0px 0px 0px 10px;
-    padding: 0px 10px 0px 10px;
+    margin: 0px 0px 0px 3px;
+    padding: 0px 10px 0px 2px;
     background-color: transparent;
     color: #ffffff;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 15px;
+    line-height: 25px;
     font-style: normal;
     // font-weight: bold;
   }
@@ -136,7 +136,7 @@ export const ContainerPWFlex = styled.div`
 export const ContainerPWCard = styled.div`
   border: 0px;
   padding: 0px 0px 0px 0px;
-  margin: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 15px;
   width: 100%;
   min-height: 45px;
   display: flex;
@@ -149,15 +149,27 @@ export const ContainerPWCard = styled.div`
 
 export const ContainerPWEnd = styled.div`
   border: 0px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 10px;
-  min-height: 35px;
+  padding: 0px 0px 0px 10px;
+  margin: 2px 0px 2px 15px;
+  min-height: 45px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   align-content: center;
   background-color: transparent;
+`;
+
+export const DivPWS = styled.div<{ open?: boolean }>`
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  border: 1px solid #ff0000;
+  width: 150px;
+  min-height: 28px;
+  display: ${props => (props.open ? 'flex' : 'none')};
+  justify-content: left;
+  // align-content: center;
+  align-items: center;
 `;
 
 type PropsBtnPw = {
@@ -170,14 +182,14 @@ export const BoxButtonPW = styled.div<PropsBtnPw>`
   border-radius: 50%;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   flex-flow: wrap;
   background-color: #7df0c1;
   background-image: url(${({ img }) => img || semimg});
   background-repeat: no-repeat;
-  background-size: 35px;
+  background-size: 40px;
   background-position: center;
   cursor: pointer;
   outline: none;
