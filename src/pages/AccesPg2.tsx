@@ -38,9 +38,11 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
     var strforca = state.password;
     var nrlength = strforca.length;
     var substr = strforca[nrlength - 1];
+
     console.log('strforca : ', strforca);
     console.log('nrlength : ', nrlength);
     console.log('substr   : ', substr);
+
     return 'false';
   }
 
