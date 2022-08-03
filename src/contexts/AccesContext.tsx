@@ -69,7 +69,7 @@ export enum AccesActions {
 
   setCurrentStepNew,
   setLevelNew,
-  setDescrNew,
+  setDescrlevelNew,
   setNameNew,
   setIdnameNew,
   setPasswordNew,
@@ -102,7 +102,7 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, currentStepNew: action.payload };
     case AccesActions.setLevelNew:
       return { ...state, levelNew: action.payload };
-    case AccesActions.setDescrlevel:
+    case AccesActions.setDescrlevelNew:
       return { ...state, descrLevelNew: action.payload };
     case AccesActions.setIdnameNew:
       return { ...state, idnameNew: action.payload };
