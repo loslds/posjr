@@ -49,7 +49,7 @@ export const AccesNew = () => {
         <label>Nova Conta :</label>
         <hr />
         <label>
-          ID de Reconhecimento.
+          ID/Nome de Reconhecimento.
           <input
             type="text"
             autoFocus={true}

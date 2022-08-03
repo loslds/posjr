@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Titles } from '~/components/Titles';
@@ -6,9 +6,12 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
-type PropsAccesPg2 = { testsnh?: string };
 
-export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
+export const AccesPg2 = () => {
+  const [strForca, setStrForca] = useState('');
+  const [nrForca, setNrForca] = useState(0);
+  const { state, dispatch } = AccesUseForm();
+
   const navigate = useNavigate();
 
   const goto = (path: string) => {
@@ -16,8 +19,6 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
       navigate(path);
     };
   };
-
-  const { state, dispatch } = AccesUseForm();
 
   React.useEffect(() => {
     dispatch({
@@ -32,23 +33,38 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
       type: AccesActions.setPassword,
       payload: valor
     });
+    setStrForca(valor);
   };
 
-  function ValidarForcaSenha() {
-    var strforca = state.password;
-    var nrlength = strforca.length;
-    var substr = strforca[nrlength - 1];
+  React.useEffect(() => {
+    if (strForca.length >= 4 && strForca.length <= 7) {
+      setNrForca(nrForca + 10);
+    } else if (strForca.length > 7) {
+      setNrForca(nrForca + 25);
+    }
+    if (strForca.length >= 5 && strForca.match(/[a-z] + /)) {
+      setNrForca(nrForca + 10);
+    }
+    if (strForca.length >= 6 && strForca.match(/[A-Z] + /)) {
+      setNrForca(nrForca + 20);
+    }
+    if (strForca.length >= 7 && strForca.match(/[!@#$%&^_|~] + /)) {
+      setNrForca(nrForca + 25);
+    }
 
-    console.log('strforca : ', strforca);
-    console.log('nrlength : ', nrlength);
-    console.log('substr   : ', substr);
-
-    return 'false';
-  }
-
-  const handlerValidarSenha = () => {
-    testsnh = ValidarForcaSenha();
-  };
+    if (nrForca <= 30) {
+      setStrForca('FRACA...');
+    }
+    if (nrForca >= 30 && nrForca >= 50) {
+      setStrForca('MÉDIA...');
+    }
+    if (nrForca >= 50 && nrForca >= 70) {
+      setStrForca('FORTE...');
+    }
+    if (nrForca >= 70 && nrForca >= 100) {
+      setStrForca('EXCELENTE...');
+    }
+  }, [strForca, nrForca]);
 
   return (
     <div>
@@ -63,8 +79,7 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
           <label>
             Desclare sua PassWord de Acesso.
             <p>
-              * Use até 8 caracteres ( maiúscula, minuscula, números e simbolos
-              ).
+              * Use até 8 caracteres : maiúscula, minuscula, números e simbolos.
             </p>
             <input
               id="psw"
@@ -74,12 +89,14 @@ export const AccesPg2 = ({ testsnh }: PropsAccesPg2) => {
               onChange={handlerPasswordChange}
               value={state.password}
               placeholder={'Digite a sua Senha...'}
-              onKeyUp={handlerValidarSenha}
             />
-            <p>Força Senha:</p>
-            <h5>{testsnh}</h5>
+            <div id={'forca'}>
+              Força Senha:{' '}
+              <span>
+                {strForca} + ... + {nrForca}
+              </span>
+            </div>
           </label>
-
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
             Voltar
           </button>
