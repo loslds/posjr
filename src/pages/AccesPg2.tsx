@@ -59,9 +59,6 @@ export const AccesPg2 = () => {
     }
   }, [strForca, nrForca, state.password]);
 
-  console.log('strforca: ', strForca);
-  console.log('nrforca: ', nrForca);
-
   useEffect(() => {
     setIsStrForca(true);
     countForcaPW;
@@ -89,6 +86,8 @@ export const AccesPg2 = () => {
     setIsNrForca(false);
   }, [getForcaPW]);
 
+  console.log('strforca: ', strForca);
+  console.log('nrforca: ', nrForca);
   return (
     <div>
       <Theme>
