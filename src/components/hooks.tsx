@@ -1,5 +1,16 @@
 import React, { useEffect } from 'react';
 
+export function useIsValueForcaPassword() {
+  const isValuePassWord = React.useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isValuePassWord.current = false;
+    };
+  }, []);
+  return isValuePassWord;
+}
+
 export function useIsMounted() {
   const isMounted = React.useRef(true);
 
