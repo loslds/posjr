@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Titles } from '~/components/Titles';
@@ -8,11 +8,9 @@ import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
 
 export const AccesPg2 = () => {
-  const [isstrforca, setIsStrForca] = useState(false);
-  const [isnrforca, setIsNrForca] = useState(false);
-
-  const [strForca, setStrForca] = useState('');
-  const [nrForca, setNrForca] = useState(0);
+  const [strForca, setStrForca] = React.useState('');
+  const [nrForca, setNrForca] = React.useState(0);
+  const [nmForca, setNmForca] = React.useState('');
 
   const { state, dispatch } = AccesUseForm();
 
@@ -32,62 +30,15 @@ export const AccesPg2 = () => {
   }, [dispatch]);
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const strpasswordcharge = e.target.value;
+    const str = e.target.value;
     dispatch({
       type: AccesActions.setPassword,
-      payload: strpasswordcharge
+      payload: str
     });
+    setStrForca(str);
+    // handlerValorForca();
   };
 
-  const countForcaPW = useCallback(() => {
-    setStrForca(state.password);
-    if (strForca.length >= 4 && strForca.length <= 7) {
-      setNrForca(nrForca + 10);
-    } else if (strForca.length > 7) {
-      setNrForca(nrForca + 25);
-    }
-
-    if (strForca.length >= 5 && strForca.match(/[a-z] + /)) {
-      setNrForca(nrForca + 10);
-    }
-
-    if (strForca.length >= 6 && strForca.match(/[A-Z] + /)) {
-      setNrForca(nrForca + 20);
-    }
-    if (strForca.length >= 7 && strForca.match(/[!@#$%&^_|~] + /)) {
-      setNrForca(nrForca + 25);
-    }
-  }, [strForca, nrForca, state.password]);
-
-  useEffect(() => {
-    setIsStrForca(true);
-    countForcaPW;
-    setIsStrForca(false);
-  }, [countForcaPW]);
-
-  const getForcaPW = useCallback(() => {
-    if (nrForca <= 30) {
-      setStrForca('FRACA...');
-    }
-    if (nrForca >= 30 && nrForca >= 50) {
-      setStrForca('MÉDIA...');
-    }
-    if (nrForca >= 50 && nrForca >= 70) {
-      setStrForca('FORTE...');
-    }
-    if (nrForca >= 70 && nrForca >= 100) {
-      setStrForca('EXCELENTE...');
-    }
-  }, [nrForca]);
-
-  React.useEffect(() => {
-    setIsNrForca(true);
-    getForcaPW;
-    setIsNrForca(false);
-  }, [getForcaPW]);
-
-  console.log('strforca: ', strForca);
-  console.log('nrforca: ', nrForca);
   return (
     <div>
       <Theme>
@@ -113,7 +64,11 @@ export const AccesPg2 = () => {
               placeholder={'Digite a sua Senha...'}
             />
             <div id={'forca'}>
-              Força Senha: <span>{nrForca}</span>
+              <p>
+                {'Força Senha: '} + {nmForca} + {' => '} + {strForca} + {' => '}{' '}
+                + {nrForca} + {'.'}
+              </p>
+              );
             </div>
           </label>
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
@@ -129,3 +84,77 @@ export const AccesPg2 = () => {
     </div>
   );
 };
+
+// const handlerValorForca = () => {
+
+//   if (strForca.length <= 3) {
+//     /** força fraca  */
+//     setNrForca(0);
+//     setNmForca(
+//       'Determine Números, Letras Minusculas...Maiúsculas e Símbolos...'
+//     );
+//   }
+//   if (strForca.length === 8) {
+//     if ( ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) ) {
+//       setNrForca(100);
+//       setNmForca('EXCELENTE...');
+//     }
+//   }
+//   if (strForca.length === 7) {
+//     if ( ( !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
+//     || ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
+//     || ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
+//     || ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) ) {
+//     setNrForca(85);
+//     setNmForca('FORTE...');
+//     }
+//   }
+//   if (strForca.length === 6) {
+//     if ( !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//     setNrForca(50);
+//     setNmForca('MÉDIA...');
+//     }
+//   }
+//   if (strForca.length === 5) {
+//     if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//       setNrForca(40);
+//       setNmForca('REZILIENTE...');
+//       }
+//     } else if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//       setNrForca(30);
+//       setNmForca('FRACA...');
+//     }
+//   }
+//   if (strForca.length === 4) {
+//     if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//       setNrForca(80);
+//       setNmForca('MÉDIA...');
+//     } else if ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//       setNrForca(35);
+//       setNmForca('FRACA...');
+//     }
+//   }
+//   if (strForca.length < 4) {
+//     if ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
+//     || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
+//       setNrForca(30);
+//       setNmForca('FRACA...');
+//     }
+//   }
+// };
