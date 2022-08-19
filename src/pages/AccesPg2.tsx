@@ -39,6 +39,104 @@ export const AccesPg2 = () => {
     // handlerValorForca();
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const isKeyDown = false;
+    var tecla = event.key;
+    console.log('key  : ', tecla);
+    let Teclado: Array<string> = [
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '0',
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z',
+      '!',
+      '*',
+      '"',
+      '#',
+      '$',
+      '%',
+      '&',
+      '*',
+      '+',
+      '-',
+      '.',
+      '<',
+      '=',
+      '>',
+      '@',
+      '^',
+      '_'
+    ];
+    Teclado.map()
+    if (Teclado.find(tecla))
+    // if ([9, 112].indexOf(event.charCode) !== -1) {
+
+
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+    //console.log(event.keyCode);
+    //var x = event.key;
+    //var y = String.fromCharCode(x);
+  };
+
   return (
     <div>
       <Theme>
@@ -62,6 +160,7 @@ export const AccesPg2 = () => {
               onChange={handlerPasswordChange}
               value={state.password}
               placeholder={'Digite a sua Senha...'}
+              onKeyDown={handleKeyDown}
             />
             <div id={'forca'}>
               <p>
