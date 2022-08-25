@@ -103,45 +103,9 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
   const [nrForca, setNrForca] = React.useState(0);
   const [nmForca, setNmForca] = React.useState('');
   const [isCheck, setIsCheck] = React.useState(false);
-
-  function chequePeso() {
-    setNrForca(nrForca);
-    if (strForca.length >= 4 && strForca.length <= 7) {
-      setNrForca(nrForca + 10);
-    } else if (strForca.length > 7) {
-      setNrForca(nrForca + 25);
-    }
-    if (strForca.length >= 5 && strForca.match(/[a-z] + /)) {
-      setNrForca(nrForca + 10);
-    }
-    if (strForca.length >= 6 && strForca.match(/[A-Z] + /)) {
-      setNrForca(nrForca + 20);
-    }
-    if (
-      strForca.length >= 7 &&
-      strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)
-    ) {
-      setNrForca(nrForca + 25);
-    }
-    pso = nrForca;
-  }
-
-  function searchStatus() {
-    setNmForca(nmForca);
-    if (nrForca < 30) {
-      setNmForca('FRACA...');
-    }
-    if (nrForca >= 30 && nrForca < 50) {
-      setNmForca('MÉDIA...');
-    }
-    if (nrForca >= 50 && nrForca < 70) {
-      setNmForca('FORTE...');
-    }
-    if (nrForca >= 70 && nrForca < 100) {
-      setNmForca('EXCELENTE...');
-    }
-    frc = nmForca;
-  }
+  if (snh === undefined) snh = '';
+  if (pso === undefined) pso = 0;
+  if (frc === undefined) frc = '';
 
   const { state, dispatch } = AccesUseForm();
 
@@ -163,23 +127,51 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     snh = e.target.value;
-    if (snh === undefined) snh = '';
-    dispatch({
-      type: AccesActions.setPassword,
-      payload: snh
-    });
     setStrForca(snh);
+    /**    pso   Peso */
+    pso = 0;
+    if (snh.length >= 4) {
+      pso = pso + 10;
+    }
+    if (snh.length >= 7) {
+      pso = pso + 10;
+    }
+    if (snh.length > 7) {
+      pso = pso + 25;
+    }
+    if (snh.length >= 5 && snh.match(/[a-z] + /)) {
+      pso = pso + 10;
+    }
+    if (snh.length >= 6 && snh.match(/[A-Z] + /)) {
+      pso = pso + 20;
+    }
+    if (snh.length >= 7 && snh.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) {
+      pso = pso + 25;
+    }
+    setNrForca(pso);
+    //**   frc   */
+    frc = '';
+    if (pso < 30) {
+      frc = 'FRACA...';
+    }
+    if (pso >= 30 && pso < 50) {
+      frc = 'MÉDIA...';
+    }
+    if (pso >= 50 && pso < 70) {
+      frc = 'FORTE...';
+    }
+    if (pso >= 70 && pso < 100) {
+      frc = 'EXCELENTE...';
+    }
+    setNmForca(frc);
   };
 
   React.useEffect(() => {
-    chequePeso();
-  }),
-    [pso, chequePeso];
-
-  React.useEffect(() => {
-    searchStatus();
-  }),
-    [frc, searchStatus];
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: strForca
+    });
+  }, [strForca, dispatch]);
 
   const navigate = useNavigate();
 
