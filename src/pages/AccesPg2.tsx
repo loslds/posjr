@@ -7,20 +7,143 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
 
-export const AccesPg2 = () => {
+export const ListaKey = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+  '!',
+  '#',
+  '$',
+  '%',
+  '&',
+  '+',
+  '-',
+  '.',
+  '<',
+  '=',
+  '>',
+  '@',
+  '^',
+  '_'
+];
+
+// type PropsSnh = {
+//   s?: string;
+//   p?: number;
+//   n?: string;
+//   r: boolean;
+// };
+
+type PropsAccesP2 = {
+  snh?: string;
+  pso?: number;
+  frc?: string;
+};
+export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
   const [strForca, setStrForca] = React.useState('');
   const [nrForca, setNrForca] = React.useState(0);
   const [nmForca, setNmForca] = React.useState('');
+  const [isCheck, setIsCheck] = React.useState(false);
+
+  function chequePeso() {
+    setNrForca(nrForca);
+    if (strForca.length >= 4 && strForca.length <= 7) {
+      setNrForca(nrForca + 10);
+    } else if (strForca.length > 7) {
+      setNrForca(nrForca + 25);
+    }
+    if (strForca.length >= 5 && strForca.match(/[a-z] + /)) {
+      setNrForca(nrForca + 10);
+    }
+    if (strForca.length >= 6 && strForca.match(/[A-Z] + /)) {
+      setNrForca(nrForca + 20);
+    }
+    if (
+      strForca.length >= 7 &&
+      strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)
+    ) {
+      setNrForca(nrForca + 25);
+    }
+    pso = nrForca;
+  }
+
+  function searchStatus() {
+    setNmForca(nmForca);
+    if (nrForca < 30) {
+      setNmForca('FRACA...');
+    }
+    if (nrForca >= 30 && nrForca < 50) {
+      setNmForca('MÉDIA...');
+    }
+    if (nrForca >= 50 && nrForca < 70) {
+      setNmForca('FORTE...');
+    }
+    if (nrForca >= 70 && nrForca < 100) {
+      setNmForca('EXCELENTE...');
+    }
+    frc = nmForca;
+  }
 
   const { state, dispatch } = AccesUseForm();
-
-  const navigate = useNavigate();
-
-  const goto = (path: string) => {
-    return () => {
-      navigate(path);
-    };
-  };
 
   React.useEffect(() => {
     dispatch({
@@ -29,112 +152,41 @@ export const AccesPg2 = () => {
     });
   }, [dispatch]);
 
-  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const str = e.target.value;
-    dispatch({
-      type: AccesActions.setPassword,
-      payload: str
-    });
-    setStrForca(str);
-    // handlerValorForca();
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (ListaKey.indexOf(event.key) < 0) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      setIsCheck(true);
+    }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const isKeyDown = false;
-    var tecla = event.key;
-    console.log('key  : ', tecla);
-    let Teclado: Array<string> = [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
-      '9',
-      '0',
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y',
-      'z',
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z',
-      '!',
-      '*',
-      '"',
-      '#',
-      '$',
-      '%',
-      '&',
-      '*',
-      '+',
-      '-',
-      '.',
-      '<',
-      '=',
-      '>',
-      '@',
-      '^',
-      '_'
-    ];
-    Teclado.map()
-    if (Teclado.find(tecla))
-    // if ([9, 112].indexOf(event.charCode) !== -1) {
+  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    snh = e.target.value;
+    if (snh === undefined) snh = '';
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: snh
+    });
+    setStrForca(snh);
+  };
 
+  React.useEffect(() => {
+    chequePeso();
+  }),
+    [pso, chequePeso];
 
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-    //console.log(event.keyCode);
-    //var x = event.key;
-    //var y = String.fromCharCode(x);
+  React.useEffect(() => {
+    searchStatus();
+  }),
+    [frc, searchStatus];
+
+  const navigate = useNavigate();
+
+  const goto = (path: string) => {
+    return () => {
+      navigate(path);
+    };
   };
 
   return (
@@ -149,9 +201,8 @@ export const AccesPg2 = () => {
           <hr />
           <label>
             Desclare sua PassWord de Acesso.
-            <p>
-              * Use até 8 caracteres : maiúscula, minuscula, números e simbolos.
-            </p>
+            <p>* Use 8 caracteres que contenham : </p>
+            <p>Letras maiúscula, minuscula, números e simbolos.</p>
             <input
               id="psw"
               type="text"
@@ -160,20 +211,20 @@ export const AccesPg2 = () => {
               onChange={handlerPasswordChange}
               value={state.password}
               placeholder={'Digite a sua Senha...'}
-              onKeyDown={handleKeyDown}
+              onKeyPress={handleKeyPress}
             />
-            <div id={'forca'}>
-              <p>
-                {'Força Senha: '} + {nmForca} + {' => '} + {strForca} + {' => '}{' '}
-                + {nrForca} + {'.'}
-              </p>
-              );
-            </div>
+            {isCheck ? (
+              <div id={'sforca'}>
+                <p> {'String Força: ' + strForca}</p>
+                <p> {'Peso Força: ' + nrForca}</p>
+                <p> {'Nome Força: ' + nmForca}</p>
+              </div>
+            ) : null}
           </label>
           <button onClick={goto('/accespg1')} title={'Retorna Passo : " 2 ".'}>
             Voltar
           </button>
-          {state.password !== '' ? (
+          {state.password !== '' && state.password.length === 8 ? (
             <button onClick={goto('/accespg3')} title={'Passo : " 4 ".'}>
               Próximo.
             </button>
@@ -184,76 +235,57 @@ export const AccesPg2 = () => {
   );
 };
 
-// const handlerValorForca = () => {
+// if (snh === undefined) snh = '';
+// if (pso === undefined) pso = 0;
+// if (nmf === undefined) nmf = '';
 
-//   if (strForca.length <= 3) {
-//     /** força fraca  */
+// var pass = snh;
+// var peso = 0;
+// var nmfrc = '';
+
+// // console.log('entrei....snh=>pass : ', pass);
+// if (pass === '') {
+//   setStrForca('');
+//   setNrForca(0);
+//   setNmForca('');
+//   setIsCheck(false);
+// } else {
+//   console.log('pass....: ', pass);
+//   setStrForca(pass);
+//   console.log('peso....: ', peso);
+//   setNrForca(peso);
+//   console.log('nmfrc...: ', nmfrc);
+//   setNmForca(nmfrc);
+//   setIsCheck(true);
+// }
+
+// return isCheck;
+// }
+
+// function DetectPasword() {
+//   if (snh === undefined) snh = '';
+//   if (pso === undefined) pso = 0;
+//   if (nmf === undefined) nmf = '';
+
+//   var pass = snh;
+//   var peso = 0;
+//   var nmfrc = '';
+
+//   // console.log('entrei....snh=>pass : ', pass);
+//   if (pass === '') {
+//     setStrForca('');
 //     setNrForca(0);
-//     setNmForca(
-//       'Determine Números, Letras Minusculas...Maiúsculas e Símbolos...'
-//     );
+//     setNmForca('');
+//     setIsCheck(false);
+//   } else {
+//     console.log('pass....: ', pass);
+//     setStrForca(pass);
+//     console.log('peso....: ', peso);
+//     setNrForca(peso);
+//     console.log('nmfrc...: ', nmfrc);
+//     setNmForca(nmfrc);
+//     setIsCheck(true);
 //   }
-//   if (strForca.length === 8) {
-//     if ( ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) ) {
-//       setNrForca(100);
-//       setNmForca('EXCELENTE...');
-//     }
-//   }
-//   if (strForca.length === 7) {
-//     if ( ( !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
-//     || ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
-//     || ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) )
-//     || ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) ) {
-//     setNrForca(85);
-//     setNmForca('FORTE...');
-//     }
-//   }
-//   if (strForca.length === 6) {
-//     if ( !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//     setNrForca(50);
-//     setNmForca('MÉDIA...');
-//     }
-//   }
-//   if (strForca.length === 5) {
-//     if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//       setNrForca(40);
-//       setNmForca('REZILIENTE...');
-//       }
-//     } else if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//       setNrForca(30);
-//       setNmForca('FRACA...');
-//     }
-//   }
-//   if (strForca.length === 4) {
-//     if ( (strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//       setNrForca(80);
-//       setNmForca('MÉDIA...');
-//     } else if ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//       || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//       setNrForca(35);
-//       setNmForca('FRACA...');
-//     }
-//   }
-//   if (strForca.length < 4) {
-//     if ( (strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || !(strForca.match(/[0-9] + /)) && (strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && (strForca.match(/[A-Z] + /)) && !(strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /))
-//     || !(strForca.match(/[0-9] + /)) && !(strForca.match(/[a-z] + /)) && !(strForca.match(/[A-Z] + /)) && (strForca.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) ) {
-//       setNrForca(30);
-//       setNmForca('FRACA...');
-//     }
-//   }
-// };
+
+//   return isCheck;
+// }
