@@ -86,12 +86,61 @@ export const ListaKey = [
   '_'
 ];
 
-// type PropsSnh = {
-//   s?: string;
-//   p?: number;
-//   n?: string;
-//   r: boolean;
-// };
+type PropsPesos = {
+  chr?: string;
+};
+export function findPesoPass({ chr }: PropsPesos) {
+  if (chr === undefined) chr = '';
+  var peso = 0;
+
+  if (chr.match(/[a-z] + /)) {
+    peso = peso + 15;
+  }
+  if (chr.match(/[A-Z] + /)) {
+    peso = peso + 20;
+  }
+  if (chr.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) {
+    peso = peso + 25;
+  }
+  /** total peso = 100  */
+  if (chr.length > 3) {
+    peso = peso + 10;
+  }
+  if (chr.length > 4) {
+    peso = peso + 10;
+  }
+  if (chr.length > 5) {
+    peso = peso + 10;
+  }
+  if (chr.length > 6) {
+    peso = peso + 10;
+  }
+  if (chr.length > 7) {
+    peso = peso + 10;
+  } /** total peso = 50  */
+
+  return peso;
+}
+type PropsChar = {
+  vlr?: number;
+};
+export function findCharPass({ vlr }: PropsChar) {
+  if (vlr === undefined) vlr = 0;
+  var str = '';
+  if (vlr < 30) {
+    str = 'FRACA...';
+  }
+  if (vlr >= 30 && vlr < 50) {
+    str = 'MÉDIA...';
+  }
+  if (vlr >= 50 && vlr < 70) {
+    str = 'FORTE...';
+  }
+  if (vlr >= 70 && vlr < 100) {
+    str = 'EXCELENTE...';
+  }
+  return str;
+}
 
 type PropsAccesP2 = {
   snh?: string;
@@ -103,6 +152,7 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
   const [nrForca, setNrForca] = React.useState(0);
   const [nmForca, setNmForca] = React.useState('');
   const [isCheck, setIsCheck] = React.useState(false);
+
   if (snh === undefined) snh = '';
   if (pso === undefined) pso = 0;
   if (frc === undefined) frc = '';
@@ -127,42 +177,10 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     snh = e.target.value;
+    pso = findPesoPass(snh);
+    frc = findCharPass(pso);
     setStrForca(snh);
-    /**    pso   Peso */
-    pso = 0;
-    if (snh.length >= 4) {
-      pso = pso + 10;
-    }
-    if (snh.length >= 7) {
-      pso = pso + 10;
-    }
-    if (snh.length > 7) {
-      pso = pso + 25;
-    }
-    if (snh.length >= 5 && snh.match(/[a-z] + /)) {
-      pso = pso + 10;
-    }
-    if (snh.length >= 6 && snh.match(/[A-Z] + /)) {
-      pso = pso + 20;
-    }
-    if (snh.length >= 7 && snh.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) {
-      pso = pso + 25;
-    }
     setNrForca(pso);
-    //**   frc   */
-    frc = '';
-    if (pso < 30) {
-      frc = 'FRACA...';
-    }
-    if (pso >= 30 && pso < 50) {
-      frc = 'MÉDIA...';
-    }
-    if (pso >= 50 && pso < 70) {
-      frc = 'FORTE...';
-    }
-    if (pso >= 70 && pso < 100) {
-      frc = 'EXCELENTE...';
-    }
     setNmForca(frc);
   };
 
@@ -207,9 +225,9 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
             />
             {isCheck ? (
               <div id={'sforca'}>
-                <p> {'String Força: ' + strForca}</p>
-                <p> {'Peso Força: ' + nrForca}</p>
-                <p> {'Nome Força: ' + nmForca}</p>
+                <p> {'Senha: ' + strForca}</p>
+                <p> {'Peso : ' + nrForca}</p>
+                <p> {'Força: ' + nmForca}</p>
               </div>
             ) : null}
           </label>
@@ -226,6 +244,29 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
     </div>
   );
 };
+
+// pso = 0;
+// if (snh.length >= 4) {
+//   pso = pso + 10;
+// } else
+// if (snh.length >= 7) {
+//   pso = pso + 10;
+// }
+// if (snh.length > 7) {
+//   pso = pso + 25;
+// }
+// if (snh.length >= 5) {
+//   if (snh.match(/[a-z] + /)) {
+//     pso = pso + 10;
+//   }
+// }
+// if (snh.length >= 6 && snh.match(/[A-Z] + /)) {
+//   pso = pso + 20;
+// }
+// if (snh.length >= 7 && snh.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) {
+//   pso = pso + 25;
+// }
+// setNrForca(pso);
 
 // if (snh === undefined) snh = '';
 // if (pso === undefined) pso = 0;
