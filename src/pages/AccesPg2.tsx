@@ -7,155 +7,71 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 import { Theme } from '../components/Theme';
 import * as C from './stylesAcces';
 
-export const ListaKey = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '0',
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-  '!',
-  '#',
-  '$',
-  '%',
-  '&',
-  '+',
-  '-',
-  '.',
-  '<',
-  '=',
-  '>',
-  '@',
-  '^',
-  '_'
-];
+export const ListaKey =
+  '1234567890abcdefghijklmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVXYZW!#$&+-.<=>@^_'.split(
+    ''
+  );
 
-type PropsPesos = {
-  chr?: string;
-};
-export function findPesoPass({ chr }: PropsPesos) {
-  if (chr === undefined) chr = '';
-  var peso = 0;
+export function findPesoPass(chr = '') {
+  if (!chr) return 1;
+  // if (chr?.length <= 3) return 1;
+  // const nrvza = 0;
+  const funcX = (base: number, occur: number = 0) => {
+    return (len: number) => {
+      const a = len - occur;
+      return Number(Math.pow(base, a));
+    };
+  };
 
-  if (chr.match(/[a-z] + /)) {
-    peso = peso + 15;
-  }
-  if (chr.match(/[A-Z] + /)) {
-    peso = peso + 20;
-  }
-  if (chr.match(/[!*"#$%&'*+,-./:;<=>?@\^_`|~] + /)) {
-    peso = peso + 25;
-  }
-  /** total peso = 100  */
-  if (chr.length > 3) {
-    peso = peso + 10;
-  }
-  if (chr.length > 4) {
-    peso = peso + 10;
-  }
-  if (chr.length > 5) {
-    peso = peso + 10;
-  }
-  if (chr.length > 6) {
-    peso = peso + 10;
-  }
-  if (chr.length > 7) {
-    peso = peso + 10;
-  } /** total peso = 50  */
+  const multiply: ReturnType<typeof funcX>[] = [];
 
-  return peso;
-}
-type PropsChar = {
-  vlr?: number;
-};
-export function findCharPass({ vlr }: PropsChar) {
-  if (vlr === undefined) vlr = 0;
-  var str = '';
-  if (vlr < 30) {
-    str = 'FRACA...';
-  }
-  if (vlr >= 30 && vlr < 50) {
-    str = 'MÉDIA...';
-  }
-  if (vlr >= 50 && vlr < 70) {
-    str = 'FORTE...';
-  }
-  if (vlr >= 70 && vlr < 100) {
-    str = 'EXCELENTE...';
-  }
-  return str;
+  if (chr.match(/[0-9]/g)?.length)
+    multiply.push(funcX(10, chr.match(/[0-9]/g)?.length));
+  if (chr.match(/[a-z]/g)?.length) multiply.push(funcX(25));
+  if (chr.match(/[A-Z]/g)?.length) multiply.push(funcX(25));
+  const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+  if (chr.match(rex)) multiply.push(funcX(13, chr.match(rex)?.length));
+
+  const points = multiply.reduce((acc, func) => {
+    const r = func(chr.length);
+    const b = acc + r;
+
+    console.log('b : ', b);
+
+    return b;
+  }, 0);
+
+  return points;
 }
 
-type PropsAccesP2 = {
-  snh?: string;
-  pso?: number;
-  frc?: string;
-};
-export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
+export function findCharPass(points = 0) {
+  const arr = [
+    ['FORTE', 75],
+    ['MÉDIO', 50],
+    ['FRACO', 0]
+  ];
+  // const total = 28244479.67959415;
+  // const total = 6.575825076573528e41;
+  // const total = 587705317731;
+  const total = 306091511971;
+  // const total = 6176279767;
+  const percent = (points * 100) / total;
+
+  console.log('percent', percent);
+
+  for (let index = 0; index < arr.length; index++) {
+    const [label, value] = arr[index];
+    if (percent > value) return label;
+  }
+
+  return 0;
+}
+
+export const AccesPg2 = () => {
   const [strForca, setStrForca] = React.useState('');
   const [nrForca, setNrForca] = React.useState(0);
   const [nmForca, setNmForca] = React.useState('');
   const [isCheck, setIsCheck] = React.useState(false);
-
-  if (snh === undefined) snh = '';
-  if (pso === undefined) pso = 0;
-  if (frc === undefined) frc = '';
 
   const { state, dispatch } = AccesUseForm();
 
@@ -167,7 +83,7 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
   }, [dispatch]);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (ListaKey.indexOf(event.key) < 0) {
+    if (!ListaKey.includes(event.key)) {
       event.preventDefault();
       event.stopPropagation();
     } else {
@@ -176,12 +92,12 @@ export const AccesPg2 = ({ snh, pso, frc }: PropsAccesP2) => {
   };
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    snh = e.target.value;
-    pso = findPesoPass(snh);
-    frc = findCharPass(pso);
+    const snh = e.target.value;
+    const pso = findPesoPass(snh);
+    const frc = findCharPass(pso);
     setStrForca(snh);
     setNrForca(pso);
-    setNmForca(frc);
+    setNmForca(String(frc));
   };
 
   React.useEffect(() => {
