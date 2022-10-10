@@ -46,7 +46,6 @@ export const AccesPg0 = ({ pth }: Acces0Type) => {
     if (level === 2) {
       pth = '/accespg2';
     }
-    console.log('pth : ', pth);
   };
 
   return (
