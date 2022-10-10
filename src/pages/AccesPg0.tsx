@@ -9,11 +9,7 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 import closevrm from '../assets/images/closeverm.png';
 import * as C from './stylesAcces';
 
-type Acces0Type = {
-  pth?: string;
-};
-
-export const AccesPg0 = ({ pth }: Acces0Type) => {
+export const AccesPg0 = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -39,13 +35,6 @@ export const AccesPg0 = ({ pth }: Acces0Type) => {
       type: AccesActions.setDescrlevel,
       payload: DescrLevel[level]
     });
-    pth = '';
-    if (level === 1) {
-      pth = '/accespg1';
-    }
-    if (level === 2) {
-      pth = '/accespg2';
-    }
   };
 
   return (
