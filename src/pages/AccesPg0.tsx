@@ -6,10 +6,14 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-// import closeverm1 from '../assets/images/closeverm1.png';
+import closevrm from '../assets/images/closeverm.png';
 import * as C from './stylesAcces';
 
-export const AccesPg0 = () => {
+type Acces0Type = {
+  pth?: string;
+};
+
+export const AccesPg0 = ({ pth }: Acces0Type) => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -35,6 +39,14 @@ export const AccesPg0 = () => {
       type: AccesActions.setDescrlevel,
       payload: DescrLevel[level]
     });
+    pth = '';
+    if (level === 1) {
+      pth = '/accespg1';
+    }
+    if (level === 2) {
+      pth = '/accespg2';
+    }
+    console.log('pth : ', pth);
   };
 
   return (
@@ -58,6 +70,7 @@ export const AccesPg0 = () => {
           description={'Usuário Funcionário.'}
           selected={state.level === 2}
           onClick={() => setLevel(2)}
+          ico={closevrm}
         />
         {state.level >= 1 ? (
           <button onClick={goto('/accespg1')} title={'Passo : " 2 ".'}>
