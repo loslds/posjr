@@ -10,6 +10,7 @@ type StateAcces = {
   name: string;
   email: string;
   fone: string;
+  descrpath: string;
 
   currentStepNew: 0 | 1 | 2 | 3;
   levelNew: 0 | 1 | 2;
@@ -31,6 +32,7 @@ export const initialData: StateAcces = {
   name: '',
   email: '',
   fone: '',
+  descrpath: '',
 
   currentStepNew: 0,
   levelNew: 0,
@@ -66,6 +68,7 @@ export enum AccesActions {
   setName,
   setEmail,
   setFone,
+  setDescrpath,
 
   setCurrentStepNew,
   setLevelNew,
@@ -97,6 +100,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, email: action.payload };
     case AccesActions.setFone:
       return { ...state, fone: action.payload };
+    case AccesActions.setDescrpath:
+      return { ...state, descrpath: action.payload };
 
     case AccesActions.setCurrentStepNew:
       return { ...state, currentStepNew: action.payload };

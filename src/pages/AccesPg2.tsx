@@ -19,6 +19,7 @@ export function findPesoPass(chr = '') {
   const funcX = (base: number, occur: number = 0) => {
     return (len: number) => {
       const a = len - occur;
+      console.log('a : ', a);
       return Number(Math.pow(base, a));
     };
   };

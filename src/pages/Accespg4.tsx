@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// import { ButtonsCirclesBg } from '~/components/buttons/stylesButtons';
 import { Titles } from '~/components/Titles';
 
 import { Theme } from '../components/Theme';
@@ -17,16 +16,21 @@ export const AccesPg4 = () => {
   return (
     <Theme>
       <C.Container>
-        <p>Acesso a Rede do Sistema Interno. </p>
+        <p>Acesso a Rede do Sistema. </p>
         <Titles>
-          <h1>Acesso ao Sistema.</h1>
+          <h1>Acesso ao Sistema INTERNO.</h1>
         </Titles>
         <p>Determime sua ID e Senha de Acesso abaixo.</p>
         <hr />
-        <button onClick={goto('/accespg5')} title={'Retorna Passo : " 0 ".'}>
+        <button onClick={goto('/accespg0')} title={'Retorna Passo : " 0 ".'}>
           Voltar.
         </button>
-        <button onClick={() => {}} title={'Acesso ao Sistema.'}>
+        <button
+          onClick={() => {
+            alert('pag. com menu.');
+          }}
+          title={'Acesso ao Sistema.'}
+        >
           Acessar.
         </button>
       </C.Container>

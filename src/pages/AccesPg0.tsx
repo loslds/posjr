@@ -27,6 +27,7 @@ export const AccesPg0 = () => {
   }, [dispatch]);
 
   const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcioário.'];
+  const DescrPath = ['', '/accespg1', '/accespg4'];
   const setLevel = (level: number) => {
     dispatch({
       type: AccesActions.setLevel,
@@ -36,16 +37,12 @@ export const AccesPg0 = () => {
       type: AccesActions.setDescrlevel,
       payload: DescrLevel[level]
     });
+    dispatch({
+      type: AccesActions.setDescrpath,
+      payload: DescrPath[level]
+    });
   };
 
-  const caminho = (seguir: number) => {
-    if (seguir === 1) {
-      goto('accespg4');
-    }
-    if (seguir === 2) {
-      goto('accespg2');
-    }
-  };
   return (
     <Theme>
       <C.Container>
@@ -55,7 +52,7 @@ export const AccesPg0 = () => {
         </Titles>
         <p>Selecione uma opção para o acesso.</p>
         <hr />
-        <label>Determine uma Opção :</label>
+        <label>Determine uma Opção : {state.descrpath}</label>
         <AccesOpction
           title=" Acesso Internet."
           description={'Usuário Cliênte.'}
@@ -73,7 +70,7 @@ export const AccesPg0 = () => {
           <FaUserAlt color="#fff" />
         </AccesOpction>
         {state.level >= 1 ? (
-          <button onClick={() => caminho(state.level)} title={'Passo : " 2 ".'}>
+          <button onClick={goto(state.descrpath)} title={'Passo : " 2 ".'}>
             Próximo.
           </button>
         ) : null}
@@ -81,3 +78,4 @@ export const AccesPg0 = () => {
     </Theme>
   );
 };
+//           </button>/<button onClick={() => caminho(state.level)} title={'Passo : " 2 ".'}>
