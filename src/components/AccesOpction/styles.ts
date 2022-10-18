@@ -10,6 +10,7 @@ export const Container = styled.div<{ selected: boolean }>`
   margin: 5px 5px 5px 15px;
   display: flex;
   align-items: center;
+  align-content: center;
   color: #fff;
   cursor: pointer;
   &:hover {
@@ -43,6 +44,10 @@ export const Icon = styled.div<{ img?: string }>`
   align-items: center;
   background-color: #191459;
   font-size: 30px;
+  background-image: url(${props => props.img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
 `;
 
 export const Info = styled.div`

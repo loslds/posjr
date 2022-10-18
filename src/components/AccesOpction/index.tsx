@@ -1,8 +1,10 @@
 import React from 'react';
+// import { FaUserAlt } from 'react-icons/fa';
 
 import * as C from './styles';
 
 type PropsAccesOpction = {
+  children?: React.ReactNode;
   title?: string;
   description?: string;
   ico?: string;
@@ -11,15 +13,15 @@ type PropsAccesOpction = {
 };
 
 export const AccesOpction = ({
+  children,
   title,
   description,
-  ico,
   selected,
   onClick
 }: PropsAccesOpction) => {
   return (
     <C.Container onClick={onClick} selected={selected}>
-      <C.Icon>{ico}</C.Icon>
+      <C.Icon>{children}</C.Icon>
       <C.Info>
         <C.Title>{title}</C.Title>
         <C.Description>{description}</C.Description>

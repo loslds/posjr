@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaUserAlt, FaNetworkWired } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import { AccesOpction } from '~/components/AccesOpction';
@@ -6,7 +7,7 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import closevrm from '../assets/images/closeverm.png';
+// import closevrm from '../assets/images/svgs/profile.svg';
 import * as C from './stylesAcces';
 
 export const AccesPg0 = () => {
@@ -37,6 +38,14 @@ export const AccesPg0 = () => {
     });
   };
 
+  const caminho = (seguir: number) => {
+    if (seguir === 1) {
+      goto('accespg4');
+    }
+    if (seguir === 2) {
+      goto('accespg2');
+    }
+  };
   return (
     <Theme>
       <C.Container>
@@ -52,16 +61,19 @@ export const AccesPg0 = () => {
           description={'Usuário Cliênte.'}
           selected={state.level === 1}
           onClick={() => setLevel(1)}
-        />
+        >
+          <FaNetworkWired color="#fff" />
+        </AccesOpction>
         <AccesOpction
           title="Acesso Local."
           description={'Usuário Funcionário.'}
           selected={state.level === 2}
           onClick={() => setLevel(2)}
-          ico={closevrm}
-        />
+        >
+          <FaUserAlt color="#fff" />
+        </AccesOpction>
         {state.level >= 1 ? (
-          <button onClick={goto('/accespg1')} title={'Passo : " 2 ".'}>
+          <button onClick={() => caminho(state.level)} title={'Passo : " 2 ".'}>
             Próximo.
           </button>
         ) : null}
