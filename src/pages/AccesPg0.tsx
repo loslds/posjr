@@ -27,7 +27,7 @@ export const AccesPg0 = () => {
   }, [dispatch]);
 
   const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcioário.'];
-  const DescrPath = ['', '/accespg1', '/accespg4'];
+  const DescrPath = ['', '/accespg1', '/accesfunc'];
   const setLevel = (level: number) => {
     dispatch({
       type: AccesActions.setLevel,
