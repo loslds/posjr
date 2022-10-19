@@ -80,9 +80,7 @@ export const AccesPg3 = () => {
                     img={data[0]}
                     onClick={handlerClickButton}
                     open={isButtonImg}
-                  >
-                    {''}
-                  </C.BoxButtonPW>
+                  ></C.BoxButtonPW>
                 ) : (
                   <C.BoxButtonPW
                     img={data[1]}

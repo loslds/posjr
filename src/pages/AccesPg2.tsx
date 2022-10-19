@@ -133,7 +133,7 @@ export const AccesPg2 = () => {
             <input
               id="psw"
               type="text"
-              autoFocus
+              autoFocus={true}
               maxLength={8}
               onChange={handlerPasswordChange}
               value={state.password}

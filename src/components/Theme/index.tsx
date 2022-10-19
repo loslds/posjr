@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { FaHome, FaKey, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import { Title } from '../AccesView/styles';
@@ -33,25 +34,30 @@ export const Theme = ({ children }: Props) => {
                 <hr />
                 <p>Selecione uma opção para o acesso.</p>
                 <label>
-                  <span>
-                    <div>
-                      <C.Button onClick={goto('/homepage')}>Voltar.</C.Button>
-                    </div>
-                  </span>
+                  <div>
+                    <C.Button onClick={goto('/homepage')}>
+                      Voltar.
+                      <span>
+                        <FaHome />
+                      </span>
+                    </C.Button>
+                  </div>
                 </label>
                 <label>
-                  <span>
-                    <C.Button onClick={goto('/accesnew')}>
-                      Criar uma Conta para Acesso.
-                    </C.Button>
-                  </span>
+                  <C.Button onClick={goto('/accesnew')}>
+                    Criar NOVA Conta.
+                    <span>
+                      <FaLock />
+                    </span>
+                  </C.Button>
                 </label>
                 <label>
-                  <span>
-                    <C.Button onClick={goto('/accesforgot')}>
-                      Esqueci o meu Acesso.
-                    </C.Button>
-                  </span>
+                  <C.Button onClick={goto('/accesforgot')}>
+                    Esqueci meu Acesso.
+                    <span>
+                      <FaKey />
+                    </span>
+                  </C.Button>
                 </label>
               </Sidebar>
             </C.Sidebar>

@@ -56,3 +56,17 @@
   justify-content: flex-end;
   padding: 8px 0;
 }
+
+.input-Label {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  font-weight: bold;
+}
+.input-look {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 8px 0;
+}

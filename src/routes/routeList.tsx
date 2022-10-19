@@ -3,6 +3,7 @@ import React from 'react';
 import { AccesEmail } from '~/pages/AccesEmail';
 import { AccesFone } from '~/pages/AccesFone';
 import { AccesForgot } from '~/pages/AccesForgot';
+import { AccesFunc } from '~/pages/AccesFunc';
 import { AccesNew } from '~/pages/AccesNew';
 import { AccesNew1 } from '~/pages/AccesNew1';
 import { AccesPg0 } from '~/pages/AccesPg0';
@@ -18,6 +19,7 @@ export interface IRoute {
 }
 
 export const RouteList: IRoute[] = [
+  { path: '/accesfunc', exact: true, element: <AccesFunc /> },
   { path: '/accesforgot', exact: true, element: <AccesForgot /> },
   { path: '/accesfone', exact: true, element: <AccesFone /> },
   { path: '/accesemail', exact: true, element: <AccesEmail /> },

@@ -24,7 +24,7 @@ export const Container = styled.div`
     border: 0;
     background-color: #16195c;
     padding: 0px 0px 8px 0px;
-    margin: 10 0 10 0;
+    margin: auto;
   }
   label {
     margin: 0px 0px 0px 0px;

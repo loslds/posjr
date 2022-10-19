@@ -42,8 +42,8 @@ export const Page = styled.div`
 export const Img = styled.img<{ open: boolean }>`
   padding: 0 0 0 0;
   margin: 0 10 0 0;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   display: block;
   justify-content: end;
   align-content: center;
@@ -51,6 +51,11 @@ export const Img = styled.img<{ open: boolean }>`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  align-content: center;
+
   background-color: #25cd89;
   color: #000;
   font-size: 14px;
@@ -58,13 +63,20 @@ export const Button = styled.button`
   font-weight: bold;
   padding: 5px 10px 5px 10px;
   margin: 3px 3px 3px 3px;
-  border: 0;
+  border: 1px solid #ddffaa;
   border-radius: 5px;
   width: 96%;
   cursor: pointer;
   &:hover {
-    // border: 2px #495459 solid;
     background-color: #7df0c1;
-    border: 1px solid #ddffaa;
+  }
+  span {
+    // margin-left: 15px;
+    margin: 0px 15px 0px 15px;
+    display: inline-flex;
+    flex-flow: nowrap;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
   }
 `;
