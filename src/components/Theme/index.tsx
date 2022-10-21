@@ -46,9 +46,10 @@ export const Theme = ({ children }: Props) => {
                 <Title>
                   <h2>Opções.</h2>
                 </Title>
-                <p>Use os Acessos Abaixo.</p>
+                {/* <p>Use os Acessos Abaixo.</p> */}
+                <p>Selecione uma opção para o acesso.</p>
                 <hr />
-                <label>Selecione uma opção para o acesso.</label>
+
                 <label>
                   <div>
                     <C.Button onClick={goto('/homepage')}>
