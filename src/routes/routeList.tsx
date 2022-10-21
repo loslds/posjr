@@ -6,6 +6,7 @@ import { AccesForgot } from '~/pages/AccesForgot';
 import { AccesFunc } from '~/pages/AccesFunc';
 import { AccesNew } from '~/pages/AccesNew';
 import { AccesNew1 } from '~/pages/AccesNew1';
+import { AccesPg } from '~/pages/AccesPg';
 import { AccesPg0 } from '~/pages/AccesPg0';
 import { AccesPg1 } from '~/pages/AccesPg1';
 import { AccesPg2 } from '~/pages/AccesPg2';
@@ -25,6 +26,7 @@ export const RouteList: IRoute[] = [
   { path: '/accesemail', exact: true, element: <AccesEmail /> },
   { path: '/accesnew1', exact: true, element: <AccesNew1 /> },
   { path: '/accesnew', exact: true, element: <AccesNew /> },
+  { path: '/accespg', exact: true, element: <AccesPg /> },
   { path: '/accespg0', exact: true, element: <AccesPg0 /> },
   { path: '/accespg1', exact: true, element: <AccesPg1 /> },
   { path: '/accespg2', exact: true, element: <AccesPg2 /> },

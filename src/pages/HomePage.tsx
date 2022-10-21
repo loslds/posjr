@@ -58,7 +58,7 @@ export const HomePage = () => {
               <ButtonLogin
                 img={loginbrc1}
                 title={'Acesso...'}
-                onClick={goto('/accespg0')}
+                onClick={goto('/accespg')}
               />
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>

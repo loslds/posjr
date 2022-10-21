@@ -41,16 +41,16 @@ export const AccesFunc = () => {
   const data = [olhoa, olhof];
   const dataf = ['text', 'password'];
 
-  const handleBtnTmg = React.useCallback(() => {
-    setIsButtonImg(oldState => !oldState);
-  }, []);
+  // const handleBtnTmg = React.useCallback(() => {
+  //   setIsButtonImg(oldState => !oldState);
+  // }, []);
 
-  const handlerClickButton = () => {
-    if (state.password === '' || state.password === null) {
-      setIsButtonImg(false);
-    }
-    handleBtnTmg();
-  };
+  // const handlerClickButton = () => {
+  //   if (state.password === '' || state.password === null) {
+  //     setIsButtonImg(false);
+  //   }
+  //   handleBtnTmg();
+  // };
 
   return (
     <Theme>
@@ -86,13 +86,13 @@ export const AccesFunc = () => {
                 value={state.password}
                 placeholder={'Digite a sua Senha...'}
               >
-                <span>
+                {/* <span>
                   <C.BoxButtonPW
                     img={data[0]}
                     onClick={handlerClickButton}
                     open={isButtonImg}
                   />
-                </span>
+                </span> */}
               </input>
             </div>
           ) : (
@@ -104,13 +104,13 @@ export const AccesFunc = () => {
                 value={state.password}
                 placeholder={'Digite a sua Senha...'}
               >
-                <span>
+                {/* <span>
                   <C.BoxButtonPW
                     img={data[1]}
                     onClick={handlerClickButton}
                     open={isButtonImg}
                   />
-                </span>
+                </span> */}
               </input>
             </div>
           )}

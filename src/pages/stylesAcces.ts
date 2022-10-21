@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import semimg from '../assets/images/semimg.png';
 export const Container = styled.div`
-  // 01
   p {
     margin: 0px 0px 0px 10px;
     padding: 0px 0px 0px 5px;
@@ -17,23 +16,29 @@ export const Container = styled.div`
   h5 {
     margin: 0px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
+    color: #fff;
+    font-style: normal;
+    h1 {
+      font-size: 22px;
+      line-height: 24px;
+    }
+    h2 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    h4 {
+      font-size: 14px;
+      line-height: 16px;
+    }
+    h5 {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
-  h1 {
-    font-size: 26px;
-  }
-  h2 {
-    font-size: 22px;
-  }
-  h3 {
-    font-size: 18px;
-  }
-  h4 {
-    font-size: 16px;
-  }
-  h5 {
-    font-size: 14px;
-  }
-
   hr {
     height: 1px;
     border: 0;
@@ -45,6 +50,7 @@ export const Container = styled.div`
     margin: 0px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
+    color: #fff;
     input {
       display: block;
       margin-top: 7px;
@@ -56,14 +62,15 @@ export const Container = styled.div`
       border-radius: 10px;
       outline: 0;
       color: #fff;
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 18px;
       background-color: #02044a;
     }
   }
   button {
     background-color: #25cd89;
     color: #000;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 18px;
     font-weight: bold;
     border: 0;
@@ -73,7 +80,7 @@ export const Container = styled.div`
     padding: 10px 20px;
     &:hover {
       background-color: #7df0c1;
-      border: 1px solid #ddffaa;
+      // border: 1px solid #ddffaa;
     }
   }
 `;
