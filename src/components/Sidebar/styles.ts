@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* background-color: transparent;
-  color: #fff;
+  background-color: transparent;
+  min-width: 245px;
+
+  /*color: #fff;
   min-width: 245px;
   min-height: 100%;
   flex: 1;
   flex-wrap: wrap;
   font-size: 16px;
   line-height: 18px;
-  margin: auto; */
+  margin: auto;*/
   p {
-    margin: 0px 5px 0px 10px;
+    margin: 1px 5px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #b8b8d4;
@@ -50,7 +52,7 @@ export const Container = styled.div`
     height: 1px;
     border: 0;
     background-color: #16195c;
-    margin: 1px 0px 6px -3px;
+    margin: 3px 0px 6px 0px;
     padding: 0px 0px 8px 0px;
   }
   label {
