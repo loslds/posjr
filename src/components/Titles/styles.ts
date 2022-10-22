@@ -7,12 +7,14 @@ export const Container = styled.div`
   margin: 0px 0px 0px 0px;
   display: flex;
   align-items: center;
+  font-size: 15px;
+  line-height: 20px;
   h1,
   h2,
   h3,
   h4,
   h5 {
-    margin: 0px 5px 0px 10px;
+    margin: 0px 5px 0px 5px;
     padding: 0px 0px 0px 5px;
     color: #fff;
     font-style: normal;

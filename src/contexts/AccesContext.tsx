@@ -17,9 +17,11 @@ type StateAcces = {
   descrlevelNew: string;
   idnameNew: string;
   passwordNew: string;
+  logadoNew: boolean;
   nameNew: string;
   emailNew: string;
   foneNew: string;
+  descrpathNew: string;
 };
 
 export const initialData: StateAcces = {
@@ -39,9 +41,11 @@ export const initialData: StateAcces = {
   descrlevelNew: '',
   idnameNew: '',
   passwordNew: '',
+  logadoNew: false,
   nameNew: '',
   emailNew: '',
-  foneNew: ''
+  foneNew: '',
+  descrpathNew: ''
 };
 
 type AccesAction = {
@@ -76,8 +80,10 @@ export enum AccesActions {
   setNameNew,
   setIdnameNew,
   setPasswordNew,
+  setLogadoNew,
   setEmailNew,
-  setFoneNew
+  setFoneNew,
+  setDescrpathNew
 }
 
 const AccesReducer = (state: StateAcces, action: AccesAction) => {
@@ -113,12 +119,16 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, idnameNew: action.payload };
     case AccesActions.setPasswordNew:
       return { ...state, passwordNew: action.payload };
+    case AccesActions.setLogadoNew:
+      return { ...state, logadoNew: action.payload };
     case AccesActions.setNameNew:
       return { ...state, nameNew: action.payload };
     case AccesActions.setEmailNew:
       return { ...state, emailNew: action.payload };
     case AccesActions.setFoneNew:
       return { ...state, foneNew: action.payload };
+    case AccesActions.setDescrpathNew:
+      return { ...state, descrpathNew: action.payload };
     default:
       return state;
   }

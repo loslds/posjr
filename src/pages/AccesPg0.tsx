@@ -78,4 +78,3 @@ export const AccesPg0 = () => {
     </Theme>
   );
 };
-//           </button>/<button onClick={() => caminho(state.level)} title={'Passo : " 2 ".'}>

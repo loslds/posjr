@@ -78,7 +78,9 @@ export const ContainerPageMainFlex = styled.div`
   background-color: transparent;
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5 {
     margin: 5px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     text-decoration: 3px underline;
@@ -101,7 +103,9 @@ export const ContainerPageDoubleFlex = styled.div`
   background-color: transparent;
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5 {
     margin: 5px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     text-decoration: 3px underline;

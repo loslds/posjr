@@ -9,6 +9,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 15px;
+  line-height: 20px;
 `;
 
 export const Area = styled.div`
@@ -31,7 +33,24 @@ export const Sidebar = styled.div`
   border-right: 1px #16195c solid;
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 3px 0px 5px;
+  flex: 0;
+  padding: 10px 3px 5px 0px;
+`;
+
+export const SideBarArea = styled.div`
+  border: 1px solid red;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-flow: column;
+  align-content: center;
+  align-items: stretch;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 15px;
 `;
 
 export const Page = styled.div`
@@ -57,13 +76,12 @@ export const Button = styled.button`
   flex-flow: nowrap;
   justify-content: space-between;
   align-content: center;
-
   background-color: #25cd89;
   color: #000;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 14px;
   font-weight: bold;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 5px 5px 5px;
   margin: 3px 3px 3px 3px;
   border: 1px solid #ddffaa;
   border-radius: 5px;

@@ -34,6 +34,7 @@ export const Theme = ({ children }: Props) => {
       payload: 0
     });
   }, [dispatch]);
+
   return (
     <div>
       <C.Container>
@@ -46,50 +47,51 @@ export const Theme = ({ children }: Props) => {
                 <Title>
                   <h2>Opções.</h2>
                 </Title>
-                {/* <p>Use os Acessos Abaixo.</p> */}
                 <p>Selecione uma opção para o acesso.</p>
                 <hr />
-
-                <label>
-                  <div>
-                    <C.Button onClick={goto('/homepage')}>
-                      Voltar.
+                <C.SideBarArea>
+                  {/* //////////Botoes /////////////// */}
+                  <label>
+                    <div>
+                      <C.Button onClick={goto('/homepage')}>
+                        Inicio.
+                        <span>
+                          <FaHome />
+                        </span>
+                      </C.Button>
+                    </div>
+                  </label>
+                  <label>
+                    <C.Button onClick={goto('/accesnew')}>
+                      Criar NOVA Conta.
                       <span>
-                        <FaHome />
+                        <FaLock />
                       </span>
                     </C.Button>
-                  </div>
-                </label>
-                <label>
-                  <C.Button onClick={goto('/accesnew')}>
-                    Criar NOVA Conta.
-                    <span>
-                      <FaLock />
-                    </span>
-                  </C.Button>
-                </label>
-                <label>
-                  <C.Button onClick={goto('/accesforgot')}>
-                    Esqueci meu Acesso.
-                    <span>
-                      <FaKey />
-                    </span>
-                  </C.Button>
-                </label>
-                <label>
-                  {state.idname == '' && state.password == '' ? (
-                    <C.Button
-                      onClick={handerClickOuter}
-                      title={'Acessar de outra Forma...'}
-                    >
-                      Outra forma de Acesso.
+                  </label>
+                  <label>
+                    <C.Button onClick={goto('/accesforgot')}>
+                      Esqueci meu Acesso.
                       <span>
-                        <FaListOl />
+                        <FaKey />
                       </span>
                     </C.Button>
-                  ) : null}
-                </label>
-                {isOuter ? <AccesCase /> : null}
+                  </label>
+                  <label>
+                    {state.idname == '' || state.password == '' ? (
+                      <C.Button
+                        onClick={handerClickOuter}
+                        title={'Outros Acessos...'}
+                      >
+                        Outra forma de Acesso.
+                        <span>
+                          <FaListOl />
+                        </span>
+                      </C.Button>
+                    ) : null}
+                  </label>
+                  {isOuter ? <AccesCase /> : null}
+                </C.SideBarArea>
               </Sidebar>
             </C.Sidebar>
             <C.Page>{children}</C.Page>
@@ -99,3 +101,83 @@ export const Theme = ({ children }: Props) => {
     </div>
   );
 };
+
+// const handlerRebuildForm = () => {
+//   dispatch({
+//     type: AccesActions.setLevel,
+//     payload: 0
+//   });
+//   dispatch({
+//     type: AccesActions.setDescrlevel,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setDescrpath,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setIdname,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setPassword,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setLogado,
+//     payload: false
+//   });
+//   dispatch({
+//     type: AccesActions.setName,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setEmail,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setFone,
+//     payload: ''
+//   });
+
+//   dispatch({
+//     type: AccesActions.setCurrentStepNew,
+//     payload: 0
+//   });
+//   dispatch({
+//     type: AccesActions.setLevelNew,
+//     payload: 0
+//   });
+//   dispatch({
+//     type: AccesActions.setDescrlevelNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setDescrpathNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setIdnameNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setPasswordNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setLogadoNew,
+//     payload: false
+//   });
+//   dispatch({
+//     type: AccesActions.setNameNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setEmailNew,
+//     payload: ''
+//   });
+//   dispatch({
+//     type: AccesActions.setFoneNew,
+//     payload: ''
+//   });
+// };
