@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: center;
   font-size: 15px;
   line-height: 20px;
+
   h1,
   h2,
   h3,

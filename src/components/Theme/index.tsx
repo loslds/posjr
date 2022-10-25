@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import { AccesCase } from '../AccesCase';
-import { Title } from '../AccesView/styles';
 import { Header } from '../Header';
 import { Sidebar } from '../Sidebar';
+import { Titles } from '../Titles';
 import * as C from './styles';
 
 type Props = {
@@ -44,16 +44,18 @@ export const Theme = ({ children }: Props) => {
             <C.Sidebar>
               <Sidebar>
                 <p>Em que posso te ajudar?</p>
-                <Title>
+                <Titles>
                   <h2>Opções.</h2>
-                </Title>
+                </Titles>
                 <p>Selecione uma opção para o acesso.</p>
                 <hr />
                 <C.SideBarArea>
-                  {/* //////////Botoes /////////////// */}
                   <label>
                     <div>
-                      <C.Button onClick={goto('/homepage')}>
+                      <C.Button
+                        onClick={goto('/homepage')}
+                        title={'Volta ao Inicio...'}
+                      >
                         Inicio.
                         <span>
                           <FaHome />
@@ -62,7 +64,10 @@ export const Theme = ({ children }: Props) => {
                     </div>
                   </label>
                   <label>
-                    <C.Button onClick={goto('/accesnew')}>
+                    <C.Button
+                      onClick={goto('/accesnew')}
+                      title={'Nova Conta...'}
+                    >
                       Criar NOVA Conta.
                       <span>
                         <FaLock />
@@ -70,7 +75,10 @@ export const Theme = ({ children }: Props) => {
                     </C.Button>
                   </label>
                   <label>
-                    <C.Button onClick={goto('/accesforgot')}>
+                    <C.Button
+                      onClick={goto('/accesforgot')}
+                      title={'Esqueci ID ou Senha...'}
+                    >
                       Esqueci meu Acesso.
                       <span>
                         <FaKey />

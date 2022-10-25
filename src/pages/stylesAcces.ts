@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import semimg from '../assets/images/semimg.png';
+
 export const Container = styled.div`
   p {
     margin: 0px 0px 0px 10px;
@@ -18,27 +19,28 @@ export const Container = styled.div`
     padding: 0px 0px 0px 5px;
     color: #fff;
     font-style: normal;
-    h1 {
-      font-size: 22px;
-      line-height: 24px;
-    }
-    h2 {
-      font-size: 20px;
-      line-height: 22px;
-    }
-    h3 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h4 {
-      font-size: 14px;
-      line-height: 16px;
-    }
-    h5 {
-      font-size: 10px;
-      line-height: 12px;
-    }
   }
+  h1 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  h5 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
   hr {
     height: 1px;
     border: 0;
@@ -47,24 +49,37 @@ export const Container = styled.div`
     padding: 0px 0px 8px 0px;
   }
   label {
-    margin: 0px 5px 0px 10px;
+    margin: 0px 0px 0px 10px;
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #fff;
+
+    span {
+      margin: 0px 15px 0px 15px;
+      display: inline-flex;
+      flex-flow: nowrap;
+      position: relative;
+      justify-content: flex-end;
+      align-content: center;
+      align-items: center;
+    }
     input {
-      display: block;
-      margin-top: 7px;
-      margin-left: 15px;
-      box-sizing: border-box;
-      width: 98%;
-      padding: 20px 10px;
-      border: 2px solid #25cd89;
-      border-radius: 10px;
+      //border: 2px solid #25cd89;
+      //border-radius: 10px;
+      border: 0;
+      border-left: 2px solid #25cd89;
+      border-right: 2px solid #25cd89;
+      border-radius: 5%;
+      display: flex;
+      margin: 0px 0px 0px 40px;
+      padding: 10px 10px 10px 8px;
+      // box-sizing: border-box;
+      width: 80%;
+      background-color: transparent; // #02044a;
       outline: 0;
       color: #fff;
-      font-size: 16px;
-      line-height: 18px;
-      background-color: #02044a;
+      font-size: 14px;
+      line-height: 16px;
     }
   }
   button {
@@ -80,17 +95,17 @@ export const Container = styled.div`
     padding: 10px 20px;
     &:hover {
       background-color: #7df0c1;
-      // border: 1px solid #ddffaa;
     }
   }
 `;
 
-export const DivImg = styled.div`
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-  border: 1px solid #ff0000;
-  width: 35px;
-  min-height: 30px;
+export const DivImgLeft = styled.div`
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  border: 0px;
+  border-left: 2px solid #25cd89;
+  width: 42px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-content: center;

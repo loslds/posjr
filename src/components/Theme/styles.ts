@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 0px 0px 0px 0px;
-  padding: 0px 3px 0px -5px;
+  padding: 0px 3px 0px 0px;
   background-color: #02044a;
   color: #fff;
   min-height: 100vh;
@@ -31,14 +31,15 @@ export const Step = styled.div`
 export const Sidebar = styled.div`
   width: 250px;
   border-right: 1px #16195c solid;
-  display: flex;
+  //display: flex;
   flex-wrap: wrap;
   flex: 0;
-  padding: 10px 3px 5px 0px;
+  padding: 3px 3px 5px 0px;
 `;
 
 export const SideBarArea = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  border: 0px;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   width: 99%;
@@ -57,7 +58,7 @@ export const Page = styled.div`
   flex: 1;
   flex-wrap: wrap;
   min-width: 200px;
-  padding: 10px 3px 0px 5px;
+  padding: 3px 3px 0px 5px;
 `;
 
 export const Img = styled.img<{ open: boolean }>`
@@ -78,8 +79,8 @@ export const Button = styled.button`
   align-content: center;
   background-color: #25cd89;
   color: #000;
-  font-size: 12px;
-  line-height: 14px;
+  /* font-size: 12px;
+  line-height: 14px; */
   font-weight: bold;
   padding: 5px 5px 5px 5px;
   margin: 3px 3px 3px 3px;
@@ -91,7 +92,6 @@ export const Button = styled.button`
     background-color: #7df0c1;
   }
   span {
-    // margin-left: 15px;
     margin: 0px 15px 0px 15px;
     display: inline-flex;
     flex-flow: nowrap;

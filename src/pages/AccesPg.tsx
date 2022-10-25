@@ -1,6 +1,14 @@
 import React from 'react';
+import { FaIdBadge } from 'react-icons/fa';
+import { MdInput } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
+import { PanelInput } from '~/components/PanelInput';
+import {
+  SideImgInputLeft,
+  SideImgInputRight,
+  SideInputCenter
+} from '~/components/PanelInput/styles';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
@@ -23,12 +31,12 @@ export const AccesPg = () => {
     });
   }, [dispatch]);
 
-  const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: AccesActions.setIdname,
-      payload: e.target.value
-    });
-  };
+  // const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   dispatch({
+  //     type: AccesActions.setIdname,
+  //     payload: e.target.value
+  //   });
+  // };
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -48,13 +56,32 @@ export const AccesPg = () => {
         <hr />
         <label>
           ID para Reconhecimento.
-          <input
-            type="text"
-            autoFocus={true}
-            onChange={handlerIdNameChange}
-            value={state.idname}
-            placeholder={'Digite a sua ID...'}
-          />
+          <PanelInput>
+            <SideImgInputLeft>
+              <span>
+                <FaIdBadge height={'35px'} />
+              </span>
+            </SideImgInputLeft>
+            <SideInputCenter>
+              <input
+                type="text"
+                onChange={() => {}}
+                value={state.idname}
+                placeholder={'Digite a sua ID...'}
+              />
+            </SideInputCenter>
+            <SideImgInputRight>aqui</SideImgInputRight>
+            {/* <span>
+              <C.DivImgLeft>aqui</C.DivImgLeft>
+            </span>
+            <input
+              type="text"
+              autoFocus={true}
+              onChange={handlerIdNameChange}
+              value={state.idname}
+              placeholder={'Digite a sua ID...'}
+            /> */}
+          </PanelInput>
         </label>
         <label>
           PASSWORD para Acesso.

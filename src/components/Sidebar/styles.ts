@@ -17,27 +17,28 @@ export const Container = styled.div`
     padding: 0px 0px 0px 5px;
     color: #fff;
     font-style: normal;
-    h1 {
-      font-size: 22px;
-      line-height: 24px;
-    }
-    h2 {
-      font-size: 20px;
-      line-height: 22px;
-    }
-    h3 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h4 {
-      font-size: 14px;
-      line-height: 16px;
-    }
-    h5 {
-      font-size: 10px;
-      line-height: 12px;
-    }
   }
+  h1 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  h5 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
   hr {
     height: 1px;
     border: 0;
