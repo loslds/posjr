@@ -7,7 +7,6 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-// import closevrm from '../assets/images/svgs/profile.svg';
 import * as C from './stylesAcces';
 
 export const AccesPg0 = () => {
@@ -18,7 +17,6 @@ export const AccesPg0 = () => {
     };
   };
   const { state, dispatch } = AccesUseForm();
-
   React.useEffect(() => {
     dispatch({
       type: AccesActions.setCurrentStep,

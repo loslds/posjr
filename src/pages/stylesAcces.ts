@@ -53,7 +53,7 @@ export const Container = styled.div`
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #fff;
-
+    /*
     span {
       margin: 0px 15px 0px 15px;
       display: inline-flex;
@@ -62,8 +62,8 @@ export const Container = styled.div`
       justify-content: flex-end;
       align-content: center;
       align-items: center;
-    }
-    input {
+    } */
+    /* input {
       //border: 2px solid #25cd89;
       //border-radius: 10px;
       border: 0;
@@ -74,13 +74,14 @@ export const Container = styled.div`
       margin: 0px 0px 0px 40px;
       padding: 10px 10px 10px 8px;
       // box-sizing: border-box;
-      width: 80%;
+      width: 90%;
       background-color: transparent; // #02044a;
       outline: 0;
       color: #fff;
       font-size: 14px;
       line-height: 16px;
     }
+     */
   }
   button {
     background-color: #25cd89;
@@ -112,7 +113,89 @@ export const DivImgLeft = styled.div`
   align-items: center;
 `;
 // ///////////////////////////////////////////
-
+export const ContainerInput = styled.div`
+  border: 2px solid #25cd89;
+  border-radius: 10px;
+  margin: 0px 0px 2px 15px;
+  padding: 0px 0px 0px 2px;
+  width: 90%;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+`;
+export const SideImgInputLeft = styled.div`
+  border: 0;
+  border-right: 2px solid #25cd89;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 7%;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: center;
+  align-items: center;
+  span {
+    margin: 8px 8px 8px 8px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #25cd89;
+  }
+`;
+export const SideImgInputRight = styled.div`
+  border: 0;
+  border-left: 2px solid #25cd89;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 7%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: right;
+  align-content: center;
+  align-items: center;
+  span {
+    margin: 8px 8px 8px 8px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #07fa00;
+  }
+`;
+export const SideInputCenter = styled.div`
+  border: 1px dashed green;
+  margin: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  input {
+    border: 0;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    width: 100%;
+    background-color: transparent; // #02044a;
+    outline: 0;
+    color: #fff;
+    font-size: 18px;
+    line-height: 20px;
+  }
+`;
+// ///////////////////////////////////////////
 export const ContainerPW = styled.div`
   background-color: transparent;
   border: 2px solid #25cd89;
