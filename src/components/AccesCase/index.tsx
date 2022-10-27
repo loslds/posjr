@@ -1,17 +1,23 @@
 import React from 'react';
 import { MdSendToMobile, MdKeyboardAlt, MdMail } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
-//FaMobileAlt
 import * as C from './styles';
 
 export const AccesCase = () => {
+  const navigate = useNavigate();
+  const goto = (path: string) => {
+    return () => {
+      navigate(path);
+    };
+  };
   return (
     <C.ContainerCase>
       {/* <h2>Opções:</h2> */}
       <C.ContainerArea>
-        <label>Através de:</label>
-        <C.ButtonCase>
-          Chave PIN.
+        <label>Com Segurança:</label>
+        <C.ButtonCase id={'pin'} onClick={goto('acceschvpin')}>
+          Code PIN.
           <span>
             <MdKeyboardAlt />
           </span>

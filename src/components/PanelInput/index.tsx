@@ -6,5 +6,5 @@ type PropsPanelInput = {
   children?: ReactNode;
 };
 export const PanelInput = ({ children }: PropsPanelInput) => {
-  return <C.Container>{children}</C.Container>;
+  return <C.ContainerInput>{children}</C.ContainerInput>;
 };

@@ -11,6 +11,9 @@ type StateAcces = {
   email: string;
   fone: string;
   descrpath: string;
+  chvpin: string;
+  chvsms: string;
+  chvmail: string;
 
   currentStepNew: 0 | 1 | 2 | 3;
   levelNew: 0 | 1 | 2;
@@ -35,6 +38,9 @@ export const initialData: StateAcces = {
   email: '',
   fone: '',
   descrpath: '',
+  chvpin: '',
+  chvsms: '',
+  chvmail: '',
 
   currentStepNew: 0,
   levelNew: 0,
@@ -73,6 +79,9 @@ export enum AccesActions {
   setEmail,
   setFone,
   setDescrpath,
+  setChvPin,
+  setChvSms,
+  setChvMail,
 
   setCurrentStepNew,
   setLevelNew,
@@ -108,6 +117,12 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, fone: action.payload };
     case AccesActions.setDescrpath:
       return { ...state, descrpath: action.payload };
+    case AccesActions.setChvPin:
+      return { ...state, chvpin: action.payload };
+    case AccesActions.setChvSms:
+      return { ...state, chvsms: action.payload };
+    case AccesActions.setChvMail:
+      return { ...state, chvmail: action.payload };
 
     case AccesActions.setCurrentStepNew:
       return { ...state, currentStepNew: action.payload };
