@@ -9,78 +9,28 @@ import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
 
 export const AccesPg = () => {
-  export const ListaKey =
-  '1234567890abcdefghijklmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVXYZW!#$&+-.<=>@^_'.split(
-    ''
-  );
-  export function findPesoPass(chr = '') {
-    if (!chr) return 1;
-    // if (chr?.length <= 3) return 1;
-    // const nrvza = 0;
-    const funcX = (base: number, occur: number = 0) => {
-      return (len: number) => {
-        const a = len - occur;
-        console.log('a : ', a);
-        return Number(Math.pow(base, a));
-      };
-    };
-
-    const multiply: ReturnType<typeof funcX>[] = [];
-
-    if (chr.match(/[0-9]/g)?.length)
-      multiply.push(funcX(10, chr.match(/[0-9]/g)?.length));
-    if (chr.match(/[a-z]/g)?.length) multiply.push(funcX(25));
-    if (chr.match(/[A-Z]/g)?.length) multiply.push(funcX(25));
-    const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
-    if (chr.match(rex)) multiply.push(funcX(13, chr.match(rex)?.length));
-
-    const points = multiply.reduce((acc, func) => {
-      const r = func(chr.length);
-      const b = acc + r;
-
-      console.log('b : ', b);
-
-      return b;
-    }, 0);
-
-    return points;
-  }
-
-  export function findCharPass(points = 0) {
-    const arr = [
-      ['FORTE', 75],
-      ['MÉDIO', 50],
-      ['FRACO', 0]
-    ];
-    // const total = 28244479.67959415;
-    // const total = 6.575825076573528e41;
-    // const total = 587705317731;
-    const total = 306091511971;
-    // const total = 6176279767;
-    const percent = (points * 100) / total;
-
-    console.log('percent', percent);
-
-    for (let index = 0; index < arr.length; index++) {
-      const [label, value] = arr[index];
-      if (percent > value) return label;
-    }
-
-    return 0;
-  }
-
-
   const [isAccesId, setIsAccesId] = React.useState(false);
   const [isimputname, setIsImputName] = React.useState(false);
   const [isAccespas, setIsAccesPas] = React.useState(false);
   const [isimputpass, setIsImputPass] = React.useState(false);
+  const [strsenha, setStrSenha] = React.useState('');
+  const [tnhsenha, setTnhSenha] = React.useState(0);
+  const [istamanho, setIsTamanho] = React.useState(false);
+  const [isnumeral, setIsNumeral] = React.useState(false);
+  const [iscxbax, setIsCxBax] = React.useState(false);
+  const [iscxalta, setIsCxAlta] = React.useState(false);
+  const [issimbol, setIsSimbol] = React.useState(false);
+
+  const [ischeck, setIsCheck] = React.useState(false);
 
   const navigate = useNavigate();
+
   const goto = (path: string) => {
     return () => {
       navigate(path);
     };
   };
+
   const { state, dispatch } = AccesUseForm();
   React.useEffect(() => {
     dispatch({
@@ -96,26 +46,49 @@ export const AccesPg = () => {
     });
   };
 
-  const handlerPasswordChange = (event:: React.ChangeEvent<HTMLInputElement>) => {
-    if (!ListaKey.includes(event.key)) {
-      event.preventDefault();
-      event.stopPropagation();
-    } else {
+  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const snh = e.target.value;
+    setStrSenha(snh);
+    if (snh !== '' || snh !== null) {
+      const tnh = snh.length;
+      setIsTamanho(true);
+      setTnhSenha(tnh);
       setIsCheck(true);
+      if (snh.match(/[0-9]/g)?.length) {
+        setIsNumeral(true);
+      } else {
+        setIsNumeral(false);
+      }
+
+      if (snh.match(/[a-z]/g)?.length) {
+        setIsCxBax(true);
+      } else {
+        setIsCxBax(false);
+      }
+
+      if (snh.match(/[A-Z]/g)?.length) {
+        setIsCxAlta(true);
+      } else {
+        setIsCxAlta(false);
+      }
+      const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+      if (snh.match(rex)?.length) {
+        setIsSimbol(true);
+      } else {
+        setIsSimbol(false);
+      }
+    } else {
+      setIsTamanho(false);
+      setIsCheck(false);
     }
+  };
 
-    React.useEffect(() => {
-      dispatch({
-        type: AccesActions.setPassword,
-        payload: strForca
-      });
-    }, [strForca, dispatch]);
-
+  React.useEffect(() => {
     dispatch({
       type: AccesActions.setPassword,
-      payload: e.target.value
+      payload: strsenha
     });
-  };
+  }, [strsenha, dispatch]);
 
   const SpanChangeId = () => {
     if (state.idname === '') {
@@ -193,7 +166,7 @@ export const AccesPg = () => {
             <C.SideInputCenter>
               <input
                 type="text"
-                maxLength={10}
+                maxLength={13}
                 autoFocus
                 onChange={handlerPasswordChange}
                 value={state.password}
@@ -219,11 +192,36 @@ export const AccesPg = () => {
               ) : null}
             </C.SideImgInputRight>
           </C.ContainerInput>
-          <div>
-            <label>
-              Acesso : {'acesso'} Peso : {'peso'} forca : {'peso'}
-            </label>
-          </div>
+          {ischeck ? (
+            <div>
+              <p>Senha : {strsenha}</p>
+              {istamanho ? (
+                <p>Tamanho Senha: {tnhsenha}</p>
+              ) : (
+                <p>Tamanho : 0 </p>
+              )}
+              {isnumeral ? (
+                <p>Contem Numero : SIM </p>
+              ) : (
+                <p>Contem Numero : Não </p>
+              )}
+              {iscxbax ? (
+                <p>Contem Cx. Baixa : SIM </p>
+              ) : (
+                <p>Contem Cx. Baixa : Não </p>
+              )}
+              {iscxalta ? (
+                <p>Contem Cx. Alta : SIM </p>
+              ) : (
+                <p>Contem Cx. Alta : Não </p>
+              )}
+              {issimbol ? (
+                <p>Contem Simbolo : SIM </p>
+              ) : (
+                <p>Contem Simbolo : Não </p>
+              )}
+            </div>
+          ) : null}
         </label>
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
