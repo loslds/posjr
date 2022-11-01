@@ -276,6 +276,18 @@ export const DivPWS = styled.div<{ open?: boolean }>`
   // align-content: center;
   align-items: center;
 `;
+export const DivForca = styled.div<{ open?: boolean }>`
+  border: 2px solid yellow;
+  padding: 0px 0px 0px 0px;
+  margin: 2px 10px 2px 10px;
+  width: 98%;
+  display: ${props => (props.open ? 'flex' : 'none')};
+  flex-wrap: nowrap;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
 
 type PropsBtnPw = {
   img?: string;

@@ -86,7 +86,7 @@ export const Theme = ({ children }: Props) => {
                     </C.Button>
                   </label>
                   <label>
-                    {state.idname == '' || state.password == '' ? (
+                    {state.idname === '' || state.password === '' ? (
                       <C.Button
                         onClick={handerClickOuter}
                         title={'Outros Acessos...'}
@@ -109,83 +109,3 @@ export const Theme = ({ children }: Props) => {
     </div>
   );
 };
-
-// const handlerRebuildForm = () => {
-//   dispatch({
-//     type: AccesActions.setLevel,
-//     payload: 0
-//   });
-//   dispatch({
-//     type: AccesActions.setDescrlevel,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setDescrpath,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setIdname,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setPassword,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setLogado,
-//     payload: false
-//   });
-//   dispatch({
-//     type: AccesActions.setName,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setEmail,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setFone,
-//     payload: ''
-//   });
-
-//   dispatch({
-//     type: AccesActions.setCurrentStepNew,
-//     payload: 0
-//   });
-//   dispatch({
-//     type: AccesActions.setLevelNew,
-//     payload: 0
-//   });
-//   dispatch({
-//     type: AccesActions.setDescrlevelNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setDescrpathNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setIdnameNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setPasswordNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setLogadoNew,
-//     payload: false
-//   });
-//   dispatch({
-//     type: AccesActions.setNameNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setEmailNew,
-//     payload: ''
-//   });
-//   dispatch({
-//     type: AccesActions.setFoneNew,
-//     payload: ''
-//   });
-// };
