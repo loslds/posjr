@@ -2,8 +2,6 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-import { isNumberObject } from 'util/types';
-
 import { Titles } from '~/components/Titles';
 
 import { Theme } from '../components/Theme';
