@@ -13,41 +13,41 @@ export const ListaKey =
     ''
   );
 
-export function ttProces(qual = '', testo = '') {
-  // const Totalizacao = 0;
-  if (qual === 'N') {
-    //var ttgeral = 0;
-    //var peso = 1;
-    //var total = 0;
-    const numbers: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    const lista = ListaKey;
-    for (let x = 0; x < testo.length; x++) {
-      const chr = lista[x];
-      // var qdd = 0;
-      for (let i = 0; i < testo.length; i++) {
-        if (testo[i] === chr) {
-          console.log('Achei...:', chr);
-        } else {
-          console.log('Não encontrei...:', chr);
-        }
-      }
-      // if (testo[i] === letra) {
-      //   qdd = qdd + 1;
-      //   if (qdd > 0) {
-      //     total = qdd;
-      //   }
-      // console.log('qddn : ', qddn);
-      // }
-      // numbers[x] = total;
-    }
-    // const tt = numbers.reduce(function (soma, i) {
-    // return soma + i;
-    // });
-    // ttgeral = peso * tt;
-    return 1; //ttgeral;
-  }
-  return 0;
-}
+// export function ttProces(qual = '', testo = '') {
+//   // const Totalizacao = 0;
+//   if (qual === 'N') {
+//     //var ttgeral = 0;
+//     //var peso = 1;
+//     //var total = 0;
+//     const numbers: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+//     const lista = ListaKey;
+//     for (let x = 0; x < testo.length; x++) {
+//       const chr = lista[x];
+//       // var qdd = 0;
+//       for (let i = 0; i < testo.length; i++) {
+//         if (testo[i] === chr) {
+//           console.log('Achei...:', chr);
+//         } else {
+//           console.log('Não encontrei...:', chr);
+//         }
+//       }
+//       // if (testo[i] === letra) {
+//       //   qdd = qdd + 1;
+//       //   if (qdd > 0) {
+//       //     total = qdd;
+//       //   }
+//       // console.log('qddn : ', qddn);
+//       // }
+//       // numbers[x] = total;
+//     }
+// const tt = numbers.reduce(function (soma, i) {
+// return soma + i;
+// });
+// ttgeral = peso * tt;
+//     return 1; //ttgeral;
+//   }
+//   return 0;
+// }
 
 // if (qual === 'B'){
 //   var ttgeral = 0;
@@ -133,27 +133,31 @@ export function ttProces(qual = '', testo = '') {
 export function findForcaSnh(testo = '') {
   // if (!qual ) return 1;
   if (!testo) return 1;
-  //const numbers: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  const lista = ListaKey;
+  // const lista = ListaKey;
   for (let x = 0; x < testo.length; x++) {
-    const chr = lista[x];
-    var qdd = 0;
+    // const chr = lista[x];
+    // var qdd = 0;
+    let total = 0;
+    // var vlr = 0;
     for (let i = 0; i < testo.length; i++) {
       const s = testo[i];
+      var vl = 0;
       if (s.match(/[0-9]/g)?.length) {
-        console.log('sim "s" é um Numero :', s);
+        vl = 1;
       }
       if (s.match(/[a-z]/g)?.length) {
-        console.log('sim "s" é um letra Cx. Baixa :', s);
+        vl = 3;
       }
       if (s.match(/[A-Z]/g)?.length) {
-        console.log('sim "s" é um letra Cx. Alta :', s);
+        vl = 7;
       }
       const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
       if (s.match(rex)?.length) {
-        console.log('sim "s" é um Simbolo :', s);
+        vl = 50;
       }
+      total = total + vl;
     }
+    return total;
   }
   return 2;
 }
@@ -198,6 +202,7 @@ export const AccesPg = () => {
   const [ttforçan, setTtForcaN] = React.useState(0);
   const [ttforçacxb, setTtForcaCxB] = React.useState(0);
   const [ttforçacxa, setTtForcaCxA] = React.useState(0);
+  const [ttpeso, setTtPeso] = React.useState(0);
   const navigate = useNavigate();
 
   const goto = (path: string) => {
@@ -215,6 +220,7 @@ export const AccesPg = () => {
     setIsSimbol(false);
     setIsCheck(false);
     setTnhSenha(0);
+    setTtPeso(0);
     setQddNr(0);
     setTtForcaN(0);
     setTtForcaCxB(0);
@@ -225,8 +231,9 @@ export const AccesPg = () => {
       setTnhSenha(tnh);
       if (tnh >= 4) {
         setIsCheck(true);
-        const ttpesoforcan = findForcaSnh(snh);
-        console.log('ttpesoforcan :', ttpesoforcan);
+        const ttpesoforca = findForcaSnh(snh);
+        setTtPeso(ttpesoforca);
+        console.log('ttpesoforcan :', ttpesoforca);
       }
 
       // if (snh.match(/[0-9]/g)?.length) {
@@ -397,7 +404,8 @@ export const AccesPg = () => {
           <C.DivForca open={ischeck}>
             <label>Senha : {strsenha} </label>
             <label>Tamanho Senha: {tnhsenha}</label>
-            {isnumeral ? (
+            <label>Total Peso : {ttpeso}</label>
+            {/* {isnumeral ? (
               <label> Contem Numero : SIM Qdd. de Numeral : {qddnumeral}</label>
             ) : (
               <label> Contem Numero : Não Qdd. de Numeral : {qddnumeral}</label>
@@ -432,7 +440,7 @@ export const AccesPg = () => {
             ) : (
               <label>Contem Simbolo : Não Qdd. de Simbolo : {qddcxsimb}</label>
             )}
-            ;
+            ; */}
           </C.DivForca>
         </label>
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
