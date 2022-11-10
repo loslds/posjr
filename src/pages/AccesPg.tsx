@@ -131,53 +131,49 @@ export const ListaKey =
 //   }
 
 export function findForcaSnh(testo = '') {
-  // if (!qual ) return 1;
-  if (!testo) return 1;
-  // const lista = ListaKey;
+  let simb = 0;
+  let cxal = 0;
+  let cxba = 0;
+  let nume = 0;
+  if (!testo) return [1, 0, 0, 0, 0];
   for (let x = 0; x < testo.length; x++) {
-    // const chr = lista[x];
-    // var qdd = 0;
     let total = 0;
-    // var vlr = 0;
     for (let i = 0; i < testo.length; i++) {
       const s = testo[i];
       var vl = 0;
       if (s.match(/[0-9]/g)?.length) {
+        nume = 1;
         vl = 1;
       }
       if (s.match(/[a-z]/g)?.length) {
-        vl = 3;
+        cxba = 1;
+        vl = 7;
       }
       if (s.match(/[A-Z]/g)?.length) {
-        vl = 7;
+        cxal = 1;
+        vl = 15;
       }
       const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
       if (s.match(rex)?.length) {
-        vl = 50;
+        simb = 1;
+        vl = 55;
       }
       total = total + vl;
     }
-    return total;
+    return [total, simb, cxal, cxba, nume];
   }
-  return 2;
+  return [1, 0, 0, 0, 0];
 }
 
-// if (qual === 'N'){
-//   const ttgeralN = ttProces(qual , testo );
-//   return ttgeralN;
-// }
-// if (qual === 'B'){
-//   const ttgeralb = ttProces(qual , testo );
-//   return ttgeralb;
-// }
-// if (qual === 'A'){
-//   const ttgerala = ttProces(qual , testo );
-//   return ttgerala;
-// }
-// if (qual === 'S'){
-//   const ttgerals = ttProces(qual , testo );
-//   return ttgerals;
-// }
+export function getpesoSnh(
+  testo = '',
+  fnumb = false,
+  fcxbai = false,
+  fcxalt = false,
+  fsimb = false
+) {
+  let tamanho = testo.length;
+}
 
 export const AccesPg = () => {
   const [isAccesId, setIsAccesId] = React.useState(false);
@@ -231,9 +227,16 @@ export const AccesPg = () => {
       setTnhSenha(tnh);
       if (tnh >= 4) {
         setIsCheck(true);
-        const ttpesoforca = findForcaSnh(snh);
-        setTtPeso(ttpesoforca);
-        console.log('ttpesoforcan :', ttpesoforca);
+        let ttlistqdd: number[] = [];
+        let pesosnh = 0;
+        ttlistqdd = findForcaSnh(snh);
+        if (ttlistqdd[1]) setIsNumeral(true);
+        if (ttlistqdd[2]) setIsCxBax(true);
+        if (ttlistqdd[3]) setIsCxAlta(true);
+        if (ttlistqdd[4]) setIsSimbol(true);
+        pesosnh = getPesoSnh(snh, isnumeral, iscxbax, iscxalta, issimbol);
+
+        setTtPeso(ttlistqdd[0]);
       }
 
       // if (snh.match(/[0-9]/g)?.length) {
@@ -375,7 +378,7 @@ export const AccesPg = () => {
             <C.SideInputCenter>
               <input
                 type="text"
-                maxLength={13}
+                maxLength={8}
                 autoFocus
                 onChange={handlerPasswordChange}
                 value={state.password}
