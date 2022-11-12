@@ -53,35 +53,6 @@ export const Container = styled.div`
     padding: 0px 0px 0px 5px;
     font-size: 13px;
     color: #fff;
-    /*
-    span {
-      margin: 0px 15px 0px 15px;
-      display: inline-flex;
-      flex-flow: nowrap;
-      position: relative;
-      justify-content: flex-end;
-      align-content: center;
-      align-items: center;
-    } */
-    /* input {
-      //border: 2px solid #25cd89;
-      //border-radius: 10px;
-      border: 0;
-      border-left: 2px solid #25cd89;
-      border-right: 2px solid #25cd89;
-      border-radius: 5%;
-      display: flex;
-      margin: 0px 0px 0px 40px;
-      padding: 10px 10px 10px 8px;
-      // box-sizing: border-box;
-      width: 90%;
-      background-color: transparent; // #02044a;
-      outline: 0;
-      color: #fff;
-      font-size: 14px;
-      line-height: 16px;
-    }
-     */
   }
   button {
     background-color: #25cd89;
@@ -277,16 +248,31 @@ export const DivPWS = styled.div<{ open?: boolean }>`
   align-items: center;
 `;
 export const DivForca = styled.div<{ open?: boolean }>`
-  border: 2px solid yellow;
+  border: 0; /* 2px solid yellow; */
   padding: 0px 0px 0px 0px;
   margin: 2px 10px 2px 10px;
   width: 98%;
   display: ${props => (props.open ? 'flex' : 'none')};
   flex-wrap: nowrap;
   flex-flow: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+  //  justify-content: center;
+  //align-content: center;
+  //align-items: center;
+`;
+
+export const DivProgress = styled.div`
+  border: 1px dashed white;
+  padding: 0px 0px 0px 0px;
+  margin: 2px 2px 2px 20px;
+  min-width: 35%;
+  display: flex row;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: column;
+  //align-items: flex-start;
+  background-color: transparent; /*rgba(184, 184, 212, 0.2);*/
+  font-size: 14px;
+  color: white;
 `;
 
 type PropsBtnPw = {
