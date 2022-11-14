@@ -275,6 +275,32 @@ export const DivProgress = styled.div`
   color: white;
 `;
 
+export const EscalaProgress = styled.div<{ width?: string }>`
+  border: 1px solid rgba(184, 184, 212, 1);
+  // border-radius: 10px;
+  padding: 0px 0px 0px 0px;
+  margin: 2px 2px 2px 20px;
+  height: 10px;
+  width: 100px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: column;
+  align-items: flex-start;
+  div {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 10px;
+    width: ${props => (props.width ? 'width' : '0px')};
+    display: block;
+    background-color: red;
+  }
+
+  background-color: transparent; /*rgba(184, 184, 212, 0.2);*/
+  font-size: 14px;
+  color: white;
+`;
+
 type PropsBtnPw = {
   img?: string;
   onClick: () => void;
