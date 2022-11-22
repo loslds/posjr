@@ -275,7 +275,7 @@ export const DivProgress = styled.div`
   color: white;
 `;
 
-export const EscalaProgress = styled.div<{ width?: string }>`
+export const EscalaProgress = styled.div<{ width?: string; color?: string }>`
   border: 1px solid rgba(184, 184, 212, 1);
   // border-radius: 10px;
   padding: 0px 0px 0px 0px;
@@ -293,7 +293,7 @@ export const EscalaProgress = styled.div<{ width?: string }>`
     height: 10px;
     width: ${props => (props.width ? 'width' : '0px')};
     display: block;
-    background-color: red;
+    background-color: ${props => (props.color ? 'color' : 'transparent')};
   }
 
   background-color: transparent; /*rgba(184, 184, 212, 0.2);*/

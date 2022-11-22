@@ -2,9 +2,11 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+import { BoxDivProgress } from '~/components/BoxDivProgres';
+import { Titles } from '~/components/Titles';
+
 // import { setInterval } from 'timers/promises';
 // import { ProgressBarSnh } from '~/components/ProgressBarSnh';
-import { Titles } from '~/components/Titles';
 
 import { Theme } from '../components/Theme';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
@@ -15,13 +17,132 @@ export const ListaKey =
     ''
   );
 
+export function findQddSimbolo(testo = '') {
+  const snhS = testo;
+  let qddS = 0;
+  let TtqddS = 0;
+  for (let x = 0; x <= snhS.length; x + 1) {
+    for (let i = 0; i <= snhS.length; i + 1) {
+      const s = snhS[i];
+      const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+      if (s.match(rex)?.length) {
+        qddS = qddS + 1;
+      }
+    }
+    TtqddS = TtqddS + qddS;
+  }
+  return TtqddS;
+}
+
+export function findQddCxAlta(testo = '') {
+  const snhA = testo;
+  let qddA = 0;
+  let TtqddA = 0;
+  for (let x = 0; x <= snhA.length; x + 1) {
+    for (let i = 0; i <= snhA.length; i + 1) {
+      const s = snhA[i];
+      if (s.match(/[A-Z]/g)?.length) {
+        qddA = qddA + 1;
+      }
+    }
+    TtqddA = TtqddA + qddA;
+  }
+  return TtqddA;
+}
+
+export function findQddCxBaixa(testo = '') {
+  const snhB = testo;
+  let qddB = 0;
+  let TtqddB = 0;
+  for (let x = 0; x <= snhB.length; x + 1) {
+    for (let i = 0; i <= snhB.length; i + 1) {
+      const s = snhB[i];
+      if (s.match(/[a-z]/g)?.length) {
+        qddB = qddB + 1;
+      }
+    }
+    TtqddB = TtqddB + qddB;
+  }
+  return TtqddB;
+}
+
+export function findQddNumber(testo = '') {
+  const snhN = testo;
+  let qddN = 0;
+  let TtqddN = 0;
+  for (let x = 0; x <= snhN.length; x + 1) {
+    for (let i = 0; i <= snhN.length; i + 1) {
+      const s = snhN[i];
+      if (s.match(/[0-9]/g)?.length) {
+        qddN = qddN + 1;
+      }
+    }
+    TtqddN = TtqddN + qddN;
+  }
+  return TtqddN;
+}
+
+export function findForcaSnh(testo = '') {
+  const rtn = [0, 0, 0, 0, 0, 0, 0];
+  if (!testo) {
+    return rtn;
+  }
+  let lentst = testo.length;
+  let qddN = 0;
+  let TtqddN = 0;
+  let qddB = 0;
+  let TtqddB = 0;
+  let qddA = 0;
+  let TtqddA = 0;
+  let qddS = 0;
+  let TtqddS = 0;
+  let Tttnh = 0;
+
+  if (lentst > 0) {
+    rtn[0] = 1; /** matris contem ou não caracteres */
+    rtn[1] = lentst; /** tamanho da matriz */
+    for (let x = 0; x <= testo.length; x + 1) {
+      for (let i = 0; i <= testo.length; i + 1) {
+        const s = testo[i];
+        if (s.match(/[0-9]/g)?.length) {
+          qddN = qddN + 1;
+        }
+        if (s.match(/[a-z]/g)?.length) {
+          qddB = qddB + 1;
+        }
+        if (s.match(/[A-Z]/g)?.length) {
+          qddA = qddA + 1;
+        }
+        const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+        if (s.match(rex)?.length) {
+          qddS = qddS + 1;
+        }
+      }
+      TtqddS = TtqddS + qddS;
+      TtqddA = TtqddA + qddA;
+      TtqddB = TtqddB + qddB;
+      TtqddN = TtqddN + qddN;
+    }
+    Tttnh = TtqddS + TtqddA + TtqddB + TtqddN;
+    rtn[2] = TtqddN;
+    rtn[3] = TtqddB;
+    rtn[4] = TtqddA;
+    rtn[5] = TtqddS;
+    rtn[6] = Tttnh;
+    return rtn;
+  }
+  return rtn;
+}
+
 export const AccesPg = () => {
   const [isAccesId, setIsAccesId] = React.useState(false);
   const [isimputname, setIsImputName] = React.useState(false);
   const [isAccespas, setIsAccesPas] = React.useState(false);
   const [isimputpass, setIsImputPass] = React.useState(false);
+  const [islengid, setIsLengId] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
 
+  const [strnome, setStrNome] = React.useState('');
   const [strsenha, setStrSenha] = React.useState('');
   const [tnhsenha, setTnhSenha] = React.useState(0);
 
@@ -37,7 +158,7 @@ export const AccesPg = () => {
   const [qddcxb, setQddCxb] = React.useState(0);
   const [qddcxa, setQddCxa] = React.useState(0);
   const [qddcxs, setQddCxs] = React.useState(0);
-  const [ttqddcx, setTtQddCx] = React.useState(0);
+  // const [ttqddcx, setTtQddCx] = React.useState(0);
 
   const [pesocxn, setPesoCxN] = React.useState(0);
   const [pesocxb, setPesoCxB] = React.useState(0);
@@ -45,116 +166,17 @@ export const AccesPg = () => {
   const [pesocxs, setPesoCxS] = React.useState(0);
   const [ttpesocx, setTtPesoCx] = React.useState(0);
 
+  const [perccxn, setPercCxN] = React.useState(0);
+  const [perccxb, setPercCxB] = React.useState(0);
+  const [perccxa, setPercCxA] = React.useState(0);
+  const [perccxs, setPercCxS] = React.useState(0);
+  const [ttperccx, setTtPercCx] = React.useState(0);
   const navigate = useNavigate();
 
   const goto = (path: string) => {
     return () => {
       navigate(path);
     };
-  };
-
-  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const snh = e.target.value;
-    setStrSenha(snh);
-    setIsNumeral(false);
-    setIsCxBax(false);
-    setIsCxAlta(false);
-    setIsSimbol(false);
-    setTnhSenha(0);
-    setIsCheck(false);
-
-    setQddCxn(0);
-    setQddCxa(0);
-    setQddCxb(0);
-    setQddCxs(0);
-    setTtQddCx(0);
-
-    setPesoCxN(0);
-    setPesoCxB(0);
-    setPesoCxA(0);
-    setPesoCxS(0);
-    setTtPesoCx(0);
-
-    if (strsenha !== '') {
-      const tnh = strsenha.length;
-      setTnhSenha(tnh);
-      // if (tnh > 0) {
-      setIsCheck(true);
-      ////////////////////////////////////////////////////////
-      let simb = 0;
-      let cxal = 0;
-      let cxba = 0;
-      let nume = 0;
-      let ttchr = 0;
-      for (let x = 0; x <= strsenha.length; x++) {
-        let vlchr = 0;
-        for (let i = 0; i <= strsenha.length; i++) {
-          const s = snh[i];
-          if (s.match(/[0-9]/g)?.length) {
-            nume = nume + 1;
-            vlchr = vlchr + 1;
-          }
-          if (s.match(/[a-z]/g)?.length) {
-            cxba = cxba + 1;
-            vlchr = vlchr + 1;
-          }
-          if (s.match(/[A-Z]/g)?.length) {
-            cxal = cxal + 1;
-            vlchr = vlchr + 1;
-          }
-          const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
-          if (s.match(rex)?.length) {
-            simb = simb + 1;
-            vlchr = vlchr + 1;
-          }
-          ttchr = ttchr + vlchr;
-        }
-      }
-      setTtQddCx(ttchr);
-      setIsNumeral(true);
-      if (nume > 0) {
-        setQddCxn(nume);
-      }
-      setIsCxBax(true);
-      if (cxba > 0) {
-        setPesoCxB(cxba);
-      }
-      setIsCxAlta(true);
-      if (cxal > 0) {
-        setQddCxa(cxal);
-      }
-      setIsSimbol(true);
-      if (simb > 0) {
-        setQddCxs(simb);
-      }
-      ////////////////////////////
-      setPesoCxN(qddcxn * 1);
-      setPesoCxB(qddcxb * 7);
-      setPesoCxA(qddcxa * 17);
-      setPesoCxS(qddcxs * 51);
-      ////////////////////////////
-      setTtPesoCx(pesocxn + pesocxb + pesocxa + pesocxs);
-      ////////////////////////////
-      let maxPrgchr = '100px';
-      let minPrgchr = '0px';
-      console.log('maxPrgchr : ', maxPrgchr);
-      console.log('minPrgchr : ', minPrgchr);
-
-      if (isnumeral) {
-        //pesoN = pesoUndchr * ttlistqdd[1];
-        //console.log('pxPrgN : ', pxPrgN);
-        //console.log('maxPrgchr : ', minPrgchr);
-      }
-      if (iscxbax) {
-        //pesox = pesoUndchr * ttlistqdd[2];
-      }
-      if (iscxalta) {
-        //pesoX = pesoUndchr * ttlistqdd[3];
-      }
-      if (issimbol) {
-        //pesoS = 8 * ttlistqdd[4];
-      }
-    }
   };
 
   const { state, dispatch } = AccesUseForm();
@@ -165,61 +187,115 @@ export const AccesPg = () => {
       payload: 0
     });
   }, [dispatch]);
+  //////////////////////////////////////////
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
     dispatch({
       type: AccesActions.setIdname,
-      payload: e.target.value
+      payload: value
     });
   };
 
-  React.useEffect(() => {
-    dispatch({
-      type: AccesActions.setPassword,
-      payload: strsenha
-    });
-  }, [strsenha, dispatch]);
-
-  const spanChangeId = () => {
+  const spanChangeKeyUpId = () => {
     if (state.idname === '') {
       setIsAccesId(false);
       setIsImputName(false);
+      setIsLengId(false);
     } else if (state.idname !== '') {
+      setIsLengId(true);
       setIsAccesId(true);
       setIsImputName(true);
     }
   };
-  const spanChangePas = () => {
+
+  // React.useEffect(() => {
+  //   const value = strnome;
+  //   dispatch({
+  //     type: AccesActions.setIdname,
+  //     payload: value
+  //   });
+  // }, [strnome, dispatch]);
+  //////////////////////////////////////////////////
+  const callProcesSnh = () => {
+    const snh = state.password;
+    setStrSenha(snh);
+    setStrNome(state.name);
+    let lista = [0, 0, 0, 0, 0, 0, 0];
+    console.log('lista : ', lista);
+    // lista = findForcaSnh(snh);
+    // if (lista[2] > 0) {
+    //   setIsNumeral(true);
+    //   setQddCxn(lista[2]);
+    //   setPesoCxN(lista[2] * 1);
+    //   setPercCxN((qddcxn * 100) / lista[1]);
+    // } else {
+    //   setIsNumeral(false);
+    // }
+    // if (lista[3] > 0) {
+    //   setIsCxBax(true);
+    //   setQddCxb(lista[3]);
+    //   setPesoCxB(lista[3] * 7);
+    //   setPercCxB((qddcxb * 100) / lista[1]);
+    // } else {
+    //   setIsCxBax(false);
+    // }
+    // if (lista[4] > 0) {
+    //   setIsCxAlta(true);
+    //   setQddCxa(lista[4]);
+    //   setPesoCxA(lista[4] * 17);
+    //   setPercCxA((qddcxa * 100) / lista[1]);
+    // } else {
+    //   setIsCxAlta(false);
+    // }
+    // if (lista[5] > 0) {
+    //   setIsSimbol(true);
+    //   setQddCxs(lista[5]);
+    //   setPesoCxS(lista[5] * 55);
+    //   setPercCxS((qddcxs * 100) / lista[1]);
+    // } else {
+    //   setIsSimbol(false);
+    // }
+    // setTnhSenha(lista[6]);
+    // setTtPesoCx(pesocxn + pesocxb + pesocxa + pesocxs);
+    // setTtPercCx(perccxn + perccxb + perccxa + perccxs);
+    // setIsCheck(true);
+
+    // console.log('lista : ', lista);
+  };
+
+  const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const snh = e.target.value;
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: snh
+    });
+    callProcesSnh();
+  };
+
+  const spanChangeKeyUpPas = () => {
     if (state.password === '') {
       setIsAccesPas(false);
       setIsImputPass(false);
-    } else if (state.password !== '') {
-      setIsAccesPas(true);
-      setIsImputPass(true);
-    }
-    if (state.password.length <= 3) {
       setIsLengPas(false);
     } else {
+      setIsAccesPas(true);
+      setIsImputPass(true);
       setIsLengPas(true);
     }
   };
 
+  React.useEffect(() => {
+    const value = strsenha;
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: value
+    });
+  }, [strsenha, dispatch]);
+
   const handlerEnviar = () => {
     // alert('Enviar Acesso para reconhecimento...');
   };
-
-  // React.useEffect(() => {
-  //   const interval = setInterval(100, () => {
-  //     setValue(oldvalue => {
-  //       const newvalue = oldvalue + 10;
-  //       if (newvalue <= 100) {
-  //         return newvalue;
-  //       }
-  //       // clearInterval(interval);
-  //       return oldvalue;
-  //     });
-  //   });
-  // }, []);
 
   return (
     <Theme>
@@ -245,7 +321,7 @@ export const AccesPg = () => {
                 onChange={handlerIdNameChange}
                 value={state.idname}
                 placeholder={'Digite a sua ID...'}
-                onKeyUp={spanChangeId}
+                onKeyUp={spanChangeKeyUpId}
               />
             </C.SideInputCenter>
             <C.SideImgInputRight>
@@ -257,11 +333,6 @@ export const AccesPg = () => {
               {isAccesId && isimputname ? (
                 <span>
                   <FaCheck />
-                </span>
-              ) : null}
-              {isAccesId && !isimputname ? (
-                <span>
-                  <FaCheck color={'#fa0000'} />
                 </span>
               ) : null}
             </C.SideImgInputRight>
@@ -283,7 +354,7 @@ export const AccesPg = () => {
                 onChange={handlerPasswordChange}
                 value={state.password}
                 placeholder={'Digite a sua Senha...'}
-                onKeyUp={spanChangePas}
+                onKeyUp={spanChangeKeyUpPas}
               />
             </C.SideInputCenter>
             <C.SideImgInputRight>
@@ -292,14 +363,9 @@ export const AccesPg = () => {
                   <p>{'  '}</p>
                 </span>
               ) : null}
-              {isAccespas && isimputpass && islengpas ? (
+              {isAccespas && isimputpass ? (
                 <span>
                   <FaCheck />
-                </span>
-              ) : null}
-              {isAccespas && !isimputpass ? (
-                <span>
-                  <FaCheck color={'#fa0000'} />
                 </span>
               ) : null}
             </C.SideImgInputRight>
@@ -307,23 +373,45 @@ export const AccesPg = () => {
           <C.DivForca open={ischeck}>
             <C.DivProgress>
               <label> Evolução: </label>
+              <p>Id...... : {strnome}</p>
               <p>Senha... : {strsenha}</p>
               <p>Tamanho. : {tnhsenha}</p>
               <p>Tt. Peso : {ttpesocx}</p>
-              <p>Qdd. Nr. : {qddcxn}</p>
-              <p>Peso Nr. : {pesocxn}</p>
-              <p>Qdd. CxB : {qddcxb}</p>
-              <p>Peso CxB : {pesocxb}</p>
-              <p>Qdd. CxA : {qddcxa}</p>
-              <p>Peso CxA : {pesocxa}</p>
-              <p>Qdd. CxS : {qddcxs}</p>
-              <p>Peso CxS : {pesocxs}</p>
+              <p>Tt. Perc Cx.: {ttperccx}</p>
+              {isnumeral ? (
+                <BoxDivProgress
+                  label={'Força de Numerais.'}
+                  qdd={qddcxn}
+                  peso={pesocxn}
+                  perc={perccxn}
+                />
+              ) : null}
+              {iscxalta ? (
+                <BoxDivProgress
+                  label={'Força Letra Minuscula.'}
+                  qdd={qddcxb}
+                  peso={pesocxb}
+                  perc={perccxb}
+                />
+              ) : null}
+              {iscxbax ? (
+                <BoxDivProgress
+                  label={'Força Letra Maiúscula.'}
+                  qdd={qddcxa}
+                  peso={pesocxa}
+                  perc={perccxa}
+                />
+              ) : null}
+              {issimbol ? (
+                <BoxDivProgress
+                  label={'Força dos Simbolos.'}
+                  qdd={qddcxs}
+                  peso={pesocxs}
+                  perc={perccxs}
+                />
+              ) : null}
 
-              <C.EscalaProgress>
-                <div>aaaa</div>
-              </C.EscalaProgress>
-
-              {/* <ProgressBarSnh color={'red'} value={value} max={100} /> */}
+              <C.EscalaProgress width="20px" color="#93fa02"></C.EscalaProgress>
             </C.DivProgress>
             {/* {isnumeral ? (
               <label> Contem Numero : SIM Qdd. de Numeral : {qddnumeral}</label>
@@ -366,7 +454,7 @@ export const AccesPg = () => {
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
         </button>
-        {islengpas ? (
+        {islengid && islengpas ? (
           <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
@@ -420,3 +508,121 @@ export const AccesPg = () => {
 //   }
 //   return [1, 0, 0, 0, 0];
 // }
+
+// React.useEffect(() => {
+//   const interval = setInterval(100, () => {
+//     setValue(oldvalue => {
+//       const newvalue = oldvalue + 10;
+//       if (newvalue <= 100) {
+//         return newvalue;
+//       }
+//       // clearInterval(interval);
+//       return oldvalue;
+//     });
+//   });
+// }, []);
+
+//////////////////////////////////////////////////
+//   const snh = strsenha;
+
+//   setStrSenha(snh);
+//   setIsNumeral(false);
+//   setIsCxBax(false);
+//   setIsCxAlta(false);
+//   setIsSimbol(false);
+//   setTnhSenha(0);
+//   setIsCheck(false);
+
+//   setQddCxn(0);
+//   setQddCxa(0);
+//   setQddCxb(0);
+//   setQddCxs(0);
+//   setTtQddCx(0);
+
+//   setPesoCxN(0);
+//   setPesoCxB(0);
+//   setPesoCxA(0);
+//   setPesoCxS(0);
+//   setTtPesoCx(0);
+
+//   if (strsenha !== '') {
+//     const tnh = strsenha.length;
+//     setTnhSenha(tnh);
+//     // if (tnh > 0) {
+//     setIsCheck(true);
+//     ////////////////////////////////////////////////////////
+//     let simb = 0;
+//     let cxal = 0;
+//     let cxba = 0;
+//     let nume = 0;
+//     let ttchr = 0;
+//     for (let x = 0; x <= strsenha.length; x + 1) {
+//       let vlchr = 0;
+//       for (let i = 0; i <= strsenha.length; i + 1) {
+//         const s = snh[i];
+//         if (s.match(/[0-9]/g)?.length) {
+//           nume = nume + 1;
+//           vlchr = vlchr + 1;
+//         }
+//         if (s.match(/[a-z]/g)?.length) {
+//           cxba = cxba + 1;
+//           vlchr = vlchr + 1;
+//         }
+//         if (s.match(/[A-Z]/g)?.length) {
+//           cxal = cxal + 1;
+//           vlchr = vlchr + 1;
+//         }
+//         const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+//         if (s.match(rex)?.length) {
+//           simb = simb + 1;
+//           vlchr = vlchr + 1;
+//         }
+//         ttchr = ttchr + vlchr;
+//       }
+//     }
+//     setTtQddCx(ttchr);
+//     setIsNumeral(true);
+//     if (nume > 0) {
+//       setQddCxn(nume);
+//     }
+//     setIsCxBax(true);
+//     if (cxba > 0) {
+//       setPesoCxB(cxba);
+//     }
+//     setIsCxAlta(true);
+//     if (cxal > 0) {
+//       setQddCxa(cxal);
+//     }
+//     setIsSimbol(true);
+//     if (simb > 0) {
+//       setQddCxs(simb);
+//     }
+//     ////////////////////////////
+//     setPesoCxN(qddcxn * 1);
+//     setPesoCxB(qddcxb * 7);
+//     setPesoCxA(qddcxa * 17);
+//     setPesoCxS(qddcxs * 51);
+//     ////////////////////////////
+//     setTtPesoCx(pesocxn + pesocxb + pesocxa + pesocxs);
+//     ////////////////////////////
+//     let maxPrgchr = '100px';
+//     let minPrgchr = '0px';
+//     console.log('maxPrgchr : ', maxPrgchr);
+//     console.log('minPrgchr : ', minPrgchr);
+
+//     if (isnumeral) {
+//       //pesoN = pesoUndchr * ttlistqdd[1];
+//       //console.log('pxPrgN : ', pxPrgN);
+//       //console.log('maxPrgchr : ', minPrgchr);
+//     }
+//     if (iscxbax) {
+//       //pesox = pesoUndchr * ttlistqdd[2];
+//     }
+//     if (iscxalta) {
+//       //pesoX = pesoUndchr * ttlistqdd[3];
+//     }
+//     if (issimbol) {
+//       //pesoS = 8 * ttlistqdd[4];
+//     }
+//   }
+// };
