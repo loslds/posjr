@@ -247,33 +247,6 @@ export const DivPWS = styled.div<{ open?: boolean }>`
   // align-content: center;
   align-items: center;
 `;
-export const DivForca = styled.div<{ open?: boolean }>`
-  border: 0; /* 2px solid yellow; */
-  padding: 0px 0px 0px 0px;
-  margin: 2px 10px 2px 10px;
-  width: 98%;
-  display: ${props => (props.open ? 'flex' : 'none')};
-  flex-wrap: nowrap;
-  flex-flow: column;
-  //  justify-content: center;
-  //align-content: center;
-  //align-items: center;
-`;
-
-export const DivProgress = styled.div`
-  border: 1px dashed white;
-  padding: 0px 0px 0px 0px;
-  margin: 2px 2px 2px 20px;
-  min-width: 35%;
-  display: flex row;
-  flex-wrap: nowrap;
-  justify-content: left;
-  align-content: column;
-  //align-items: flex-start;
-  background-color: transparent; /*rgba(184, 184, 212, 0.2);*/
-  font-size: 14px;
-  color: white;
-`;
 
 export const EscalaProgress = styled.div<{ width?: string; color?: string }>`
   border: 1px solid rgba(184, 184, 212, 1);

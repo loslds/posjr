@@ -2,137 +2,19 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-import { BoxDivProgress } from '~/components/BoxDivProgres';
+import { AccesDivProgress } from '~/components/AccesDivProgress';
+import ButtonClickPresImg from '~/components/buttons/ButtonOnClickProg';
 import { Titles } from '~/components/Titles';
 
 // import { setInterval } from 'timers/promises';
 // import { ProgressBarSnh } from '~/components/ProgressBarSnh';
-
 import { Theme } from '../components/Theme';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
-
 export const ListaKey =
   '1234567890abcdefghijklmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVXYZW!#$&+-.<=>@^_'.split(
     ''
   );
-
-export function findQddSimbolo(testo = '') {
-  const snhS = testo;
-  let qddS = 0;
-  let TtqddS = 0;
-  for (let x = 0; x <= snhS.length; x + 1) {
-    for (let i = 0; i <= snhS.length; i + 1) {
-      const s = snhS[i];
-      const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
-      if (s.match(rex)?.length) {
-        qddS = qddS + 1;
-      }
-    }
-    TtqddS = TtqddS + qddS;
-  }
-  return TtqddS;
-}
-
-export function findQddCxAlta(testo = '') {
-  const snhA = testo;
-  let qddA = 0;
-  let TtqddA = 0;
-  for (let x = 0; x <= snhA.length; x + 1) {
-    for (let i = 0; i <= snhA.length; i + 1) {
-      const s = snhA[i];
-      if (s.match(/[A-Z]/g)?.length) {
-        qddA = qddA + 1;
-      }
-    }
-    TtqddA = TtqddA + qddA;
-  }
-  return TtqddA;
-}
-
-export function findQddCxBaixa(testo = '') {
-  const snhB = testo;
-  let qddB = 0;
-  let TtqddB = 0;
-  for (let x = 0; x <= snhB.length; x + 1) {
-    for (let i = 0; i <= snhB.length; i + 1) {
-      const s = snhB[i];
-      if (s.match(/[a-z]/g)?.length) {
-        qddB = qddB + 1;
-      }
-    }
-    TtqddB = TtqddB + qddB;
-  }
-  return TtqddB;
-}
-
-export function findQddNumber(testo = '') {
-  const snhN = testo;
-  let qddN = 0;
-  let TtqddN = 0;
-  for (let x = 0; x <= snhN.length; x + 1) {
-    for (let i = 0; i <= snhN.length; i + 1) {
-      const s = snhN[i];
-      if (s.match(/[0-9]/g)?.length) {
-        qddN = qddN + 1;
-      }
-    }
-    TtqddN = TtqddN + qddN;
-  }
-  return TtqddN;
-}
-
-export function findForcaSnh(testo = '') {
-  const rtn = [0, 0, 0, 0, 0, 0, 0];
-  if (!testo) {
-    return rtn;
-  }
-  let lentst = testo.length;
-  let qddN = 0;
-  let TtqddN = 0;
-  let qddB = 0;
-  let TtqddB = 0;
-  let qddA = 0;
-  let TtqddA = 0;
-  let qddS = 0;
-  let TtqddS = 0;
-  let Tttnh = 0;
-
-  if (lentst > 0) {
-    rtn[0] = 1; /** matris contem ou não caracteres */
-    rtn[1] = lentst; /** tamanho da matriz */
-    for (let x = 0; x <= testo.length; x + 1) {
-      for (let i = 0; i <= testo.length; i + 1) {
-        const s = testo[i];
-        if (s.match(/[0-9]/g)?.length) {
-          qddN = qddN + 1;
-        }
-        if (s.match(/[a-z]/g)?.length) {
-          qddB = qddB + 1;
-        }
-        if (s.match(/[A-Z]/g)?.length) {
-          qddA = qddA + 1;
-        }
-        const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
-        if (s.match(rex)?.length) {
-          qddS = qddS + 1;
-        }
-      }
-      TtqddS = TtqddS + qddS;
-      TtqddA = TtqddA + qddA;
-      TtqddB = TtqddB + qddB;
-      TtqddN = TtqddN + qddN;
-    }
-    Tttnh = TtqddS + TtqddA + TtqddB + TtqddN;
-    rtn[2] = TtqddN;
-    rtn[3] = TtqddB;
-    rtn[4] = TtqddA;
-    rtn[5] = TtqddS;
-    rtn[6] = Tttnh;
-    return rtn;
-  }
-  return rtn;
-}
 
 export const AccesPg = () => {
   const [isAccesId, setIsAccesId] = React.useState(false);
@@ -141,17 +23,17 @@ export const AccesPg = () => {
   const [isimputpass, setIsImputPass] = React.useState(false);
   const [islengid, setIsLengId] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
+  const [ischeck, setIsCheck] = React.useState(false);
 
   const [strnome, setStrNome] = React.useState('');
   const [strsenha, setStrSenha] = React.useState('');
-  const [tnhsenha, setTnhSenha] = React.useState(0);
 
+  const [tnhsenha, setTnhSenha] = React.useState(0);
   const [isnumeral, setIsNumeral] = React.useState(false);
   const [iscxbax, setIsCxBax] = React.useState(false);
   const [iscxalta, setIsCxAlta] = React.useState(false);
   const [issimbol, setIsSimbol] = React.useState(false);
 
-  const [ischeck, setIsCheck] = React.useState(false);
   //const [value, setValue] = React.useState(0);
 
   const [qddcxn, setQddCxn] = React.useState(0);
@@ -171,6 +53,7 @@ export const AccesPg = () => {
   const [perccxa, setPercCxA] = React.useState(0);
   const [perccxs, setPercCxS] = React.useState(0);
   const [ttperccx, setTtPercCx] = React.useState(0);
+
   const navigate = useNavigate();
 
   const goto = (path: string) => {
@@ -190,11 +73,18 @@ export const AccesPg = () => {
   //////////////////////////////////////////
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const nome = e.target.value;
     dispatch({
       type: AccesActions.setIdname,
-      payload: value
+      payload: nome
     });
+    setStrNome(nome);
+    setStrSenha(state.password);
+    if (state.name !== '' && state.password !== '') {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
+    }
   };
 
   const spanChangeKeyUpId = () => {
@@ -209,68 +99,19 @@ export const AccesPg = () => {
     }
   };
 
-  // React.useEffect(() => {
-  //   const value = strnome;
-  //   dispatch({
-  //     type: AccesActions.setIdname,
-  //     payload: value
-  //   });
-  // }, [strnome, dispatch]);
-  //////////////////////////////////////////////////
-  const callProcesSnh = () => {
-    const snh = state.password;
-    setStrSenha(snh);
-    setStrNome(state.name);
-    let lista = [0, 0, 0, 0, 0, 0, 0];
-    console.log('lista : ', lista);
-    // lista = findForcaSnh(snh);
-    // if (lista[2] > 0) {
-    //   setIsNumeral(true);
-    //   setQddCxn(lista[2]);
-    //   setPesoCxN(lista[2] * 1);
-    //   setPercCxN((qddcxn * 100) / lista[1]);
-    // } else {
-    //   setIsNumeral(false);
-    // }
-    // if (lista[3] > 0) {
-    //   setIsCxBax(true);
-    //   setQddCxb(lista[3]);
-    //   setPesoCxB(lista[3] * 7);
-    //   setPercCxB((qddcxb * 100) / lista[1]);
-    // } else {
-    //   setIsCxBax(false);
-    // }
-    // if (lista[4] > 0) {
-    //   setIsCxAlta(true);
-    //   setQddCxa(lista[4]);
-    //   setPesoCxA(lista[4] * 17);
-    //   setPercCxA((qddcxa * 100) / lista[1]);
-    // } else {
-    //   setIsCxAlta(false);
-    // }
-    // if (lista[5] > 0) {
-    //   setIsSimbol(true);
-    //   setQddCxs(lista[5]);
-    //   setPesoCxS(lista[5] * 55);
-    //   setPercCxS((qddcxs * 100) / lista[1]);
-    // } else {
-    //   setIsSimbol(false);
-    // }
-    // setTnhSenha(lista[6]);
-    // setTtPesoCx(pesocxn + pesocxb + pesocxa + pesocxs);
-    // setTtPercCx(perccxn + perccxb + perccxa + perccxs);
-    // setIsCheck(true);
-
-    // console.log('lista : ', lista);
-  };
-
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const snh = e.target.value;
     dispatch({
       type: AccesActions.setPassword,
       payload: snh
     });
-    callProcesSnh();
+    setStrSenha(snh);
+    setStrNome(state.name);
+    if (state.name !== '' && state.password !== '') {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
+    }
   };
 
   const spanChangeKeyUpPas = () => {
@@ -285,14 +126,15 @@ export const AccesPg = () => {
     }
   };
 
-  React.useEffect(() => {
-    const value = strsenha;
-    dispatch({
-      type: AccesActions.setPassword,
-      payload: value
-    });
-  }, [strsenha, dispatch]);
+  // React.useEffect(() => {
+  //   if (state.name !== '' && state.password !== '') {
+  //     setIsCheck(true);
+  //   } else {
+  //     setIsCheck(false);
+  //   }
+  // }, [state.name, state.password, setIsCheck]);
 
+  const handleProgressOnClick = () => {};
   const handlerEnviar = () => {
     // alert('Enviar Acesso para reconhecimento...');
   };
@@ -350,7 +192,6 @@ export const AccesPg = () => {
               <input
                 type="text"
                 maxLength={10}
-                autoFocus
                 onChange={handlerPasswordChange}
                 value={state.password}
                 placeholder={'Digite a sua Senha...'}
@@ -370,86 +211,15 @@ export const AccesPg = () => {
               ) : null}
             </C.SideImgInputRight>
           </C.ContainerInput>
-          <C.DivForca open={ischeck}>
-            <C.DivProgress>
-              <label> Evolução: </label>
-              <p>Id...... : {strnome}</p>
-              <p>Senha... : {strsenha}</p>
-              <p>Tamanho. : {tnhsenha}</p>
-              <p>Tt. Peso : {ttpesocx}</p>
-              <p>Tt. Perc Cx.: {ttperccx}</p>
-              {isnumeral ? (
-                <BoxDivProgress
-                  label={'Força de Numerais.'}
-                  qdd={qddcxn}
-                  peso={pesocxn}
-                  perc={perccxn}
-                />
-              ) : null}
-              {iscxalta ? (
-                <BoxDivProgress
-                  label={'Força Letra Minuscula.'}
-                  qdd={qddcxb}
-                  peso={pesocxb}
-                  perc={perccxb}
-                />
-              ) : null}
-              {iscxbax ? (
-                <BoxDivProgress
-                  label={'Força Letra Maiúscula.'}
-                  qdd={qddcxa}
-                  peso={pesocxa}
-                  perc={perccxa}
-                />
-              ) : null}
-              {issimbol ? (
-                <BoxDivProgress
-                  label={'Força dos Simbolos.'}
-                  qdd={qddcxs}
-                  peso={pesocxs}
-                  perc={perccxs}
-                />
-              ) : null}
-
-              <C.EscalaProgress width="20px" color="#93fa02"></C.EscalaProgress>
-            </C.DivProgress>
-            {/* {isnumeral ? (
-              <label> Contem Numero : SIM Qdd. de Numeral : {qddnumeral}</label>
-            ) : (
-              <label> Contem Numero : Não Qdd. de Numeral : {qddnumeral}</label>
-            )}
-            ;
-            {iscxbax ? (
-              <label>
-                {' '}
-                Contem Cx. Baixa : SIM Qdd. de Cx Baixa : {qddcxbaixa}{' '}
-              </label>
-            ) : (
-              <label>
-                {' '}
-                Contem Cx. Baixa : Não Qdd. de Cx Baixa : {qddcxbaixa}
-              </label>
-            )}
-            ;
-            {iscxalta ? (
-              <label>
-                {' '}
-                Contem Cx. Alta : SIM Qdd. de Cx Alta : {qddcxalta}
-              </label>
-            ) : (
-              <label>
-                {' '}
-                Contem Cx. Alta : Não Qdd. de Cx Alta : {qddcxalta}
-              </label>
-            )}
-            ;
-            {issimbol ? (
-              <label>Contem Simbolo : SIM Qdd. de Simbolo : {qddcxsimb}</label>
-            ) : (
-              <label>Contem Simbolo : Não Qdd. de Simbolo : {qddcxsimb}</label>
-            )}
-            ; */}
-          </C.DivForca>
+          <AccesDivProgress>
+            <ButtonClickPresImg
+              id={strsenha}
+              title="Checagem."
+              img={'FaKey'}
+              onClick={handleProgressOnClick}
+            />
+            asdffghhjhj
+          </AccesDivProgress>
         </label>
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
@@ -463,6 +233,123 @@ export const AccesPg = () => {
     </Theme>
   );
 };
+
+// export function findForcaSnh(testo = '') {
+//   const rtn = [0, 0, 0, 0, 0, 0, 0];
+//   if (!testo) {
+//     return rtn;
+//   }
+//   let lentst = testo.length;
+//   let qddN = 0;
+//   let TtqddN = 0;
+//   let qddB = 0;
+//   let TtqddB = 0;
+//   let qddA = 0;
+//   let TtqddA = 0;
+//   let qddS = 0;
+//   let TtqddS = 0;
+//   let Tttnh = 0;
+
+//   if (lentst > 0) {
+//     rtn[0] = 1; /** matris contem ou não caracteres */
+//     rtn[1] = lentst; /** tamanho da matriz */
+//     for (let x = 0; x <= testo.length; x + 1) {
+//       for (let i = 0; i <= testo.length; i + 1) {
+//         const s = testo[i];
+//         if (s.match(/[0-9]/g)?.length) {
+//           qddN = qddN + 1;
+//         }
+//         if (s.match(/[a-z]/g)?.length) {
+//           qddB = qddB + 1;
+//         }
+//         if (s.match(/[A-Z]/g)?.length) {
+//           qddA = qddA + 1;
+//         }
+//         const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+//         if (s.match(rex)?.length) {
+//           qddS = qddS + 1;
+//         }
+//       }
+//       TtqddS = TtqddS + qddS;
+//       TtqddA = TtqddA + qddA;
+//       TtqddB = TtqddB + qddB;
+//       TtqddN = TtqddN + qddN;
+//     }
+//     Tttnh = TtqddS + TtqddA + TtqddB + TtqddN;
+//     rtn[2] = TtqddN;
+//     rtn[3] = TtqddB;
+//     rtn[4] = TtqddA;
+//     rtn[5] = TtqddS;
+//     rtn[6] = Tttnh;
+//     return rtn;
+//   }
+//   return rtn;
+// }
+
+// export function findQddSimbolo(testo = '') {
+//   const snhS = testo;
+//   let qddS = 0;
+//   let TtqddS = 0;
+//   for (let x = 0; x <= snhS.length; x + 1) {
+//     for (let i = 0; i <= snhS.length; i + 1) {
+//       const s = snhS[i];
+//       const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+//       if (s.match(rex)?.length) {
+//         qddS = qddS + 1;
+//       }
+//     }
+//     TtqddS = TtqddS + qddS;
+//   }
+//   return TtqddS;
+// }
+
+// export function findQddCxAlta(testo = '') {
+//   const snhA = testo;
+//   let qddA = 0;
+//   let TtqddA = 0;
+//   for (let x = 0; x <= snhA.length; x + 1) {
+//     for (let i = 0; i <= snhA.length; i + 1) {
+//       const s = snhA[i];
+//       if (s.match(/[A-Z]/g)?.length) {
+//         qddA = qddA + 1;
+//       }
+//     }
+//     TtqddA = TtqddA + qddA;
+//   }
+//   return TtqddA;
+// }
+
+// export function findQddCxBaixa(testo = '') {
+//   const snhB = testo;
+//   let qddB = 0;
+//   let TtqddB = 0;
+//   for (let x = 0; x <= snhB.length; x + 1) {
+//     for (let i = 0; i <= snhB.length; i + 1) {
+//       const s = snhB[i];
+//       if (s.match(/[a-z]/g)?.length) {
+//         qddB = qddB + 1;
+//       }
+//     }
+//     TtqddB = TtqddB + qddB;
+//   }
+//   return TtqddB;
+// }
+
+// export function findQddNumber(testo = '') {
+//   const snhN = testo;
+//   let qddN = 0;
+//   let TtqddN = 0;
+//   for (let x = 0; x <= snhN.length; x + 1) {
+//     for (let i = 0; i <= snhN.length; i + 1) {
+//       const s = snhN[i];
+//       if (s.match(/[0-9]/g)?.length) {
+//         qddN = qddN + 1;
+//       }
+//     }
+//     TtqddN = TtqddN + qddN;
+//   }
+//   return TtqddN;
+// }
 
 //
 // export function findForcaSnh(testo = '', Tnh = 0) {
