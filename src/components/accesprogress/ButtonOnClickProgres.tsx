@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { constants } from 'fs';
-
-import { ButtonClickPresImg } from './stylesButtons';
+import { ButtonClickPresImg } from '../buttons/stylesButtons';
 
 type Props = {
   id?: string;
@@ -10,10 +8,14 @@ type Props = {
   img?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
-
-const ButtonOnClickProgres: React.FC<Props> = ({ id, title, img, onClick }) => {
+export const ButtonOnClickProgres: React.FC<Props> = ({
+  id,
+  title,
+  img,
+  onClick
+}) => {
   return (
     <ButtonClickPresImg id={id} title={title} img={img} onClick={onClick} />
   );
 };
-export default ButtonOnClickProgres;
+// default ButtonOnClickProgres;

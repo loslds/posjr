@@ -3,20 +3,32 @@ import styled from 'styled-components';
 import semimg from '~/assets/images/semimg.png';
 
 export const DivForca = styled.div`
-  border: 2px solid yellow;
-  padding: 0px 0px 0px 0px;
-  margin: 2px 10px 2px 10px;
-  width: 98%;
+  border: 1px solid orange;
+  padding: 2px 5px 2px 0px;
+  margin: 2px 0px 2px 15px;
+  width: 90%;
   display: flex;
-  flex-wrap: nowrap;
-  flex-flow: column;
+  justify-content: space-between;
+  align-content: center;
+  background-color: transparent;
+`;
+
+export const DivForcaContainer = styled.div`
+  border: 1px solid red;
+  padding: 2px 5px 2px 0px;
+  margin: 2px 0px 2px 15px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  background-color: transparent;
 `;
 
 export const DivProgress = styled.div`
   border: 2px dashed white;
   padding: 0px 0px 0px 0px;
   margin: 2px 2px 2px 20px;
-  min-width: 35%;
+  width: 40%;
   display: flex row;
   flex-wrap: nowrap;
   justify-content: left;

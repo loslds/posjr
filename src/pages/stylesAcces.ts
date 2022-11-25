@@ -336,6 +336,51 @@ export const ButtonImg = styled.button<PropsButtonImg>`
   align-items: center;
 `;
 
+type PropsProgr = {
+  open?: boolean;
+  onClick: () => void;
+};
+export const CheckOnClickProgress = styled.div<PropsProgr>`
+  border: 0px; /** 1px solid red;  rgba(184, 184, 212, 1);*/
+  border-radius: 50%;
+  padding: 5px 5px 5px 5px;
+  margin: 3px 3px 3px 15px;
+  height: 23px;
+  width: 23px;
+  background-color: rgba(190, 198, 209, 0.3);
+  color: white;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: center;
+  align-items: flex-start;
+  cursor: pointer;
+  outline: none;
+`;
+
+export const DivPesoProgress = styled.div`
+  border: 1px solid rgba(184, 184, 212, 1);
+  border-radius: 50%;
+  padding: 5px 3px 5px 3px;
+  margin: 2px 0px 0px 20px;
+  height: 20px;
+  width: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: column;
+  align-items: flex-start;
+  cursor: pointer;
+  outline: none;
+`;
+
 // display: ${({ondisplay }) => (ondisplay ? 'flex' : 'none')};
 
 // export const DivtoSpan = styled.div<{ open?: boolean }>`

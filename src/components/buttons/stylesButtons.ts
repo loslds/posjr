@@ -38,8 +38,8 @@ export const ContainerButtonCircleImgBg = styled.div`
   border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  height: 35px;
-  width: 35px;
+  height: 45px;
+  width: 45px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -63,9 +63,9 @@ export const ButtonsCirclesBg = styled.button<{ img?: string }>`
   background-image: url(${({ img }) => img || semimg});
   cursor: pointer;
   outline: none;
-  height: 35px;
-  width: 35px;
-  display: flex; /**block; */
+  height: 30px;
+  width: 30px;
+  display: block; /**flex; */
   flex-flow: nowrap;
   justify-content: center;
   align-items: center;
@@ -80,19 +80,21 @@ export const ButtonClickPresImg = styled.button<{ img?: string }>`
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
   background-color: transparent;
-  background-image: url(${({ img }) => img || semimg});
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url(${({ img }) => img || semimg});
   background-position: center;
+  //background-attachment: fixed;
   cursor: pointer;
   outline: none;
-  min-height: 35px;
+  min-height: 37px;
   width: 35px;
   display: flex;
   flex-flow: nowrap;
   justify-content: center;
   align-items: center;
 `;
+
 // type Props = {
 //   open?: boolean;
 //   img?: string;

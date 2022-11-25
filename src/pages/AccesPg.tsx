@@ -1,11 +1,15 @@
 import React from 'react';
-import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
+import { FaIdBadge, FaKey, FaCheck, FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-import { AccesDivProgress } from '~/components/AccesDivProgress';
-import ButtonClickPresImg from '~/components/buttons/ButtonOnClickProg';
+import {
+  AccesDivMain,
+  AccesDivProgress,
+  ButtonOnClickProgres
+} from '~/components/accesprogress';
 import { Titles } from '~/components/Titles';
 
+// import protecv from '../assets/images/svgs/protecv.svg';
 // import { setInterval } from 'timers/promises';
 // import { ProgressBarSnh } from '~/components/ProgressBarSnh';
 import { Theme } from '../components/Theme';
@@ -134,7 +138,9 @@ export const AccesPg = () => {
   //   }
   // }, [state.name, state.password, setIsCheck]);
 
-  const handleProgressOnClick = () => {};
+  // const handleProgressOnClick = () => {
+  //   alert('aqui...');
+  // };
   const handlerEnviar = () => {
     // alert('Enviar Acesso para reconhecimento...');
   };
@@ -212,13 +218,15 @@ export const AccesPg = () => {
             </C.SideImgInputRight>
           </C.ContainerInput>
           <AccesDivProgress>
-            <ButtonClickPresImg
-              id={strsenha}
-              title="Checagem."
-              img={'FaKey'}
-              onClick={handleProgressOnClick}
-            />
-            asdffghhjhj
+            <C.CheckOnClickProgress open={false} onClick={() => {}}>
+              <span>
+                <FaCheckCircle color="white" />
+              </span>
+            </C.CheckOnClickProgress>
+            <AccesDivMain>
+              <p>aaaaaaaaaaaaaaaaaa aaaaa</p>
+              aaaaaaaaaaaaaaa aaaaaaa aaaaa{' '}
+            </AccesDivMain>
           </AccesDivProgress>
         </label>
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
