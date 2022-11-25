@@ -13,17 +13,26 @@ export const DivForca = styled.div`
   background-color: transparent;
 `;
 
-export const DivForcaContainer = styled.div`
+export const DivForcaContainer = styled.div<{ open?: boolean }>`
   border: 1px solid red;
   padding: 2px 5px 2px 0px;
   margin: 2px 0px 2px 15px;
   width: 90%;
-  display: flex;
+  display: ${props => (props.open ? 'flex' : 'none')};
   justify-content: space-between;
   align-content: center;
   background-color: transparent;
+  font-size: 18px;
+  div {
+    border: 1px solid yellow;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 200px;
+    width: 20%;
+    display: flex;
+  }
 `;
-
+/////////////////////////////////////
 export const DivProgress = styled.div`
   border: 2px dashed white;
   padding: 0px 0px 0px 0px;

@@ -2,17 +2,10 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck, FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  AccesDivMain,
-  AccesDivProgress,
-  ButtonOnClickProgres
-} from '~/components/accesprogress';
+import { AccesDivMain, AccesDivProgress } from '~/components/accesprogress';
+import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
-// import protecv from '../assets/images/svgs/protecv.svg';
-// import { setInterval } from 'timers/promises';
-// import { ProgressBarSnh } from '~/components/ProgressBarSnh';
-import { Theme } from '../components/Theme';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
 export const ListaKey =
@@ -28,6 +21,7 @@ export const AccesPg = () => {
   const [islengid, setIsLengId] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
   const [ischeck, setIsCheck] = React.useState(false);
+  const [isonoff, setIsOnOff] = React.useState(false);
 
   const [strnome, setStrNome] = React.useState('');
   const [strsenha, setStrSenha] = React.useState('');
@@ -74,6 +68,7 @@ export const AccesPg = () => {
       payload: 0
     });
   }, [dispatch]);
+
   //////////////////////////////////////////
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -141,6 +136,11 @@ export const AccesPg = () => {
   // const handleProgressOnClick = () => {
   //   alert('aqui...');
   // };
+
+  const handerClickOnOff = React.useCallback(() => {
+    setIsOnOff(oldState => !oldState);
+  }, []);
+
   const handlerEnviar = () => {
     // alert('Enviar Acesso para reconhecimento...');
   };
@@ -217,15 +217,27 @@ export const AccesPg = () => {
               ) : null}
             </C.SideImgInputRight>
           </C.ContainerInput>
+        </label>
+        <label>
           <AccesDivProgress>
-            <C.CheckOnClickProgress open={false} onClick={() => {}}>
+            <C.CheckOnClickProgress onClick={handerClickOnOff}>
               <span>
                 <FaCheckCircle color="white" />
               </span>
             </C.CheckOnClickProgress>
-            <AccesDivMain>
-              <p>aaaaaaaaaaaaaaaaaa aaaaa</p>
-              aaaaaaaaaaaaaaa aaaaaaa aaaaa{' '}
+            <AccesDivMain open={isonoff}>
+              <div>
+                <label>Símbolos.</label>
+              </div>
+              <div>
+                <label>Cx. Alta.</label>
+              </div>
+              <div>
+                <label>Cx.Baixa.</label>
+              </div>
+              <div>
+                <label>Numerais </label>
+              </div>
             </AccesDivMain>
           </AccesDivProgress>
         </label>
