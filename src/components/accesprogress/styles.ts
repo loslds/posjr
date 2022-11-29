@@ -23,14 +23,6 @@ export const DivForcaContainer = styled.div<{ open?: boolean }>`
   align-content: center;
   background-color: transparent;
   font-size: 18px;
-  div {
-    border: 1px solid yellow;
-    padding: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
-    height: 200px;
-    width: 20%;
-    display: flex;
-  }
 `;
 /////////////////////////////////////
 export const DivProgress = styled.div`
@@ -44,8 +36,51 @@ export const DivProgress = styled.div`
   align-content: column;
   //align-items: flex-start;
   background-color: transparent; /*rgba(184, 184, 212, 0.2);*/
+  font-size: 18px;
+  color: white;
+`;
+
+export const DivItensProgress = styled.div`
+  border: 2px solid #25cd89;
+  border-radius: 10px; //////
+  padding: 0px 0px 0px 0px;
+  margin: 2px 2px 2px 2px;
+  width: 150px;
+  display: flex row;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-content: column;
+  align-items: center;
+  //align-items: flex-start;
+  background-color: transparent; /*rgba(184, 184, 212, 0.2);*/
   font-size: 14px;
   color: white;
+`;
+
+export const ContainerItensProgress = styled.div`
+  border: 1px solid green;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 5px 5px 5px;
+  height: 145px;
+  width: 100%;
+  display: flex row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: center;
+  font-size: 18pt;
+`;
+
+export const DivSpace = styled.div`
+  border: 0px;
+  padding: 1px 1px 1px 1px;
+  margin: 1px 1px 1px 1px;
+  height: 1px;
+  width: 98%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #495459;
+  /* background-color: #7f7fbb; */
 `;
 
 export const Container = styled.div`

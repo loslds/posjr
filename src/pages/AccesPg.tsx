@@ -2,7 +2,11 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck, FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-import { AccesDivMain, AccesDivProgress } from '~/components/accesprogress';
+import {
+  AccesDivMain,
+  AccesDivProgress,
+  AccesDivItensProgress
+} from '~/components/accesprogress';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
@@ -225,19 +229,40 @@ export const AccesPg = () => {
                 <FaCheckCircle color="white" />
               </span>
             </C.CheckOnClickProgress>
+
             <AccesDivMain open={isonoff}>
-              <div>
-                <label>Símbolos.</label>
-              </div>
-              <div>
-                <label>Cx. Alta.</label>
-              </div>
-              <div>
-                <label>Cx.Baixa.</label>
-              </div>
-              <div>
-                <label>Numerais </label>
-              </div>
+              <AccesDivItensProgress
+                nome={'Símbolos'}
+                qdd={'3'}
+                ttpeso={'100'}
+                perc={'30%'}
+              >
+                <p>barra progress</p>
+              </AccesDivItensProgress>
+              <AccesDivItensProgress
+                nome={'Caixa Alta'}
+                qdd={'3'}
+                ttpeso={'40'}
+                perc={'30%'}
+              >
+                <p>barra progress</p>
+              </AccesDivItensProgress>
+              <AccesDivItensProgress
+                nome={'Caixa Baixa'}
+                qdd={'3'}
+                ttpeso={'21'}
+                perc={'30%'}
+              >
+                <p>barra progress</p>
+              </AccesDivItensProgress>
+              <AccesDivItensProgress
+                nome={'Numeral'}
+                qdd={'1'}
+                ttpeso={'2'}
+                perc={'10%'}
+              >
+                <p>barra progress</p>
+              </AccesDivItensProgress>
             </AccesDivMain>
           </AccesDivProgress>
         </label>
