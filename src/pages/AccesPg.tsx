@@ -231,7 +231,9 @@ export const AccesPg = () => {
             </C.CheckOnClickProgress>
 
             <AccesDivMain open={isonoff}>
+              {/** children,  bgcolor,  nome,  qdd,  ttpeso,  perc */}
               <AccesDivItensProgress
+                bgcolor={'rgba(32, 255, 3, 0.8)'}
                 nome={'Símbolos'}
                 qdd={'3'}
                 ttpeso={'100'}
@@ -240,6 +242,7 @@ export const AccesPg = () => {
                 <p>barra progress</p>
               </AccesDivItensProgress>
               <AccesDivItensProgress
+                bgcolor={'rgba(255, 230, 3, 0.8)'}
                 nome={'Caixa Alta'}
                 qdd={'3'}
                 ttpeso={'40'}
@@ -248,6 +251,7 @@ export const AccesPg = () => {
                 <p>barra progress</p>
               </AccesDivItensProgress>
               <AccesDivItensProgress
+                bgcolor={'rgba(255, 125, 3, 0.8)'}
                 nome={'Caixa Baixa'}
                 qdd={'3'}
                 ttpeso={'21'}
@@ -256,6 +260,7 @@ export const AccesPg = () => {
                 <p>barra progress</p>
               </AccesDivItensProgress>
               <AccesDivItensProgress
+                bgcolor={'rgba(255, 7, 3, 0.8)'}
                 nome={'Numeral'}
                 qdd={'1'}
                 ttpeso={'2'}

@@ -56,6 +56,24 @@ export const DivItensProgress = styled.div`
   font-size: 14px;
   color: white;
 `;
+export const TitleItemProgress = styled.div<{ color: string }>`
+  border: 2px solid #25cd89;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 0px;
+  padding: 0px 0px 0px 0px;
+  margin: -2px -2px -2px -2px;
+  width: 150px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: ${({ color }) => color || 'transparent'};
+  font-size: 14px;
+  color: white;
+`;
 
 export const ContainerItensProgress = styled.div`
   border: 1px solid green;

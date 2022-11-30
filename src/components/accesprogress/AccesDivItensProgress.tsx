@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { AccesTitleItemProgress } from './AccesTitleItemProgress';
 import * as C from './styles';
 
 type PropsDivItens = {
   children?: React.ReactNode;
   //
+  bgcolor: string;
   nome?: string;
   qdd?: string;
   ttpeso: string;
@@ -13,6 +15,7 @@ type PropsDivItens = {
 export const AccesDivItensProgress: React.FC<PropsDivItens> = ({
   children,
   // id,
+  bgcolor,
   nome,
   qdd,
   ttpeso,
@@ -20,7 +23,7 @@ export const AccesDivItensProgress: React.FC<PropsDivItens> = ({
 }) => {
   return (
     <C.DivItensProgress>
-      <h3>{nome}</h3>
+      <AccesTitleItemProgress color={bgcolor} nome={nome} />
       <C.DivSpace />
       <p>Quantidade.: {qdd}</p>
       <p>Total peso.: {ttpeso}</p>
