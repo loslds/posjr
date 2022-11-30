@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaIdBadge, FaKey, FaCheck, FaCheckCircle } from 'react-icons/fa';
+import { MdTrendingUp } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 import {
   AccesDivMain,
-  AccesDivProgress,
-  AccesDivItensProgress
+  AccesDivProgress
+  //AccesDivItensProgress
 } from '~/components/accesprogress';
+import { Teste } from '~/components/Teste';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
@@ -35,6 +37,20 @@ export const AccesPg = () => {
   const [iscxbax, setIsCxBax] = React.useState(false);
   const [iscxalta, setIsCxAlta] = React.useState(false);
   const [issimbol, setIsSimbol] = React.useState(false);
+
+  interface Pesosenha {
+    tipochar?: string;
+    qddchar?: number;
+    vlrchar?: number;
+    ttvlrchar?: number;
+    percchar?: number;
+  }
+  const ListCheckSnh: Array<Pesosenha> = [
+    { tipochar: 'Numeral', qddchar: 0, vlrchar: 1, ttvlrchar: 0, percchar: 0 },
+    { tipochar: 'Cxbaixa', qddchar: 0, vlrchar: 7, ttvlrchar: 0, percchar: 0 },
+    { tipochar: 'Cxalta', qddchar: 0, vlrchar: 11, ttvlrchar: 0, percchar: 0 },
+    { tipochar: 'Simbolo', qddchar: 0, vlrchar: 55, ttvlrchar: 0, percchar: 0 }
+  ];
 
   //const [value, setValue] = React.useState(0);
 
@@ -101,6 +117,56 @@ export const AccesPg = () => {
       setIsImputName(true);
     }
   };
+  const resgatePesoPW = () => {
+    const rtn = [0, 0, 0, 0, 0, 0];
+    const snh = state.password;
+    let lensnh = snh.length;
+    let qddN = 0;
+    let TtqddN = 0;
+    let qddB = 0;
+    let TtqddB = 0;
+    let qddA = 0;
+    let TtqddA = 0;
+    let qddS = 0;
+    let TtqddS = 0;
+    let Tttnh = 0;
+    if (lensnh > 0) {
+      console.log('estou aqui', true);
+      rtn[0] = 1; /** matris contem ou não caracteres */
+      rtn[1] = lensnh; /** tamanho da matriz */
+      for (let x = 0; x <= snh.length; x + 1) {
+        for (let i = 0; i <= snh.length; i + 1) {
+          const s = snh[i];
+          if (s.match(/[0-9]/g)?.length) {
+            qddN = qddN + 1;
+          }
+          if (s.match(/[a-z]/g)?.length) {
+            qddB = qddB + 1;
+          }
+          if (s.match(/[A-Z]/g)?.length) {
+            qddA = qddA + 1;
+          }
+          const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+          if (s.match(rex)?.length) {
+            qddS = qddS + 1;
+          }
+        }
+        TtqddS = TtqddS + qddS;
+        TtqddA = TtqddA + qddA;
+        TtqddB = TtqddB + qddB;
+        TtqddN = TtqddN + qddN;
+      }
+      Tttnh = TtqddS + TtqddA + TtqddB + TtqddN;
+
+      rtn[2] = TtqddN;
+      rtn[3] = TtqddB;
+      rtn[4] = TtqddA;
+      rtn[5] = TtqddS;
+      rtn[6] = Tttnh;
+      ListCheckSnh[0].qddchar = TtqddN;
+      console.log('ListCheckSnh[0] :', ListCheckSnh[0].qddchar);
+    }
+  };
 
   const handlerPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const snh = e.target.value;
@@ -112,6 +178,7 @@ export const AccesPg = () => {
     setStrNome(state.name);
     if (state.name !== '' && state.password !== '') {
       setIsCheck(true);
+      resgatePesoPW();
     } else {
       setIsCheck(false);
     }
@@ -145,9 +212,9 @@ export const AccesPg = () => {
     setIsOnOff(oldState => !oldState);
   }, []);
 
-  const handlerEnviar = () => {
-    // alert('Enviar Acesso para reconhecimento...');
-  };
+  // const handlerEnviar = () => {
+  //   // alert('Enviar Acesso para reconhecimento...');
+  // };
 
   return (
     <Theme>
@@ -232,14 +299,15 @@ export const AccesPg = () => {
 
             <AccesDivMain open={isonoff}>
               {/** children,  bgcolor,  nome,  qdd,  ttpeso,  perc */}
-              <AccesDivItensProgress
+              <Teste />
+              {/* <AccesDivItensProgress
                 bgcolor={'rgba(32, 255, 3, 0.8)'}
                 nome={'Símbolos'}
                 qdd={'3'}
                 ttpeso={'100'}
                 perc={'30%'}
               >
-                <p>barra progress</p>
+                <Teste />
               </AccesDivItensProgress>
               <AccesDivItensProgress
                 bgcolor={'rgba(255, 230, 3, 0.8)'}
@@ -248,7 +316,7 @@ export const AccesPg = () => {
                 ttpeso={'40'}
                 perc={'30%'}
               >
-                <p>barra progress</p>
+                <Teste />
               </AccesDivItensProgress>
               <AccesDivItensProgress
                 bgcolor={'rgba(255, 125, 3, 0.8)'}
@@ -257,7 +325,7 @@ export const AccesPg = () => {
                 ttpeso={'21'}
                 perc={'30%'}
               >
-                <p>barra progress</p>
+                <Teste />
               </AccesDivItensProgress>
               <AccesDivItensProgress
                 bgcolor={'rgba(255, 7, 3, 0.8)'}
@@ -266,8 +334,8 @@ export const AccesPg = () => {
                 ttpeso={'2'}
                 perc={'10%'}
               >
-                <p>barra progress</p>
-              </AccesDivItensProgress>
+                <Teste />
+              </AccesDivItensProgress> */}
             </AccesDivMain>
           </AccesDivProgress>
         </label>
@@ -275,7 +343,7 @@ export const AccesPg = () => {
           Voltar
         </button>
         {islengid && islengpas ? (
-          <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
+          <button onClick={() => {}} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
         ) : null}
