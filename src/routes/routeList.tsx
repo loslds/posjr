@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { TestPage } from '~/pages/TestPage';
+
 import { AccesChvPin } from '../pages/AccesChvPin';
 import { AccesEmail } from '../pages/AccesEmail';
 import { AccesFone } from '../pages/AccesFone';
@@ -23,6 +25,7 @@ export interface IRoute {
 }
 
 export const RouteList: IRoute[] = [
+  { path: '/testpage', exact: true, element: <TestPage /> },
   { path: '/accesfunc', exact: true, element: <AccesFunc /> },
   { path: '/accesforgot', exact: true, element: <AccesForgot /> },
   { path: '/accesfone', exact: true, element: <AccesFone /> },

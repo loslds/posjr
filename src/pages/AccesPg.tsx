@@ -14,10 +14,7 @@ import { Titles } from '~/components/Titles';
 
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
-export const ListaKey =
-  '1234567890abcdefghijklmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVXYZW!#$&+-.<=>@^_'.split(
-    ''
-  );
+export const ListaKey = '1234567890abcdefghijklmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVXYZW!#$&+-.<=>@^_'.split('');
 
 export const AccesPg = () => {
   const [isAccesId, setIsAccesId] = React.useState(false);
