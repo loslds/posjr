@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useLocalStorage } from '~/hooks/useLocalStorage';
+
 import { InputSenha, InputSenhaProps } from './InputSenha';
 
 type CharType = 'Numeral' | 'Cxbaixa' | 'Cxalta' | 'Simbolo';
@@ -45,25 +47,35 @@ function calculateValues(text: string, oldData: PasswordSummary): PasswordSummar
   return result;
 }
 
+type Salved = {
+  text: string;
+};
 export const TestSenha: React.FC = () => {
   const [passwordSummary, setPasswordSummary] = useState<PasswordSummary>(initialState);
+  const [value, setValue] = useLocalStorage<Salved>('text');
 
   const handleChangeText: InputSenhaProps['onChange'] = text => {
     const newData = calculateValues(text, { ...passwordSummary });
     setPasswordSummary(newData);
+    setValue({ text });
   };
 
   return (
     <div>
-      <InputSenha onChange={handleChangeText} />
-      {Object.entries(passwordSummary).map(([k, v]) => {
-        return (
-          <div key={`item-${k}`}>
-            <span>{k}</span>
-            <code>{JSON.stringify(v)}</code>
-          </div>
-        );
-      })}
+      <div>
+        Ultimo texto digitado: <strong>{value?.text || ''}</strong>
+      </div>
+      <div>
+        <InputSenha onChange={handleChangeText} />
+        {Object.entries(passwordSummary).map(([k, v]) => {
+          return (
+            <div key={`item-${k}`}>
+              <span>{k}</span>
+              <code>{JSON.stringify(v)}</code>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
