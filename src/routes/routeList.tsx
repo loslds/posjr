@@ -29,6 +29,7 @@ export const RouteList: IRoute[] = [
   { path: '/accesemail', exact: true, element: <AccesEmail /> },
   { path: '/accesnew1', exact: true, element: <AccesNew1 /> },
   { path: '/accesnew', exact: true, element: <AccesNew /> },
+  { path: '/accespg', exact: true, element: <AccesPg /> },
   { path: '/accespg0', exact: true, element: <AccesPg0 /> },
   { path: '/accespg1', exact: true, element: <AccesPg1 /> },
   { path: '/accespg2', exact: true, element: <AccesPg2 /> },
@@ -36,6 +37,5 @@ export const RouteList: IRoute[] = [
   { path: '/acceschvpin', exact: true, element: <AccesChvPin /> },
   // { path: '/acceschvsms', exact: true, element: <AccesChvSms /> },
   // { path: '/acceschvmail', exact: true, element: <AccesChvMail /> },
-  { path: '/homepage', exact: true, element: <HomePage /> },
-  { path: '/accespg', exact: true, element: <AccesPg /> }
+  { path: '/homepage', exact: true, element: <HomePage /> }
 ];
