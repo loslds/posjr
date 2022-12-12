@@ -1,18 +1,66 @@
 import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
-
+//** container do AccesDivProgress */
 export const DivForca = styled.div`
   border: 1px solid orange;
   padding: 2px 5px 2px 0px;
   margin: 2px 0px 2px 15px;
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between;
+  align-content: center; */
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+`;
+/////////////////////////////////////////
+/** dentro do chidren AccesDivProgress recebe sua Targeta => AccesDivCard */
+export const DivForcaCard = styled.div`
+  border: 1px white solid;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: center;
   align-content: center;
   background-color: transparent;
 `;
 
+/** dentro do chidren AccesDivProgress recebe a sua direita => AccesDivLeftButton */
+export const DivForcaFlexLeftBt = styled.div<{ open?: boolean }>`
+  border: 1px blue dashed;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
+  width: 55px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: column;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
+`;
+//////////////////////////////////////////////
+/////////////////////////////////////////
+/** dentro do chidren AccesDivProgreess recebe a sua esquerda => AccesDivLeftButton */
+
+export const DivForcaFlexRightPrg = styled.div<{ open?: boolean }>`
+  border: 1px blueviolet dashed;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
+  width: 75%;
+  display: ${props => (props.open ? 'flex' : 'none')};
+  flex-flow: row wrap;
+  justify-content: right;
+  align-items: center;
+  align-content: center;
+  background-color: transparent;
+`;
+//////////////////////////////////////////////
+/////////////////////////////////////////
 export const DivForcaContainer = styled.div<{ open?: boolean }>`
   border: 1px solid red;
   padding: 2px 5px 2px 0px;
@@ -101,7 +149,7 @@ export const DivSpace = styled.div`
   /* background-color: #7f7fbb; */
 `;
 
-export const Container = styled.div`
+export const ContainerBarMain = styled.div`
   border: 1px solid rgba(184, 184, 212, 1);
   // border-radius: 10px;
   padding: 0px 0px 0px 0px;

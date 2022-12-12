@@ -344,7 +344,7 @@ export const CheckOnClickProgress = styled.div<PropsProgr>`
   border: 0px; /** 1px solid red;  rgba(184, 184, 212, 1);*/
   border-radius: 50%;
   padding: 5px 5px 5px 5px;
-  margin: 3px 3px 3px 15px;
+  margin: 3px 10px 3px 10px;
   height: 23px;
   width: 23px;
   background-color: rgba(190, 198, 209, 0.3);

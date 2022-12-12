@@ -5,7 +5,7 @@ type PropsCc = {
   width?: string;
 };
 export const Container = styled.div<PropsCc>`
-  border: 1px dashed black;
+  border: 2px dashed black;
   padding: 0px 0px 0px 0px;
   margin: 2px 2px 2px 2px;
   max-width: 100%;
@@ -26,7 +26,7 @@ export const Container = styled.div<PropsCc>`
   }
   progress {
     margin-left: 15px;
-    margin-right: 10px;
+    margin-right: 20px;
   }
   progress[value] {
     width: ${props => props.width};
