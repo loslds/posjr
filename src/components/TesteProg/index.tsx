@@ -4,6 +4,6 @@ type Props = {
   value?: number;
   max?: number;
 };
-export const Teste = ({ value, max }: Props) => {
+export const TesteProg = ({ value, max }: Props) => {
   return <progress value={value} max={max} />;
 };

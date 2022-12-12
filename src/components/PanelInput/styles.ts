@@ -71,7 +71,7 @@ export const SideInputCenter = styled.div`
     padding: 0px 0px 0px 0px;
     display: flex;
     width: 100%;
-    background-color: transparent; // #02044a;
+    background-color: transparent;
     outline: 0;
     color: #fff;
     font-size: 16px;

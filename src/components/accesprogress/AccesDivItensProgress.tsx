@@ -8,9 +8,9 @@ type PropsDivItens = {
   //
   bgcolor: string;
   nome?: string;
-  qdd?: string;
-  ttpeso: string;
-  perc: string;
+  qdd?: number;
+  ttpeso?: number;
+  perc?: number;
 };
 export const AccesDivItensProgress: React.FC<PropsDivItens> = ({
   children,
