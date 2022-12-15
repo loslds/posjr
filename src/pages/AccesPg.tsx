@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import { FaIdBadge, FaKey, FaCheck, FaCheckCircle } from 'react-icons/fa';
+import { FaIdBadge, FaKey, FaCheck, FaLock, FaSignal } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  AccesDivProgress,
-  AccesDivCardProgress,
-  AccesDivLeftButton,
-  AccesDivRightProgres,
-  AccesDivMain
-  //AccesDivItensProgress,
-  //
+  AccesDivMain,
+  AccesDivItensProgress
 } from '~/components/accesprogress';
-import { ProgressBarMain } from '~/components/ProgressBarMain';
-// import { TesteProg } from '~/components/TesteProg';
+import { TesteProg } from '~/components/TesteProg';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
+import {
+  ProgressBarMain,
+  ProgressMainCol,
+  ProgressBar100
+} from '../components/ProgressBars';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
 
@@ -106,12 +105,14 @@ export type Salved = {
 };
 
 export const AccesPg = () => {
-  const [isAccesId, setIsAccesId] = useState(false);
-  const [isimputname, setIsImputName] = useState(false);
-  const [isAccespas, setIsAccesPas] = useState(false);
-  const [isimputpass, setIsImputPass] = useState(false);
+  const [isaccesid, setIsAccesId] = useState(false);
+  const [isinputid, setIsInputId] = useState(false);
   const [islengid, setIsLengId] = useState(false);
+  const [isaccespas, setIsAccesPas] = useState(false);
+  const [isinputpas, setIsInputPas] = useState(false);
   const [islengpas, setIsLengPas] = useState(false);
+  const [isprogress, setIsProgress] = useState(false);
+  const [isitensprogress, setIsItensProgress] = useState(false);
 
   const [isonoff, setIsOnOff] = useState(false);
   const [ischeck, setIsCheck] = useState(false);
@@ -150,8 +151,6 @@ export const AccesPg = () => {
     });
   }, [dispatch]);
 
-  //////////////////////////////////////////
-
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: AccesActions.setIdname,
@@ -162,12 +161,17 @@ export const AccesPg = () => {
   const spanChangeKeyUpId = () => {
     if (state.idname === '') {
       setIsAccesId(false);
-      setIsImputName(false);
+      setIsInputId(false);
       setIsLengId(false);
     } else if (state.idname !== '') {
       setIsLengId(true);
       setIsAccesId(true);
-      setIsImputName(true);
+      setIsInputId(true);
+    }
+    if (state.idname !== '' && state.password !== '') {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
     }
   };
 
@@ -186,14 +190,20 @@ export const AccesPg = () => {
     let snh = state.password;
     if (snh === '') {
       setIsAccesPas(false);
-      setIsImputPass(false);
+      setIsInputPas(false);
       setIsLengPas(false);
     } else {
       setIsAccesPas(true);
-      setIsImputPass(true);
+      setIsInputPas(true);
       setIsLengPas(true);
     }
+    if (state.idname !== '' && state.password !== '') {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
+    }
   };
+
   // React.useEffect(() => {
   //   const nome = state.password;
   //   dispatch({
@@ -202,14 +212,16 @@ export const AccesPg = () => {
   //   });
   // }, []);
 
-  const handerClickOnOff = React.useCallback(() => {
-    setIsOnOff(oldState => !oldState);
-    if (state.name !== '' && state.password !== '') {
-      setIsCheck(true);
-    } else {
-      setIsCheck(false);
+  const handerClickProgress = React.useCallback(() => {
+    if (ischeck) {
+      setIsProgress(oldState => !oldState);
     }
-  }, [state.name, state.password, setIsCheck]);
+    setIsItensProgress(false);
+  }, [ischeck]);
+
+  const handerClickItensProgress = React.useCallback(() => {
+    setIsItensProgress(oldState => !oldState);
+  }, []);
 
   // const handlerEnviar = () => {
   //   // alert('Enviar Acesso para reconhecimento...');
@@ -243,12 +255,12 @@ export const AccesPg = () => {
               />
             </C.SideInputCenter>
             <C.SideImgInputRight>
-              {!isAccesId ? (
+              {!isaccesid ? (
                 <span>
                   <p>{'  '}</p>
                 </span>
               ) : null}
-              {isAccesId && isimputname ? (
+              {isaccesid && isinputid ? (
                 <span>
                   <FaCheck />
                 </span>
@@ -275,12 +287,12 @@ export const AccesPg = () => {
               />
             </C.SideInputCenter>
             <C.SideImgInputRight>
-              {!isAccespas ? (
+              {!isaccespas ? (
                 <span>
                   <p>{'  '}</p>
                 </span>
               ) : null}
-              {isAccespas && isimputpass ? (
+              {isaccespas && isinputpas ? (
                 <span>
                   <FaCheck />
                 </span>
@@ -289,87 +301,128 @@ export const AccesPg = () => {
           </C.ContainerInput>
         </label>
         <label>
-          <AccesDivProgress>
-            <AccesDivCardProgress>
-              <AccesDivLeftButton>
-                <C.CheckOnClickProgress onClick={handerClickOnOff}>
-                  <span>
-                    <FaCheckCircle color="white" />
-                  </span>
-                </C.CheckOnClickProgress>
-              </AccesDivLeftButton>
-              <AccesDivRightProgres open={isonoff}>aaaaaa</AccesDivRightProgres>
-            </AccesDivCardProgress>
-
-            <AccesDivMain open={isonoff}>
-              <h1>div main</h1>
-            </AccesDivMain>
-
-            <ProgressBarMain open={isonoff} />
-            {/*
-            <AccesDivMain open={isonoff}>
-              {/** children,  bgcolor,  nome,  qdd,  ttpeso,  perc */}
-            {/* {passwordSummary.Simbolo.ischar ? (
-                <AccesDivItensProgress
-                  bgcolor={passwordSummary.Simbolo.cor}
-                  nome={passwordSummary.Simbolo.title}
-                  qdd={passwordSummary.Simbolo.quantity}
-                  ttpeso={passwordSummary.Simbolo.result}
-                  perc={passwordSummary.Simbolo.percent}
-                >
-                  <TesteProg
-                    value={passwordSummary.Simbolo.percent}
-                    max={100}
+          Segurança do seu Acesso.
+          <C.ContainerInput>
+            <C.SideImgInputLeft>
+              {ischeck ? (
+                <span>
+                  <FaLock
+                    color={'#f3f05b'}
+                    onClick={handerClickProgress}
+                    cursor={'pointer'}
                   />
-                </AccesDivItensProgress>
-              ) : null}
-
-              {passwordSummary.Cxalta.ischar ? (
-                <AccesDivItensProgress
-                  bgcolor={passwordSummary.Cxalta.cor}
-                  nome={passwordSummary.Cxalta.title}
-                  qdd={passwordSummary.Cxalta.quantity}
-                  ttpeso={passwordSummary.Cxalta.result}
-                  perc={passwordSummary.Cxalta.percent}
-                >
-                  <TesteProg value={passwordSummary.Cxalta.percent} max={100} />
-                </AccesDivItensProgress>
-              ) : null}
-
-              {passwordSummary.Cxbaixa.ischar ? (
-                <AccesDivItensProgress
-                  bgcolor={passwordSummary.Cxbaixa.cor}
-                  nome={passwordSummary.Cxbaixa.title}
-                  qdd={passwordSummary.Cxbaixa.quantity}
-                  ttpeso={passwordSummary.Cxbaixa.result}
-                  perc={passwordSummary.Cxbaixa.percent}
-                >
-                  <TesteProg
-                    value={passwordSummary.Cxbaixa.percent}
-                    max={100}
+                </span>
+              ) : (
+                <span>
+                  <FaLock />
+                </span>
+              )}
+            </C.SideImgInputLeft>
+            <C.SideInputCenter>
+              <ProgressBarMain>
+                <ProgressMainCol width={'50%'}>
+                  <span>Primeiro</span>
+                  {isprogress ? (
+                    <ProgressBar100
+                      value={
+                        passwordSummary.Simbolo.percent +
+                        passwordSummary.Cxalta.percent +
+                        passwordSummary.Cxbaixa.percent +
+                        passwordSummary.Numeral.percent
+                      }
+                      max={100}
+                      color={'red'}
+                      width={'95%'}
+                    />
+                  ) : null}
+                </ProgressMainCol>
+                <ProgressMainCol width={'50%'}>
+                  <span>Segundo</span>
+                  {isprogress ? (
+                    <ProgressBar100
+                      value={
+                        passwordSummary.Simbolo.percent +
+                        passwordSummary.Cxalta.percent +
+                        passwordSummary.Cxbaixa.percent +
+                        passwordSummary.Numeral.percent
+                      }
+                      max={100}
+                      color={'red'}
+                      width={'95%'}
+                    />
+                  ) : null}
+                </ProgressMainCol>
+              </ProgressBarMain>
+            </C.SideInputCenter>
+            <C.SideImgInputRight>
+              {isprogress ? (
+                <span>
+                  <FaSignal
+                    color={'#f3f05b'}
+                    cursor={'pointer'}
+                    onClick={handerClickItensProgress}
                   />
-                </AccesDivItensProgress>
-              ) : null}
-
-              {passwordSummary.Numeral.ischar ? (
-                <AccesDivItensProgress
-                  bgcolor={passwordSummary.Numeral.cor}
-                  nome={passwordSummary.Numeral.title}
-                  qdd={passwordSummary.Numeral.quantity}
-                  ttpeso={passwordSummary.Numeral.result}
-                  perc={passwordSummary.Numeral.percent}
-                >
-                  <TesteProg
-                    value={passwordSummary.Numeral.percent}
-                    max={100}
-                  />
-                </AccesDivItensProgress>
-              ) : null}
-              */}
-
-            {/* </AccesDivMain> */}
-          </AccesDivProgress>
+                </span>
+              ) : (
+                <span>
+                  <FaSignal />
+                </span>
+              )}
+            </C.SideImgInputRight>
+          </C.ContainerInput>
         </label>
+        <label>
+          <AccesDivMain open={isitensprogress}>
+            {passwordSummary.Simbolo.ischar ? (
+              <AccesDivItensProgress
+                bgcolor={passwordSummary.Simbolo.cor}
+                nome={passwordSummary.Simbolo.title}
+                qdd={passwordSummary.Simbolo.quantity}
+                ttpeso={passwordSummary.Simbolo.result}
+                perc={passwordSummary.Simbolo.percent}
+              >
+                <TesteProg value={passwordSummary.Simbolo.percent} max={100} />
+              </AccesDivItensProgress>
+            ) : null}
+
+            {passwordSummary.Cxalta.ischar ? (
+              <AccesDivItensProgress
+                bgcolor={passwordSummary.Cxalta.cor}
+                nome={passwordSummary.Cxalta.title}
+                qdd={passwordSummary.Cxalta.quantity}
+                ttpeso={passwordSummary.Cxalta.result}
+                perc={passwordSummary.Cxalta.percent}
+              >
+                <TesteProg value={passwordSummary.Cxalta.percent} max={100} />
+              </AccesDivItensProgress>
+            ) : null}
+
+            {passwordSummary.Cxbaixa.ischar ? (
+              <AccesDivItensProgress
+                bgcolor={passwordSummary.Cxbaixa.cor}
+                nome={passwordSummary.Cxbaixa.title}
+                qdd={passwordSummary.Cxbaixa.quantity}
+                ttpeso={passwordSummary.Cxbaixa.result}
+                perc={passwordSummary.Cxbaixa.percent}
+              >
+                <TesteProg value={passwordSummary.Cxbaixa.percent} max={100} />
+              </AccesDivItensProgress>
+            ) : null}
+
+            {passwordSummary.Numeral.ischar ? (
+              <AccesDivItensProgress
+                bgcolor={passwordSummary.Numeral.cor}
+                nome={passwordSummary.Numeral.title}
+                qdd={passwordSummary.Numeral.quantity}
+                ttpeso={passwordSummary.Numeral.result}
+                perc={passwordSummary.Numeral.percent}
+              >
+                <TesteProg value={passwordSummary.Numeral.percent} max={100} />
+              </AccesDivItensProgress>
+            ) : null}
+          </AccesDivMain>
+        </label>
+
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
         </button>
