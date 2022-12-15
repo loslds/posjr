@@ -13,7 +13,8 @@ import { Titles } from '~/components/Titles';
 import {
   ProgressBarMain,
   ProgressMainCol,
-  ProgressBar100
+  ProgressBar100,
+  DivsProgress
 } from '../components/ProgressBars';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
@@ -28,6 +29,8 @@ type Summary = {
   percent: number;
   cor: string;
   ischar: boolean;
+  width: string;
+  percpx: number;
 };
 
 export type PasswordSummary = Record<CharType, Summary>;
@@ -40,7 +43,9 @@ export const initialState: PasswordSummary = {
     result: 0,
     value: 55,
     cor: 'rgba(32, 255, 3, 0.8)',
-    ischar: false
+    ischar: false,
+    width: '0px',
+    percpx: 0
   },
   Cxalta: {
     title: 'Caixa Alta.',
@@ -49,7 +54,9 @@ export const initialState: PasswordSummary = {
     result: 0,
     value: 11,
     cor: 'rgba(255, 230, 3, 0.8)',
-    ischar: false
+    ischar: false,
+    width: '0px',
+    percpx: 0
   },
   Cxbaixa: {
     title: 'Caixa Baixa.',
@@ -58,7 +65,9 @@ export const initialState: PasswordSummary = {
     result: 0,
     value: 7,
     cor: 'rgba(255, 125, 3, 0.8)',
-    ischar: false
+    ischar: false,
+    width: '0px',
+    percpx: 0
   },
   Numeral: {
     title: 'Numeral.',
@@ -67,7 +76,9 @@ export const initialState: PasswordSummary = {
     result: 0,
     value: 1,
     cor: 'rgba(255, 7, 3, 0.8)',
-    ischar: false
+    ischar: false,
+    width: '0px',
+    percpx: 0
   }
 };
 
@@ -91,9 +102,21 @@ export function calculateValues(
       acc[k].result = matchFound ? matchFound * value.value : 0;
       acc[k].percent = matchFound ? (matchFound * 100) / 10 : 0;
       acc[k].ischar = matchFound ? true : false;
+      //
+      const is = acc[k].ischar;
+      {
+        is ? (acc[k].percpx = (acc[k].percent * 50) / 100) : 0;
+      }
+
+      {
+        is
+          ? (acc[k].width = acc[k].percpx.toString(acc[k].percpx) + 'px')
+          : '0px';
+      }
 
       return acc;
     },
+
     { ...oldData } as PasswordSummary
   );
 
@@ -113,26 +136,9 @@ export const AccesPg = () => {
   const [islengpas, setIsLengPas] = useState(false);
   const [isprogress, setIsProgress] = useState(false);
   const [isitensprogress, setIsItensProgress] = useState(false);
-
-  const [isonoff, setIsOnOff] = useState(false);
   const [ischeck, setIsCheck] = useState(false);
-
   const [passwordSummary, setPasswordSummary] =
     useState<PasswordSummary>(initialState);
-
-  // const [value, setValue] = useLocalStorage<Salved>('text');
-
-  // const [strnome, setStrNome] = React.useState('');
-  // const [strsenha, setStrSenha] = React.useState('');
-
-  // const [strqdds, setQddS] = React.useState(0);
-  // const [strqdda, setQddA] = React.useState(0);
-  // const [strqddb, setQddB] = React.useState(0);
-  // const [strqddn, setQddN] = React.useState(0);
-  // const [strtts, setTtS] = React.useState(0);
-  // const [strtta, setTtA] = React.useState(0);
-  // const [strttb, setTtB] = React.useState(0);
-  // const [strttn, setTtN] = React.useState(0);
 
   const navigate = useNavigate();
 
@@ -203,14 +209,6 @@ export const AccesPg = () => {
       setIsCheck(false);
     }
   };
-
-  // React.useEffect(() => {
-  //   const nome = state.password;
-  //   dispatch({
-  //     type: AccesActions.setPassword,
-  //     payload: nome
-  //   });
-  // }, []);
 
   const handerClickProgress = React.useCallback(() => {
     if (ischeck) {
@@ -321,7 +319,7 @@ export const AccesPg = () => {
             <C.SideInputCenter>
               <ProgressBarMain>
                 <ProgressMainCol width={'50%'}>
-                  <span>Primeiro</span>
+                  <span>Cadeado : </span>
                   {isprogress ? (
                     <ProgressBar100
                       value={
@@ -337,20 +335,14 @@ export const AccesPg = () => {
                   ) : null}
                 </ProgressMainCol>
                 <ProgressMainCol width={'50%'}>
-                  <span>Segundo</span>
-                  {isprogress ? (
-                    <ProgressBar100
-                      value={
-                        passwordSummary.Simbolo.percent +
-                        passwordSummary.Cxalta.percent +
-                        passwordSummary.Cxbaixa.percent +
-                        passwordSummary.Numeral.percent
-                      }
-                      max={100}
-                      color={'red'}
-                      width={'95%'}
-                    />
-                  ) : null}
+                  <span>Força : </span>
+
+                  <DivsProgress
+                    bgcor={passwordSummary.Cxalta.cor}
+                    width={passwordSummary.Cxalta.width}
+                    perc={passwordSummary.Cxalta.percpx}
+                    isperc={passwordSummary.Cxalta.ischar}
+                  />
                 </ProgressMainCol>
               </ProgressBarMain>
             </C.SideInputCenter>
@@ -435,3 +427,11 @@ export const AccesPg = () => {
     </Theme>
   );
 };
+
+// React.useEffect(() => {
+//   const nome = state.password;
+//   dispatch({
+//     type: AccesActions.setPassword,
+//     payload: nome
+//   });
+// }, []);
