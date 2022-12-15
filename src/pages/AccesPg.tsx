@@ -105,7 +105,7 @@ export function calculateValues(
       //
       const is = acc[k].ischar;
       {
-        is ? (acc[k].percpx = (acc[k].percent * 50) / 100) : 0;
+        is ? (acc[k].percpx = ParceInt(((acc[k].percent * 50) / 100)) : 0;
       }
 
       {
@@ -338,10 +338,10 @@ export const AccesPg = () => {
                   <span>Força : </span>
 
                   <DivsProgress
-                    bgcor={passwordSummary.Cxalta.cor}
-                    width={passwordSummary.Cxalta.width}
-                    perc={passwordSummary.Cxalta.percpx}
-                    isperc={passwordSummary.Cxalta.ischar}
+                    bgcor={passwordSummary.Simbolo.cor}
+                    width={passwordSummary.Simbolo.width}
+                    perc={passwordSummary.Simbolo.percpx}
+                    isperc={passwordSummary.Simbolo.ischar}
                   />
                 </ProgressMainCol>
               </ProgressBarMain>
