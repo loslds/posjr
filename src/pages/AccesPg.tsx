@@ -14,7 +14,8 @@ import {
   ProgressBarMain,
   ProgressMainCol,
   ProgressBar100,
-  DivsProgress
+  DivsItensProgress,
+  DivProgress
 } from '../components/ProgressBars';
 import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
 import * as C from './stylesAcces';
@@ -103,16 +104,17 @@ export function calculateValues(
       acc[k].percent = matchFound ? (matchFound * 100) / 10 : 0;
       acc[k].ischar = matchFound ? true : false;
       //
-      const is = acc[k].ischar;
-      {
-        is ? (acc[k].percpx = ParceInt(((acc[k].percent * 50) / 100)) : 0;
+
+      if (acc[k].ischar) {
+        acc[k].percpx = acc[k].percent;
+        // acc[k].percpx = Math.floor((50 * acc[k].percent) / 100);
+        // acc[k].width = acc[k].percpx.toString(acc[k].percpx) + 'px';
+      } else {
+        acc[k].percpx = 0;
+        // acc[k].width = '0px';
       }
 
-      {
-        is
-          ? (acc[k].width = acc[k].percpx.toString(acc[k].percpx) + 'px')
-          : '0px';
-      }
+      console.log('percpx :', acc[k].percpx);
 
       return acc;
     },
@@ -336,13 +338,28 @@ export const AccesPg = () => {
                 </ProgressMainCol>
                 <ProgressMainCol width={'50%'}>
                   <span>Força : </span>
-
-                  <DivsProgress
-                    bgcor={passwordSummary.Simbolo.cor}
-                    width={passwordSummary.Simbolo.width}
-                    perc={passwordSummary.Simbolo.percpx}
-                    isperc={passwordSummary.Simbolo.ischar}
-                  />
+                  <DivsItensProgress open={isprogress}>
+                    <DivProgress
+                      bgcor={passwordSummary.Simbolo.cor}
+                      perc={passwordSummary.Simbolo.percpx}
+                      isperc={passwordSummary.Simbolo.ischar}
+                    />
+                    <DivProgress
+                      bgcor={passwordSummary.Cxalta.cor}
+                      perc={passwordSummary.Cxalta.percpx}
+                      isperc={passwordSummary.Cxalta.ischar}
+                    />
+                    <DivProgress
+                      bgcor={passwordSummary.Cxbaixa.cor}
+                      perc={passwordSummary.Cxbaixa.percpx}
+                      isperc={passwordSummary.Cxbaixa.ischar}
+                    />
+                    <DivProgress
+                      bgcor={passwordSummary.Numeral.cor}
+                      perc={passwordSummary.Numeral.percpx}
+                      isperc={passwordSummary.Numeral.ischar}
+                    />
+                  </DivsItensProgress>
                 </ProgressMainCol>
               </ProgressBarMain>
             </C.SideInputCenter>

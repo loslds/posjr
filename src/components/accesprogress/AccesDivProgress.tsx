@@ -8,4 +8,3 @@ type PropsDivProgres = {
 export const AccesDivProgress: React.FC<PropsDivProgres> = ({ children }) => {
   return <C.DivForca>{children}</C.DivForca>;
 };
-// export default AccesDivProgress;

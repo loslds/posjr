@@ -18,7 +18,7 @@ type PropsCol = {
   width?: string;
 };
 export const ContainerBarFlexCol = styled.div<PropsCol>`
-  border: 1px red solid;
+  border: 0px; /**1px yellow solid; */
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
   width: ${props => props.width};
@@ -107,13 +107,13 @@ export const Container100 = styled.div<PropsCc100>`
 `;
 
 /////////////////////////////////////////////
-export const ContainerDivProgres = styled.div`
+export const ContainerDivProgres = styled.div<{ open?: boolean }>`
   border: 0px; /** 1px dashed green; */
   padding: 2px 0px 2px 0px;
   margin: 2px 2px 2px 15px;
   height: 20px;
   max-width: 100%;
-  display: flex;
+  display: ${props => (props.open ? 'flex' : 'none')};
   flex-wrap: nowrap;
   justify-content: center;
   align-content: center;
@@ -130,7 +130,7 @@ export const ContainerDivProgresMain = styled.div`
   border: 1px solid white;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 204px;
+  width: 200px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
@@ -138,17 +138,12 @@ export const ContainerDivProgresMain = styled.div`
   align-items: center;
   background-color: transparent;
 `;
-
-type PropsDivProgres = {
-  bgcor?: string;
-  width?: string;
-};
-export const DivProgresFlex0 = styled.div<PropsDivProgres>`
+export const DivProgresFlex = styled.div<{ bgcor?: string }>`
   border: 0;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   height: 20px;
-  width: ${props => props.width};
+  width: 50px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
