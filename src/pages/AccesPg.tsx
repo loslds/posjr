@@ -87,7 +87,7 @@ export function calculateValues(
   text: string,
   oldData: PasswordSummary
 ): PasswordSummary {
-  const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/g;
+  const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
   const arrCalc: Array<[number, CharType]> = [
     [text.match(rex)?.length || 0, 'Simbolo'],
     [text.match(/[A-Z]/g)?.length || 0, 'Cxalta'],
@@ -103,18 +103,12 @@ export function calculateValues(
       acc[k].result = matchFound ? matchFound * value.value : 0;
       acc[k].percent = matchFound ? (matchFound * 100) / 10 : 0;
       acc[k].ischar = matchFound ? true : false;
-      //
 
       if (acc[k].ischar) {
         acc[k].percpx = acc[k].percent;
-        // acc[k].percpx = Math.floor((50 * acc[k].percent) / 100);
-        // acc[k].width = acc[k].percpx.toString(acc[k].percpx) + 'px';
       } else {
         acc[k].percpx = 0;
-        // acc[k].width = '0px';
       }
-
-      console.log('percpx :', acc[k].percpx);
 
       return acc;
     },
@@ -138,6 +132,7 @@ export const AccesPg = () => {
   const [islengpas, setIsLengPas] = useState(false);
   const [isprogress, setIsProgress] = useState(false);
   const [isitensprogress, setIsItensProgress] = useState(false);
+  const [isdivsprogress, setIsDivsProgress] = useState(false);
   const [ischeck, setIsCheck] = useState(false);
   const [passwordSummary, setPasswordSummary] =
     useState<PasswordSummary>(initialState);
@@ -212,15 +207,16 @@ export const AccesPg = () => {
     }
   };
 
-  const handerClickProgress = React.useCallback(() => {
-    if (ischeck) {
-      setIsProgress(oldState => !oldState);
-    }
-    setIsItensProgress(false);
-  }, [ischeck]);
+  const handlerClickProgress = React.useCallback(() => {
+    setIsProgress(oldState => !oldState);
+  }, []);
 
-  const handerClickItensProgress = React.useCallback(() => {
+  const handlerClickItensProgress = React.useCallback(() => {
     setIsItensProgress(oldState => !oldState);
+  }, []);
+
+  const handleronClickDivProgress = React.useCallback(() => {
+    setIsDivsProgress(oldState => !oldState);
   }, []);
 
   // const handlerEnviar = () => {
@@ -308,7 +304,7 @@ export const AccesPg = () => {
                 <span>
                   <FaLock
                     color={'#f3f05b'}
-                    onClick={handerClickProgress}
+                    onClick={handlerClickProgress}
                     cursor={'pointer'}
                   />
                 </span>
@@ -338,28 +334,43 @@ export const AccesPg = () => {
                 </ProgressMainCol>
                 <ProgressMainCol width={'50%'}>
                   <span>Força : </span>
-                  <DivsItensProgress open={isprogress}>
-                    <DivProgress
-                      bgcor={passwordSummary.Simbolo.cor}
-                      perc={passwordSummary.Simbolo.percpx}
-                      isperc={passwordSummary.Simbolo.ischar}
-                    />
-                    <DivProgress
-                      bgcor={passwordSummary.Cxalta.cor}
-                      perc={passwordSummary.Cxalta.percpx}
-                      isperc={passwordSummary.Cxalta.ischar}
-                    />
-                    <DivProgress
-                      bgcor={passwordSummary.Cxbaixa.cor}
-                      perc={passwordSummary.Cxbaixa.percpx}
-                      isperc={passwordSummary.Cxbaixa.ischar}
-                    />
-                    <DivProgress
-                      bgcor={passwordSummary.Numeral.cor}
-                      perc={passwordSummary.Numeral.percpx}
-                      isperc={passwordSummary.Numeral.ischar}
-                    />
-                  </DivsItensProgress>
+                  {isprogress ? (
+                    <DivsItensProgress open={isprogress}>
+                      <DivProgress
+                        id={'Simbolo'}
+                        onClick={handleronClickDivProgress}
+                        open={isprogress}
+                        bgcor={passwordSummary.Simbolo.cor}
+                        perc={passwordSummary.Simbolo.percpx}
+                        isperc={passwordSummary.Simbolo.ischar}
+                        // isdiv={isdivsprogress}
+                      />
+                      <DivProgress
+                        id={'Cxalta'}
+                        onClick={handleronClickDivProgress}
+                        open={isprogress}
+                        bgcor={passwordSummary.Cxalta.cor}
+                        perc={passwordSummary.Cxalta.percpx}
+                        isperc={passwordSummary.Cxalta.ischar}
+                      />
+                      <DivProgress
+                        id={'Cxbaixa'}
+                        open={isprogress}
+                        onClick={handleronClickDivProgress}
+                        bgcor={passwordSummary.Cxbaixa.cor}
+                        perc={passwordSummary.Cxbaixa.percpx}
+                        isperc={passwordSummary.Cxbaixa.ischar}
+                      />
+                      <DivProgress
+                        id={'Numeral'}
+                        open={isprogress}
+                        onClick={handleronClickDivProgress}
+                        bgcor={passwordSummary.Numeral.cor}
+                        perc={passwordSummary.Numeral.percpx}
+                        isperc={passwordSummary.Numeral.ischar}
+                      />
+                    </DivsItensProgress>
+                  ) : null}
                 </ProgressMainCol>
               </ProgressBarMain>
             </C.SideInputCenter>
@@ -369,7 +380,7 @@ export const AccesPg = () => {
                   <FaSignal
                     color={'#f3f05b'}
                     cursor={'pointer'}
-                    onClick={handerClickItensProgress}
+                    onClick={handlerClickItensProgress}
                   />
                 </span>
               ) : (

@@ -126,6 +126,7 @@ export const ContainerDivProgres = styled.div<{ open?: boolean }>`
     margin: 0px 0px 2px 5px;
   }
 `;
+
 export const ContainerDivProgresMain = styled.div`
   border: 1px solid white;
   padding: 0px 0px 0px 0px;
@@ -138,26 +139,42 @@ export const ContainerDivProgresMain = styled.div`
   align-items: center;
   background-color: transparent;
 `;
-export const DivProgresFlex = styled.div<{ bgcor?: string }>`
+
+export const DivProgresFlex = styled.div<{ open?: boolean; bgcor?: string }>`
   border: 0;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
   height: 20px;
   width: 50px;
-  display: flex;
+  display: ${props => (props.open ? 'flex' : 'none')};
+  background-color: ${props => props.bgcor};
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  span {
+    margin: 0px 0px 0px 8px;
+  }
+`;
+
+export const DivContainerInfo = styled.div<{
+  id?: boolean;
+  open?: boolean;
+  bgcor?: string;
+}>`
+  border: 0;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 5px 0px 10px;
+  height: 20px;
+  width: 50px;
+  display: ${props => (props.open ? 'flex' : 'none')};
   flex-wrap: nowrap;
   justify-content: left;
   align-content: center;
   align-items: center;
   background-color: ${props => props.bgcor};
+  font-size: 14px;
+  font-weight: bold;
   span {
-    padding: 0px 0px 0px 0px;
-    margin: 0px 0px 0px 3px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    margin: 5px 5px 5px 5px;
   }
 `;
 
