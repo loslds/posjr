@@ -127,6 +127,30 @@ export const ContainerDivProgres = styled.div<{ open?: boolean }>`
   }
 `;
 
+export const ButtonDivPresImg = styled.button<{ img?: string }>`
+  border: 0; /*1px black dashed;*/
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${({ img }) => img || null});
+  background-position: center;
+  //background-attachment: fixed;
+  cursor: pointer;
+  outline: none;
+  min-height: 20px;
+  width: 100%;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ContainerDivProgresMain = styled.div`
   border: 1px solid white;
   padding: 0px 0px 0px 0px;
@@ -140,11 +164,14 @@ export const ContainerDivProgresMain = styled.div`
   background-color: transparent;
 `;
 
-export const DivProgresFlex = styled.div<{ open?: boolean; bgcor?: string }>`
+type PropsDivF = {
+  bgcor?: string;
+};
+export const DivProgresFlex = styled.div<PropsDivF>`
   border: 0;
   height: 20px;
   width: 50px;
-  display: ${props => (props.open ? 'flex' : 'none')};
+  display: flex;
   background-color: ${props => props.bgcor};
   font-size: 14px;
   font-weight: bold;
@@ -155,11 +182,12 @@ export const DivProgresFlex = styled.div<{ open?: boolean; bgcor?: string }>`
   }
 `;
 
-export const DivContainerInfo = styled.div<{
-  id?: boolean;
+type PropsDivI = {
   open?: boolean;
+  isinfo?: boolean;
   bgcor?: string;
-}>`
+};
+export const DivContainerInfo = styled.div<PropsDivI>`
   border: 0;
   padding: 0px 0px 0px 0px;
   margin: 0px 5px 0px 10px;
@@ -176,46 +204,4 @@ export const DivContainerInfo = styled.div<{
   span {
     margin: 5px 5px 5px 5px;
   }
-`;
-
-export const DivProgresFlex1 = styled.div`
-  border: 0;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  height: 20px;
-  width: 50px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: left;
-  align-content: center;
-  align-items: center;
-  background-color: yellow;
-`;
-
-export const DivProgresFlex2 = styled.div`
-  border: 0;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  height: 20px;
-  width: 45px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: left;
-  align-content: center;
-  align-items: center;
-  background-color: orange;
-`;
-
-export const DivProgresFlex3 = styled.div`
-  border: 0;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  height: 20px;
-  width: 45px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: left;
-  align-content: center;
-  align-items: center;
-  background-color: red;
 `;

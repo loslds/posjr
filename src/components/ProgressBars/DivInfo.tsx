@@ -3,33 +3,28 @@ import React from 'react';
 import * as C from './styles';
 
 export const listMsg = [
-  { id: 'Simbolo', msg: 'cliquei em Simbolos.', onClick: () => {} },
-  { id: 'Cxalta', msg: 'cliquei em Caixa Alta.', onClick: () => {} },
-  { id: 'Cxbaixa', msg: 'cliquei em Caixa Baixa.', onClick: () => {} },
-  { id: 'Numeral', msg: 'cliquei em Caixa Numerais.', onClick: () => {} }
+  { id: 'Simbolo', msg: 'cliquei em Simbolos.' },
+  { id: 'Cxalta', msg: 'cliquei em Caixa Alta.' },
+  { id: 'Cxbaixa', msg: 'cliquei em Caixa Baixa.' },
+  { id: 'Numeral', msg: 'cliquei em Caixa Numerais.' }
 ];
 
-type PropsDivProgress = {
+type PropsDivInfo = {
   id?: string;
   bgcor?: string;
-  open?: boolean;
-  isinfo: boolean;
-  onClick?: () => void;
+  open: boolean;
+  children?: React.ReactNode;
 };
 
-export const DivProgress: React.FC<PropsDivProgress> = ({
+export const DivInfo: React.FC<PropsDivInfo> = ({
   id,
   open,
-  bgcor
+  bgcor,
+  children
 }) => {
   return (
-    <C.DivProgresFlex id={id} open={open} bgcor={bgcor}>
-      {open ? (
-        <span>entrei no div...</span>
-      ) : (
-        <span>Não foi detectado caracteres...</span>
-      )}
-      ;
-    </C.DivProgresFlex>
+    <C.DivContainerInfo id={id} open={open} bgcor={bgcor}>
+      {children};
+    </C.DivContainerInfo>
   );
 };

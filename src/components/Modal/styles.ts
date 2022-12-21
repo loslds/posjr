@@ -2,44 +2,22 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
-export const ContainerCard = styled.div`
-  border-bottom: 2px #727272 solid;
+/////////////// inicio MainModal
+export const ContentModal = styled.div`
+  position: fixed;
+  border: 0px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 85vh;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 100%;
-  min-height: 40px;
+  z-index: 100;
+  color: white;
+  background-color: rgba(0, 0, 0, 0, 0.8);
   display: flex;
-  flex-flow: wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: #d6d6d6;
-`;
-
-export const ContainerCardFlex = styled.div`
-  border: none;
-  height: 100%;
-  width: 100%;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  align-content: center;
-  align-items: center;
-  background-color: transparent;
-`;
-
-export const ContainerModalTitle = styled.div`
-  border: 0px; /*1px green dashed;*/
-  padding: 0px auto;
-  margin: 0px auto;
-  min-width: 80%;
-  display: flex;
-  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  align-content: center;
   color: black;
   font-size: 12px;
   font-weight: bold;
@@ -62,7 +40,69 @@ export const ContainerModalTitle = styled.div`
   }
 `;
 
-export const ContainerModalButton = styled.div`
+export const ContainerModal = styled.div`
+  border: 2px #727272 solid;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 10px;
+  background-color: white;
+  color: black;
+  top: 62px;
+  position: fixed;
+  width: 66.3%;
+  height: 87%;
+  display: flex row;
+  flex-wrap: nowrap;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+`;
+/////////////// fim MainModal
+/////////////// inicio CardMocal
+export const ContainerCard = styled.div`
+  border-bottom: 2px #727272 solid;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  min-height: 40px;
+  background-color: transparent;
+  /* background-color: #d6d6d6; */
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
+
+export const ContainerCardFlex = styled.div`
+  border: none;
+  height: 100%;
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  background-color: black;
+
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+`;
+///////////////// fim CardModal
+///////////////// inicio TitleModal
+export const ContainerModalTitle = styled.div`
+  border: 0px; /*1px green dashed;*/
+  padding: 0px auto;
+  margin: 0px auto;
+  min-width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+////////////////// fim TitleModal
+///////////////// inicio ButtonModal
+export const ContainerButtonModal = styled.div<{ isbtof?: boolean }>`
   border: 0px; /*1px red dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
@@ -77,26 +117,10 @@ export const ContainerModalButton = styled.div`
   font-size: 12px;
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
-  h1,
-  h2,
-  h3 {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
-    text-decoration-color: #727272;
-  }
-  h1 {
-    text-decoration: 3px underline;
-  }
-  h2 {
-    text-decoration: 2px underline;
-  }
-  h3 {
-    text-decoration: 1.5px underline;
-  }
 `;
 
 export const ButtonModalImg = styled.button<{ img?: string }>`
-  border: 0; /*1px black dashed;*/
+  border: 0;
   padding: 0px 0px 0px 0px;
   margin: 2px 5px 2px 5px;
   color: white;
@@ -117,10 +141,11 @@ export const ButtonModalImg = styled.button<{ img?: string }>`
   justify-content: center;
   align-items: center;
 `;
+////////////////////////////////////////
 
 // ++++++++++++++++++++++++++++++++++
 
-export const FlexCard = styled.div`
+export const FFlexCard = styled.div`
   border: none;
   min-height: 40px;
   width: 100%;
@@ -138,7 +163,7 @@ export const FlexCard = styled.div`
   }
 `;
 
-export const CardTitle = styled.div`
+export const CCardTitle = styled.div`
   padding: 0px auto;
   margin: 0px auto;
   min-width: 85%;
@@ -151,7 +176,7 @@ export const CardTitle = styled.div`
   font-size: 18px;
 `;
 
-export const ContainerButton = styled.div`
+export const CContainerButton = styled.div`
   padding: 0px auto;
   margin: 0px auto;
   min-width: 6%;
@@ -162,7 +187,7 @@ export const ContainerButton = styled.div`
   align-content: center;
 `;
 
-export const ButtonModal = styled.button<{ img?: string }>`
+export const BButtonModal = styled.button<{ img?: string }>`
   margin: 2px 4px 2px 4px;
   padding: 2px auto;
   display: block;

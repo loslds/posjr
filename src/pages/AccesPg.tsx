@@ -10,6 +10,7 @@ import { TesteProg } from '~/components/TesteProg';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
+import { Modal } from '../components/modal/Modal';
 import {
   ProgressBarMain,
   ProgressMainCol,
@@ -87,7 +88,7 @@ export function calculateValues(
   text: string,
   oldData: PasswordSummary
 ): PasswordSummary {
-  const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/;
+  const rex = /[\!\#\$\&\+\-\.\<\=\>\@\^\_]/g;
   const arrCalc: Array<[number, CharType]> = [
     [text.match(rex)?.length || 0, 'Simbolo'],
     [text.match(/[A-Z]/g)?.length || 0, 'Cxalta'],
@@ -215,10 +216,11 @@ export const AccesPg = () => {
     setIsItensProgress(oldState => !oldState);
   }, []);
 
-  const handleronClickDivProgress = React.useCallback(() => {
+  const handlerClickDivProgress = React.useCallback(() => {
     setIsDivsProgress(oldState => !oldState);
   }, []);
 
+  console.log('isdivsprogress', isdivsprogress);
   // const handlerEnviar = () => {
   //   // alert('Enviar Acesso para reconhecimento...');
   // };
@@ -338,39 +340,50 @@ export const AccesPg = () => {
                     <DivsItensProgress open={isprogress}>
                       <DivProgress
                         id={'Simbolo'}
-                        onClick={handleronClickDivProgress}
-                        open={isprogress}
                         bgcor={passwordSummary.Simbolo.cor}
                         perc={passwordSummary.Simbolo.percpx}
                         isperc={passwordSummary.Simbolo.ischar}
-                        // isdiv={isdivsprogress}
-                      />
-                      <DivProgress
-                        id={'Cxalta'}
-                        onClick={handleronClickDivProgress}
-                        open={isprogress}
-                        bgcor={passwordSummary.Cxalta.cor}
-                        perc={passwordSummary.Cxalta.percpx}
-                        isperc={passwordSummary.Cxalta.ischar}
-                      />
-                      <DivProgress
-                        id={'Cxbaixa'}
-                        open={isprogress}
-                        onClick={handleronClickDivProgress}
-                        bgcor={passwordSummary.Cxbaixa.cor}
-                        perc={passwordSummary.Cxbaixa.percpx}
-                        isperc={passwordSummary.Cxbaixa.ischar}
-                      />
-                      <DivProgress
-                        id={'Numeral'}
-                        open={isprogress}
-                        onClick={handleronClickDivProgress}
-                        bgcor={passwordSummary.Numeral.cor}
-                        perc={passwordSummary.Numeral.percpx}
-                        isperc={passwordSummary.Numeral.ischar}
+                        onClick={handlerClickDivProgress}
                       />
                     </DivsItensProgress>
                   ) : null}
+
+                  {/* <DivInfo
+                        id={'Cxalta'}
+                        open={isprogress}
+                        bgcor={passwordSummary.Cxalta.cor}
+                      >
+                        <ButtonInfo
+                          //id={'Cxalta'}
+                          perc={passwordSummary.Cxalta.percpx}
+                          isperc={passwordSummary.Cxalta.ischar}
+                          // onClick={handlerClickDivProgress}
+                        />
+                      </DivInfo>
+                      <DivInfo
+                        id={'Cxbaixa'}
+                        open={isprogress}
+                        bgcor={passwordSummary.Cxbaixa.cor}
+                      >
+                        <ButtonInfo
+                          //id={'Cxbaixa'}
+                          perc={passwordSummary.Cxbaixa.percpx}
+                          isperc={passwordSummary.Cxbaixa.ischar}
+                          // onClick={handlerClickDivProgress}
+                        />
+                      </DivInfo>
+                      <DivInfo
+                        id={'Numeral'}
+                        open={isprogress}
+                        bgcor={passwordSummary.Numeral.cor}
+                      >
+                        <ButtonInfo
+                          //id={'Numeral'}
+                          perc={passwordSummary.Numeral.percpx}
+                          isperc={passwordSummary.Numeral.ischar}
+                          // onClick={handlerClickDivProgress}
+                        />
+                      </DivInfo> */}
                 </ProgressMainCol>
               </ProgressBarMain>
             </C.SideInputCenter>
@@ -450,6 +463,14 @@ export const AccesPg = () => {
           <button onClick={() => {}} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
+        ) : null}
+        {isdivsprogress ? (
+          <Modal
+            isOpen={isdivsprogress}
+            istitle={false}
+            titulo={'entrei'}
+            isbtof={false}
+          />
         ) : null}
       </C.Container>
     </Theme>

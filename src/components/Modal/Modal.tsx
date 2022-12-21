@@ -10,30 +10,41 @@ import { TitleModal } from './TitleModal';
 
 type Props = {
   isOpen?: boolean;
-  onClose?: () => void;
+  istitle?: boolean;
+  isbtof?: boolean;
+  onClick?: React.ReactNode;
+  onCloseModal?: React.ReactNode;
   titulo?: string;
-  form?: React.ReactNode;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 };
 
 export const Modal: React.FC<Props> = ({
   isOpen,
-  titulo = 'Titulo',
-  onClose,
-  form,
+  istitle,
+  titulo,
+  isbtof,
   children
 }) => {
   if (!isOpen) return null;
 
+  // const handleClose = React.useCallback(e => {
+  //   e.stopPropagation();
+  //   onClose();
+  // }, []);
+
   return (
+    // <MainModal id={'idmodal1'} onClick={handleClose}>
     <MainModal id={'idmodal1'}>
-      <CardModal id={'idmodal2'}>
-        <TitleModal titulo={titulo} />
-        <CardButtonsModal>
-          <ButtonModal img={ImgClose} onClick={onClose} title={'Fechar...'} />
+      <CardModal>
+        {istitle ? <TitleModal titulo={titulo} /> : null}
+        <CardButtonsModal isbtof={isbtof}>
+          <ButtonModal
+            img={ImgClose}
+            // onClick={handleClose}
+            title={'Fechar...'}
+          />
         </CardButtonsModal>
       </CardModal>
-      {form}
       {children}
     </MainModal>
   );
