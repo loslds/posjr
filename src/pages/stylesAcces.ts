@@ -118,6 +118,7 @@ export const SideImgInputLeft = styled.div`
     color: #25cd89;
   }
 `;
+
 export const SideImgInputRight = styled.div`
   border: 0;
   border-left: 2px solid #25cd89;

@@ -6,11 +6,11 @@ import {
   AccesDivMain,
   AccesDivItensProgress
 } from '~/components/accesprogress';
+import { ModalProgress } from '~/components/accesprogress/modalprogress';
 import { TesteProg } from '~/components/TesteProg';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
-import { Modal } from '../components/modal/Modal';
 import {
   ProgressBarMain,
   ProgressMainCol,
@@ -133,10 +133,10 @@ export const AccesPg = () => {
   const [islengpas, setIsLengPas] = useState(false);
   const [isprogress, setIsProgress] = useState(false);
   const [isitensprogress, setIsItensProgress] = useState(false);
-  const [isdivsprogress, setIsDivsProgress] = useState(false);
   const [ischeck, setIsCheck] = useState(false);
   const [passwordSummary, setPasswordSummary] =
     useState<PasswordSummary>(initialState);
+  const [ismodalvisible, setIsModalVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -216,14 +216,13 @@ export const AccesPg = () => {
     setIsItensProgress(oldState => !oldState);
   }, []);
 
-  const handlerClickDivProgress = React.useCallback(() => {
-    setIsDivsProgress(oldState => !oldState);
+  const handlerModalProgress = React.useCallback(() => {
+    setIsModalVisible(oldState => !oldState);
   }, []);
 
-  console.log('isdivsprogress', isdivsprogress);
-  // const handlerEnviar = () => {
-  //   // alert('Enviar Acesso para reconhecimento...');
-  // };
+  const handlerEnviar = () => {
+    alert('Enviar Acesso para reconhecimento...');
+  };
 
   return (
     <Theme>
@@ -343,11 +342,34 @@ export const AccesPg = () => {
                         bgcor={passwordSummary.Simbolo.cor}
                         perc={passwordSummary.Simbolo.percpx}
                         isperc={passwordSummary.Simbolo.ischar}
-                        onClick={handlerClickDivProgress}
+                        onClick={handlerModalProgress}
+                      />
+                      <DivProgress
+                        id={'Caixa Alta'}
+                        bgcor={passwordSummary.Cxalta.cor}
+                        perc={passwordSummary.Cxalta.percpx}
+                        isperc={passwordSummary.Cxalta.ischar}
+                        onClick={handlerModalProgress}
+                      />
+                      <DivProgress
+                        id={'Caixa Baixa'}
+                        bgcor={passwordSummary.Cxbaixa.cor}
+                        perc={passwordSummary.Cxbaixa.percpx}
+                        isperc={passwordSummary.Cxbaixa.ischar}
+                        onClick={handlerModalProgress}
+                      />
+                      <DivProgress
+                        id={'Numeral'}
+                        bgcor={passwordSummary.Numeral.cor}
+                        perc={passwordSummary.Numeral.percpx}
+                        isperc={passwordSummary.Numeral.ischar}
+                        onClick={handlerModalProgress}
                       />
                     </DivsItensProgress>
                   ) : null}
-
+                  {ismodalvisible ? (
+                    <ModalProgress titulo={'Força do Acesso.'} />
+                  ) : null}
                   {/* <DivInfo
                         id={'Cxalta'}
                         open={isprogress}
@@ -460,17 +482,9 @@ export const AccesPg = () => {
           Voltar
         </button>
         {islengid && islengpas ? (
-          <button onClick={() => {}} title={'Solicitar Acesso.'}>
+          <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
-        ) : null}
-        {isdivsprogress ? (
-          <Modal
-            isOpen={isdivsprogress}
-            istitle={false}
-            titulo={'entrei'}
-            isbtof={false}
-          />
         ) : null}
       </C.Container>
     </Theme>

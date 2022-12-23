@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import semimg from '~/assets/images/semimg.png';
 
 /////////////// inicio MainModal
-export const ContentModal = styled.div`
+
+export const Content = styled.div`
   position: fixed;
   border: 0px;
   top: 0px;
@@ -14,11 +15,10 @@ export const ContentModal = styled.div`
   margin: 0px 0px 0px 0px;
   z-index: 100;
   color: white;
-  background-color: rgba(0, 0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
   font-size: 12px;
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
@@ -39,8 +39,13 @@ export const ContentModal = styled.div`
     text-decoration: 1.5px underline;
   }
 `;
-
-export const ContainerModal = styled.div`
+type PropsMain = {
+  top?: string;
+  height?: string;
+  width?: string;
+  onClick?: () => void;
+};
+export const ContainerModal = styled.div<PropsMain>`
   border: 2px #727272 solid;
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
@@ -63,7 +68,7 @@ export const ContainerCard = styled.div`
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
-  min-height: 40px;
+  min-height: 35px;
   background-color: transparent;
   /* background-color: #d6d6d6; */
   display: flex;
@@ -74,20 +79,20 @@ export const ContainerCard = styled.div`
 `;
 
 export const ContainerCardFlex = styled.div`
-  border: none;
+  border: 1px solid red;
   height: 100%;
   width: 100%;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  background-color: black;
-
+  background-color: transparent; //* black;*/
   display: flex;
   flex-flow: wrap;
-  justify-content: space-around;
+  justify-content: center; /*space-around;*/
   align-content: center;
   align-items: center;
 `;
 ///////////////// fim CardModal
+
 ///////////////// inicio TitleModal
 export const ContainerModalTitle = styled.div`
   border: 0px; /*1px green dashed;*/
@@ -102,7 +107,7 @@ export const ContainerModalTitle = styled.div`
 `;
 ////////////////// fim TitleModal
 ///////////////// inicio ButtonModal
-export const ContainerButtonModal = styled.div<{ isbtof?: boolean }>`
+export const ContainerButtonModal = styled.div`
   border: 0px; /*1px red dashed;*/
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;

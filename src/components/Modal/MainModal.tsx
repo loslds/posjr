@@ -2,16 +2,16 @@ import React from 'react';
 
 import * as C from './styles';
 
-type Props = {
+type PropsMainModal = {
   id?: string;
   children?: React.ReactNode;
-  onClick?: () => {};
+  onClick?: () => void;
 };
 
-export const MainModal: React.FC<Props> = ({ id, children, onClick }) => {
+export const MainModal: React.FC<PropsMainModal> = ({ id, children }) => {
   return (
-    <C.ContentModal id={id} onClick={onClick}>
+    <C.Content id={id}>
       <C.ContainerModal>{children}</C.ContainerModal>
-    </C.ContentModal>
+    </C.Content>
   );
 };
