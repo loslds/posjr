@@ -20,7 +20,6 @@ export const ModalProgress: React.FC<PropsContentModal> = ({
           <ModalTitleProgress titulo={titulo} />
           <ModalButtonProgress />
         </ModalCardProgress>
-
         {children}
       </C.ContainerModal>
     </C.ContentModal>

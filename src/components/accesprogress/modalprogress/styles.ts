@@ -41,7 +41,7 @@ export const ContainerModal = styled.div`
   top: 100px;
   left: 300px;
   width: 29.3%;
-  height: 40vh;
+  //height: 40vh;
   background-color: #383838;
 `;
 

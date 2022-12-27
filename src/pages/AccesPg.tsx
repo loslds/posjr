@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaIdBadge, FaKey, FaCheck, FaLock, FaSignal } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import {
   AccesDivItensProgress
 } from '~/components/accesprogress';
 import { ModalProgress } from '~/components/accesprogress/modalprogress';
+import { MainForcaAcesso } from '~/components/accesprogress/modalprogress/help';
 import { TesteProg } from '~/components/TesteProg';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
@@ -125,18 +126,18 @@ export type Salved = {
 };
 
 export const AccesPg = () => {
-  const [isaccesid, setIsAccesId] = useState(false);
-  const [isinputid, setIsInputId] = useState(false);
-  const [islengid, setIsLengId] = useState(false);
-  const [isaccespas, setIsAccesPas] = useState(false);
-  const [isinputpas, setIsInputPas] = useState(false);
-  const [islengpas, setIsLengPas] = useState(false);
-  const [isprogress, setIsProgress] = useState(false);
-  const [isitensprogress, setIsItensProgress] = useState(false);
-  const [ischeck, setIsCheck] = useState(false);
+  const [isaccesid, setIsAccesId] = React.useState(false);
+  const [isinputid, setIsInputId] = React.useState(false);
+  const [islengid, setIsLengId] = React.useState(false);
+  const [isaccespas, setIsAccesPas] = React.useState(false);
+  const [isinputpas, setIsInputPas] = React.useState(false);
+  const [islengpas, setIsLengPas] = React.useState(false);
+  const [isprogress, setIsProgress] = React.useState(false);
+  const [isitensprogress, setIsItensProgress] = React.useState(false);
+  const [ischeck, setIsCheck] = React.useState(false);
   const [passwordSummary, setPasswordSummary] =
-    useState<PasswordSummary>(initialState);
-  const [ismodalvisible, setIsModalVisible] = useState(false);
+    React.useState<PasswordSummary>(initialState);
+  const [ismodalvisible, setIsModalVisible] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -183,7 +184,6 @@ export const AccesPg = () => {
     const text = e?.target?.value || '';
     const newData = calculateValues(text, { ...passwordSummary });
     setPasswordSummary(newData);
-
     dispatch({
       type: AccesActions.setPassword,
       payload: text
@@ -298,7 +298,7 @@ export const AccesPg = () => {
           </C.ContainerInput>
         </label>
         <label>
-          Segurança do seu Acesso.
+          Segurança.
           <C.ContainerInput>
             <C.SideImgInputLeft>
               {ischeck ? (
@@ -368,44 +368,10 @@ export const AccesPg = () => {
                     </DivsItensProgress>
                   ) : null}
                   {ismodalvisible ? (
-                    <ModalProgress titulo={'Força do Acesso.'} />
+                    <ModalProgress titulo={'Força do Acesso.'}>
+                      <MainForcaAcesso />
+                    </ModalProgress>
                   ) : null}
-                  {/* <DivInfo
-                        id={'Cxalta'}
-                        open={isprogress}
-                        bgcor={passwordSummary.Cxalta.cor}
-                      >
-                        <ButtonInfo
-                          //id={'Cxalta'}
-                          perc={passwordSummary.Cxalta.percpx}
-                          isperc={passwordSummary.Cxalta.ischar}
-                          // onClick={handlerClickDivProgress}
-                        />
-                      </DivInfo>
-                      <DivInfo
-                        id={'Cxbaixa'}
-                        open={isprogress}
-                        bgcor={passwordSummary.Cxbaixa.cor}
-                      >
-                        <ButtonInfo
-                          //id={'Cxbaixa'}
-                          perc={passwordSummary.Cxbaixa.percpx}
-                          isperc={passwordSummary.Cxbaixa.ischar}
-                          // onClick={handlerClickDivProgress}
-                        />
-                      </DivInfo>
-                      <DivInfo
-                        id={'Numeral'}
-                        open={isprogress}
-                        bgcor={passwordSummary.Numeral.cor}
-                      >
-                        <ButtonInfo
-                          //id={'Numeral'}
-                          perc={passwordSummary.Numeral.percpx}
-                          isperc={passwordSummary.Numeral.ischar}
-                          // onClick={handlerClickDivProgress}
-                        />
-                      </DivInfo> */}
                 </ProgressMainCol>
               </ProgressBarMain>
             </C.SideInputCenter>
