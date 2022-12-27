@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { ModalTargeta } from './ModalTargeta';
+import { ModalButtonProgress } from './ModalButtonProgress';
+import { ModalCardProgress } from './ModalCardProgress';
+import { ModalTitleProgress } from './ModalTitleProgress';
 import * as C from './styles';
 
 type PropsContentModal = {
@@ -14,7 +16,11 @@ export const ModalProgress: React.FC<PropsContentModal> = ({
   return (
     <C.ContentModal>
       <C.ContainerModal>
-        <ModalTargeta titulo={titulo} />
+        <ModalCardProgress>
+          <ModalTitleProgress titulo={titulo} />
+          <ModalButtonProgress />
+        </ModalCardProgress>
+
         {children}
       </C.ContainerModal>
     </C.ContentModal>

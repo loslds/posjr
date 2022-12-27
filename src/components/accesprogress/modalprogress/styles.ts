@@ -45,16 +45,25 @@ export const ContainerModal = styled.div`
   background-color: #383838;
 `;
 
-export const ContainerTitleButton = styled.div`
-  border: 2px dashed yellow;
-  margin: 2px 2px 2px 2px;
-  padding: 0px 0px 0px 2px;
-  width: 98%;
-  display: inline-flex;
+export const ContainerCarModal = styled.div`
+  border: 1px dashed red;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  display: flex;
   justify-content: center;
   align-content: center;
 `;
 
+export const ContainerTitleModal = styled.div`
+  border: 0px;
+  margin: 2px 2px 2px 2px;
+  padding: 0px 0px 0px 2px;
+  width: 70%;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+`;
 export const ModalDivRightsImg = styled.div`
   border: none;
   border-radius: 50%;
