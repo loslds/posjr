@@ -12,6 +12,7 @@ import { AccesPg0 } from '../pages/AccesPg0';
 import { AccesPg1 } from '../pages/AccesPg1';
 import { AccesPg2 } from '../pages/AccesPg2';
 import { AccesPg3 } from '../pages/AccesPg3';
+import { Access } from '../pages/Acess';
 // import { AccesChvSms } from '~/pages/AccesSegura';
 // import { AccesChvMail } from '~/pages/AccesSegura';
 import { HomePage } from '../pages/HomePage';
@@ -29,6 +30,7 @@ export const RouteList: IRoute[] = [
   { path: '/accesemail', exact: true, element: <AccesEmail /> },
   { path: '/accesnew1', exact: true, element: <AccesNew1 /> },
   { path: '/accesnew', exact: true, element: <AccesNew /> },
+  { path: '/access', exact: true, element: <Access /> },
   { path: '/accespg', exact: true, element: <AccesPg /> },
   { path: '/accespg0', exact: true, element: <AccesPg0 /> },
   { path: '/accespg1', exact: true, element: <AccesPg1 /> },

@@ -59,6 +59,7 @@ export const HomePage = () => {
                 img={loginbrc1}
                 title={'Acesso...'}
                 onClick={goto('/access')}
+
               />
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
