@@ -17,6 +17,7 @@ export const AccesPg0 = () => {
     };
   };
   const { state, dispatch } = AccesUseForm();
+
   React.useEffect(() => {
     dispatch({
       type: AccesActions.setCurrentStep,

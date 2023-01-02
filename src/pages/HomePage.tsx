@@ -36,6 +36,58 @@ export const HomePage = () => {
       type: AccesActions.setCurrentStep,
       payload: 0
     });
+    dispatch({
+      type: AccesActions.setLevel,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrlevel,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setIdname,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setLogado,
+      payload: false
+    });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'HomePage'
+    });
+    dispatch({
+      type: AccesActions.setName,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setEmail,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setFone,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setDescrpath,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvPin,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvSms,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvMail,
+      payload: ''
+    });
   }, [dispatch]);
 
   return (

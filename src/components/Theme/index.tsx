@@ -51,54 +51,162 @@ export const Theme = ({ children }: Props) => {
                 <hr />
                 <C.SideBarArea>
                   <label>
-                    <div>
-                      <C.Button
-                        onClick={goto('/homepage')}
-                        title={'Volta ao Inicio...'}
-                      >
-                        Inicio.
-                        <span>
-                          <FaHome />
-                        </span>
-                      </C.Button>
-                    </div>
-                  </label>
-                  <label>
-                    <C.Button
-                      onClick={goto('/accesnew')}
-                      title={'Nova Conta...'}
-                    >
-                      Criar NOVA Conta.
-                      <span>
-                        <FaLock />
-                      </span>
-                    </C.Button>
-                  </label>
-                  <label>
-                    <C.Button
-                      onClick={goto('/accesforgot')}
-                      title={'Esqueci ID ou Senha...'}
-                    >
-                      Esqueci meu Acesso.
-                      <span>
-                        <FaKey />
-                      </span>
-                    </C.Button>
-                  </label>
-                  <label>
-                    {state.idname === '' || state.password === '' ? (
-                      <C.Button
-                        onClick={handerClickOuter}
-                        title={'Outros Acessos...'}
-                      >
-                        Outra forma de Acesso.
-                        <span>
-                          <FaListOl />
-                        </span>
-                      </C.Button>
+                    {!state.logado && state.page === 'Access' ? (
+                      <label>
+                        <div>
+                          <C.Button
+                            onClick={goto('/homepage')}
+                            title={'Volta ao Inicio...'}
+                          >
+                            Inicio.
+                            <span>
+                              <FaHome />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={goto('/newacces')}
+                            title={'Nova Conta...'}
+                          >
+                            Criar NOVA Conta.
+                            <span>
+                              <FaLock />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={goto('/accesforgot')}
+                            title={'Esqueci ID ou Senha...'}
+                          >
+                            Esqueci meu Acesso.
+                            <span>
+                              <FaKey />
+                            </span>
+                          </C.Button>
+                        </div>
+                        {state.idname === '' || state.password === '' ? (
+                          <div>
+                            <C.Button
+                              onClick={handerClickOuter}
+                              title={'Outros Acessos...'}
+                            >
+                              Outra forma de Acesso.
+                              {!isOuter ? (
+                                <span>
+                                  <FaListOl />
+                                </span>
+                              ) : (
+                                <span>
+                                  <FaListOl color="#ffff29" />
+                                </span>
+                              )}
+                            </C.Button>
+                          </div>
+                        ) : null}
+                        {isOuter ? <AccesCase /> : null}
+                      </label>
+                    ) : null}
+
+                    {!state.logado && state.page === 'NewAcces' ? (
+                      <label>
+                        <div>
+                          <C.Button
+                            onClick={goto('/homepage')}
+                            title={'Volta ao Inicio...'}
+                          >
+                            Inicio.
+                            <span>
+                              <FaHome />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button onClick={() => {}} title={'Nova Conta...'}>
+                            Criar NOVA Conta.
+                            <span>
+                              <FaLock color="#ffff29" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={() => {}}
+                            title={'Esqueci ID ou Senha...'}
+                          >
+                            Esqueci meu Acesso.
+                            <span>
+                              <FaKey color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        {state.idname === '' || state.password === '' ? (
+                          <div>
+                            <C.Button
+                              onClick={() => {}}
+                              title={'Outros Acessos...'}
+                            >
+                              Outra forma de Acesso.
+                              <span>
+                                <FaListOl color="#ff2929" />
+                              </span>
+                            </C.Button>
+                          </div>
+                        ) : null}
+                      </label>
+                    ) : null}
+
+                    {!state.logado && state.page === 'AccesForgot' ? (
+                      <label>
+                        <div>
+                          <C.Button
+                            onClick={goto('/homepage')}
+                            title={'Volta ao Inicio...'}
+                          >
+                            Inicio.
+                            <span>
+                              <FaHome />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button onClick={() => {}} title={'Nova Conta...'}>
+                            Criar NOVA Conta.
+                            <span>
+                              <FaLock color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={goto('/accesforgot')}
+                            title={'Esqueci ID ou Senha...'}
+                          >
+                            Esqueci meu Acesso.
+                            <span>
+                              <FaKey color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <label>
+                          {state.idname === '' || state.password === '' ? (
+                            <div>
+                              <C.Button
+                                onClick={() => {}}
+                                title={'Outros Acessos...'}
+                              >
+                                Outra forma de Acesso.
+                                <span>
+                                  <FaListOl color="#ff2929" />
+                                </span>
+                              </C.Button>
+                            </div>
+                          ) : null}
+                        </label>
+                      </label>
                     ) : null}
                   </label>
-                  {isOuter ? <AccesCase /> : null}
                 </C.SideBarArea>
               </Sidebar>
             </C.Sidebar>

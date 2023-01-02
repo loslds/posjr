@@ -131,6 +131,10 @@ export const Access = () => {
       type: AccesActions.setCurrentStep,
       payload: 0
     });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'Access'
+    });
   }, [dispatch]);
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

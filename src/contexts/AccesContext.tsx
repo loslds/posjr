@@ -1,12 +1,13 @@
 import React from 'react';
 
 type StateAcces = {
-  currentStep: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  currentStep: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   level: 0 | 1 | 2;
   descrlevel: string;
   idname: string;
   password: string;
   logado: boolean;
+  page: string;
   name: string;
   email: string;
   fone: string;
@@ -15,7 +16,7 @@ type StateAcces = {
   chvsms: string;
   chvmail: string;
 
-  currentStepNew: 0 | 1 | 2 | 3;
+  currentStepNew: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   levelNew: 0 | 1 | 2;
   descrlevelNew: string;
   idnameNew: string;
@@ -34,6 +35,7 @@ export const initialData: StateAcces = {
   idname: '',
   password: '',
   logado: false,
+  page: '',
   name: '',
   email: '',
   fone: '',
@@ -75,6 +77,7 @@ export enum AccesActions {
   setIdname,
   setPassword,
   setLogado,
+  setPage,
   setName,
   setEmail,
   setFone,
@@ -109,6 +112,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, password: action.payload };
     case AccesActions.setLogado:
       return { ...state, logado: action.payload };
+    case AccesActions.setPage:
+      return { ...state, page: action.payload };
     case AccesActions.setName:
       return { ...state, name: action.payload };
     case AccesActions.setEmail:

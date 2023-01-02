@@ -7,7 +7,7 @@ import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
 import * as C from './stylesAcces';
 
-export const AccesNew1 = () => {
+export const NewAccesCli = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -18,27 +18,31 @@ export const AccesNew1 = () => {
 
   React.useEffect(() => {
     dispatch({
-      type: AccesActions.setCurrentStepNew,
-      payload: 2
+      type: AccesActions.setCurrentStep,
+      payload: 1
+    });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'NewAccesCli'
     });
   }, [dispatch]);
 
-  const handlerNameNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setNameNew,
+      type: AccesActions.setName,
       payload: e.target.value
     });
   };
 
-  const handlerEmailNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setPasswordNew,
+      type: AccesActions.setEmail,
       payload: e.target.value
     });
   };
-  const handlerFoneNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerFoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setFoneNew,
+      type: AccesActions.setFone,
       payload: e.target.value
     });
   };
@@ -46,20 +50,21 @@ export const AccesNew1 = () => {
   return (
     <Theme>
       <C.Container>
-        <p>Passo: {state.currentStepNew}/4</p>
+        <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Ola {state.idnameNew}, determine seus Contatos.</h1>
+          <h1>Ola, cadastro para {state.descrlevel} :</h1>
         </Titles>
         <p>Complete os Dados requeridos :</p>
         <hr />
         <p>Preencha os Campo abaixo:</p>
+
         <label>
           Declaração do seu Nome.
           <input
             type="text"
             autoFocus={true}
-            onChange={handlerNameNewChange}
-            value={state.nameNew}
+            onChange={handlerNameChange}
+            value={state.name}
             placeholder={'Digite seu Nome...'}
           />
         </label>
@@ -68,8 +73,8 @@ export const AccesNew1 = () => {
           <input
             type="text"
             autoFocus
-            onChange={handlerEmailNewChange}
-            value={state.emailNew}
+            onChange={handlerEmailChange}
+            value={state.email}
             placeholder={'Digite seu Email...'}
           />
         </label>
@@ -78,15 +83,17 @@ export const AccesNew1 = () => {
           <input
             type="text"
             autoFocus
-            onChange={handlerFoneNewChange}
-            value={state.foneNew}
+            onChange={handlerFoneChange}
+            value={state.fone}
             placeholder={'Digite o n° do Celular...'}
           />
         </label>
-        <button onClick={goto('/accesnew')} title={'Retorna Passo : " 1 ".'}>
+
+        <button onClick={goto('/accesnew')} title={'Retorna Passo : " 0 ".'}>
           Voltar
         </button>
-        <button onClick={() => {}} title={'Passo : " 3 ".'}>
+
+        <button onClick={() => {}} title={'Passo : " 2 ".'}>
           {/* goto('/accesnew2') */}
           Próximo.
         </button>
