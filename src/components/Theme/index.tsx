@@ -22,8 +22,8 @@ export const Theme = ({ children }: Props) => {
     };
   };
   const { state, dispatch } = AccesUseForm();
-  const [isOuter, setIsOuter] = React.useState(false);
 
+  const [isOuter, setIsOuter] = React.useState(false);
   const handerClickOuter = React.useCallback(() => {
     setIsOuter(oldState => !oldState);
   }, []);
@@ -49,9 +49,9 @@ export const Theme = ({ children }: Props) => {
                 </Titles>
                 <p>Selecione uma opção para o acesso.</p>
                 <hr />
-                <C.SideBarArea>
-                  <label>
-                    {!state.logado && state.page === 'Access' ? (
+                {!state.logado ? (
+                  <C.SideBarArea>
+                    {state.modulo === 'Access' ? (
                       <label>
                         <div>
                           <C.Button
@@ -77,7 +77,7 @@ export const Theme = ({ children }: Props) => {
                         </div>
                         <div>
                           <C.Button
-                            onClick={goto('/accesforgot')}
+                            onClick={goto('/forgotacces')}
                             title={'Esqueci ID ou Senha...'}
                           >
                             Esqueci meu Acesso.
@@ -93,7 +93,7 @@ export const Theme = ({ children }: Props) => {
                               title={'Outros Acessos...'}
                             >
                               Outra forma de Acesso.
-                              {!isOuter ? (
+                              {!isOuter && state.modulo === 'Access' ? (
                                 <span>
                                   <FaListOl />
                                 </span>
@@ -103,13 +103,13 @@ export const Theme = ({ children }: Props) => {
                                 </span>
                               )}
                             </C.Button>
+                            {isOuter ? <AccesCase /> : null}
                           </div>
                         ) : null}
-                        {isOuter ? <AccesCase /> : null}
                       </label>
                     ) : null}
 
-                    {!state.logado && state.page === 'NewAcces' ? (
+                    {state.modulo === 'NewAcces' ? (
                       <label>
                         <div>
                           <C.Button
@@ -141,23 +141,21 @@ export const Theme = ({ children }: Props) => {
                             </span>
                           </C.Button>
                         </div>
-                        {state.idname === '' || state.password === '' ? (
-                          <div>
-                            <C.Button
-                              onClick={() => {}}
-                              title={'Outros Acessos...'}
-                            >
-                              Outra forma de Acesso.
-                              <span>
-                                <FaListOl color="#ff2929" />
-                              </span>
-                            </C.Button>
-                          </div>
-                        ) : null}
+                        <div>
+                          <C.Button
+                            onClick={() => {}}
+                            title={'Outros Acessos...'}
+                          >
+                            Outra forma de Acesso.
+                            <span>
+                              <FaListOl color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
                       </label>
                     ) : null}
 
-                    {!state.logado && state.page === 'AccesForgot' ? (
+                    {state.modulo === 'ForgotAcces' ? (
                       <label>
                         <div>
                           <C.Button
@@ -180,7 +178,53 @@ export const Theme = ({ children }: Props) => {
                         </div>
                         <div>
                           <C.Button
-                            onClick={goto('/accesforgot')}
+                            onClick={goto('/forgotacces')}
+                            title={'Esqueci ID ou Senha...'}
+                          >
+                            Esqueci meu Acesso.
+                            <span>
+                              <FaKey color="#ffff29" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={() => {}}
+                            title={'Outros Acessos...'}
+                          >
+                            Outra forma de Acesso.
+                            <span>
+                              <FaListOl color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
+                      </label>
+                    ) : null}
+
+                    {state.modulo === 'CaseAcces' ? (
+                      <label>
+                        <div>
+                          <C.Button
+                            onClick={goto('/homepage')}
+                            title={'Volta ao Inicio...'}
+                          >
+                            Inicio.
+                            <span>
+                              <FaHome />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button onClick={() => {}} title={'Nova Conta...'}>
+                            Criar NOVA Conta.
+                            <span>
+                              <FaLock color="#ff2929" />
+                            </span>
+                          </C.Button>
+                        </div>
+                        <div>
+                          <C.Button
+                            onClick={() => {}}
                             title={'Esqueci ID ou Senha...'}
                           >
                             Esqueci meu Acesso.
@@ -189,25 +233,21 @@ export const Theme = ({ children }: Props) => {
                             </span>
                           </C.Button>
                         </div>
-                        <label>
-                          {state.idname === '' || state.password === '' ? (
-                            <div>
-                              <C.Button
-                                onClick={() => {}}
-                                title={'Outros Acessos...'}
-                              >
-                                Outra forma de Acesso.
-                                <span>
-                                  <FaListOl color="#ff2929" />
-                                </span>
-                              </C.Button>
-                            </div>
-                          ) : null}
-                        </label>
+                        <div>
+                          <C.Button
+                            onClick={() => {}}
+                            title={'Outros Acessos...'}
+                          >
+                            Outra forma de Acesso.
+                            <span>
+                              <FaListOl color="#ffff29" />
+                            </span>
+                          </C.Button>
+                        </div>
                       </label>
                     ) : null}
-                  </label>
-                </C.SideBarArea>
+                  </C.SideBarArea>
+                ) : null}
               </Sidebar>
             </C.Sidebar>
             <C.Page>{children}</C.Page>
@@ -217,3 +257,22 @@ export const Theme = ({ children }: Props) => {
     </div>
   );
 };
+
+// <div>
+// <C.Button
+//   onClick={handerClickOuter}
+//   title={'Outros Acessos...'}
+// >
+//   Outra forma de Acesso.
+//   {!isOuter && state.modulo === 'Access' ? (
+//   <span>
+//     <FaListOl />
+//   </span>
+//   ) : (
+//     <span>
+//       <FaListOl color="#ffff29" />
+//     </span>
+//   )}
+// </C.Button>
+// {isOuter ? <AccesCase /> : null}
+// </div>

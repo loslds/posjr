@@ -4,10 +4,14 @@ type StateAcces = {
   currentStep: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   level: 0 | 1 | 2;
   descrlevel: string;
+  levelcase: 0 | 1 | 2 | 3;
+  descrcase: string;
+  descrcasepath: string;
   idname: string;
   password: string;
   logado: boolean;
   page: string;
+  modulo: string;
   name: string;
   email: string;
   fone: string;
@@ -32,10 +36,14 @@ export const initialData: StateAcces = {
   currentStep: 0,
   level: 0,
   descrlevel: '',
+  levelcase: 0,
+  descrcase: '',
+  descrcasepath: '',
   idname: '',
   password: '',
   logado: false,
   page: '',
+  modulo: '',
   name: '',
   email: '',
   fone: '',
@@ -74,10 +82,14 @@ export enum AccesActions {
   setCurrentStep,
   setLevel,
   setDescrlevel,
+  setLevelCase,
+  setDescrCase,
+  setDescrCasePath,
   setIdname,
   setPassword,
   setLogado,
   setPage,
+  setModulo,
   setName,
   setEmail,
   setFone,
@@ -106,6 +118,12 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, level: action.payload };
     case AccesActions.setDescrlevel:
       return { ...state, descrlevel: action.payload };
+    case AccesActions.setLevelCase:
+      return { ...state, levelcase: action.payload };
+    case AccesActions.setDescrCase:
+      return { ...state, descrcase: action.payload };
+    case AccesActions.setDescrCasePath:
+      return { ...state, descrcasepath: action.payload };
     case AccesActions.setIdname:
       return { ...state, idname: action.payload };
     case AccesActions.setPassword:
@@ -114,6 +132,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, logado: action.payload };
     case AccesActions.setPage:
       return { ...state, page: action.payload };
+    case AccesActions.setModulo:
+      return { ...state, modulo: action.payload };
     case AccesActions.setName:
       return { ...state, name: action.payload };
     case AccesActions.setEmail:

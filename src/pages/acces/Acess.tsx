@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 
-import { AccesActions, AccesUseForm } from '../contexts/AccesContext';
-import * as C from './stylesAcces';
+import { AccesActions, AccesUseForm } from '../../contexts/AccesContext';
+import * as C from '../stylesAcces';
 
 type CharType = 'Simbolo' | 'Cxalta' | 'Cxbaixa' | 'Numeral';
 
@@ -133,6 +133,10 @@ export const Access = () => {
     });
     dispatch({
       type: AccesActions.setPage,
+      payload: 'Access'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
       payload: 'Access'
     });
   }, [dispatch]);

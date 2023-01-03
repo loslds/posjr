@@ -45,6 +45,18 @@ export const HomePage = () => {
       payload: ''
     });
     dispatch({
+      type: AccesActions.setLevelCase,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrCase,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setDescrCasePath,
+      payload: ''
+    });
+    dispatch({
       type: AccesActions.setIdname,
       payload: ''
     });
@@ -59,6 +71,10 @@ export const HomePage = () => {
     dispatch({
       type: AccesActions.setPage,
       payload: 'HomePage'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: ''
     });
     dispatch({
       type: AccesActions.setName,

@@ -5,9 +5,9 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import * as C from './stylesAcces';
+import * as C from '../../stylesAcces';
 
-export const NewAccesCli = () => {
+export const ForgotAcces1 = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -23,7 +23,11 @@ export const NewAccesCli = () => {
     });
     dispatch({
       type: AccesActions.setPage,
-      payload: 'NewAccesCli'
+      payload: 'ForgotAcces1'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: 'ForgotAcces'
     });
   }, [dispatch]);
 
@@ -52,7 +56,7 @@ export const NewAccesCli = () => {
       <C.Container>
         <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Ola, cadastro para {state.descrlevel} :</h1>
+          <h1>Ok, vamos Resgatar Conta {state.descrlevel} :</h1>
         </Titles>
         <p>Complete os Dados requeridos :</p>
         <hr />
@@ -89,12 +93,17 @@ export const NewAccesCli = () => {
           />
         </label>
 
-        <button onClick={goto('/accesnew')} title={'Retorna Passo : " 0 ".'}>
+        <button onClick={goto('/forgotacces')} title={'Retorna Passo : " 0 ".'}>
           Voltar
         </button>
 
-        <button onClick={() => {}} title={'Passo : " 2 ".'}>
-          {/* goto('/accesnew2') */}
+        <button
+          onClick={() => {
+            alert('ñ exist /forgotAcces2');
+          }}
+          title={'Passo : " 2 ".'}
+        >
+          {/* goto('/forgotAcces2') */}
           Próximo.
         </button>
       </C.Container>

@@ -1,4 +1,5 @@
 import React from 'react';
+// import { MdSendToMobile, MdKeyboardAlt, MdMail } from 'react-icons/md';
 import { FaUserLock, FaUserFriends } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,9 +8,9 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import * as C from './stylesAcces';
+import * as C from '../../stylesAcces';
 
-export const NewAcces = () => {
+export const CaseAcces = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -33,12 +34,16 @@ export const NewAcces = () => {
     });
     dispatch({
       type: AccesActions.setPage,
-      payload: 'NewAcces'
+      payload: 'CaseAcces'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: 'CaseAcces'
     });
   }, [dispatch]);
 
-  const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcioário.'];
-  const DescrPath = ['', '/newaccescli', '/newaccesfunc'];
+  const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcionário.'];
+  const DescrPath = ['', '/caseacces1', '/caseacces1'];
   const setLevel = (level: number) => {
     dispatch({
       type: AccesActions.setLevel,
@@ -53,12 +58,13 @@ export const NewAcces = () => {
       payload: DescrPath[level]
     });
   };
+
   return (
     <Theme>
       <C.Container>
         <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Criação de uma Nova Conta ?</h1>
+          <h1>Com qual Conta deseja Acessar ?</h1>
         </Titles>
         <p>Vamos começar... Para qual acesso deseja ?</p>
         <hr />
@@ -86,16 +92,10 @@ export const NewAcces = () => {
             <FaUserLock color="#fff" />
           )}
         </AccesOpction>
-
-        {/* <button
-          onClick={() => {
-            handleClear;
-          }}
-          title={'Retorna Passo : " 0 ".'}
-        >
+        <button onClick={goto('/access')} title={'Retorna...'}>
           Voltar
         </button>
- */}
+
         {state.level > 0 ? (
           <button
             onClick={goto(DescrPath[state.level])}
@@ -110,41 +110,33 @@ export const NewAcces = () => {
 };
 
 {
-  /* // const handlerIdNameNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch({
-  //     type: AccesActions.setIdnameNew,
-  //     payload: e.target.value
-  //   });
-  // }; */
-}
-
-{
-  /* // const handlerPasswordNewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch({
-  //     type: AccesActions.setPasswordNew,
-  //     payload: e.target.value
-  //   });
-  // }; */
-}
-
-{
-  /* ID/Nome de Reconhecimento.
-          <input
-            type="text"
-            autoFocus={true}
-            onChange={handlerIdNameNewChange}
-            value={state.idname}
-            placeholder={'Digite a sua ID...'}
-          />
-        </label>
-        <label>
-          PassWord para Acesso.
-          <input
-            type="text"
-            autoFocus
-            onChange={handlerPasswordNewChange}
-            value={state.password}
-            placeholder={'Digite a sua Senha...'}
-          />
-        </label> */
+  /*
+    <C.ContainerCase>
+      <C.ContainerArea>
+        <label>Com Segurança:</label>
+        <p>Passo: {state.currentStep}/4</p>
+        <C.ButtonCase onClick={goto('/casepin')} title={'Acessar com PIN...'}>
+          Code PIN.
+          <span>
+            <MdKeyboardAlt />
+          </span>
+        </C.ButtonCase>
+        <C.ButtonCase onClick={goto('/casesms')} title={'Acessar com SMS...'}>
+          Code SMS.
+          <span>
+            <MdSendToMobile />
+          </span>
+        </C.ButtonCase>
+        <C.ButtonCase
+          onClick={goto('/caseemail')}
+          title={'Acessar com EMAIL...'}
+        >
+          Code EMAIL.
+          <span>
+            <MdMail />
+          </span>
+        </C.ButtonCase>
+      </C.ContainerArea>
+    </C.ContainerCase>
+  */
 }
