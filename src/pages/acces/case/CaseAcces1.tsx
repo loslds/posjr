@@ -110,3 +110,16 @@ export const CaseAcces1 = () => {
     </Theme>
   );
 };
+
+// dispatch({
+//   type: AccesActions.setLevelCase,
+//   payload: 0
+// });
+// dispatch({
+//   type: AccesActions.setDescrCase,
+//   payload: ''
+// });
+// dispatch({
+//   type: AccesActions.setDescrCasePath,
+//   payload: ''
+// });

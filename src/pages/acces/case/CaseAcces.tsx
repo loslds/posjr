@@ -1,6 +1,6 @@
 import React from 'react';
 // import { MdSendToMobile, MdKeyboardAlt, MdMail } from 'react-icons/md';
-import { FaUserLock, FaUserFriends } from 'react-icons/fa';
+import { FaMobileAlt, FaLockOpen, FaMailBulk } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import { AccesOpction } from '~/components/AccesOpction';
@@ -33,6 +33,18 @@ export const CaseAcces = () => {
       payload: ''
     });
     dispatch({
+      type: AccesActions.setLevelCase,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrCase,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setDescrCasePath,
+      payload: ''
+    });
+    dispatch({
       type: AccesActions.setPage,
       payload: 'CaseAcces'
     });
@@ -42,19 +54,19 @@ export const CaseAcces = () => {
     });
   }, [dispatch]);
 
-  const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcionário.'];
-  const DescrPath = ['', '/caseacces1', '/caseacces1'];
+  const Descrcase = ['', 'Acesso Pin', 'Acesso SMS.', 'Acesso EMAIL.'];
+  const DescrPath = ['', '/pinacces1', '/smsacces1', '/mailacces1'];
   const setLevel = (level: number) => {
     dispatch({
-      type: AccesActions.setLevel,
+      type: AccesActions.setLevelCase,
       payload: level
     });
     dispatch({
-      type: AccesActions.setDescrlevel,
-      payload: DescrLevel[level]
+      type: AccesActions.setDescrCase,
+      payload: Descrcase[level]
     });
     dispatch({
-      type: AccesActions.setDescrpath,
+      type: AccesActions.setDescrCasePath,
       payload: DescrPath[level]
     });
   };
@@ -64,41 +76,54 @@ export const CaseAcces = () => {
       <C.Container>
         <p>Passo: {state.currentStep}/4</p>
         <Titles>
-          <h1>Com qual Conta deseja Acessar ?</h1>
+          <h1>Qual Acesso deseja o Utilizar ?</h1>
         </Titles>
-        <p>Vamos começar... Para qual acesso deseja ?</p>
+        <p>Vamos começar...Para qual acesso deseja ?</p>
         <hr />
         <AccesOpction
-          title="Usuário Cliênte."
-          description={'Acesso Internet.'}
-          selected={state.level === 1}
+          title=" acessar P I N "
+          description={'Acessar Meu PIN.'}
+          selected={state.levelcase === 1}
           onClick={() => setLevel(1)}
         >
-          {state.level === 1 ? (
-            <FaUserFriends color="#fcf226" />
+          {state.levelcase === 1 ? (
+            <FaLockOpen color="#fcf226" />
           ) : (
-            <FaUserFriends color="#fff" />
+            <FaLockOpen color="#fff" />
           )}
         </AccesOpction>
         <AccesOpction
-          title="Usuário Funcionário."
-          description={'Acesso Local.'}
-          selected={state.level === 2}
+          title="Acessar S M S."
+          description={'Acesso Celular.'}
+          selected={state.levelcase === 2}
           onClick={() => setLevel(2)}
         >
-          {state.level === 2 ? (
-            <FaUserLock color="#fcf226" />
+          {state.levelcase === 2 ? (
+            <FaMobileAlt color="#fcf226" />
           ) : (
-            <FaUserLock color="#fff" />
+            <FaMobileAlt color="#fff" />
           )}
         </AccesOpction>
+        <AccesOpction
+          title="Acessar E-MAIL."
+          description={'Acesso Email.'}
+          selected={state.levelcase === 3}
+          onClick={() => setLevel(3)}
+        >
+          {state.levelcase === 3 ? (
+            <FaMailBulk color="#fcf226" />
+          ) : (
+            <FaMailBulk color="#fff" />
+          )}
+        </AccesOpction>
+
         <button onClick={goto('/access')} title={'Retorna...'}>
           Voltar
         </button>
 
-        {state.level > 0 ? (
+        {state.levelcase > 0 ? (
           <button
-            onClick={goto(DescrPath[state.level])}
+            onClick={goto(DescrPath[state.levelcase])}
             title={'Passo : " 1 ".'}
           >
             Próximo.
@@ -109,8 +134,7 @@ export const CaseAcces = () => {
   );
 };
 
-{
-  /*
+/*
     <C.ContainerCase>
       <C.ContainerArea>
         <label>Com Segurança:</label>
@@ -139,4 +163,3 @@ export const CaseAcces = () => {
       </C.ContainerArea>
     </C.ContainerCase>
   */
-}
