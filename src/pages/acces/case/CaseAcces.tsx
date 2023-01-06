@@ -45,6 +45,26 @@ export const CaseAcces = () => {
       payload: ''
     });
     dispatch({
+      type: AccesActions.setChvName,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvPin,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvMail,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvSms,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvCpf,
+      payload: ''
+    });
+    dispatch({
       type: AccesActions.setPage,
       payload: 'CaseAcces'
     });

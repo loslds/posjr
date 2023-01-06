@@ -1,7 +1,13 @@
 import React from 'react';
 
 import { Access } from '../pages/acces/Acess';
-import { CaseAcces, CaseAcces1 } from '../pages/acces/case';
+import {
+  CaseAcces,
+  PinAcces1,
+  PinAcces2,
+  SmsAcces1,
+  MailAcces1
+} from '../pages/acces/case';
 import { ForgotAcces, ForgotAcces1 } from '../pages/acces/forgot';
 import { NewAcces, NewAcces1 } from '../pages/acces/new';
 // import { AccesChvPin } from '../pages/AccesChvPin';
@@ -23,7 +29,10 @@ export interface IRoute {
 
 export const RouteList: IRoute[] = [
   { path: '/caseacces', exact: true, element: <CaseAcces /> },
-  { path: '/caseacces1', exact: true, element: <CaseAcces1 /> },
+  { path: '/pinacces1', exact: true, element: <PinAcces1 /> },
+  { path: '/pinacces2', exact: true, element: <PinAcces2 /> },
+  { path: '/smsacces1', exact: true, element: <SmsAcces1 /> },
+  { path: '/mailacces1', exact: true, element: <MailAcces1 /> },
   { path: '/forgotacces', exact: true, element: <ForgotAcces /> },
   { path: '/forgotacces1', exact: true, element: <ForgotAcces1 /> },
   { path: '/newacces', exact: true, element: <NewAcces /> },

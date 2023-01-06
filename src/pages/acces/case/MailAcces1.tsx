@@ -21,6 +21,14 @@ export const MailAcces1 = () => {
       type: AccesActions.setCurrentStep,
       payload: 1
     });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'MailAcces1'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: 'CaseAcces'
+    });
   }, [dispatch]);
 
   return (

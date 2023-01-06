@@ -21,6 +21,14 @@ export const SmsAcces1 = () => {
       type: AccesActions.setCurrentStep,
       payload: 1
     });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'SmsAcces1'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: 'CaseAcces'
+    });
   }, [dispatch]);
 
   return (

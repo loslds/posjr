@@ -79,8 +79,6 @@ export const Button = styled.button`
   align-content: center;
   background-color: #25cd89;
   color: #000;
-  /* font-size: 12px;
-  line-height: 14px; */
   font-weight: bold;
   padding: 5px 5px 5px 5px;
   margin: 3px 3px 3px 3px;
