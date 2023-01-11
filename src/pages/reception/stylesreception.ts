@@ -1,25 +1,21 @@
 import styled from 'styled-components';
 
-import ImgSrc from '~/assets/images/logosgb.png';
+// import ImgSrc from '~/assets/images/logosgb.png';
 import semimg from '~/assets/images/semimg.png';
 
-export const ContainerPanelPageBg = styled.div`
+export const ContainerPageR = styled.div`
   border: 0px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100vw;
   height: 100vh;
+  background-color: #000000;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   color: white;
   font-size: 14px;
-  background-color: Transparent;
-  background-image: url(${ImgSrc});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 `;
 
 export const ContainerPage = styled.div`

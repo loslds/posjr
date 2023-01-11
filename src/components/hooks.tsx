@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export function useIsValueForcaPassword() {
   const isValuePassWord = React.useRef(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       isValuePassWord.current = false;
     };
@@ -14,7 +14,7 @@ export function useIsValueForcaPassword() {
 export function useIsMounted() {
   const isMounted = React.useRef(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       isMounted.current = false;
     };
@@ -25,7 +25,7 @@ export function useIsMounted() {
 export function useIsStado() {
   const isStado = React.useRef(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       isStado.current = true;
     };
@@ -34,7 +34,8 @@ export function useIsStado() {
 }
 export function useIsDisplay() {
   const isDisplay = React.useRef(true);
-  useEffect(() => {
+
+  React.useEffect(() => {
     return () => {
       isDisplay.current = false;
     };

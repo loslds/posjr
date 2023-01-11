@@ -7,9 +7,9 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import * as C from './stylesAcces';
+import * as C from '../../stylesAcces';
 
-export const AccesPg0 = () => {
+export const CaseChanger = () => {
   const navigate = useNavigate();
   const goto = (path: string) => {
     return () => {
@@ -23,10 +23,18 @@ export const AccesPg0 = () => {
       type: AccesActions.setCurrentStep,
       payload: 1
     });
+    dispatch({
+      type: AccesActions.setLevel,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrlevel,
+      payload: ''
+    });
   }, [dispatch]);
 
-  const DescrLevel = ['', 'Usuário Cliênte', 'Usuário Funcioário.'];
-  const DescrPath = ['', '/accespg1', '/accesfunc'];
+  const DescrLevel = ['', 'Internet', 'intranet.'];
+  // const DescrPath = ['', '/acceschanger', '/acceschanger'];
   const setLevel = (level: number) => {
     dispatch({
       type: AccesActions.setLevel,
@@ -35,10 +43,6 @@ export const AccesPg0 = () => {
     dispatch({
       type: AccesActions.setDescrlevel,
       payload: DescrLevel[level]
-    });
-    dispatch({
-      type: AccesActions.setDescrpath,
-      payload: DescrPath[level]
     });
   };
 
@@ -68,8 +72,11 @@ export const AccesPg0 = () => {
         >
           <FaUserAlt color="#fff" />
         </AccesOpction>
+        <button onClick={goto('/caseacces')} title={'Retorna...'}>
+          Voltar
+        </button>
         {state.level >= 1 ? (
-          <button onClick={goto(state.descrpath)} title={'Passo : " 2 ".'}>
+          <button onClick={goto(state.descrcasepath)} title={'Passo : " 2 ".'}>
             Próximo.
           </button>
         ) : null}

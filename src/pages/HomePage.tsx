@@ -123,11 +123,13 @@ export const HomePage = () => {
                   <p>Click para Logar...</p>
                 )}
               </ContainerPanelTextFlex>
-              <ButtonLogin
-                img={loginbrc1}
-                title={'Acesso...'}
-                onClick={goto('/access')}
-              />
+              {!state.logado ? (
+                <ButtonLogin
+                  img={loginbrc1}
+                  title={'LogoON...'}
+                  onClick={goto('/access')}
+                />
+              ) : null}
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
           <DivisionPanel />

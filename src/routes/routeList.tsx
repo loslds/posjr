@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Reception } from '~/pages/reception';
+
 import { Access } from '../pages/acces/Acess';
 import {
   CaseAcces,
@@ -38,7 +40,8 @@ export const RouteList: IRoute[] = [
   { path: '/newacces', exact: true, element: <NewAcces /> },
   { path: '/newacces1', exact: true, element: <NewAcces1 /> },
   { path: '/access', exact: true, element: <Access /> },
-  { path: '/homepage', exact: true, element: <HomePage /> }
+  { path: '/homepage', exact: true, element: <HomePage /> },
+  { path: '/reception', exact: true, element: <Reception /> }
 
   // { path: '/accesfone', exact: true, element: <AccesFone /> },
   // { path: '/accesemail', exact: true, element: <AccesEmail /> },
