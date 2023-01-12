@@ -142,7 +142,7 @@ export const CaseAcces = () => {
         </button>
 
         {state.levelcase > 0 ? (
-          <button onClick={goto('/casecharger')} title={'Passo : " 1 ".'}>
+          <button onClick={goto('/casechanger')} title={'Passo : " 1 ".'}>
             Próximo.
           </button>
         ) : null}

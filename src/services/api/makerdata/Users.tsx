@@ -2,7 +2,7 @@ import React from 'react';
 
 export const data = {
   succes: true,
-  usuarios: [
+  users: [
     {
       id: 1,
       nameid: 'Oswaldo',
@@ -21,7 +21,7 @@ export const data = {
       idsector: 9,
       namesetor: 'Todos',
       level: 1,
-      descrlevel: 'internet'
+      descrlevel: 'Internet'
     },
     {
       id: 2,
@@ -41,46 +41,24 @@ export const data = {
       idsector: 1,
       namesetor: 'Recepçao',
       level: 2,
-      descrlevel: 'intranet'
+      descrlevel: 'Intranet'
     }
   ]
 };
 
-export async function getUsers(options = {}) {
-  type propsf = {
-    order?: object;
-    filter?: object;
-  };
-  const { order, filter = {} } = options;
-  const result = await new Promise(resolve => {
-    setTimeout(() => {
-      resolve({ data });
-    }, 2000);
-  });
+// export async function getUsers(option = {}) {
+//   const result = await new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve({ data });
+//     }, 2000);
+//   });
 
-  const resultData = result && result.data;
+//   const order = {},
+//     filter = ({} = option);
 
-  const { categoryId, subcategoryId, promocao } = filter;
+//   const resultUser = result;
 
-  if (promocao) {
-    resultData.products = resultData.products.filter(
-      p => p.promocao === promocao
-    );
-  }
+//   console.log('resultUser : ', resultUser);
 
-  if (categoryId) {
-    resultData.products = resultData.products.filter(
-      p => p.grupo === categoryId
-    );
-  }
-  if (subcategoryId) {
-    resultData.products = resultData.products.filter(
-      p => p.subgrupo === subcategoryId
-    );
-  }
-
-  if (resultData.products && order) {
-    resultData.products = resultData.products.sort(compareValues(order, 'asc'));
-  }
-  return resultData;
-}
+//   return resultUser;
+// }

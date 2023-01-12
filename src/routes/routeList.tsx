@@ -5,6 +5,7 @@ import { Reception } from '~/pages/reception';
 import { Access } from '../pages/acces/Acess';
 import {
   CaseAcces,
+  CaseChanger,
   PinAcces1,
   PinAcces2,
   SmsAcces1,
@@ -31,6 +32,7 @@ export interface IRoute {
 
 export const RouteList: IRoute[] = [
   { path: '/caseacces', exact: true, element: <CaseAcces /> },
+  { path: '/casechanger', exact: true, element: <CaseChanger /> },
   { path: '/pinacces1', exact: true, element: <PinAcces1 /> },
   { path: '/pinacces2', exact: true, element: <PinAcces2 /> },
   { path: '/smsacces1', exact: true, element: <SmsAcces1 /> },

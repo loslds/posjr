@@ -33,7 +33,7 @@ export const CaseChanger = () => {
     });
   }, [dispatch]);
 
-  const DescrLevel = ['', 'Internet', 'intranet.'];
+  const DescrLevel = ['', 'Internet', 'Intranet.'];
   // const DescrPath = ['', '/acceschanger', '/acceschanger'];
   const setLevel = (level: number) => {
     dispatch({
@@ -76,7 +76,7 @@ export const CaseChanger = () => {
           Voltar
         </button>
         {state.level >= 1 ? (
-          <button onClick={goto(state.descrcasepath)} title={'Passo : " 2 ".'}>
+          <button onClick={goto('/pinacces1')} title={'Passo : " 2 ".'}>
             Próximo.
           </button>
         ) : null}
