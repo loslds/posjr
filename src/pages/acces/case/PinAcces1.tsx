@@ -122,11 +122,18 @@ export const PinAcces1 = () => {
     let b = state.chvpin;
     let c = state.chvname;
     const usuario = buscascPIN(a, b, c);
+    let len = usuario.length;
     console.log('usuario :', usuario);
     setUsers(usuario);
     if (usuario) {
-      setIsConected(true);
       console.log('users :', users);
+      for (var i = 0; i <= len; ++i) {
+        let tt = usuario[i].idname.val;
+        console.log('usuario[i].idname :', tt);
+        //users.push({ index: i });
+        //console.log(JSON.parse(JSON.stringify(usuarios)));
+        setIsConected(true);
+      }
     } else {
       setIsConected(false);
     }
@@ -218,7 +225,7 @@ export const PinAcces1 = () => {
           </C.Container>
         ) : null}
 
-        <button onClick={goto('/casecharger')} title={'Retorna...'}>
+        <button onClick={goto('/casechanger')} title={'Retorna...'}>
           Voltar
         </button>
 
