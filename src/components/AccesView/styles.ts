@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-// import olhof from '~/assets/images/olhof.png';
+// import semimg from '../../assets/images/semimg.svg';
+import olhof from '../../assets/images/svgs/olhof.svg';
 
 export const Container = styled.div<{ selected: boolean }>`
   background-color: transparent;
@@ -58,6 +59,11 @@ export const Img = styled.div<{ img?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #191459;
+  align-content: center;
   font-size: 30px;
+  background-color: #191459;
+  background-image: url(${olhof});
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
 `;

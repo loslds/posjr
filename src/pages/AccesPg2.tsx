@@ -43,7 +43,7 @@ export const AccesPg2 = () => {
           <p>Preencha o Campo abaixo com seu Acesso.</p>
           <hr />
           <label>
-            Desclare sua PassWord de Acesso.
+            Declare sua PassWord de Acesso.
             <input
               type="text"
               autoFocus
