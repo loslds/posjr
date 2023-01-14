@@ -7,14 +7,14 @@ export const ContainerPanelPageBg = styled.div`
   border: 0px;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 100%;
-  height: 100%;
-  display: flex-1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   background-color: Transparent;
   background-image: url(${ImgSrc});
   background-position: center;
@@ -78,7 +78,9 @@ export const ContainerPageMainFlex = styled.div`
   background-color: transparent;
   h1,
   h2,
-  h3 {
+  h3,
+  h4,
+  h5 {
     margin: 5px 5px 5px 5px;
     padding: 5px 5px 5px 5px;
     text-decoration: 3px underline;
@@ -101,18 +103,42 @@ export const ContainerPageDoubleFlex = styled.div`
   background-color: transparent;
   h1,
   h2,
-  h3 {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
+  h3,
+  h4,
+  h5 {
+    margin: 0px 5px 0px 10px;
+    padding: 0px 0px 0px 5px;
+    color: #fff;
+    font-style: normal;
     text-decoration: 3px underline;
     text-decoration-color: cyan;
+  }
+  h1 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  h5 {
+    font-size: 10px;
+    line-height: 12px;
   }
 `;
 export const ContainerPageFlexWidth = styled.div`
   border: 0px; /*1px yellowgreen dashed;*/
-  padding: 0px 5px 0px 5px;
-  margin: 0px 10px 0px 10px;
-  max-width: Calc(40% / 2)-10px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
+  width: Calc(45% / 2)-10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: right;
@@ -130,8 +156,8 @@ export const ContainerPageFlexWidth = styled.div`
 `;
 export const ContainerPageFlexLeft = styled.div`
   border: 0px; /*1px yellowgreen dashed;*/
-  padding: 0px 5px 0px 5px;
-  margin: 0px 10px 0px 10px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 0px;
   max-width: Calc(40% / 2)-10px;
   display: flex;
   flex-flow: row wrap;
@@ -145,7 +171,7 @@ export const ContainerPanelLogo = styled.div<{ img?: string }>`
   padding: 0px 0px 0px 0px;
   margin: 0px 10px 0px 10px;
   min-height: 50px;
-  width: 125px;
+  width: 130px;
   display: flex;
   background-color: whitesmoke;
   background-image: url(${({ img }) => img || semimg});
@@ -206,7 +232,7 @@ export const ButtonLogin = styled.button<{ img?: string }>`
 export const ContainerPanelTextFlex = styled.div`
   border: 0px;
   padding: 1px 1px 1px 1px;
-  margin: 5px;
+  margin: 5px 5px 5px 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

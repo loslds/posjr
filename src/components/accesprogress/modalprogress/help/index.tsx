@@ -1,0 +1,1 @@
+export { MainForcaAcesso } from './MainForcaAcesso';

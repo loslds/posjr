@@ -10,9 +10,9 @@ import { MainFormAcces } from './MainFormAcces';
 import { TitleFormAcces } from './TitleFormAcces';
 
 const ContainerFormCenter = styled.div`
-  border: 1px red solid;
+  border: 0;
   padding: 0px 0px 0px 0px;
-  margin: 10px 0px 10px 0px;
+  margin: 5px 0px 5px 0px;
   width: 100%;
   min-height: 350px;
   background-color: transparent;
@@ -22,7 +22,7 @@ const ContainerFormCenter = styled.div`
 `;
 
 const ContainerFormCenterFlex = styled.div`
-  border: 1px black solid;
+  border: 0;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 80%;
@@ -74,15 +74,15 @@ export const FormAcces: React.FC = () => {
         <ContainerFormCenter>
           <ContainerFormCenterFlex>
             <ContainerFormAvatar img={avatar1} />
+            <ContainerFormForm>
+              <h4>formulario</h4>
+            </ContainerFormForm>
             <ContainerFormOption>
               <p>Criar Acesso Sistema.</p>
               <p>Esqueceu sua Senha ?</p>
               <p>Esqueceu seu Email ?</p>
               <p>Entrar de forma Diferênte...</p>
             </ContainerFormOption>
-            <ContainerFormForm>
-              <h1>formulario</h1>
-            </ContainerFormForm>
           </ContainerFormCenterFlex>
         </ContainerFormCenter>
       </CardFormAcces>

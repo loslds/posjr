@@ -1,34 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
-const ContainerCard = styled.div`
-  border-bottom: 2px #727272 solid;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  min-height: 40px;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: #d6d6d6;
-`;
-
-const ContainerCardFlex = styled.div`
-  border: none;
-  height: 100%;
-  width: 100%;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  align-content: center;
-  align-items: center;
-  background-color: transparent;
-`;
+import * as C from './styles';
 
 type Props = {
   id?: string;
@@ -37,8 +9,8 @@ type Props = {
 
 export const CardModal: React.FC<Props> = ({ id, children }) => {
   return (
-    <ContainerCard id={id}>
-      <ContainerCardFlex>{children}</ContainerCardFlex>
-    </ContainerCard>
+    <C.ContainerCard id={id}>
+      <C.ContainerCardFlex>{children}</C.ContainerCardFlex>
+    </C.ContainerCard>
   );
 };

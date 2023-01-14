@@ -2,79 +2,183 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
-export const ContentButtonPageBg = styled.div`
-  border: 1px red solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonPageCenterBg = styled.div`
-  border: 1px rebeccapurple solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonPageEndBg = styled.div`
-  border: 1px green solid;
-  padding: 1px 1px 1px 1px;
-  margin: 1px 4px 1px 4px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: transparent;
-  color: white;
-  font-size: 14px;
-`;
-export const ContentButtonCtrlPage = styled.div`
-  border: 2px #f80606 dotted;
+export const ContainerButtonImgBg = styled.div<{ ondisplay?: boolean }>`
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  min-height: 50px;
-  width: 100%;
-  max-height: 100%;
+  min-height: 45px;
+  width: 68px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   align-items: center;
-  background-color: transparent;
+  color: black;
 `;
+
 export const ButtonsImgBg = styled.button<{ img?: string }>`
-  border: 1px red solid;
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  display: block;
-  width: 100%;
-  height: 100%;
+  width: 45px;
+  height: 45px;
+  display: flex;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-attachment: fixed;
   background-image: url(${({ img }) => img || semimg});
   cursor: pointer;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
 `;
+
+export const ContainerButtonCircleImgBg = styled.div`
+  border: 0;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: black;
+`;
+export const ButtonsCirclesBg = styled.button<{ img?: string }>`
+  border: 50%;
+  margin: 0px 0px 0px -10px;
+  padding: 0px 0px 0px -10px;
+  color: white;
+  font-size: 12px; /**16px; */
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover; /**contain; */
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url(${({ img }) => img || semimg});
+  cursor: pointer;
+  outline: none;
+  height: 30px;
+  width: 30px;
+  display: block; /**flex; */
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ButtonClickPresImg = styled.button<{ img?: string }>`
+  border: 0; /*1px black dashed;*/
+  padding: 0px 0px 0px 0px;
+  margin: 2px 5px 2px 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${({ img }) => img || semimg});
+  background-position: center;
+  //background-attachment: fixed;
+  cursor: pointer;
+  outline: none;
+  min-height: 37px;
+  width: 35px;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+// type Props = {
+//   open?: boolean;
+//   img?: string;
+//   title?: string;
+//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+// };
+// export const ContainerButtonsImg = styled.div<Props>`
+//   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
+//   width: 35px;
+//   height: 35px;
+//   border-radius: 50%;
+//   margin: 0px 0px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   display: flex;
+//   background-color: transparent;
+//   background-image: url(${({ img }) => img || semimg});
+//   background-repeat: no-repeat;
+//   background-size: 35px;
+//   background-position: center;
+//   background-attachment: fixed;
+//   cursor: pointer;
+//   outline: none;
+//   font-size: 16px;
+//   &:hover {
+//     border: 2px solid #ddffaa;
+//   }
+// `;
+
+// export const ContentButtonPageBg = styled.div`
+//   border: 1px red solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 100px;
+//   width: 100px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonPageCenterBg = styled.div`
+//   border: 1px rebeccapurple solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 50px;
+//   width: 50px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonPageEndBg = styled.div`
+//   border: 1px green solid;
+//   padding: 1px 1px 1px 1px;
+//   margin: 1px 4px 1px 4px;
+//   height: 50px;
+//   width: 50px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   background-color: transparent;
+//   color: white;
+//   font-size: 14px;
+// `;
+// export const ContentButtonCtrlPage = styled.div`
+//   border: 2px #f80606 dotted;
+//   margin: 0px 0px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   width: 100%;
+//   max-height: 100%;
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: space-between;
+//   align-content: center;
+//   align-items: center;
+//   background-color: transparent;
+// `;
 
 // export const CtrlPageCol = styled.div`
 //   border: 0px;

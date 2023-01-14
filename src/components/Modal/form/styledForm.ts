@@ -30,7 +30,8 @@ export const ContainerFormFlex = styled.div`
 `;
 /** styled Card form */
 export const ContainerCardForm = styled.div`
-  border: none;
+  border: 0;
+  padding: 0px auto;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
@@ -40,7 +41,8 @@ export const ContainerCardForm = styled.div`
 `;
 
 export const ContainerCardFormFlex = styled.div`
-  border: none;
+  border: 0;
+  padding: 0px auto;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
@@ -54,10 +56,11 @@ export const ContainerCardFormFlex = styled.div`
 `;
 /** Title form */
 export const ContainerFormTitle = styled.div`
-  border: none; /* border: 1px green dashed; */
-  padding: 0px auto;
-  margin: 0px auto;
-  min-width: 100%;
+  border: 1px green dashed;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  min-height: 30px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -68,8 +71,8 @@ export const ContainerFormTitle = styled.div`
   h1,
   h2,
   h3 {
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
+    margin: 3px 3px 3px 3px;
+    padding: 3px 3px 3px 3px;
     text-decoration-color: #727272;
   }
   h1 {
@@ -88,7 +91,7 @@ export const ContainerFormAvatar = styled.div<{ img?: string }>`
   height: 130px;
   width: 120px;
   padding: 0px 0px 0px 0px;
-  margin: 10px 5px 10px 0px;
+  margin: 5px 3px 5px 0px;
   display: flex;
   background-color: transparent;
   background-image: url(${({ img }) => img || semimg});
