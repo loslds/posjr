@@ -150,12 +150,11 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
       return { ...state, page: action.payload };
     case AccesActions.setModulo:
       return { ...state, modulo: action.payload };
+
     case AccesActions.setId:
       return { ...state, id: action.payload };
     case AccesActions.setIdname:
       return { ...state, idname: action.payload };
-    case AccesActions.setPage:
-      return { ...state, page: action.payload };
     case AccesActions.setName:
       return { ...state, name: action.payload };
     case AccesActions.setPassword:
