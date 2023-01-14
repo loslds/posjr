@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
-export const ContainerButtonImgBg = styled.div`
+export const ContainerButtonImgBg = styled.div<{ ondisplay?: boolean }>`
   border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -17,20 +17,111 @@ export const ContainerButtonImgBg = styled.div`
 `;
 
 export const ButtonsImgBg = styled.button<{ img?: string }>`
+  border: 0;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  display: flex;
   width: 45px;
-  height: 40px;
-  //background-color: transparent;
+  height: 45px;
+  display: flex;
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-attachment: fixed;
   background-image: url(${({ img }) => img || semimg});
   cursor: pointer;
   outline: none;
   font-size: 16px;
 `;
+
+export const ContainerButtonCircleImgBg = styled.div`
+  border: 0;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: black;
+`;
+export const ButtonsCirclesBg = styled.button<{ img?: string }>`
+  border: 50%;
+  margin: 0px 0px 0px -10px;
+  padding: 0px 0px 0px -10px;
+  color: white;
+  font-size: 12px; /**16px; */
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover; /**contain; */
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url(${({ img }) => img || semimg});
+  cursor: pointer;
+  outline: none;
+  height: 30px;
+  width: 30px;
+  display: block; /**flex; */
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ButtonClickPresImg = styled.button<{ img?: string }>`
+  border: 0; /*1px black dashed;*/
+  padding: 0px 0px 0px 0px;
+  margin: 2px 5px 2px 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${({ img }) => img || semimg});
+  background-position: center;
+  //background-attachment: fixed;
+  cursor: pointer;
+  outline: none;
+  min-height: 37px;
+  width: 35px;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+// type Props = {
+//   open?: boolean;
+//   img?: string;
+//   title?: string;
+//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+// };
+// export const ContainerButtonsImg = styled.div<Props>`
+//   border: 2px solid ${props => (props.open ? '#25cd89' : '#16195c')};
+//   width: 35px;
+//   height: 35px;
+//   border-radius: 50%;
+//   margin: 0px 0px 0px 0px;
+//   padding: 0px 0px 0px 0px;
+//   display: flex;
+//   background-color: transparent;
+//   background-image: url(${({ img }) => img || semimg});
+//   background-repeat: no-repeat;
+//   background-size: 35px;
+//   background-position: center;
+//   background-attachment: fixed;
+//   cursor: pointer;
+//   outline: none;
+//   font-size: 16px;
+//   &:hover {
+//     border: 2px solid #ddffaa;
+//   }
+// `;
 
 // export const ContentButtonPageBg = styled.div`
 //   border: 1px red solid;

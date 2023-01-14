@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export function useIsMounted() {
   const isMounted = React.useRef(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       isMounted.current = false;
     };
@@ -11,19 +11,10 @@ export function useIsMounted() {
   return isMounted;
 }
 
-export function useIsStado() {
-  const isStado = React.useRef(false);
-
-  useEffect(() => {
-    return () => {
-      isStado.current = true;
-    };
-  }, []);
-  return isStado;
-}
 export function useIsDisplay() {
   const isDisplay = React.useRef(true);
-  useEffect(() => {
+
+  React.useEffect(() => {
     return () => {
       isDisplay.current = false;
     };

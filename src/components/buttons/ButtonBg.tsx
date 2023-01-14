@@ -2,16 +2,18 @@ import React from 'react';
 
 import { ContainerButtonImgBg, ButtonsImgBg } from './stylesButtons';
 
-type PropsButtonBg = {
+type Props = {
+  id?: string;
   onClick: () => void;
   img?: string;
   title?: string;
 };
 
-export default function ButtonBg({ img, title, onClick }: PropsButtonBg) {
+const ButtonBg: React.FC<Props> = ({ id, title, img, onClick }) => {
   return (
     <ContainerButtonImgBg>
-      <ButtonsImgBg img={img} title={title} onClick={onClick} />
+      <ButtonsImgBg id={id} img={img} title={title} onClick={onClick} />
     </ContainerButtonImgBg>
   );
-}
+};
+export default ButtonBg;

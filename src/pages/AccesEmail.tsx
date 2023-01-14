@@ -5,13 +5,13 @@ import { Titles } from '~/components/Titles';
 
 import * as C from './stylesAcces';
 
-export const AccesNew = () => {
+export const AccesEmail = () => {
   return (
     <Theme>
       <C.Container>
-        <p>Você se encontra pronto para criar a sua conta.</p>
+        <p>Agora é só confirmar seu email.</p>
         <Titles>
-          <h1>Criação de uma Nova Conta ?</h1>
+          <h1>determine seu email</h1>
         </Titles>
         <p>Complete os Dados requeridos :</p>
         <hr />

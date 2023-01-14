@@ -36,6 +36,74 @@ export const HomePage = () => {
       type: AccesActions.setCurrentStep,
       payload: 0
     });
+    dispatch({
+      type: AccesActions.setLevel,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrlevel,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setLevelCase,
+      payload: 0
+    });
+    dispatch({
+      type: AccesActions.setDescrCase,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setDescrCasePath,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setIdname,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setPassword,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setLogado,
+      payload: false
+    });
+    dispatch({
+      type: AccesActions.setPage,
+      payload: 'HomePage'
+    });
+    dispatch({
+      type: AccesActions.setModulo,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setName,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setEmail,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setFone,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setDescrpath,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvPin,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvSms,
+      payload: ''
+    });
+    dispatch({
+      type: AccesActions.setChvMail,
+      payload: ''
+    });
   }, [dispatch]);
 
   return (
@@ -55,11 +123,13 @@ export const HomePage = () => {
                   <p>Click para Logar...</p>
                 )}
               </ContainerPanelTextFlex>
-              <ButtonLogin
-                img={loginbrc1}
-                title={'Acesso...'}
-                onClick={goto('/accespg0')}
-              />
+              {!state.logado ? (
+                <ButtonLogin
+                  img={loginbrc1}
+                  title={'LogoON...'}
+                  onClick={goto('/access')}
+                />
+              ) : null}
             </ContainerPageFlexWidth>
           </ContainerPageDoubleFlex>
           <DivisionPanel />

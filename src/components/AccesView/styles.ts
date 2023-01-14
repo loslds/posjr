@@ -5,17 +5,17 @@ import olhof from '../../assets/images/svgs/olhof.svg';
 
 export const Container = styled.div<{ selected: boolean }>`
   background-color: transparent;
-  border: 2px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
+  border: 4px solid ${props => (props.selected ? '#25cd89' : '#16195c')};
   border-radius: 10px;
   padding: 5px 5px 5px 5px;
-  margin: 5px 5px 5px 5px;
+  margin: 5px 0px 5px 15px;
   display: flex;
   align-items: center;
   color: #fff;
   cursor: pointer;
   &:hover {
     // border: 2px #495459 solid; #b8b8d4
-    border: 2px solid #c5fa75;
+    border: 4px solid #c5fa75;
   }
   h1 {
     margin: 0px 0px 0px 0px;
