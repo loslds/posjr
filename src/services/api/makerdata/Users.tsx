@@ -1,7 +1,7 @@
-import React from 'react';
+import type { IResponseUserList } from '../user/user.dto';
 
-export const data = {
-  succes: true,
+export const userData: IResponseUserList = {
+  success: true,
   users: [
     {
       id: 1,
@@ -45,20 +45,3 @@ export const data = {
     }
   ]
 };
-
-// export async function getUsers(option = {}) {
-//   const result = await new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve({ data });
-//     }, 2000);
-//   });
-
-//   const order = {},
-//     filter = ({} = option);
-
-//   const resultUser = result;
-
-//   console.log('resultUser : ', resultUser);
-
-//   return resultUser;
-// }
