@@ -29,3 +29,28 @@ export async function getUser(id: number): Promise<IResponseUser> {
   await wait(800);
   return { success: !!found, user: found };
 }
+
+/** Adquiri um usuário pelo : id,level,idname,pin */
+export async function getLvNmPnUsers(
+  { id, level, idname, pin }: UserFilter = {},
+  { order = 'asc', orderBy = 'id' }: UserOrder = {}
+): Promise<IResponseUserList> {
+  if (id) {
+    userData.users = userData?.users?.filter(f => f.id === id);
+  }
+  if (level) {
+    userData.users = userData?.users?.filter(f => f.level === level);
+  }
+  if (idname) {
+    userData.users = userData?.users?.filter(f => f.idname === idname);
+  }
+  if (pin) {
+    userData.users = userData?.users?.filter(f => f.idname === pin);
+  }
+
+  userData.users = userData?.users?.sort(compareValues(orderBy, order));
+
+  await wait(200);
+  console.log('userData : ', userData);
+  return userData;
+}

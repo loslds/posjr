@@ -2,7 +2,7 @@ import type { IResponseApi, Order } from '../api.dto';
 
 export interface IUser {
   id: number;
-  nameid: string;
+  idname: string;
   name: string;
   cpf: string;
   cnpj: string;

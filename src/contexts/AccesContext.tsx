@@ -20,7 +20,7 @@ type StateAcces = {
   fone: string;
   cpf: string;
   pin: string;
-  chvname: string;
+  chvidname: string;
   chvpin: string;
   chvsms: string;
   chvmail: string;
@@ -58,7 +58,7 @@ export const initialData: StateAcces = {
   cpf: '',
   pin: '',
 
-  chvname: '',
+  chvidname: '',
   chvpin: '',
   chvsms: '',
   chvmail: '',
@@ -110,7 +110,7 @@ export enum AccesActions {
   setCpf,
   setPin,
 
-  setChvName,
+  setChvIdName,
   setChvPin,
   setChvSms,
   setChvMail,
@@ -168,8 +168,8 @@ const AccesReducer = (state: StateAcces, action: AccesAction) => {
     case AccesActions.setPin:
       return { ...state, pin: action.payload };
 
-    case AccesActions.setChvName:
-      return { ...state, chvname: action.payload };
+    case AccesActions.setChvIdName:
+      return { ...state, chvidname: action.payload };
     case AccesActions.setChvPin:
       return { ...state, chvpin: action.payload };
     case AccesActions.setChvSms:

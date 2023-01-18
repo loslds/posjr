@@ -5,7 +5,7 @@ export const userData: IResponseUserList = {
   users: [
     {
       id: 1,
-      nameid: 'Oswaldo',
+      idname: 'Oswaldo',
       name: 'Lindsay O. Sbrissa',
       cpf: '83185133849',
       cnpj: '',
@@ -25,7 +25,7 @@ export const userData: IResponseUserList = {
     },
     {
       id: 2,
-      nameid: 'Junior',
+      idname: 'Junior',
       name: 'Junior Bordados Ltda.',
       cpf: '',
       cnpj: '010157662000123',

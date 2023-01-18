@@ -2,28 +2,13 @@ import React from 'react';
 import { FaIdBadge, FaCheck, FaLockOpen } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-//import { useIsMounted } from '~/components/hooks';
-//import Loading from '~/components/Loading';
+import { useIsMounted } from '~/components/hooks';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import { ListUser } from '../../../Boocks';
+import { getLvNmPnUsers } from '../../../services/api/user';
 import * as C from '../../stylesAcces';
-
-export function buscascPIN(descr?: string, chv?: string, nm?: string) {
-  if (descr === '' || nm === '' || chv === '') return [];
-
-  const Lista = ListUser.filter(
-    users =>
-      users.descrlevel === descr && users.pin === chv && users.nameid === nm
-  );
-  Lista.forEach(ListUser => {
-    console.log(ListUser);
-  });
-
-  return Lista;
-}
 
 export const PinAcces1 = () => {
   const { state, dispatch } = AccesUseForm();
@@ -32,14 +17,15 @@ export const PinAcces1 = () => {
   const [ischeckd, setIsCheckd] = React.useState(false);
   const [isconected, setIsConected] = React.useState(false);
 
-  //const [loading, setLoading] = React.useState(false);
-  //const isMounted = useIsMounted();
+  const isMounted = useIsMounted();
 
   const [users, setUsers] = React.useState({});
+  //const [user, setUser] = React.useState({});
   //const [openFilter, setOpenFilter] = React.useState(false);
   //const [filter, setFilter] = React.useState({ level: state.level });
-
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
+
   const goto = (path: string) => {
     return () => {
       navigate(path);
@@ -52,7 +38,7 @@ export const PinAcces1 = () => {
       payload: 2
     });
     dispatch({
-      type: AccesActions.setChvName,
+      type: AccesActions.setChvIdName,
       payload: ''
     });
 
@@ -78,71 +64,89 @@ export const PinAcces1 = () => {
     });
   }, [dispatch]);
 
-  const handlerChvNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerChangeChvIdName = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: AccesActions.setChvName,
+      type: AccesActions.setChvIdName,
       payload: e.target.value
     });
   };
 
-  const spanChangeKeyUpChvName = () => {
-    if (state.chvname === '') {
+  const spanKeyUpChvIdName = () => {
+    if (state.chvidname === '') {
       setIsChvName(false);
       setIsChvPin(false);
       setIsCheckd(false);
-    } else if (state.chvname !== '') {
+    } else if (state.chvidname !== '') {
       setIsChvName(true);
     }
-    if (state.chvname !== '' && state.chvpin !== '') {
+    if (state.chvidname !== '' && state.chvpin !== '') {
       setIsCheckd(true);
     }
   };
 
-  const handlerChvPinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerChangeChvPin = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: AccesActions.setChvPin,
       payload: e.target.value
     });
   };
 
-  const spanChangeKeyUpChvPin = () => {
+  const spanKeyUpChvPin = () => {
     if (state.chvpin === '') {
       setIsChvPin(false);
     } else if (state.chvpin !== '') {
       setIsChvPin(true);
     }
-    if (state.chvname !== '' && state.chvpin !== '') {
+    if (state.chvidname !== '' && state.chvpin !== '') {
       setIsCheckd(true);
     }
   };
 
-  const handlerFilter = () => {
-    // BUSCA EM DATABASE O ACESSO.
-    let a = state.descrlevel;
-    let b = state.chvpin;
-    let c = state.chvname;
-    const usuario = buscascPIN(a, b, c);
-    let len = usuario.length;
-    console.log('usuario :', usuario);
-    setUsers(usuario);
-    if (usuario) {
-      console.log('users :', users);
-      for (var i = 0; i <= len; ++i) {
-        let tt = usuario[i].idname.val;
-        console.log('usuario[i].idname :', tt);
-        //users.push({ index: i });
-        //console.log(JSON.parse(JSON.stringify(usuarios)));
+  const fetchData = React.useCallback(async () => {
+    setIsConected(false);
+    setLoading(true);
+    let level: number = 0;
+    if (state.level === 1) {
+      level = 1;
+    } else if (state.level === 2) {
+      level = 2;
+    }
+    let idname = state.idname;
+    let pin = state.pin;
+    const Filtro = { level, idname, pin };
+    const response = await getLvNmPnUsers(Filtro);
+    if (isMounted.current) {
+      setLoading(false);
+      if (response.success) {
+        setUsers(response.users);
         setIsConected(true);
       }
-    } else {
-      setIsConected(false);
     }
-    // if (!isconected) {
-    //   alert('Usuario não encontrado...');
-    // } else {
-    //   alert(usuario);
-    // }
-  };
+  }, [isMounted, state.level, state.idname, state.pin]);
+
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  // const handlerFilterChvs = () => {
+  //   // BUSCA EM DATABASE O ACESSO.
+  //   const result = getLvNmPnUsers();
+  //   setUser(response.user);
+  //   console.log('users :', users);
+  // };
+
+  // const fetchData = React.useCallback(async () => {
+  //   setLoading(true);
+  //   const response = await getUsers();
+  //   if (isMounted.current) {
+  //     setLoading(false);
+  //     if (response.success) setUsers(response.users);
+  //   }
+  // }, [isMounted]);
+
+  // React.useEffect(() => {
+  //   fetchData();
+  // }, [fetchData]);
 
   return (
     <Theme>
@@ -165,10 +169,10 @@ export const PinAcces1 = () => {
               <input
                 autoFocus
                 type="text"
-                onChange={handlerChvNameChange}
-                value={state.chvname}
+                onChange={handlerChangeChvIdName}
+                value={state.chvidname}
                 placeholder={'Digite o seu Nome...'}
-                onKeyUp={spanChangeKeyUpChvName}
+                onKeyUp={spanKeyUpChvIdName}
               />
             </C.SideInputCenter>
             <C.SideImgInputRight>
@@ -202,11 +206,11 @@ export const PinAcces1 = () => {
                   <input
                     // autoFocus
                     type="text"
-                    onChange={handlerChvPinChange}
+                    onChange={handlerChangeChvPin}
                     value={state.chvpin}
                     maxLength={4}
                     placeholder={'Digite o seu PIN...'}
-                    onKeyUp={spanChangeKeyUpChvPin}
+                    onKeyUp={spanKeyUpChvPin}
                   />
                 </C.SideInputCenter>
                 <C.SideImgInputRight>
@@ -230,7 +234,7 @@ export const PinAcces1 = () => {
         </button>
 
         {ischeckd && state.chvpin !== '' && !isconected ? (
-          <button onClick={handlerFilter} title={'Enviar PIN...'}>
+          <button onClick={() => fetchData()} title={'Enviar PIN...'}>
             Enviar.
           </button>
         ) : null}

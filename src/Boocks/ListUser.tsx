@@ -17,7 +17,7 @@ export const ListUser = [
     idsector: 9,
     namesetor: 'Todos',
     level: 1,
-    descrlevel: 'internet'
+    descrlevel: 'Internet'
   },
   {
     id: 2,
@@ -37,6 +37,6 @@ export const ListUser = [
     idsector: 1,
     namesetor: 'Recepçao',
     level: 2,
-    descrlevel: 'intranet'
+    descrlevel: 'Intranet'
   }
 ];
