@@ -116,10 +116,13 @@ export const PinAcces1 = () => {
     const Filtro = { level, idname, pin };
     const response = await getLvNmPnUsers(Filtro);
     if (isMounted.current) {
-      setLoading(false);
       if (response.success) {
         setUsers(response.users);
         setIsConected(true);
+        setLoading(true);
+      } else {
+        setIsConected(false);
+        setLoading(false);
       }
     }
   }, [isMounted, state.level, state.idname, state.pin]);
@@ -127,26 +130,6 @@ export const PinAcces1 = () => {
   React.useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  // const handlerFilterChvs = () => {
-  //   // BUSCA EM DATABASE O ACESSO.
-  //   const result = getLvNmPnUsers();
-  //   setUser(response.user);
-  //   console.log('users :', users);
-  // };
-
-  // const fetchData = React.useCallback(async () => {
-  //   setLoading(true);
-  //   const response = await getUsers();
-  //   if (isMounted.current) {
-  //     setLoading(false);
-  //     if (response.success) setUsers(response.users);
-  //   }
-  // }, [isMounted]);
-
-  // React.useEffect(() => {
-  //   fetchData();
-  // }, [fetchData]);
 
   return (
     <Theme>
@@ -248,7 +231,36 @@ export const PinAcces1 = () => {
           </button>
         ) : null}
         {/* {loading ? <Loading /> : null} */}
+        {loading ? (
+          <div>
+            <p> Conectado</p>
+          </div>
+        ) : (
+          <div>
+            <p> Desconectado</p>
+          </div>
+        )}
       </C.Container>
     </Theme>
   );
 };
+
+// const handlerFilterChvs = () => {
+//   // BUSCA EM DATABASE O ACESSO.
+//   const result = getLvNmPnUsers();
+//   setUser(response.user);
+//   console.log('users :', users);
+// };
+
+// const fetchData = React.useCallback(async () => {
+//   setLoading(true);
+//   const response = await getUsers();
+//   if (isMounted.current) {
+//     setLoading(false);
+//     if (response.success) setUsers(response.users);
+//   }
+// }, [isMounted]);
+
+// React.useEffect(() => {
+//   fetchData();
+// }, [fetchData]);
