@@ -45,7 +45,7 @@ export const CaseAcces = () => {
       payload: ''
     });
     dispatch({
-      type: AccesActions.setChvName,
+      type: AccesActions.setChvIdName,
       payload: ''
     });
     dispatch({
