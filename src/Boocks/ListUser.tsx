@@ -360,5 +360,25 @@ export const ListUser = [
     namesetor: 'Todos',
     level: 2,
     descrlevel: 'Intranet'
+  },
+  {
+    id: 19,
+    idname: 'Pedro',
+    name: 'Pedro Alcantara Neto',
+    cpf: '83185133849',
+    cnpj: '',
+    pin: '2000',
+    mail: 'loslds7@hormail.com',
+    fone: '85997851139',
+    local: 'Av. Sargemto Herminio Sampaio',
+    nrlocal: '1415',
+    cep: '60320-105',
+    bairro: 'São Gerardo',
+    cidade: 'Fortaleza',
+    uf: 'Ceará',
+    idsector: 9,
+    namesetor: 'Todos',
+    level: 1,
+    descrlevel: 'Internet'
   }
 ];

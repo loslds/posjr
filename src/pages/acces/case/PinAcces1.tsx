@@ -7,7 +7,7 @@ import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import { getLvNmPnUsers } from '../../../services/api/user';
+import { getLevelUsers, getIdnameUsers } from '../../../services/api/user';
 import * as C from '../../stylesAcces';
 
 export const PinAcces1 = () => {
@@ -18,7 +18,8 @@ export const PinAcces1 = () => {
   const [isconected, setIsConected] = React.useState(false);
 
   const isMounted = useIsMounted();
-
+  const [userslevel, setUsersLevel] = React.useState({});
+  const [usersidname, setUsersIdname] = React.useState({});
   const [users, setUsers] = React.useState({});
   //const [user, setUser] = React.useState({});
   //const [openFilter, setOpenFilter] = React.useState(false);
@@ -105,27 +106,34 @@ export const PinAcces1 = () => {
   const fetchData = React.useCallback(async () => {
     setIsConected(false);
     setLoading(true);
+    //let id: number = 0;
+
     let level: number = 0;
     if (state.level === 1) {
       level = 1;
     } else if (state.level === 2) {
       level = 2;
     }
-    let idname = state.idname;
-    let pin = state.pin;
-    const Filtro = { level, idname, pin };
-    const response = await getLvNmPnUsers(Filtro);
+    let Filtro = { level };
+    const responselevel = await getLevelUsers(Filtro);
     if (isMounted.current) {
-      if (response.success) {
-        setUsers(response.users);
-        setIsConected(true);
-        setLoading(true);
+      if (responselevel.success) {
+        setUsersLevel(responselevel.users);
+        // setUsers(response.users);
+        let idname: string = '';
+        let Filtro1 = { idname };
+        const responseidname = await getIdnameUsers(Filtro1, userslevel);
+        if (responselevel.success) {
+          setUsersIdname(responseidname.users);
+          setIsConected(true);
+          setLoading(true);
+        }
       } else {
         setIsConected(false);
         setLoading(false);
       }
     }
-  }, [isMounted, state.level, state.idname, state.pin]);
+  }, [isMounted, state.level]);
 
   React.useEffect(() => {
     fetchData();
