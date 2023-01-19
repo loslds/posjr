@@ -51,6 +51,6 @@ export async function getLvNmPnUsers(
   userData.users = userData?.users?.sort(compareValues(orderBy, order));
 
   await wait(200);
-  console.log('userData : ', userData);
+  console.log('userData : ', userData.users);
   return userData;
 }
