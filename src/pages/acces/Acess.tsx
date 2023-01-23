@@ -2,8 +2,10 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+import { useIsMounted } from '~/components/hooks';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
+import { getLevelUsers } from '~/services/api/user';
 
 import { AccesActions, AccesUseForm } from '../../contexts/AccesContext';
 import * as C from '../stylesAcces';
@@ -107,6 +109,29 @@ export function calculateValues(
   return result;
 }
 
+export const Usuario = [
+  {
+    id: 1,
+    idname: 'Oswaldo',
+    name: 'Lindsay O. Sbrissa',
+    cpf: '83185133849',
+    cnpj: '',
+    pin: '1111',
+    mail: 'loslds7@hormail.com',
+    fone: '85997851139',
+    local: 'Av. Sargemto Herminio Sampaio',
+    nrlocal: '1415',
+    cep: '60320-105',
+    bairro: 'São Gerardo',
+    cidade: 'Fortaleza',
+    uf: 'Ceará',
+    idsector: 1,
+    namesetor: 'Recepção',
+    level: 1,
+    descrlevel: 'Internet'
+  }
+];
+
 export const Access = () => {
   const [isaccesid, setIsAccesId] = React.useState(false);
   const [isinputid, setIsInputId] = React.useState(false);
@@ -115,6 +140,13 @@ export const Access = () => {
   const [isinputpas, setIsInputPas] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
   const [ischeck, setIsCheck] = React.useState(false);
+
+  const [isconected, setIsConected] = React.useState(false);
+  const isMounted = useIsMounted();
+  const [userslevel, setUsersLevel] = React.useState({});
+  const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
   const [passwordSummary, setPasswordSummary] =
     React.useState<PasswordSummary>(initialState);
   const navigate = useNavigate();
@@ -193,9 +225,32 @@ export const Access = () => {
     }
   };
 
-  const handlerEnviar = () => {
-    alert('Enviar Acesso para reconhecimento...');
-  };
+  const handlerEnviar = () => {};
+
+  const fetchData = React.useCallback(async () => {
+    setIsConected(false);
+    setLoading(true);
+    let level: number = state.level;
+    let Filtro = { level };
+    const response = await getLevelUsers(Filtro);
+    if (isMounted.current) {
+      if (response.success) {
+        setUsersLevel(response.users);
+        // filtra o usuario conforme chvidname e chvpin dentro da listUsers e u Data.users
+        setUser(Usuario);
+        console.log('Usuario : ', user);
+        setIsConected(true);
+        setLoading(true);
+      } else {
+        setIsConected(false);
+        setLoading(false);
+      }
+    }
+  }, [isMounted, state.level]);
+
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <Theme>
@@ -278,6 +333,11 @@ export const Access = () => {
             Enviar.
           </button>
         ) : null}
+        {/* {ischeck
+          ? () => {
+              goto('/recepcao');
+            }
+          : null} */}
       </C.Container>
     </Theme>
   );

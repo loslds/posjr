@@ -13,6 +13,8 @@ import {
 } from '../pages/acces/case';
 import { ForgotAcces, ForgotAcces1 } from '../pages/acces/forgot';
 import { NewAcces, NewAcces1 } from '../pages/acces/new';
+import { HomePage } from '../pages/HomePage';
+import { PageMain } from '../pages/PageMain';
 // import { AccesChvPin } from '../pages/AccesChvPin';
 // import { AccesEmail } from '../pages/AccesEmail';
 // import { AccesFone } from '../pages/AccesFone';
@@ -22,7 +24,6 @@ import { NewAcces, NewAcces1 } from '../pages/acces/new';
 // import { AccesPg1 } from '../pages/AccesPg1';
 // import { AccesPg2 } from '../pages/AccesPg2';
 // import { AccesPg3 } from '../pages/AccesPg3';
-import { HomePage } from '../pages/HomePage';
 
 export interface IRoute {
   path: string;
@@ -43,6 +44,7 @@ export const RouteList: IRoute[] = [
   { path: '/newacces1', exact: true, element: <NewAcces1 /> },
   { path: '/access', exact: true, element: <Access /> },
   { path: '/homepage', exact: true, element: <HomePage /> },
+  { path: '/pagemain', exact: true, element: <PageMain /> },
   { path: '/reception', exact: true, element: <Reception /> }
 
   // { path: '/accesfone', exact: true, element: <AccesFone /> },

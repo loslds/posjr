@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { FaHome, FaKey, FaLock, FaListOl } from 'react-icons/fa';
-import { MdSendToMobile, MdKeyboardAlt, MdMail } from 'react-icons/md';
+// import { MdSendToMobile, MdKeyboardAlt, MdMail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';

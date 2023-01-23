@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { HomePage } from '~/pages/HomePage';
 
-import { IRoute, RouteList } from './RouteList';
+import { IRoute, RouteList } from './routeList';
 
 export const AppRoutes: React.FC = () => {
   const renderRoutes = (routes: IRoute[]) => {
