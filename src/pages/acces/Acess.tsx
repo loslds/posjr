@@ -139,10 +139,11 @@ export const Access = () => {
   const [isaccespas, setIsAccesPas] = React.useState(false);
   const [isinputpas, setIsInputPas] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
+  const [ischanger, setIsChanger] = React.useState(false);
   const [ischeck, setIsCheck] = React.useState(false);
-
-  const [isconected, setIsConected] = React.useState(false);
   const isMounted = useIsMounted();
+  const [isconected, setIsConected] = React.useState(false);
+
   const [userslevel, setUsersLevel] = React.useState({});
   const [user, setUser] = React.useState({});
   const [loading, setLoading] = React.useState(false);
@@ -191,9 +192,9 @@ export const Access = () => {
       setIsInputId(true);
     }
     if (state.idname !== '' && state.password !== '') {
-      setIsCheck(true);
+      setIsChanger(true);
     } else {
-      setIsCheck(false);
+      setIsChanger(false);
     }
   };
 
@@ -219,31 +220,35 @@ export const Access = () => {
       setIsLengPas(true);
     }
     if (state.idname !== '' && state.password !== '') {
-      setIsCheck(true);
+      setIsChanger(true);
     } else {
-      setIsCheck(false);
+      setIsChanger(false);
     }
   };
 
-  const handlerEnviar = () => {};
+  const handlerEnviar = () => {
+    // alert(
+    //   'Filtra o usuario conforme idname e pin dentro da listUsers e ou Data.users'
+    // );
+    let idname: string = state.idname;
+    let password: string = state.password;
+
+    console.log('idname: ', idname);
+    console.log('password: ', password);
+    setIsCheck(true);
+  };
 
   const fetchData = React.useCallback(async () => {
-    setIsConected(false);
-    setLoading(true);
+    // Organiza usuarios conforme level "1- Internet" ou "2- Intranet"
     let level: number = state.level;
     let Filtro = { level };
     const response = await getLevelUsers(Filtro);
     if (isMounted.current) {
       if (response.success) {
         setUsersLevel(response.users);
-        // filtra o usuario conforme chvidname e chvpin dentro da listUsers e u Data.users
-        setUser(Usuario);
-        console.log('Usuario : ', user);
         setIsConected(true);
-        setLoading(true);
       } else {
         setIsConected(false);
-        setLoading(false);
       }
     }
   }, [isMounted, state.level]);
@@ -328,16 +333,19 @@ export const Access = () => {
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
         </button>
-        {islengid && islengpas ? (
+        {!ischeck && islengid && islengpas ? (
           <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
         ) : null}
-        {/* {ischeck
-          ? () => {
-              goto('/recepcao');
-            }
-          : null} */}
+        {ischeck ? (
+          <button
+            onClick={goto('/sectores/sectorspg')}
+            title={'Conectar ao Modulo.'}
+          >
+            Conectar.
+          </button>
+        ) : null}
       </C.Container>
     </Theme>
   );

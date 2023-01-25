@@ -381,17 +381,3 @@ export const DivPesoProgress = styled.div`
   cursor: pointer;
   outline: none;
 `;
-
-// display: ${({ondisplay }) => (ondisplay ? 'flex' : 'none')};
-
-// export const DivtoSpan = styled.div<{ open?: boolean }>`
-//   margin: 0px 10px 0px 0px;
-//   padding: 0px 0px 0px 0px;
-//   max-width: 100px;
-//   background-color: transparent;
-//   font-size: 16px;
-//   display: ${({ open }) => (open ? 'flex' : 'none')};
-//   justify-content: center;
-//   align-content: center;
-//   align-items: center;
-// `;

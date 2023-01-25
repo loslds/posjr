@@ -76,7 +76,7 @@ export async function getIdnamelUsers(
 
   await wait(200);
 
-  console.log('level : ', idname);
+  console.log('idname : ', idname);
   console.log('userData : ', userData.users);
 
   return userData;
