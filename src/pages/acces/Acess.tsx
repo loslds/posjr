@@ -136,10 +136,13 @@ export const Access = () => {
   const [isaccesid, setIsAccesId] = React.useState(false);
   const [isinputid, setIsInputId] = React.useState(false);
   const [islengid, setIsLengId] = React.useState(false);
+
   const [isaccespas, setIsAccesPas] = React.useState(false);
   const [isinputpas, setIsInputPas] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
+
   const [ischanger, setIsChanger] = React.useState(false);
+
   const [ischeck, setIsCheck] = React.useState(false);
   const isMounted = useIsMounted();
   const [isconected, setIsConected] = React.useState(false);
@@ -209,8 +212,7 @@ export const Access = () => {
   };
 
   const spanChangeKeyUpPas = () => {
-    let snh = state.password;
-    if (snh === '') {
+    if (state.password === '') {
       setIsAccesPas(false);
       setIsInputPas(false);
       setIsLengPas(false);
@@ -333,14 +335,14 @@ export const Access = () => {
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
         </button>
-        {!ischeck && islengid && islengpas ? (
+        {ischanger ? (
           <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
         ) : null}
         {ischeck ? (
           <button
-            onClick={goto('/sectores/sectorspg')}
+            onClick={goto('/sectores/sectorspg setor= {setor} ')}
             title={'Conectar ao Modulo.'}
           >
             Conectar.

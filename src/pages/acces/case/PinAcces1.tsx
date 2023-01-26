@@ -6,7 +6,7 @@ import { useIsMounted } from '~/components/hooks';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
-import { getLevelUsers, getUser } from '~/services/api/user';
+import { getLevelUsers } from '~/services/api/user';
 
 import * as C from '../../stylesAcces';
 
@@ -33,19 +33,25 @@ export const Usuario = [
   }
 ];
 
-export const PinAcces1 = () => {
+type PropsTtOpcao = {
+  titulopcao?: string;
+};
+export const PinAcces1: React.FC<PropsTtOpcao> = ({ titulopcao }) => {
   const { state, dispatch } = AccesUseForm();
   const [ischvname, setIsChvName] = React.useState(false);
   const [ischvpin, setIsChvPin] = React.useState(false);
+  const [ischanger, setIsChanger] = React.useState(false);
+
   const [ischeckd, setIsCheckd] = React.useState(false);
   const [isconected, setIsConected] = React.useState(false);
 
   const isMonted = useIsMounted();
   const [loading, setLoading] = React.useState(false);
   const [userslevel, setUsersLevel] = React.useState({});
+
   // const [usersidname, setUsersIdname] = React.useState({});
-  const [users, setUsers] = React.useState({});
-  const [user, setUser] = React.useState({});
+  //const [users, setUsers] = React.useState({});
+  //const [user, setUser] = React.useState({});
   // const [openFilter, setOpenFilter] = React.useState(false);
   // const [filter, setFilter] = React.useState({ level: state.level });
 
@@ -56,6 +62,8 @@ export const PinAcces1 = () => {
       navigate(path);
     };
   };
+
+  titulopcao = 'Opção : ' + state.descrcase;
 
   React.useEffect(() => {
     dispatch({
@@ -105,7 +113,9 @@ export const PinAcces1 = () => {
       setIsChvName(true);
     }
     if (state.chvidname !== '' && state.chvpin !== '') {
-      setIsCheckd(true);
+      setIsChanger(true);
+    } else {
+      setIsChanger(false);
     }
   };
 
@@ -119,11 +129,14 @@ export const PinAcces1 = () => {
   const spanKeyUpChvPin = () => {
     if (state.chvpin === '') {
       setIsChvPin(false);
+      setIsCheckd(false);
     } else if (state.chvpin !== '') {
       setIsChvPin(true);
     }
     if (state.chvidname !== '' && state.chvpin !== '') {
-      setIsCheckd(true);
+      setIsChanger(true);
+    } else {
+      setIsChanger(false);
     }
   };
 
@@ -141,7 +154,7 @@ export const PinAcces1 = () => {
     if (response.success) {
       setUsersLevel(response.users);
       // filtra o usuario conforme chvidname e chvpin dentro da listUsers e u Data.users
-      setUsers(response.users);
+      // setUsers(response.users);
       setIsConected(true);
       setLoading(true);
     } else {
@@ -154,9 +167,18 @@ export const PinAcces1 = () => {
     fetchData();
   }, [fetchData]);
 
-  // const HandlerFindId = () => {
-  //   () => alert(' Em UsersLevel busca com filtro: level => state.level, idname => state.chvidname, pin = state.chvpin')};
-  // };
+  const handlerEnviar = () => {
+    // alert(
+    //   'Filtra o usuario conforme idname e pin dentro da listUsers e ou Data.users'
+    // );
+    let chvidname: string = state.chvidname;
+    let chvpin: string = state.chvpin;
+
+    console.log('idname: ', chvidname);
+    console.log('chvpin: ', chvpin);
+
+    setIsCheckd(true);
+  };
 
   return (
     <Theme>
@@ -202,8 +224,7 @@ export const PinAcces1 = () => {
         {ischvname ? (
           <C.Container>
             <hr />
-            <h2>Opções.</h2>
-            <p>Selecione uma Opção :</p>
+            <p> {titulopcao}</p>
             <label>
               Chave PIN para ser Reconhecido.
               <C.ContainerInput>
@@ -238,26 +259,19 @@ export const PinAcces1 = () => {
             </label>
           </C.Container>
         ) : null}
-
         <button onClick={goto('/casechanger')} title={'Retorna...'}>
           Voltar
         </button>
-
-        {ischeckd && state.chvpin !== '' && !isconected ? (
-          <button
-            onClick={() =>
-              alert(
-                ' Em UsersLevel busca com filtro: level => state.level, idname => state.chvidname, pin = state.chvpin'
-              )
-            }
-            title={'Busca Chaves NOME e PIN...'}
-          >
+        {ischanger && !isconected ? (
+          <button onClick={handlerEnviar} title={'Busca Chaves NOME e PIN...'}>
             Enviar.
           </button>
         ) : null}
-
-        {isconected ? (
-          <button onClick={goto('/pagemain')} title={'Ativar Modulo...'}>
+        {ischeckd ? (
+          <button
+            onClick={goto('/setores/sectorspg')}
+            title={'Conectar ao Modulo.'}
+          >
             Enviar.
           </button>
         ) : null}

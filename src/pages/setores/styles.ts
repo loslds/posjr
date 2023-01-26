@@ -3,7 +3,7 @@ import styled from 'styled-components';
 //import semimg from '../assets/images/semimg.png';
 
 export const Container = styled.div`
-  border: 0px;
+  border: 2px solid red;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
   width: 100%;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   align-items: center;
   align-content: center;
   color: white;
-  background-color: transparent;
+  background-color: beige;
 
   p {
     margin: 0px 0px 0px 10px;

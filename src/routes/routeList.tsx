@@ -23,7 +23,7 @@ export interface IRoute {
 export const RouteList: IRoute[] = [
   { path: '/caseacces', exact: true, element: <CaseAcces /> },
   { path: '/casechanger', exact: true, element: <CaseChanger /> },
-  { path: '/pinacces1', exact: true, element: <PinAcces1 /> },
+  { path: '/pinacces1', exact: true, element: <PinAcces1 titulopcao="" /> },
   { path: '/pinacces2', exact: true, element: <PinAcces2 /> },
   { path: '/smsacces1', exact: true, element: <SmsAcces1 /> },
   { path: '/mailacces1', exact: true, element: <MailAcces1 /> },
@@ -33,5 +33,9 @@ export const RouteList: IRoute[] = [
   { path: '/newacces1', exact: true, element: <NewAcces1 /> },
   { path: '/access', exact: true, element: <Access /> },
   { path: '/homepage', exact: true, element: <HomePage /> },
-  { path: '/sectorsPg', exact: true, element: <SectorsPg /> }
+  {
+    path: '/pages/setores/sectorsPg',
+    exact: true,
+    element: <SectorsPg setor="" />
+  }
 ];
