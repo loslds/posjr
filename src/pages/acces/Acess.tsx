@@ -175,6 +175,10 @@ export const Access = () => {
       type: AccesActions.setModulo,
       payload: 'Access'
     });
+    dispatch({
+      type: AccesActions.setSetor,
+      payload: ''
+    });
   }, [dispatch]);
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -231,12 +235,12 @@ export const Access = () => {
   const handlerEnviar = () => {
     // alert(
     //   'Filtra o usuario conforme idname e pin dentro da listUsers e ou Data.users'
+    // retorna setor
     // );
-    let idname: string = state.idname;
-    let password: string = state.password;
-
-    console.log('idname: ', idname);
-    console.log('password: ', password);
+    dispatch({
+      type: AccesActions.setSetor,
+      payload: 'Recepcao'
+    });
     setIsCheck(true);
   };
 
@@ -342,12 +346,13 @@ export const Access = () => {
         ) : null}
         {ischeck ? (
           <button
-            onClick={goto('/sectores/sectorspg setor= {setor} ')}
-            title={'Conectar ao Modulo.'}
+            onClick={goto('/setores/sectorsPg')}
+            title={'Conectar com Setor.'}
           >
             Conectar.
           </button>
         ) : null}
+        <p>setor : ...{state.setor} </p>
       </C.Container>
     </Theme>
   );

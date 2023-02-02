@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { SectorsPg } from '~/pages/setores';
-
 import { Access } from '../pages/acces/Acess';
 import {
   CaseAcces,
@@ -14,6 +12,7 @@ import {
 import { ForgotAcces, ForgotAcces1 } from '../pages/acces/forgot';
 import { NewAcces, NewAcces1 } from '../pages/acces/new';
 import { HomePage } from '../pages/HomePage';
+import { SectorsPg } from '../pages/setores';
 export interface IRoute {
   path: string;
   exact: boolean;
@@ -34,8 +33,8 @@ export const RouteList: IRoute[] = [
   { path: '/access', exact: true, element: <Access /> },
   { path: '/homepage', exact: true, element: <HomePage /> },
   {
-    path: '/pages/setores/sectorsPg',
+    path: '/setores/sectorspg',
     exact: true,
-    element: <SectorsPg setor="" />
+    element: <SectorsPg />
   }
 ];
