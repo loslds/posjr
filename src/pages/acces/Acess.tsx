@@ -2,8 +2,10 @@ import React from 'react';
 import { FaIdBadge, FaKey, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+import { useIsMounted } from '~/components/hooks';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
+import { getLevelUsers } from '~/services/api/user';
 
 import { AccesActions, AccesUseForm } from '../../contexts/AccesContext';
 import * as C from '../stylesAcces';
@@ -107,14 +109,48 @@ export function calculateValues(
   return result;
 }
 
+export const Usuario = [
+  {
+    id: 1,
+    idname: 'Oswaldo',
+    name: 'Lindsay O. Sbrissa',
+    cpf: '83185133849',
+    cnpj: '',
+    pin: '1111',
+    mail: 'loslds7@hormail.com',
+    fone: '85997851139',
+    local: 'Av. Sargemto Herminio Sampaio',
+    nrlocal: '1415',
+    cep: '60320-105',
+    bairro: 'São Gerardo',
+    cidade: 'Fortaleza',
+    uf: 'Ceará',
+    idsector: 1,
+    namesetor: 'Recepção',
+    level: 1,
+    descrlevel: 'Internet'
+  }
+];
+
 export const Access = () => {
   const [isaccesid, setIsAccesId] = React.useState(false);
   const [isinputid, setIsInputId] = React.useState(false);
   const [islengid, setIsLengId] = React.useState(false);
+
   const [isaccespas, setIsAccesPas] = React.useState(false);
   const [isinputpas, setIsInputPas] = React.useState(false);
   const [islengpas, setIsLengPas] = React.useState(false);
+
+  const [ischanger, setIsChanger] = React.useState(false);
+
   const [ischeck, setIsCheck] = React.useState(false);
+  const isMounted = useIsMounted();
+  const [isconected, setIsConected] = React.useState(false);
+
+  const [userslevel, setUsersLevel] = React.useState({});
+  const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
+
   const [passwordSummary, setPasswordSummary] =
     React.useState<PasswordSummary>(initialState);
   const navigate = useNavigate();
@@ -139,6 +175,10 @@ export const Access = () => {
       type: AccesActions.setModulo,
       payload: 'Access'
     });
+    dispatch({
+      type: AccesActions.setSetor,
+      payload: ''
+    });
   }, [dispatch]);
 
   const handlerIdNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -159,9 +199,9 @@ export const Access = () => {
       setIsInputId(true);
     }
     if (state.idname !== '' && state.password !== '') {
-      setIsCheck(true);
+      setIsChanger(true);
     } else {
-      setIsCheck(false);
+      setIsChanger(false);
     }
   };
 
@@ -176,8 +216,7 @@ export const Access = () => {
   };
 
   const spanChangeKeyUpPas = () => {
-    let snh = state.password;
-    if (snh === '') {
+    if (state.password === '') {
       setIsAccesPas(false);
       setIsInputPas(false);
       setIsLengPas(false);
@@ -187,15 +226,42 @@ export const Access = () => {
       setIsLengPas(true);
     }
     if (state.idname !== '' && state.password !== '') {
-      setIsCheck(true);
+      setIsChanger(true);
     } else {
-      setIsCheck(false);
+      setIsChanger(false);
     }
   };
 
   const handlerEnviar = () => {
-    alert('Enviar Acesso para reconhecimento...');
+    // alert(
+    //   'Filtra o usuario conforme idname e pin dentro da listUsers e ou Data.users'
+    // retorna setor
+    // );
+    dispatch({
+      type: AccesActions.setSetor,
+      payload: 'Recepcao'
+    });
+    setIsCheck(true);
   };
+
+  const fetchData = React.useCallback(async () => {
+    // Organiza usuarios conforme level "1- Internet" ou "2- Intranet"
+    let level: number = state.level;
+    let Filtro = { level };
+    const response = await getLevelUsers(Filtro);
+    if (isMounted.current) {
+      if (response.success) {
+        setUsersLevel(response.users);
+        setIsConected(true);
+      } else {
+        setIsConected(false);
+      }
+    }
+  }, [isMounted, state.level]);
+
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <Theme>
@@ -273,11 +339,20 @@ export const Access = () => {
         <button onClick={goto('/homepage')} title={'Retorna p/ Home.'}>
           Voltar
         </button>
-        {islengid && islengpas ? (
+        {ischanger ? (
           <button onClick={handlerEnviar} title={'Solicitar Acesso.'}>
             Enviar.
           </button>
         ) : null}
+        {ischeck ? (
+          <button
+            onClick={goto('/setores/sectorsPg')}
+            title={'Conectar com Setor.'}
+          >
+            Conectar.
+          </button>
+        ) : null}
+        <p>setor : ...{state.setor} </p>
       </C.Container>
     </Theme>
   );

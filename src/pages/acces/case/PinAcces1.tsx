@@ -6,24 +6,55 @@ import { useIsMounted } from '~/components/hooks';
 import { Theme } from '~/components/Theme';
 import { Titles } from '~/components/Titles';
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
+import { getLevelUsers } from '~/services/api/user';
 
-import { getLvNmPnUsers } from '../../../services/api/user';
 import * as C from '../../stylesAcces';
 
-export const PinAcces1 = () => {
+export const Usuario = [
+  {
+    id: 1,
+    idname: 'Oswaldo',
+    name: 'Lindsay O. Sbrissa',
+    cpf: '83185133849',
+    cnpj: '',
+    pin: '1111',
+    mail: 'loslds7@hormail.com',
+    fone: '85997851139',
+    local: 'Av. Sargemto Herminio Sampaio',
+    nrlocal: '1415',
+    cep: '60320-105',
+    bairro: 'São Gerardo',
+    cidade: 'Fortaleza',
+    uf: 'Ceará',
+    idsector: 1,
+    namesetor: 'Recepção',
+    level: 1,
+    descrlevel: 'Internet'
+  }
+];
+
+type PropsTtOpcao = {
+  titulopcao?: string;
+};
+export const PinAcces1: React.FC<PropsTtOpcao> = ({ titulopcao }) => {
   const { state, dispatch } = AccesUseForm();
   const [ischvname, setIsChvName] = React.useState(false);
   const [ischvpin, setIsChvPin] = React.useState(false);
+  const [ischanger, setIsChanger] = React.useState(false);
+
   const [ischeckd, setIsCheckd] = React.useState(false);
   const [isconected, setIsConected] = React.useState(false);
 
-  const isMounted = useIsMounted();
-
-  const [users, setUsers] = React.useState({});
-  //const [user, setUser] = React.useState({});
-  //const [openFilter, setOpenFilter] = React.useState(false);
-  //const [filter, setFilter] = React.useState({ level: state.level });
+  const isMonted = useIsMounted();
   const [loading, setLoading] = React.useState(false);
+  const [userslevel, setUsersLevel] = React.useState({});
+
+  // const [usersidname, setUsersIdname] = React.useState({});
+  //const [users, setUsers] = React.useState({});
+  //const [user, setUser] = React.useState({});
+  // const [openFilter, setOpenFilter] = React.useState(false);
+  // const [filter, setFilter] = React.useState({ level: state.level });
+
   const navigate = useNavigate();
 
   const goto = (path: string) => {
@@ -31,6 +62,8 @@ export const PinAcces1 = () => {
       navigate(path);
     };
   };
+
+  titulopcao = 'Opção : ' + state.descrcase;
 
   React.useEffect(() => {
     dispatch({
@@ -80,7 +113,9 @@ export const PinAcces1 = () => {
       setIsChvName(true);
     }
     if (state.chvidname !== '' && state.chvpin !== '') {
-      setIsCheckd(true);
+      setIsChanger(true);
+    } else {
+      setIsChanger(false);
     }
   };
 
@@ -94,11 +129,14 @@ export const PinAcces1 = () => {
   const spanKeyUpChvPin = () => {
     if (state.chvpin === '') {
       setIsChvPin(false);
+      setIsCheckd(false);
     } else if (state.chvpin !== '') {
       setIsChvPin(true);
     }
     if (state.chvidname !== '' && state.chvpin !== '') {
-      setIsCheckd(true);
+      setIsChanger(true);
+    } else {
+      setIsChanger(false);
     }
   };
 
@@ -111,25 +149,36 @@ export const PinAcces1 = () => {
     } else if (state.level === 2) {
       level = 2;
     }
-    let idname = state.idname;
-    let pin = state.pin;
-    const Filtro = { level, idname, pin };
-    const response = await getLvNmPnUsers(Filtro);
-    if (isMounted.current) {
-      if (response.success) {
-        setUsers(response.users);
-        setIsConected(true);
-        setLoading(true);
-      } else {
-        setIsConected(false);
-        setLoading(false);
-      }
+    let Filtro = { level };
+    const response = await getLevelUsers(Filtro);
+    if (response.success) {
+      setUsersLevel(response.users);
+      // filtra o usuario conforme chvidname e chvpin dentro da listUsers e u Data.users
+      // setUsers(response.users);
+      setIsConected(true);
+      setLoading(true);
+    } else {
+      setIsConected(false);
+      setLoading(false);
     }
-  }, [isMounted, state.level, state.idname, state.pin]);
+  }, []);
 
   React.useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const handlerEnviar = () => {
+    // alert(
+    //   'Filtra o usuario conforme idname e pin dentro da listUsers e ou Data.users'
+    // );
+    let chvidname: string = state.chvidname;
+    let chvpin: string = state.chvpin;
+
+    console.log('idname: ', chvidname);
+    console.log('chvpin: ', chvpin);
+
+    setIsCheckd(true);
+  };
 
   return (
     <Theme>
@@ -175,8 +224,7 @@ export const PinAcces1 = () => {
         {ischvname ? (
           <C.Container>
             <hr />
-            <h2>Opções.</h2>
-            <p>Selecione uma Opção :</p>
+            <p> {titulopcao}</p>
             <label>
               Chave PIN para ser Reconhecido.
               <C.ContainerInput>
@@ -211,35 +259,22 @@ export const PinAcces1 = () => {
             </label>
           </C.Container>
         ) : null}
-
         <button onClick={goto('/casechanger')} title={'Retorna...'}>
           Voltar
         </button>
-
-        {ischeckd && state.chvpin !== '' && !isconected ? (
-          <button onClick={() => fetchData()} title={'Enviar PIN...'}>
+        {ischanger && !isconected ? (
+          <button onClick={handlerEnviar} title={'Busca Chaves NOME e PIN...'}>
             Enviar.
           </button>
         ) : null}
-
-        {isconected ? (
+        {ischeckd ? (
           <button
-            onClick={() => alert('ativa modulo conforme acesso.')}
-            title={'Ativar Modulo...'}
+            onClick={goto('/setores/sectorspg')}
+            title={'Conectar ao Modulo.'}
           >
             Enviar.
           </button>
         ) : null}
-        {/* {loading ? <Loading /> : null} */}
-        {loading ? (
-          <div>
-            <p> Conectado</p>
-          </div>
-        ) : (
-          <div>
-            <p> Desconectado</p>
-          </div>
-        )}
       </C.Container>
     </Theme>
   );
