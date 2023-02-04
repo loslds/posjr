@@ -8,6 +8,7 @@ import { Titles } from '~/components/Titles';
 import * as C from './stylesreception';
 
 export const Reception = () => {
+  //
   // const navigate = useNavigate();
   // const goto = (path: string) => {
   //   return () => {
