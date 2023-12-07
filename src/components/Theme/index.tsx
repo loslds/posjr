@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { AccesActions, AccesUseForm } from '~/contexts/AccesContext';
 
-import { Header } from '../Header';
+// import Header from '../Header';
 import { Sidebar } from '../Sidebar';
 import { Titles } from '../Titles';
 import * as C from './styles';
@@ -47,7 +47,10 @@ export const Theme = ({ children }: Props) => {
     <div>
       <C.Container>
         <C.Area>
-          <Header />
+          {/* <Header>
+            <h1>Acesso ao Sistema.</h1>
+            <p>Identifique-se: </p>
+          </Header> */}
           <C.Step>
             <C.Sidebar>
               <Sidebar>

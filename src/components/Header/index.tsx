@@ -2,11 +2,10 @@ import React from 'react';
 
 import * as C from './styles';
 
-export const Header = () => {
-  return (
-    <C.Container>
-      <h1>Acesso ao Sistema.</h1>
-      <p>Identifique-se: </p>
-    </C.Container>
-  );
+type PropsHeader = {
+  children?: React.ReactNode | JSX.Element;
 };
+const Header: React.FC<PropsHeader> = ({ children }) => {
+  return <C.ContainerHeard>{children}</C.ContainerHeard>;
+};
+export default Header;

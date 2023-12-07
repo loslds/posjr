@@ -2,6 +2,34 @@ import styled from 'styled-components';
 
 import semimg from '~/assets/images/semimg.png';
 
+export const ButtonLoginPg = styled.button<{ img?: string }>`
+  border: 0px;
+  padding: 1px 1px 1px 1px;
+  margin: 0px 10px 0px 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', 'Courier', 'monospace';
+  background-color: transparent;
+  background-image: url(${({ img }) => img || semimg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  outline: none;
+  min-height: 45px;
+  width: 45px;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    border: 2px red solid;
+    border-radius: 5px;
+    background-color: #fa8c8c;
+  }
+`;
+
 export const ContainerButtonImgBg = styled.div<{ ondisplay?: boolean }>`
   border: 0;
   margin: 0px 0px 0px 0px;

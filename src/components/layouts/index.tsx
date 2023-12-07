@@ -1,0 +1,1 @@
+export { LayoutPg } from './LayoutPg';

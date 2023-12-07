@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ContainerHeard = styled.div`
+  border: 0px;
+  padding: 0px 5px 0px 5px;
+  margin: 10px 10px 0px 10px;
   background-color: transparent;
-  color: #fff;
-  padding: 10px 5px 5px 5px;
-  margin: 10px 5px 5px 5px;
-  border-bottom: 1px #16195c solid;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
   h1 {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
@@ -19,6 +22,6 @@ export const Container = styled.div`
     font-size: 14px;
     font-style: normal;
     line-height: 16px;
-    color: #b8b8d4;
+    color: #333333; // #b8b8d4;
   }
 `;
