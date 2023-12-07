@@ -1,19 +1,21 @@
 import React from 'react';
 
-import { AccesActions, AccesUseForm } from '../../contexts/AccesContext';
+import { AccesUseForm } from '../../contexts/AccesContext';
 import * as S from './styles';
 
 type PropsSetor = {
   setor?: string;
-  // children?: React.ReactNode | JSX.Element;
+  caminho?: string;
+  children?: React.ReactNode | JSX.Element;
 };
-export const SectorsPg: React.FC<PropsSetor> = ({ setor }) => {
+export const SectorsPg: React.FC<PropsSetor> = ({ setor, caminho }) => {
   const { state } = AccesUseForm();
 
   setor = state.setor;
 
   if (setor === 'Recepcao') {
     console.log('Recepção : ', setor);
+    caminho = '/setores/sectorsPg';
   }
   if (setor === 'Producao') {
     console.log('Producao : ', setor);

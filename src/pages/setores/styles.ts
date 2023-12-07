@@ -6,7 +6,7 @@ export const Container = styled.div`
   border: 2px solid red;
   padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 100%;
+  width: 99%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
